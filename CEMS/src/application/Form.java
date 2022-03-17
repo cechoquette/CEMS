@@ -17,7 +17,7 @@ public abstract class Form {
 	 */
 	
 	
-	protected static int COUNT_FOR_IDS = 0;
+	protected static int COUNT_FOR_IDS = 0; //needs to be called from Database, or saved and retrieved at startup
 	
 	public abstract void addField(HashMap<Object, Object> requestData);
 	

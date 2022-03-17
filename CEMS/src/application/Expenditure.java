@@ -1,23 +1,38 @@
 package application;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Expenditure {
 	protected static int COUNT_FOR_IDS;
 	
 	private int expenditureID;
+	private String description;
+	private String accountHolder;
+	private String paymentAccount;
 	private double amount;
 	private double taxAmount;
+	private double total;
 	private Province province;
-	private PaymentMethod paymentMethod;
-	private String paymentAccount;
-	private String payeeName;
-	private String description;
-	private Date date;
+	private LocalDate date;
 	private Vendor vendorName;
 	private ExpenditureCategory category;
+	private PaymentMethod paymentMethod;
 	
-	Expenditure(){
+	Expenditure(String description, String accountHolder, String paymentAccount, double amount, double taxAmount, double total, Province province, LocalDate date, Vendor vendorName, ExpenditureCategory category, PaymentMethod paymentMethod){
 		this.expenditureID = ++COUNT_FOR_IDS;
+
+		this.description = description;
+		this.accountHolder = accountHolder;
+		this.paymentAccount = paymentAccount;
+		this.amount = amount;
+		this.taxAmount = taxAmount;
+		this.total = total;
+		this.province = province;
+		this.date = date;
+		this.vendorName = vendorName;
+		this.category = category;
+		this.paymentMethod = paymentMethod;
+		
 	}
 
 	public static int getCOUNT_FOR_IDS() {
@@ -104,14 +119,14 @@ public class Expenditure {
 
 
 
-	public String getPayeeName() {
-		return payeeName;
+	public String getAccountHolder() {
+		return accountHolder;
 	}
 
 
 
-	public void setPayeeName(String payeeName) {
-		this.payeeName = payeeName;
+	public void setAccountHolder(String accountHolder) {
+		this.accountHolder = accountHolder;
 	}
 
 
@@ -128,13 +143,13 @@ public class Expenditure {
 
 
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
 
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) { 
 		this.date = date;
 	}
 
@@ -160,6 +175,22 @@ public class Expenditure {
 
 	public void setCategory(ExpenditureCategory category) {
 		this.category = category;
+	}
+	
+	@Override
+	public String toString() {
+		return 
+				"Description: \t" + description + 
+				"\nAmount: \t" + String.format("%.2f", amount) + 
+				"\nTax Amount: \t" + String.format("%.2f", taxAmount) +
+				"\nProvince: \t" + province + 
+				"\nTotal: \t\t" + String.format("%.2f", total) +
+				"\nDate: \t\t" + date +
+				"\nCategory: \t" + category +
+				"\nVendor Name: \t" + vendorName +
+				"\nPayment Method: " + paymentMethod + 
+				"\nAccount Holder: " + accountHolder +
+				"\nPayment Account: " + paymentAccount; 
 	}
 	
 }

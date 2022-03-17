@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenditureFormUIController">
    <children>
       <BorderPane prefHeight="568.0" prefWidth="923.0">
@@ -87,12 +86,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Payee Name" GridPane.rowIndex="5">
+                  <Label text="Payment Method" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Payment Method" GridPane.rowIndex="6">
+                  <Label text="Account Holder" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -125,16 +124,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <TextField fx:id="tfExpenditurePayee" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <ChoiceBox fx:id="choicePaymentMethod" prefHeight="25.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <ChoiceBox fx:id="choicePaymentMethod" prefHeight="25.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ChoiceBox>
+                  <TextField fx:id="tfExpenditureAccountHolder" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
                   <TextField fx:id="tfExpenditureAccount" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -170,6 +169,16 @@
                         <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                      </GridPane.margin>
                   </ChoiceBox>
+                  <Label text="Total" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="tfExpenditureTotal" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="15.0" top="10.0" />
+                     </GridPane.margin>
+                  </TextField>
                </children>
             </GridPane>
          </center>

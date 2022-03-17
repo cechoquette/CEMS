@@ -3,19 +3,25 @@ import java.util.HashMap;
 
 public class Controller {
 	
-	private HashMap<Object, Object> dataToSend;
-	private String confirmation;
+	private static HashMap<Object, Object> dataToSend;
+	private static String confirmation;
 	
 	
-	public void setConfirmation(String confirmation) {
-		this.confirmation = confirmation;
+	public static void setConfirmation(String confirmationValue) {
+		confirmation = confirmationValue;
 	}
 	
-	public String getConfirmation() {
-		return this.confirmation;
+	public static String getConfirmation() {
+		return confirmation;
 	}
 	
-	public void processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
+	public static Object[] getData(RequestType requestType, HashMap<Object, Object> dataToProcess) {
+		//calls DataBaseController to give back an array of stored objects
+		
+		return null;
+	}
+	
+	public static void processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
 		
 		switch(requestType) {
 			case CREATE_CLUB:
