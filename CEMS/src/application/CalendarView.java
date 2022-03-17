@@ -1,3 +1,4 @@
+package application;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class CalendarView extends Application{
+public class CalendarView {//extends Application{
 	
 	private LocalDateTime today = LocalDateTime.now();
 	private int currentDisplayMonth = today.getMonthValue();
@@ -29,30 +30,30 @@ public class CalendarView extends Application{
 	//****************************************************************************
 	//****************************************************************************
 	
-		public static void main(String[] args) {
-			launch(args);
-		}
-	@Override
-	    public void start(Stage primaryStage) {
-		
-			BorderPane root = new BorderPane();
-			root.setCenter(makeCalendar());
-			
-			root.setTop(getMenuBar());
-			
-		
-			Scene scene = new Scene(root, 1200, 600);
-			primaryStage.setScene(scene);
-	        primaryStage.setTitle("Calendar");
-	        
-	        primaryStage.show();
-	    }
-	
-		public MenuBar getMenuBar() {
-			MainMenu mainMenu = new MainMenu();
-			MenuBar mainMenuBar = mainMenu.createMenu();
-			return mainMenuBar;
-		}
+//		public static void main(String[] args) {
+//			launch(args);
+//		}
+//	@Override
+//	    public void start(Stage primaryStage) {
+//		
+//			BorderPane root = new BorderPane();
+//			root.setCenter(makeCalendar());
+//			
+//			root.setTop(getMenuBar());
+//			
+//		
+//			Scene scene = new Scene(root, 1200, 600);
+//			primaryStage.setScene(scene);
+//	        primaryStage.setTitle("Calendar");
+//	        
+//	        primaryStage.show();
+//	    }
+//	
+//		public MenuBar getMenuBar() {
+//			MainMenu mainMenu = new MainMenu();
+//			MenuBar mainMenuBar = mainMenu.createMenu();
+//			return mainMenuBar;
+//		}
 		
 	//****************************************************************************
 	//****************************************************************************

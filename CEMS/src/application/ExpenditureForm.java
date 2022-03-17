@@ -17,9 +17,9 @@ public class ExpenditureForm extends Form{
 	
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void addField(FormField formfield) {
+	public void addField(HashMap<Object, Object> requestData) {
 		
-		formfields.put((String)formfield.getKey(), (Double)formfield.getValue());
+//		formfields.put((String)formfield.getKey(), (Double)formfield.getValue());
 		
 	}
 
@@ -30,12 +30,12 @@ public class ExpenditureForm extends Form{
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void setField(FormField formfield) {
+	public void setField(HashMap<Object, Object> requestData) {
 		//Check if field already has a value, if it does, replace with new data
-		if(formfields.get(formfield.getKey()) != null) {
-			formfields.remove(formfield.getKey());
-		}
-		addField(formfield);
+//		if(formfields.get(formfield.getKey()) != null) {
+//			formfields.remove(formfield.getKey());
+//		}
+//		addField(formfield);
 		
 	}
 	
@@ -44,6 +44,13 @@ public class ExpenditureForm extends Form{
 		
 		
 		return isFilled;
+	}
+
+
+	@Override
+	protected boolean delete(HashMap<Object, Object> requestData) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

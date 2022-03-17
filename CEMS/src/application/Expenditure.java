@@ -80,13 +80,13 @@ public class Expenditure {
 
 
 
-	public String getPaymentMethod() {
+	public PaymentMethod getPaymentMethod() {
 		return paymentMethod;
 	}
 
 
 
-	public void setPaymentMethod(String paymentMethod) {
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 
@@ -140,25 +140,25 @@ public class Expenditure {
 
 
 
-	public String getVendorName() {
+	public Vendor getVendorName() {
 		return vendorName;
 	}
 
 
 
-	public void setVendorName(String vendorName) {
+	public void setVendorName(Vendor vendorName) {
 		this.vendorName = vendorName;
 	}
 
 
 
-	public String getCategory() {
+	public ExpenditureCategory getCategory() {
 		return category;
 	}
 
 
 
-	public void setCategory(String category) {
+	public void setCategory(ExpenditureCategory category) {
 		this.category = category;
 	}
 	
