@@ -52,11 +52,48 @@ public class FormHandler {
 		return eventForm;
 	}
 	
-//	public static EventForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
+	public static EventBudgetForm createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		EventBudgetForm eventBudgetForm = new EventBudgetForm(requestType, hmData);
+		eventBudget = eventBudgetForm.getEventBudget();
+		return eventBudgetForm;
+	}
+	public static EventBudget getEventBudget() {
+		return eventBudget;
+	}
+	
+	public static ClubBudgetForm createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		ClubBudgetForm clubBudgetForm = new ClubBudgetForm(requestType, hmData);
+		clubBudget = clubBudgetForm.getClubBudget();
+		return clubBudgetForm;
+	}
+	public static ClubBudget getClubBudget() {
+		return clubBudget;
+	}
+
+	public static HashMap<Object, Object> getDataRequested() {
+		return dataRequested;
+	}
+
+	public static HashMap<Object, Object> getDataToSend() {
+		return dataToSend;
+	}
+
+	public static Event getEvent() {
+		return event;
+	}
+
+	public static Club getClub() {
+		return club;
+	}
+
+	public static User getUser() {
+		return user;
+	}
+
+	public static ClubMember getClubMember() {
+		return clubMember;
+	}
+	
 //	
 //	public static EmailForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
 //		ExpenditureForm expenditureForm = new ExpenditureForm();

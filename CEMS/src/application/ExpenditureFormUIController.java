@@ -221,18 +221,11 @@ public class ExpenditureFormUIController{
 		
 	}
 	
-	
-	
-	
-	
-	
-	
 	@FXML
 	public void dpExpenditureDateChanged(ActionEvent event) {
 		
 	}
 	
-
 	@FXML
 	public void tfExpenditureDescriptionChanged (ActionEvent event) {
 //		tfExpenditureDescription.setStyle(null);
