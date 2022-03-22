@@ -15,9 +15,9 @@ public class ExpenditureForm extends Form{
 		this.formID = ++super.COUNT_FOR_IDS;
 		createExpenditure(hmData);
 		
-//		System.out.println(expenditure);
-//		System.out.println(formID);
-//		System.out.println(expenditure.getExpenditureID());
+		System.out.println(expenditure);
+		System.out.println(formID);
+		System.out.println(expenditure.getExpenditureID());
 	}
 	
 	public Expenditure getExpenditure() {
