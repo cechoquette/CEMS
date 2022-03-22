@@ -15,7 +15,13 @@ public class Controller {
 		return confirmation;
 	}
 	
-	public static Object[] getData(RequestType requestType, HashMap<Object, Object> dataToProcess) {
+	public static HashMap<Object, Object> getData(RequestType requestType, HashMap<Object, Object> dataToProcess) {
+		//calls DataBaseController to give back an array of stored objects
+		
+		return null;
+	}
+	
+	public static HashMap<Object, Object> getData(RequestType requestType) {
 		//calls DataBaseController to give back an array of stored objects
 		
 		return null;
@@ -24,32 +30,59 @@ public class Controller {
 	public static void processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
 		
 		switch(requestType) {
-			case CREATE_CLUB:
-				
-			case CREATE_EMAIL:
-				
-			case CREATE_EVENT:
-				
-			case CREATE_USER:
-				
-			case LOGIN_USER:
-				
-			case SUBMIT_BUDGET:
-				
-			case SUBMIT_EXPENDITURE:  FormHandler.createExpenditureForm(requestType, dataToProcess);//call formHandler
-										break;
-			case GENERATE_BUDGET_REPORT:
-				
-			case GENERATE_CLUB_REPORT:
-				
-			case GENERATE_EVENT_REPORT:
-				
-			case GENERATE_EXPENDITURE_REPORT: //call reportHandler
-												break;
-			case DISPLAY_CALENDAR: //retrieve data
-				break;
-			default:
-				break;
+		case CREATE_CLUB:
+			break;
+		case CREATE_CLUB_MEMBER:
+			break;
+		case CREATE_EMAIL:
+			break;
+		case CREATE_EVENT:
+			break;
+		case CREATE_USER:
+			break;
+		case DELETE_CLUB:
+			break;
+		case DELETE_EVENT:
+			break;
+		case DELETE_FROM_DATABASE:
+			break;
+		case DELETE_USER:
+			break;
+		case DISPLAY_CALENDAR:
+			break;
+		case GENERATE_BUDGET_REPORT:
+			break;
+		case GENERATE_CLUB_REPORT:
+			break;
+		case GENERATE_EVENT_REPORT:
+			break;
+		case GENERATE_EXPENDITURE_REPORT: 
+			break;
+		case LOGIN_USER:
+			break;
+		case MODIFY_CLUB:
+			break;
+		case MODIFY_EVENT:
+			break;
+		case MODIFY_USER:
+			break;
+		case PASSWORD_RESET:
+			break;
+		case PASSWORD_RETRIEVE:
+			break;
+		case QUERY_DATABASE:
+			break;
+		case REQUEST_DATA_FROM_DATABASE:
+			break;
+		case STORE_DATA_IN_DATABASE:
+			break;
+		case SUBMIT_BUDGET:
+			break;
+		case SUBMIT_EXPENDITURE: FormHandler.createExpenditureForm(requestType, dataToProcess);//call formHandler
+			break;
+			
+		default:
+			break;
 		
 		}
 		

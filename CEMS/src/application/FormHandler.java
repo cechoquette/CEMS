@@ -25,14 +25,14 @@ public class FormHandler {
 		
 		
 		//call getData() method from Controller
-		Object[] objectsFromDatabase = Controller.getData(requestType, hmData);
+		HashMap<Object, Object> objectsFromDatabase = Controller.getData(requestType, hmData);
 		
 		//Expected return type is an object //needs to be casted as expected object type by the caller
 		//Need to check if it's null at most steps
-		if (objectsFromDatabase == null || objectsFromDatabase[0] == null) {
-			return null;
-		}
-		
+//		if (objectsFromDatabase == null || objectsFromDatabase[0] == null) {
+//			return null;
+//		}
+//		
 		return null;
 	}
 	
