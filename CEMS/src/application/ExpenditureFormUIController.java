@@ -192,7 +192,7 @@ public class ExpenditureFormUIController{
 	
 	@FXML
 	public void btCancelExpenditureClicked(ActionEvent event) {
-		
+		//calls clear then send back to dashboard?
 	}
 
 	
@@ -218,7 +218,7 @@ public class ExpenditureFormUIController{
 	
 	@FXML
 	public void btBackExpenditureClicked(ActionEvent event) {
-		
+		//sends back to dashboard
 	}
 	
 	@FXML

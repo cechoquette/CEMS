@@ -24,5 +24,29 @@ public class Timeframe {
 		this.startDate = startDate;
 		endDate = LocalDateTime.now().toLocalDate();
 	}
+
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public LocalDate getEndDate() {
+		return endDate;
+	}
+
+	public Period getPeriodBetween() {
+		return periodBetween;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setPeriodBetween(Period periodBetween) {
+		this.periodBetween = periodBetween;
+	}
 	
 }
