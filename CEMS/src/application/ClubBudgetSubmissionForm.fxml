@@ -208,7 +208,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfClubBudgetActivitiesSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                  <TextField fx:id="tfClubBudgetActivitiesSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="12">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -288,7 +288,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <Label text="Activities Subtotal" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
+                  <Label text="Activities Subtotal" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
                      <padding>
                         <Insets right="5.0" />
                      </padding>

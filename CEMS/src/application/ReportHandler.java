@@ -3,6 +3,7 @@ package application;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -18,6 +19,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class ReportHandler {
+	
+	public static Report generateReport(HashMap<Object, Object> hmData) {
+		
+		
+		return null;
+	}
 
 	public static void exportToExcel() throws IOException{
 		

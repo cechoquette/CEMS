@@ -69,9 +69,7 @@ public class ExpenditureFormUIController{
 		comboExpenditureVendor.getItems().addAll(Arrays.asList(Vendor.values()));
 		choiceExpenditureCategory.getItems().addAll(Arrays.asList(ExpenditureCategory.values()));
 		choicePaymentMethod.getItems().addAll(Arrays.asList(PaymentMethod.values()));
-		
-		
-		
+
 		tfExpenditureTax.setStyle("-fx-control-inner-background: #cce0ff");
 		tfExpenditureTotal.setStyle("-fx-control-inner-background: #cce0ff");
 		

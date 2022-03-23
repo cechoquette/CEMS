@@ -9,7 +9,17 @@ public class Timeframe {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private Period periodBetween;
+	private LocalDate today = LocalDateTime.now().toLocalDate();
 	
+	public LocalDate getToday() {
+		return today;
+	}
+	public void setToday(LocalDate today) {
+		this.today = today;
+	}
+	Timeframe(){//use if no end date or start date is given. assume end date is current date.
+		endDate = today;
+	}
 	Timeframe(LocalDate startDate, LocalDate endDate){// use in regular cases, start and end date given
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -22,7 +32,7 @@ public class Timeframe {
 	
 	Timeframe(LocalDate startDate){//use if no end date is given. assume end date is current date.
 		this.startDate = startDate;
-		endDate = LocalDateTime.now().toLocalDate();
+		endDate = today;
 	}
 
 	public LocalDate getStartDate() {

@@ -19,6 +19,7 @@ public enum RequestType {
 	DELETE_CLUB("Delete Club"),
 	CREATE_CLUB_MEMBER("Create Club Member"),
 	DISPLAY_CALENDAR("Display Calendar"),
+	GENERATE_REPORT("Generate Report"),
 	GENERATE_EVENT_REPORT("Generate Event Report"),
 	GENERATE_CLUB_REPORT("Generate Club Report"),
 	GENERATE_BUDGET_REPORT("Generate Budget Report"),

@@ -50,6 +50,8 @@ public class Controller {
 			break;
 		case DISPLAY_CALENDAR:
 			break;
+		case GENERATE_REPORT: ReportHandler.generateReport(dataToProcess);
+			break;
 		case GENERATE_BUDGET_REPORT:
 			break;
 		case GENERATE_CLUB_REPORT:
@@ -76,11 +78,11 @@ public class Controller {
 			break;
 		case STORE_DATA_IN_DATABASE:
 			break;
-		case SUBMIT_CLUB_BUDGET:
+		case SUBMIT_CLUB_BUDGET: FormHandler.createClubBudgetForm(requestType, dataToProcess);
 			break;
-		case SUBMIT_EVENT_BUDGET:
+		case SUBMIT_EVENT_BUDGET: FormHandler.createEventBudgetForm(requestType, dataToProcess);
 			break;
-		case SUBMIT_EXPENDITURE: FormHandler.createExpenditureForm(requestType, dataToProcess);//call formHandler
+		case SUBMIT_EXPENDITURE: FormHandler.createExpenditureForm(requestType, dataToProcess);
 			break;
 			
 		default:
