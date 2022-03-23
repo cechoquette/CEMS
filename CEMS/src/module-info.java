@@ -5,6 +5,7 @@ module CEMS {
 	requires java.desktop;
 	requires org.apache.poi.ooxml;
 	requires org.apache.pdfbox;
+	requires javafx.graphics;
 	
 	opens application to javafx.graphics, javafx.fxml;
 }

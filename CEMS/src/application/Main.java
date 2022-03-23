@@ -17,7 +17,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("EventBudgetSubmissionForm.fxml"));
 			Scene scene = new Scene(root);
 			ReportHandler.exportToExcel();
 			primaryStage.setTitle("CEMS");

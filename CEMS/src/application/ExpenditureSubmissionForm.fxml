@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenditureFormUIController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExpenditureFormUIController">
    <children>
-      <BorderPane prefHeight="568.0" prefWidth="923.0">
+      <BorderPane fx:id="expenditureBorderPane" prefHeight="568.0" prefWidth="923.0">
          <bottom>
             <GridPane alignment="CENTER" prefHeight="64.0" prefWidth="923.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -106,12 +106,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <DatePicker fx:id="dpExpenditureDate" onAction="#dpExpenditureDateChanged" prefHeight="25.0" prefWidth="294.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <DatePicker fx:id="dpExpenditureDate" onAction="#dpExpenditureDateChanged" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <ChoiceBox fx:id="choiceExpenditureCategory" prefHeight="25.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <ChoiceBox fx:id="choiceExpenditureCategory" prefHeight="25.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -119,12 +119,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ChoiceBox>
-                  <ComboBox fx:id="comboExpenditureVendor" prefHeight="25.0" prefWidth="296.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <ComboBox fx:id="comboExpenditureVendor" prefHeight="25.0" prefWidth="302.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <ChoiceBox fx:id="choicePaymentMethod" prefHeight="25.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <ChoiceBox fx:id="choicePaymentMethod" prefHeight="25.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>

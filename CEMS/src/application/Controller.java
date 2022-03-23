@@ -76,7 +76,9 @@ public class Controller {
 			break;
 		case STORE_DATA_IN_DATABASE:
 			break;
-		case SUBMIT_BUDGET:
+		case SUBMIT_CLUB_BUDGET:
+			break;
+		case SUBMIT_EVENT_BUDGET:
 			break;
 		case SUBMIT_EXPENDITURE: FormHandler.createExpenditureForm(requestType, dataToProcess);//call formHandler
 			break;

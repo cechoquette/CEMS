@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -58,6 +59,8 @@ public class ExpenditureFormUIController{
 	private ChoiceBox<ExpenditureCategory> choiceExpenditureCategory;
 	@FXML
 	private ChoiceBox<PaymentMethod> choicePaymentMethod;
+	@FXML 
+	private BorderPane expenditureBorderPane;
 	
 	
 	@FXML
@@ -68,6 +71,11 @@ public class ExpenditureFormUIController{
 		choicePaymentMethod.getItems().addAll(Arrays.asList(PaymentMethod.values()));
 		
 		
+		
+		tfExpenditureTax.setStyle("-fx-control-inner-background: #cce0ff");
+		tfExpenditureTotal.setStyle("-fx-control-inner-background: #cce0ff");
+		
+		expenditureBorderPane.setTop(new MainMenu().createMenu());
 		
 //		btExpenditureClear.addEventHandler(MouseEvent.MOUSE_CLICKED, e->{
 //
