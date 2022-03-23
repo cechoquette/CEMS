@@ -27,6 +27,10 @@ public class Controller {
 		return null;
 	}
 	
+	public static void sendToDatabase(Object objToSend) {
+		//call database controller
+	}
+	
 	public static void processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
 		
 		switch(requestType) {
@@ -78,11 +82,11 @@ public class Controller {
 			break;
 		case STORE_DATA_IN_DATABASE:
 			break;
-		case SUBMIT_CLUB_BUDGET: FormHandler.createClubBudgetForm(requestType, dataToProcess);
+		case SUBMIT_CLUB_BUDGET: sendToDatabase(FormHandler.createClubBudgetForm(requestType, dataToProcess));
 			break;
-		case SUBMIT_EVENT_BUDGET: FormHandler.createEventBudgetForm(requestType, dataToProcess);
+		case SUBMIT_EVENT_BUDGET: sendToDatabase(FormHandler.createEventBudgetForm(requestType, dataToProcess));
 			break;
-		case SUBMIT_EXPENDITURE: FormHandler.createExpenditureForm(requestType, dataToProcess);
+		case SUBMIT_EXPENDITURE: sendToDatabase(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
 			
 		default:

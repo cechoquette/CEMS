@@ -21,46 +21,46 @@ public class EventBudgetForm extends Form{
 	public void createEventBudget(HashMap<Object, Object> hmData){
 		ArrayList<Double> dataForBudget = new ArrayList<Double>();
 		
-		dataForBudget.add((Double)hmData.get("VenueEntertainment"));
-		dataForBudget.add((Double)hmData.get("VenueLocationRental"));
-		dataForBudget.add((Double)hmData.get("VenueEquipmentRental"));
-		dataForBudget.add((Double)hmData.get("VenueFurnitureRental"));
-		dataForBudget.add((Double)hmData.get("VenueOther"));
-		dataForBudget.add((Double)hmData.get("VenueSubtotal"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueEntertainement"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueLocationRental"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueEquipmentRental"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueFurniture"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueOther"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueSubtotal"));
 
-		dataForBudget.add((Double)hmData.get("ServicesVenueStaff"));
-		dataForBudget.add((Double)hmData.get("ServicesSecurity"));
-		dataForBudget.add((Double)hmData.get("ServicesAVTechStaff"));
-		dataForBudget.add((Double)hmData.get("ServicesCateringStaff"));
-		dataForBudget.add((Double)hmData.get("ServicesBarStaff"));
-		dataForBudget.add((Double)hmData.get("ServicesVolunteers"));
-		dataForBudget.add((Double)hmData.get("ServicesAdvertising"));
-		dataForBudget.add((Double)hmData.get("ServicesSocialMedia"));
-		dataForBudget.add((Double)hmData.get("ServicesPhotoVideography"));
-		dataForBudget.add((Double)hmData.get("ServicesTravel"));
-		dataForBudget.add((Double)hmData.get("ServicesGratuities"));
-		dataForBudget.add((Double)hmData.get("ServicesOther"));
-		dataForBudget.add((Double)hmData.get("ServicesSubtotal"));
+		dataForBudget.add((Double)hmData.get("EventBudgetRefreshmentsFood"));
+		dataForBudget.add((Double)hmData.get("EventBudgetRefreshmentsBeverages"));
+		dataForBudget.add((Double)hmData.get("EventBudgetRefreshmentsBarCosts"));
+		dataForBudget.add((Double)hmData.get("EventBudgetRefreshmentsOther"));
+		dataForBudget.add((Double)hmData.get("EventBudgetRefreshmentsSubtotal"));
+		
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesVenueStaff"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesSecurity"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesAVStaffTechSupport"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesCateringStaff"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesBarStaff"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesVolunteers"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesAdvertising"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesSocialMedia"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesPhotoVideography"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesTravel"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesGratuities"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesOther"));
+		dataForBudget.add((Double)hmData.get("EventBudgetServicesSubtotal"));
 
-		dataForBudget.add((Double)hmData.get("RefreshmentsFood"));
-		dataForBudget.add((Double)hmData.get("RefreshmentsBeverages"));
-		dataForBudget.add((Double)hmData.get("RefreshmentsBarCosts"));
-		dataForBudget.add((Double)hmData.get("RefreshmentsOther"));
-		dataForBudget.add((Double)hmData.get("RefreshmentsSubtotal"));
-
-		dataForBudget.add((Double)hmData.get("MiscellaneousPrizesAwards"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousGiftBags"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousParticipantMaterials"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousDecorations"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousSignage"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousPermits"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousFees"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousOther"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousSubtotal"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousPrizesAwards"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousGiftBags"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousParticipantMaterials"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousDecorations"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousSignage"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousPermits"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousFees"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousOther"));
+		dataForBudget.add((Double)hmData.get("EventBudgetMiscellaneousSubtotal"));
 
 		dataForBudget.add((Double)hmData.get("EventBudgetSubtotal"));
 		dataForBudget.add((Double)hmData.get("EventBudgetTaxes"));
-		dataForBudget.add((Double)hmData.get("EventBudgetTotal"));	
+		dataForBudget.add((Double)hmData.get("EventBudgetTotal"));
 		
 		this.eventBudget = new EventBudget(dataForBudget);
 		

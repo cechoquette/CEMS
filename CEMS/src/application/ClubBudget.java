@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ClubBudget extends Budget{
 	
-	protected static int COUNT_FOR_IDS;
+	protected static int COUNT_FOR_IDS = 0;
 	private int clubBudgetID;
 
 //	Events
@@ -45,7 +45,7 @@ public class ClubBudget extends Budget{
 	private double clubBudgetTotal;
 	
 	ClubBudget(ArrayList<Double> filteredData){
-		this.clubBudgetID = COUNT_FOR_IDS++;
+		this.clubBudgetID = ++COUNT_FOR_IDS;
 		this.eventsVenue = filteredData.get(0);
 		this.eventsServices = filteredData.get(1);
 		this.eventsRefreshments = filteredData.get(2);
@@ -81,6 +81,37 @@ public class ClubBudget extends Budget{
 		this.clubBudgetSubtotal = filteredData.get(21);
 		this.clubBudgetTaxes = filteredData.get(22);
 		this.clubBudgetTotal = filteredData.get(23);
+	}
+	
+	@Override
+	public String toString() {
+		return 
+				
+		"ID: " + clubBudgetID + "\n"+
+		eventsVenue + "\n" +
+		eventsServices + "\n" +
+		eventsRefreshments + "\n" +
+		eventsMiscellaneous + "\n" +
+		eventsSubtotal + "\n" +
+		clubMeetings + "\n" +
+		clubSpaceRentalOrFees + "\n" +
+		clubEquipment + "\n" +
+		clubActivitiesOther + "\n" +
+		clubActivitiesSubtotal + "\n" +
+		fundraisingCosts + "\n" +
+		fundraisingIncome + "\n" +
+		fundraisingParticipantFees + "\n" +
+		fundraisingDonations + "\n" +
+		fundraisingSubtotal + "\n" +
+		miscAdminFees + "\n" +
+		miscBankingFees + "\n" +
+		miscBankingInterestIncome + "\n" +
+		miscUtilities + "\n" +
+		miscOther + "\n" +
+		miscSubtotal + "\n" +
+		clubBudgetSubtotal + "\n" +
+		clubBudgetTaxes + "\n" +
+		clubBudgetTotal;
 	}
 	
 	

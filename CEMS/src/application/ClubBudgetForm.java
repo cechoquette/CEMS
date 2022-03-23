@@ -21,35 +21,34 @@ public class ClubBudgetForm extends Form{
 	public void createClubBudget(HashMap<Object, Object> hmData){
 		ArrayList<Double> dataForBudget = new ArrayList<Double>();
 
-		dataForBudget.add((Double)hmData.get("EventsVenue"));
-		dataForBudget.add((Double)hmData.get("EventsServices"));
-		dataForBudget.add((Double)hmData.get("EventsRefreshments"));
-		dataForBudget.add((Double)hmData.get("EventsMiscellaneous"));
-		dataForBudget.add((Double)hmData.get("EventsSubtotal"));
-
-		dataForBudget.add((Double)hmData.get("ClubActivitiesMeetings"));
-		dataForBudget.add((Double)hmData.get("ClubActivitiesSpaceRentalOrFees"));
-		dataForBudget.add((Double)hmData.get("ClubActivitiesEquipment"));
-		dataForBudget.add((Double)hmData.get("ClubActivitiesOther"));
-		dataForBudget.add((Double)hmData.get("ClubActivitesSubtotal"));
-		
-		dataForBudget.add((Double)hmData.get("FundraisingCosts"));
-		dataForBudget.add((Double)hmData.get("FundraisingIncome"));
-		dataForBudget.add((Double)hmData.get("FundraisingParticipantFees"));
-		dataForBudget.add((Double)hmData.get("FundraisingDonations"));
-		dataForBudget.add((Double)hmData.get("FundraisingSubtotal"));
-		
-		dataForBudget.add((Double)hmData.get("MiscellaneousAdminFees"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousBankingFees"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousBankingInterestIncome"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousUtilities"));
-		
-		dataForBudget.add((Double)hmData.get("MiscellaneousOther"));
-		dataForBudget.add((Double)hmData.get("MiscellaneousSubtotal"));
-
+		dataForBudget.add((Double)hmData.get("ClubBudgetEventsVenue"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetEventsServices"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetEventsRefreshments"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetEventsMiscellaneous"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetEventsSubtotal"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetActivitiesMeetings"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetActivitiesSpaceRental"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetActivitiesEquipment"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetActivitiesOther"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetActivitiesSubtotal"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetFundraisingCosts"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetFundraisingIncome"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetFundraisingParticipantFees"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetFundraisingDonations"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetFundraisingSubtotal"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousAdministrativeFees"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousBankingFees"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousBankingInterest"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousUtilities"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousOther"));
+		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousSubtotal"));
 		dataForBudget.add((Double)hmData.get("ClubBudgetSubtotal"));
 		dataForBudget.add((Double)hmData.get("ClubBudgetTaxes"));
 		dataForBudget.add((Double)hmData.get("ClubBudgetTotal"));	
+		
+//		for(int i = 0; i < dataForBudget.size(); i++) {
+//			System.out.println(dataForBudget.get(i));
+//		}
 		
 		this.clubBudget = new ClubBudget(dataForBudget);
 		

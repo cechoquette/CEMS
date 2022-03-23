@@ -17,7 +17,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("EventBudgetSubmissionForm.fxml"));
+			Parent root;
+//			root = FXMLLoader.load(getClass().getResource("ReportRequestForm.fxml"));
+//			root = FXMLLoader.load(getClass().getResource("ClubBudgetSubmissionForm.fxml"));
+			root = FXMLLoader.load(getClass().getResource("EventBudgetSubmissionForm.fxml"));
+//			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
+
+			
 			Scene scene = new Scene(root);
 			ReportHandler.exportToExcel();
 			primaryStage.setTitle("CEMS");

@@ -36,10 +36,10 @@ public class FormHandler {
 		return null;
 	}
 	
-	public static ExpenditureForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
+	public static Expenditure createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ExpenditureForm expenditureForm = new ExpenditureForm(requestType, hmData);
 		expenditure = expenditureForm.getExpenditure();
-		return expenditureForm;
+		return expenditure;
 	}
 	
 	public static Expenditure getExpenditure() {
@@ -52,19 +52,23 @@ public class FormHandler {
 		return eventForm;
 	}
 	
-	public static EventBudgetForm createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
+	public static EventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		EventBudgetForm eventBudgetForm = new EventBudgetForm(requestType, hmData);
 		eventBudget = eventBudgetForm.getEventBudget();
-		return eventBudgetForm;
+		System.out.println(eventBudget);
+		System.out.println("This worked2?");
+		return eventBudget;
 	}
 	public static EventBudget getEventBudget() {
 		return eventBudget;
 	}
 	
-	public static ClubBudgetForm createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
+	public static ClubBudget createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubBudgetForm clubBudgetForm = new ClubBudgetForm(requestType, hmData);
 		clubBudget = clubBudgetForm.getClubBudget();
-		return clubBudgetForm;
+		System.out.println(clubBudget);
+		System.out.println("This worked?");
+		return clubBudget;
 	}
 	public static ClubBudget getClubBudget() {
 		return clubBudget;
