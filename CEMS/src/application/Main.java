@@ -1,4 +1,4 @@
-package application;
+package CEMS.src.application;//package application;
 
 
 import javafx.application.Application;
@@ -15,17 +15,12 @@ public class Main extends Application {
 			Parent root;
 //			root = FXMLLoader.load(getClass().getResource("ReportRequestForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("ClubBudgetSubmissionForm.fxml"));
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 //			root = FXMLLoader.load(getClass().getResource("EventBudgetSubmissionForm.fxml"));
-			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
-=======
-=======
->>>>>>> 89c16bd01b72621b61b959e633bc7aeeae44f68d
-			root = FXMLLoader.load(getClass().getResource("../../resources/fxml/EventBudgetSubmissionForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
 
->>>>>>> 89c16bd01b72621b61b959e633bc7aeeae44f68d
+			root = FXMLLoader.load(getClass().getResource("../../resources/fxml/EventBudgetSubmissionForm.fxml"));
+//			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
 			
 			Scene scene = new Scene(root);
 			ReportHandler.exportToExcel();
