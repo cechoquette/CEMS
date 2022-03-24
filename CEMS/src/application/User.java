@@ -68,7 +68,7 @@ public class User {
 	
 	/** Method to update a user's permission 
 	 * @param permission is the permission you wish to update it to **/
-	public void updatePermission(User user, String permission) {
+	public static void updatePermission(User user, String permission) {
 		// If the userID is already set to the specified permission
 		if (user.getPermission() == permission) {
 			
@@ -82,7 +82,7 @@ public class User {
 	
 	/** Method to delete a user 
 	 * @param **/
-	public void deleteUser(User user, String email) {
+	public static void deleteUser(User user, String email) {
 		// Remove the user from the database and send a confirmation that this was completed
 		if (user.getEmail() == email) {
 			user = null; // Dereference the object
