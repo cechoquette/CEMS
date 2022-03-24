@@ -17,10 +17,10 @@ public class Timeframe {
 	public void setToday(LocalDate today) {
 		this.today = today;
 	}
-	Timeframe(){//use if no end date or start date is given. assume end date is current date.
+	public Timeframe(){//use if no end date or start date is given. assume end date is current date.
 		endDate = today;
 	}
-	Timeframe(LocalDate startDate, LocalDate endDate){// use in regular cases, start and end date given
+	public Timeframe(LocalDate startDate, LocalDate endDate){// use in regular cases, start and end date given
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}

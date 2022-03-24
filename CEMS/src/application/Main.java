@@ -1,8 +1,4 @@
 package application;
-	
-import java.io.File;
-import java.io.IOException;
-
 
 
 import javafx.application.Application;
@@ -10,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
@@ -20,7 +15,7 @@ public class Main extends Application {
 			Parent root;
 //			root = FXMLLoader.load(getClass().getResource("ReportRequestForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("ClubBudgetSubmissionForm.fxml"));
-			root = FXMLLoader.load(getClass().getResource("EventBudgetSubmissionForm.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../../resources/fxml/EventBudgetSubmissionForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
 
 			

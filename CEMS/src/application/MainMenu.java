@@ -15,7 +15,7 @@ public class MainMenu {
 	
 	private MenuBar mainMenuBar;
 	
-	MainMenu(){
+	public MainMenu(){
 		this.mainMenuBar = createMenu();
 	}
 	
