@@ -1,5 +1,9 @@
-package application;
+package controllers;
 
+import application.Controller;
+import application.MainMenu;
+import application.Province;
+import application.RequestType;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;

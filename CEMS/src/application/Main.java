@@ -16,9 +16,12 @@ public class Main extends Application {
 //			root = FXMLLoader.load(getClass().getResource("ReportRequestForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("ClubBudgetSubmissionForm.fxml"));
 <<<<<<< HEAD
+<<<<<<< HEAD
 //			root = FXMLLoader.load(getClass().getResource("EventBudgetSubmissionForm.fxml"));
 			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
 =======
+=======
+>>>>>>> 89c16bd01b72621b61b959e633bc7aeeae44f68d
 			root = FXMLLoader.load(getClass().getResource("../../resources/fxml/EventBudgetSubmissionForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("ExpenditureSubmissionForm.fxml"));
 

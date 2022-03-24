@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0"
+            prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DeleteUserUIController">
+   <children>
+      <BorderPane layoutX="267.0" layoutY="215.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnDeleteUserBack" alignment="CENTER" mnemonicParsing="false" onAction="#btnDeleteUserBackClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnDeleteUserClear" mnemonicParsing="false" onAction="#btnDeleteUserCancelClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnDeleteUserCancel1" mnemonicParsing="false" onAction="#btnDeleteUserCancelClicked" prefWidth="100.0" styleClass="form__btn" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnDeleteUserSubmit" mnemonicParsing="false" onAction="#btnDeleteUserSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Delete" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Label text="First Name" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Last Name" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Phone Number" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Email Address" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Student ID" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Club" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <Label text="Permissions" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="form__label" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </Label>
+                  <TextField fx:id="tfDeleteUserFirst" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="form__tf" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="tfDeleteUserLast" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="form__tf" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="tfDeleteUserPhone" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="form__tf" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="tfDeleteUserEmail" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="form__tf" />
+                        <String fx:value="email__tf" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="tfDeleteUserID" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="form__tf" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                  </TextField>
+                  <ComboBox fx:id="comboDeleteUserClub" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <styleClass>
+                        <String fx:value="no-search-match" />
+                        <String fx:value="form__combo" />
+                     </styleClass>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin></ComboBox>
+                  <ComboBox fx:id="comboDeleteUserPermissions" prefHeight="25.0" prefWidth="228.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <styleClass>
+                        <String fx:value="form__combo" />
+                        <String fx:value="no-search-match" />
+                     </styleClass>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin></ComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Delete User" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Label styleClass="form__label" text="Search for a user:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField promptText="Email address or full name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnDeleteUserSearch" mnemonicParsing="false" onAction="#btnDeleteUserSearchClicked" styleClass="search__button" text="Search" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
