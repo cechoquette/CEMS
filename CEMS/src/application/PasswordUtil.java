@@ -1,4 +1,4 @@
-package application;
+package CEMS.src.application;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -11,9 +11,9 @@ public class PasswordUtil {
 
     /** Method to hash and salt a password using SHA-256 encryption
      * @return a string to the calling method **/
-    private static String hashPassword(String password) throws NoSuchProviderException {
+    private static String hashPassword(String password, String salt) throws NoSuchProviderException {
 
-        // Initialize variables & create a stringbuilder
+        // Initialize variables & create a StringBuilder
         MessageDigest md;
         StringBuilder sb = new StringBuilder();
 
@@ -21,8 +21,7 @@ public class PasswordUtil {
             // Specify the message digest as SHA-256 Hash encryption
             md = MessageDigest.getInstance("SHA-256");
 
-            // Call method for salt generation, store in variable and pass the salt to the message digest as bytes
-            String salt = getSalt();
+            // Pass the salt to the message digest as bytes
             md.update(salt.getBytes());
 
             // Generate the salted hashed message - convert to hexadecimal
@@ -32,13 +31,13 @@ public class PasswordUtil {
                 sb.append(String.format("%02x", strbyte));
             }
 
+            // Store the hashed string & salt in the DB
+            PasswordUtil.storePassAndSalt(sb.toString(), salt);
+
             // Catch block
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-
-        // TODO: Store the hashed string in the DB
-
 
         // Return the hashed string
         return sb.toString();
@@ -55,44 +54,53 @@ public class PasswordUtil {
     }
 
 
-    /** Method to validate password in the DB **/
-    // TODO: FIX
-    private static boolean validatePassword(String hashedPass, String email, String password) throws NoSuchProviderException {
-        String hp = PasswordUtil.hashPassword("hey");
+    /** Method to store the password in the DB **/
+    private static void storePassAndSalt(String newPass, String newSalt) {
+        // TODO: code to store password & salt in the DB
+    }
 
-        // TODO: Fix
-        if (hashedPass == PasswordUtil.hashPassword(hp) && email == email) {
-            return true;
-        } else {
-            return false;
-        }
+
+    /** Method to validate password in the DB **/
+    // TODO: TEST
+    private static boolean validatePassword(User user, String enteredEmail, String enteredPassword) throws NoSuchProviderException {
+        // To authenticate user, hash the password using the salt retrieved from the DB - then compare this hashed PW to the one in the DB
+        // Initialize variables
+        String salt = user.getUserSalt(); // Retrieve the users salt from the DB and store in variable
+
+        // Hash the password entered with the user's salt
+        String hashedPass = PasswordUtil.hashPassword(enteredPassword, salt);
+
+        // Return a boolean to determine if the passwords and emails match
+        return user.getPassword() == hashedPass
+                && user.getEmail() == enteredEmail;
     }
 
 
     /** Method to reset password in the DB **/
-    public static void ResetPass(/*User user, */String email, String securityQuestion, String newPass) {
+    // TODO: TEST
+    public static void ResetPass(User user, String enteredEmail, String enteredSecurityQuestion, String newPass)
+            throws NoSuchProviderException, NoSuchAlgorithmException {
 
-        // TODO: Verify email and security question
-        if (verifyPassReset(email, securityQuestion)) {
+        // If the users email and security question are verified
+        if (verifyPassReset(user, enteredEmail, enteredSecurityQuestion)) {
 
-            // Use the users new password to overwrite the password in the DB
-            // This will need to use the hash method, and a method to store in DB
-
+            // Use the users new password to overwrite the password & salt in the DB
+            String newSalt = PasswordUtil.getSalt(); // Obtain a new salt
+            String newHashedPass = PasswordUtil.hashPassword(newPass, newSalt); // Hash the new password with a new salt
+            PasswordUtil.storePassAndSalt(newHashedPass, newSalt); // Store new password & salt in DB
         }
-
     }
 
     /** Method to verify email and security question in the DB **/
-    public static boolean verifyPassReset(String email, String securityQuestion) {
-
-        // TODO: Code
-
-        return false;
+    // TODO: TEST
+    public static boolean verifyPassReset(User user, String enteredEmail, String enteredSecurityQuestion) {
+        return user.getEmail() == enteredEmail
+                && user.getSecurityQuestion() == enteredSecurityQuestion;
     }
 
 
     /** Main Method - temporary **/
-    public static void main(String[] args) throws NoSuchProviderException {
+    public static void main(String[] args) throws NoSuchProviderException, NoSuchAlgorithmException {
         // Create a Scanner
         Scanner input = new Scanner(System.in);
 
@@ -103,7 +111,8 @@ public class PasswordUtil {
         String pw = input.next();
 
         // Hash the password
-        String hashed = PasswordUtil.hashPassword(pw);
+        String testSalt = PasswordUtil.getSalt();
+        String hashed = PasswordUtil.hashPassword(pw, testSalt);
 
         // Display the hashed password
         System.out.println("Hashed password with salt: " + hashed);
@@ -113,5 +122,3 @@ public class PasswordUtil {
     }
 
 }
-
-// TEST
