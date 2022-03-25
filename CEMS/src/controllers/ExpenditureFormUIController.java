@@ -1,6 +1,7 @@
-package controllers;
+package CEMS.src.controllers;
 
-import application.*;
+
+import CEMS.src.application.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -9,8 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;

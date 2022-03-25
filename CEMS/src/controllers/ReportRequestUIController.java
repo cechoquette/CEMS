@@ -1,6 +1,7 @@
-package controllers;
+package CEMS.src.controllers;
 
-import application.*;
+
+import CEMS.src.application.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
