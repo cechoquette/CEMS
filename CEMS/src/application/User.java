@@ -1,5 +1,8 @@
 package CEMS.src.application;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+
 public class User {
 	
 	// Initialize variables
@@ -13,19 +16,19 @@ public class User {
 	public User(String email, String password, String permission, 
 				String firstName, String lastName,
 				String phone, int studentID, String securityQuestion,
-				String securityAnswer) {
-		// To set the userID, first query the DB to find the latest userID and increment by 1
-//		this.userID = ; // Not using userID anymore, only studentID
+				String securityAnswer) throws NoSuchAlgorithmException, NoSuchProviderException {
+		this.studentID = studentID; // StudentID is the unique identifying value of each user
 		this.email = email;
-		this.password = password;
-		this.salt = salt; // TODO: get the users salt from the password creation
 		this.permission = permission;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.studentID = studentID;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
+
+		// Call the PasswordUtil method to hash the password and generate a salt
+		this.salt = PasswordUtil.generateSalt();
+		this.password = PasswordUtil.hashPassword(password, salt);
 	}
 
 	// Get the email
@@ -78,6 +81,16 @@ public class User {
 		return securityQuestion;
 	}
 
+	// Get security answer
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	// Set the security answer
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
+
 	// Set the security question
 	public void setSecurityQuestion(String securityQuestion) {
 		this.securityQuestion = securityQuestion;
@@ -86,32 +99,40 @@ public class User {
 	/** Method to update a user's permission 
 	 * @param - is the permission you wish to update it to **/
 	public static void updatePermission(User user, String newPermission) {
-		// If the userID is already set to the specified permission
-		if (user.getPermission() == newPermission) {
-			
-			// Do nothing
-		
-		// Else, update the permissions to the new permission
-		} else {
+		// If the userID is not already set to the specified permission
+		if (user.getPermission() != newPermission) {
+			// Update the permissions to the new permission
 			user.setPermission(newPermission);
-		}	
+		}
 	}
 	
 	/** Method to delete a user 
 	 * @param **/
-	public static void deleteUser(User user, String email) {
+	public static void deleteUser(User user, String enteredEmail) {
 		// Remove the user from the database and send a confirmation that this was completed
-		if (user.getEmail() == email) {
+		if (user.getEmail() == enteredEmail) {
 			user = null; // Dereference the object
 		}
 	}
 	
-	// Test
-	public static void main(String[] args) {
+	// Testing - temporary
+	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
 		User user = new User("erin@email.com", "pass", "Admin+",
 				"Erin", "Cameron", "8578695116", 123456, "Age?", "29");
-		
+
 		System.out.println(user.getEmail());
+		System.out.println(user.getUserSalt());
+		System.out.println(user.getPassword());
+		System.out.println(user.getFirstName());
+		System.out.println(user.getLastName());
+		System.out.println(user.getStudentID());
+		System.out.println(user.getSecurityQuestion());
+		System.out.println(user.getSecurityAnswer());
+		System.out.println(user.getPhone());
+		System.out.println(user.getPermission());
+
+		user.updatePermission(user, "SuperAdmin");
+		System.out.println("After update Permission to SuperAdmin permission is: " + user.getPermission());
 	}
 	
 }

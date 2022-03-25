@@ -11,7 +11,8 @@ public class PasswordUtil {
 
     /** Method to hash and salt a password using SHA-256 encryption
      * @return a string to the calling method **/
-    private static String hashPassword(String password, String salt) throws NoSuchProviderException {
+    // TODO: TEST
+    public static String hashPassword(String password, String salt) throws NoSuchProviderException {
 
         // Initialize variables & create a StringBuilder
         MessageDigest md;
@@ -46,7 +47,8 @@ public class PasswordUtil {
 
     /** Method to retrieve a randomized salt to strengthen the password
      * @return the salt string to the calling method **/
-    private static String getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
+    // TODO: TEST
+    public static String generateSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
         SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG", "SUN"); // pseudo-random number generation algorithm used
         byte[] salt = new byte[16];
         secureRandom.nextBytes(salt);
@@ -85,7 +87,7 @@ public class PasswordUtil {
         if (verifyPassReset(user, enteredEmail, enteredSecurityQuestion)) {
 
             // Use the users new password to overwrite the password & salt in the DB
-            String newSalt = PasswordUtil.getSalt(); // Obtain a new salt
+            String newSalt = PasswordUtil.generateSalt(); // Obtain a new salt
             String newHashedPass = PasswordUtil.hashPassword(newPass, newSalt); // Hash the new password with a new salt
             PasswordUtil.storePassAndSalt(newHashedPass, newSalt); // Store new password & salt in DB
         }
@@ -111,7 +113,7 @@ public class PasswordUtil {
         String pw = input.next();
 
         // Hash the password
-        String testSalt = PasswordUtil.getSalt();
+        String testSalt = PasswordUtil.generateSalt();
         String hashed = PasswordUtil.hashPassword(pw, testSalt);
 
         // Display the hashed password
