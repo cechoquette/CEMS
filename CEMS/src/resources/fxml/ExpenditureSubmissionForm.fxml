@@ -16,7 +16,7 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0"
             prefWidth="932.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExpenditureFormUIController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ExpenditureFormUIController">
    <children>
       <BorderPane fx:id="expenditureBorderPane" prefHeight="568.0" prefWidth="923.0">
          <bottom>

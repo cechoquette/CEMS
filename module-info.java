@@ -7,6 +7,6 @@ module CEMS {
 	requires org.apache.pdfbox;
 
 	
-	opens application to javafx.graphics, javafx.fxml;
-    opens controllers to javafx.fxml, javafx.graphics;
+	opens CEMS.src.application to javafx.graphics, javafx.fxml;
+    opens CEMS.src.controllers to javafx.fxml, javafx.graphics;
 }

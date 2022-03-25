@@ -109,7 +109,7 @@ public class ExpenditureFormUIController{
 	public void checkMandatoryFields() {
 		//mandatoryFields: All 
 
-		if(InputValidation.validateText(tfExpenditureAmount)) {
+		if(InputValidation.validateNotEmpty(tfExpenditureAmount)) {
 			calculateTaxes();// would rather find a way to call this as an on change to the amount, along with checking it's a double, etc.
 		}
 		

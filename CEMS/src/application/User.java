@@ -76,7 +76,7 @@ public class User {
 		
 		// Else, update the permissions
 		} else {
-			this.permission = permission;
+//			this.permission = permission;
 		}	
 	}
 	
