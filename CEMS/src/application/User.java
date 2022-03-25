@@ -3,7 +3,7 @@ package CEMS.src.application;
 public class User {
 	
 	// Initialize variables
-	private int studentID; // query the DB to find the latest userID
+	private int studentID; // query the DB to find the latest studentID
 	private static String username, password, userType, // ie: Admin, Admin+, SuperAdmin
 					permission, firstName, lastName, 
 					phone, email;
