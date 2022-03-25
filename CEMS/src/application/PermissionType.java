@@ -6,14 +6,14 @@ public enum PermissionType {
     ADMIN_PLUS("Admin+"),
     SUPER_ADMIN("SuperAdmin");
 
-    private String typeName;
+    private String permissionName;
 
-    PermissionType(String typeName){
-        this.typeName = typeName;
+    PermissionType(String permissionName){
+        this.permissionName = permissionName;
     }
 
     @Override
-    public String toString() { return typeName; }
+    public String toString() { return permissionName; }
 
 
 }
