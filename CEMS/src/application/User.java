@@ -3,9 +3,8 @@ package application;
 public class User {
 	
 	// Initialize variables
-	private int userID; // query the DB to find the latest userID
-	private int studentID;
-	private String username, password, userType, // ie: Admin, Admin+, SuperAdmin
+	private int studentID; // query the DB to find the latest userID
+	private static String username, password, userType, // ie: Admin, Admin+, SuperAdmin
 					permission, firstName, lastName, 
 					phone, email;
 	
@@ -15,19 +14,14 @@ public class User {
 				String firstName, String lastName,
 				String phone, int studentID) {
 		// To set the userID, first query the DB to find the latest userID and increment by 1
-//		this.userID = ;
+//		this.userID = ; // Not using userID anymore, only studentID
 		this.email = email;
 		this.password = password;
 		this.permission = permission;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.studentID = studentID;	
-	}
-	
-	// Get the userID
-	public int getUserID() {
-		return userID;
+		this.studentID = studentID;
 	}
 
 	// Get the email
@@ -67,16 +61,16 @@ public class User {
 	
 	
 	/** Method to update a user's permission 
-	 * @param permission is the permission you wish to update it to **/
-	public static void updatePermission(User user, String permission) {
+	 * @param - is the permission you wish to update it to **/
+	public static void updatePermission(User user, String newPermission) {
 		// If the userID is already set to the specified permission
-		if (user.getPermission() == permission) {
+		if (user.getPermission() == newPermission) {
 			
 			// Do nothing
 		
-		// Else, update the permissions
+		// Else, update the permissions to the new permission
 		} else {
-			this.permission = permission;
+			user.setPermission(newPermission);
 		}	
 	}
 	
@@ -94,7 +88,6 @@ public class User {
 		User user = new User("erin@email.com", "pass", "Admin+", "Erin", "Cameron", "8578695116", 123456);
 		
 		System.out.println(user.getEmail());
-		System.out.println(user.getUserID());
 	}
 	
 }
