@@ -18,7 +18,7 @@
 
 <AnchorPane maxHeight="600.0" maxWidth="900.0"
 	prefHeight="600.0" prefWidth="900.0"
-	xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateEventUIController">
+	xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.CreateEventUIController">
 	<children>
 		<BorderPane layoutX="419.0" layoutY="129.0"
 			prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0"

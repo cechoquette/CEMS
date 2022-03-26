@@ -1,4 +1,4 @@
-package application;
+package CEMS.src.application;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public enum Province {
 	NUNAVUT("Nunavut", 0.00),
 	ONTARIO("Ontario", 0.08),
 	PRINCE_EDWARD_ISLAND("Prince Edward Island", 0.10),
-	QUEBEC("Québec", 0.0975),
+	QUEBEC("Quebec", 0.0975),
 	SASKATCHEWAN("Saskatchewan", 0.06),
 	YUKON("Yukon", 0.00);
 	

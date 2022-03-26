@@ -1,9 +1,9 @@
-package controllers;
+package CEMS.src.controllers;
 
-import application.Controller;
-import application.MainMenu;
-import application.Province;
-import application.RequestType;
+import CEMS.src.application.Controller;
+import CEMS.src.application.MainMenu;
+import CEMS.src.application.Province;
+import CEMS.src.application.RequestType;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;

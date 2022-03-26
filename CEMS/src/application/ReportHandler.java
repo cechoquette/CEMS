@@ -1,4 +1,4 @@
-package application;
+package CEMS.src.application;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,38 +19,38 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class ReportHandler {
-	
+
 	public static Report generateReport(HashMap<Object, Object> hmData) {
-		
-		
+
+
 		return null;
 	}
 
 	public static void exportToExcel() throws IOException{
-		
+
 		XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Java Books");
-         
+
         String a = "aye";
         String b = "bee";
         String c = "cee";
         String d = "dee";
-        
-        
+
+
         Object[][] bookData = {
                 {a, "Kathy Serria", 79},
                 {b, "Joshua Bloch", 36},
                 {c, "Robert martin", 42},
                 {d, "Bruce Eckel", 35},
         };
- 
+
         int rowCount = 0;
-         
+
         for (Object[] aBook : bookData) {
             Row row = sheet.createRow(++rowCount);
-             
+
             int columnCount = 0;
-             
+
             for (Object field : aBook) {
                 Cell cell = row.createCell(++columnCount);
                 if (field instanceof String) {
@@ -59,24 +59,24 @@ public class ReportHandler {
                     cell.setCellValue((Integer) field);
                 }
             }
-             
+
         }
-         
-         
+
+
         try {
         	String home = System.getProperty("user.home");
-//        	File file = new File( fileName + ".xlsx"); 
+//        	File file = new File( fileName + ".xlsx");
         	FileOutputStream outputStream = new FileOutputStream(home+"/Downloads/" + "JavaBooks3.xlsx");
             workbook.write(outputStream);
         }
         finally {
         	workbook.close();
         }
-		
-		
-		
+
+
+
 	}
-	
+
 	public static void createSamplePDF(List<String[]> valuesToExport, Path filePath) throws Exception{
 		 try (PDDocument doc = new PDDocument()) {
 		        PDFont font = PDType1Font.HELVETICA;
@@ -107,9 +107,9 @@ public class ReportHandler {
 		        content.close();
 		        doc.save(filePath.toFile());
 		    } catch (IOException ex) {
-		        //either log exception or rethrow it 
+		        //either log exception or rethrow it
 		    }
 	}
-	
-	
+
+
 }

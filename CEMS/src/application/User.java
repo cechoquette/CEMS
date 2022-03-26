@@ -1,33 +1,34 @@
-package application;
+package CEMS.src.application;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 
 public class User {
 	
 	// Initialize variables
-	private int userID; // query the DB to find the latest userID
-	private int studentID;
-	private String username, password, userType, // ie: Admin, Admin+, SuperAdmin
-					permission, firstName, lastName, 
-					phone, email;
+	private int studentID; // query the DB to find the latest studentID
+	private static String email, password, permission,// ie: Admin, Admin+, SuperAdmin
+					firstName, lastName, phone, salt,
+					securityQuestion, securityAnswer;
 	
 	
 	/** Constructor to create a user object **/
 	public User(String email, String password, String permission, 
 				String firstName, String lastName,
-				String phone, int studentID) {
-		// To set the userID, first query the DB to find the latest userID and increment by 1
-//		this.userID = ;
+				String phone, int studentID, String securityQuestion,
+				String securityAnswer) throws NoSuchAlgorithmException, NoSuchProviderException {
+		this.studentID = studentID; // StudentID is the unique identifying value of each user
 		this.email = email;
-		this.password = password;
 		this.permission = permission;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.studentID = studentID;	
-	}
-	
-	// Get the userID
-	public int getUserID() {
-		return userID;
+		this.securityQuestion = securityQuestion;
+		this.securityAnswer = securityAnswer;
+
+		// Call the PasswordUtil method to hash the password and generate a salt
+		this.salt = PasswordUtil.generateSalt();
+		this.password = PasswordUtil.hashPassword(password, salt);
 	}
 
 	// Get the email
@@ -64,37 +65,74 @@ public class User {
 	public int getStudentID() {
 		return studentID;
 	}
-	
+
+	// Get salt
+	public String getUserSalt() {
+		return salt;
+	}
+
+	// Get password
+	public String getPassword() {
+		return password;
+	}
+
+	// Get security question
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+	// Get security answer
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	// Set the security answer
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
+
+	// Set the security question
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
 	
 	/** Method to update a user's permission 
-	 * @param permission is the permission you wish to update it to **/
-	public static void updatePermission(User user, String permission) {
-		// If the userID is already set to the specified permission
-		if (user.getPermission() == permission) {
-			
-			// Do nothing
-		
-		// Else, update the permissions
-		} else {
-			this.permission = permission;
-		}	
+	 * @param - is the permission you wish to update it to **/
+	public static void updatePermission(User user, String newPermission) {
+		// If the userID is not already set to the specified permission
+		if (user.getPermission() != newPermission) {
+			// Update the permissions to the new permission
+			user.setPermission(newPermission);
+		}
 	}
 	
 	/** Method to delete a user 
 	 * @param **/
-	public static void deleteUser(User user, String email) {
+	public static void deleteUser(User user, String enteredEmail) {
 		// Remove the user from the database and send a confirmation that this was completed
-		if (user.getEmail() == email) {
+		if (user.getEmail() == enteredEmail) {
 			user = null; // Dereference the object
 		}
 	}
 	
-	// Test
-	public static void main(String[] args) {
-		User user = new User("erin@email.com", "pass", "Admin+", "Erin", "Cameron", "8578695116", 123456);
-		
+	// Testing - temporary
+	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
+		User user = new User("erin@email.com", "pass", "Admin+",
+				"Erin", "Cameron", "8578695116", 123456, "Age?", "29");
+
 		System.out.println(user.getEmail());
-		System.out.println(user.getUserID());
+		System.out.println(user.getUserSalt());
+		System.out.println(user.getPassword());
+		System.out.println(user.getFirstName());
+		System.out.println(user.getLastName());
+		System.out.println(user.getStudentID());
+		System.out.println(user.getSecurityQuestion());
+		System.out.println(user.getSecurityAnswer());
+		System.out.println(user.getPhone());
+		System.out.println(user.getPermission());
+
+		user.updatePermission(user, "SuperAdmin");
+		System.out.println("After update Permission to SuperAdmin permission is: " + user.getPermission());
 	}
 	
 }

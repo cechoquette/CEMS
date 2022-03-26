@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="reportBorderPane" prefHeight="568.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportRequestUIController">
+<BorderPane fx:id="reportBorderPane" prefHeight="568.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ReportRequestUIController">
    <bottom>
       <GridPane alignment="CENTER" prefHeight="97.0" prefWidth="923.0" BorderPane.alignment="CENTER">
          <columnConstraints>
