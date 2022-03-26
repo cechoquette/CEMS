@@ -1,12 +1,10 @@
 package CEMS.src.application;//package application;
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 
 public class Main extends Application {
 	@Override
@@ -31,7 +29,6 @@ public class Main extends Application {
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/UserManagement.fxml"));
 
 
-			
 			Scene scene = new Scene(root);
 			ReportHandler.exportToExcel();
 			primaryStage.setTitle("CEMS");
