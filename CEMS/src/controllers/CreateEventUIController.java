@@ -8,6 +8,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+
 public class CreateEventUIController {
 
     @FXML
@@ -23,10 +28,10 @@ public class CreateEventUIController {
     private Button btnCreateEventSubmit;
 
     @FXML
-    private ComboBox<?> comboCreateEventClub;
+    private ComboBox<String> comboCreateEventClub;
 
     @FXML
-    private ComboBox<?> comboCreateEventEmail;
+    private ComboBox<String> comboCreateEventEmail;
 
     @FXML
     private DatePicker dpCreateEventDate;
@@ -44,6 +49,25 @@ public class CreateEventUIController {
     private TextField tfCreateEventTime;
 
     @FXML
+    public void initialize(){
+        //initialize club list
+        //initialize email group list
+
+
+    }
+
+    public LocalDateTime formatDateTime(){
+
+        String time = tfCreateEventTime.getText();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime dateTime = LocalTime.parse(time, formatter);
+
+        LocalDateTime eventDateTime = LocalDateTime.of(dpCreateEventDate.getValue(), dateTime);
+
+        return eventDateTime;
+    }
+
+    @FXML
     void btnCreateEventBackClicked(ActionEvent event) {
 
     }
@@ -55,6 +79,14 @@ public class CreateEventUIController {
 
     @FXML
     void btnCreateEventSubmitClicked(ActionEvent event) {
+
+        HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
+
+        dataToSubmit.put("EventName", tfCreateEventName.getText());
+        dataToSubmit.put("EventDescription", tfCreateEventName.getText());
+        dataToSubmit.put("EventClub", null);//either send a club, or a club id
+        dataToSubmit.put("EventDateTime", formatDateTime());
+        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
 
     }
 

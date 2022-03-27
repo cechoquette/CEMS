@@ -88,8 +88,10 @@ public class Controller {
 			break;
 		case SUBMIT_EXPENDITURE: sendToDatabase(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
+		case SEARCH_FOR_USER: //call database, return if found
+			break;
 			
-		default:
+		default: //do nothing
 			break;
 		
 		}

@@ -46,10 +46,10 @@ public class FormHandler {
 		return expenditure;
 	}
 	
-	public static EventForm createEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
-		EventForm eventForm = new EventForm();
-		
-		return eventForm;
+	public static Event createEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		EventForm eventForm = new EventForm(requestType, hmData);
+		event = eventForm.getEvent();
+		return event;
 	}
 	
 	public static EventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {

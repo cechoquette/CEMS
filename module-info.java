@@ -5,8 +5,9 @@ module CEMS {
 	requires javafx.controls;
     requires org.apache.poi.ooxml;
 	requires org.apache.pdfbox;
+	requires java.persistence;
 
-	
+
 	opens CEMS.src.application to javafx.graphics, javafx.fxml;
     opens CEMS.src.controllers to javafx.fxml, javafx.graphics;
 }

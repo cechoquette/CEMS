@@ -14,7 +14,7 @@
 
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/17" fx:controller="controllers.LoginPageUIController">
+            xmlns="http://javafx.com/javafx/17" fx:controller="CEMS.src.controllers.LoginPageUIController">
    <children>
       <BorderPane layoutX="233.0" layoutY="126.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>

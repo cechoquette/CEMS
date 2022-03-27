@@ -27,7 +27,8 @@ public enum RequestType {
 	REQUEST_DATA_FROM_DATABASE("Request Data"),//use if searching if something is in Database, and want data returned
 	STORE_DATA_IN_DATABASE("Store Data"),
 	QUERY_DATABASE("Query Database"),//use if searching if something is in Database, not to return data
-	DELETE_FROM_DATABASE("Delete from Database");
+	DELETE_FROM_DATABASE("Delete from Database"),
+	SEARCH_FOR_USER("Search for User");
 	
 	
 	

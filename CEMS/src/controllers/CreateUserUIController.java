@@ -94,7 +94,7 @@ public class CreateUserUIController {
         }
 
         // StudentID
-        if(!InputValidation.validateNotEmpty(tfCreateUserID)) {
+        if(!InputValidation.validateStudentID(tfCreateUserID)) {
             tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
         else {

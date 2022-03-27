@@ -10,7 +10,7 @@ public class ExpenditureForm extends Form{
 	private boolean isFilled;
 	private Expenditure expenditure;
 	
-	ExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData){
+	public ExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData){
 //		this.formfields = new HashMap<String, Double>();
 		this.formID = ++super.COUNT_FOR_IDS;
 		createExpenditure(hmData);

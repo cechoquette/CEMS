@@ -80,7 +80,7 @@ public class PasswordUtil {
 
     /** Method to reset password in the DB **/
     // TODO: TEST
-    public static void ResetPass(User user, String enteredEmail, String enteredSecurityQuestion, String newPass)
+    public static void resetPass(User user, String enteredEmail, String enteredSecurityQuestion, String newPass)
             throws NoSuchProviderException, NoSuchAlgorithmException {
 
         // If the users email and security question are verified
