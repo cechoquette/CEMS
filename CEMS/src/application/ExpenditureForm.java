@@ -16,8 +16,10 @@ public class ExpenditureForm extends Form{
 		createExpenditure(hmData);
 		
 		System.out.println(expenditure);
-		System.out.println(formID);
-		System.out.println(expenditure.getExpenditureID());
+		System.out.println("FormID: " + formID);
+		System.out.println("ExpID: " + expenditure.getExpenditureID());
+		System.out.println("Club: " + expenditure.getClub());
+		System.out.println("Event: " + expenditure.getEvent());
 	}
 	
 	public Expenditure getExpenditure() {

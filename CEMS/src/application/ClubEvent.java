@@ -79,6 +79,10 @@ public class ClubEvent {
         this.emailGroup = emailGroup;
     }
 
+    @Override
+    public String toString(){
+        return this.eventName;
+    }
 
 
 }

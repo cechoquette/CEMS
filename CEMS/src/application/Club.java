@@ -94,4 +94,9 @@ public class Club {
     public void addClubMember(ClubMember clubMember){
         clubMembers.add(clubMember);
     }
+
+    @Override
+    public String toString(){
+        return this.clubName;
+    }
 }
