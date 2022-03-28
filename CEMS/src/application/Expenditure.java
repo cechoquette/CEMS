@@ -1,28 +1,49 @@
 package CEMS.src.application;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
+@Table(name="ClubExpenditure")// annotation of table in MySQL
+
 public class Expenditure {
 	protected static int COUNT_FOR_IDS;
-	
-	private int expenditureID;
-	private String description;
-	private String accountHolder;
-	private String paymentAccount;
-	private double amount;
-	private double taxAmount;
-	private double total;
-	private Province province;
-	private LocalDate date;
-	private Vendor vendorName;
-	private ExpenditureCategory category;
-	private PaymentMethod paymentMethod;
 
-	public Expenditure(){}
-	
+	@Id
+	@Column(name="expenditure_id")
+	private int expenditureID;
+	@Column(name="description_")
+	private String description;
+	@Column(name="account_holder")
+	private String accountHolder;
+	@Column(name="payment_account")
+	private String paymentAccount;
+	@Column(name="amount")
+	private double amount;
+	@Column(name="tax_amount")
+	private double taxAmount;
+	@Column(name="total")
+	private double total;
+	@Column(name="province")
+	private Province province;
+	@Column(name="date_")
+	private LocalDate date;
+	@Column(name="vendor_name")
+	private Vendor vendorName;
+	@Column(name="category")
+	private ExpenditureCategory category;
+	@Column(name="payment_method")
+	private PaymentMethod paymentMethod;
+	@ManyToOne
+	private Club club;  // many to one relationship, expenditure to clubs
+
+	public Expenditure(){
+
+	}
+
 	public Expenditure(String description, String accountHolder, String paymentAccount, double amount, double taxAmount, double total, Province province, LocalDate date, Vendor vendorName, ExpenditureCategory category, PaymentMethod paymentMethod){
-		super();
 		this.expenditureID = ++COUNT_FOR_IDS;
+
 		this.description = description;
 		this.accountHolder = accountHolder;
 		this.paymentAccount = paymentAccount;
@@ -178,6 +199,11 @@ public class Expenditure {
 	public void setCategory(ExpenditureCategory category) {
 		this.category = category;
 	}
+
+	public Club getClub() {
+		return club;
+	}
+
 	
 	@Override
 	public String toString() {
