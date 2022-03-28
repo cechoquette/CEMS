@@ -1,11 +1,16 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.InputValidation;
+import CEMS.src.application.PasswordUtil;
+import CEMS.src.application.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 
 public class LoginPageUIController {
 
@@ -35,7 +40,7 @@ public class LoginPageUIController {
         }
 
         // Password
-        if(!InputValidation.validateNotEmpty(pfLoginPassword)) {
+        if(!InputValidation.validatePassword(pfLoginPassword)) {
             pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         } else {
             pfLoginPassword.setStyle(null);
@@ -51,7 +56,7 @@ public class LoginPageUIController {
         pfLoginPassword.setText("");
         pfLoginPassword.setStyle(null);
 
-        // TODO: What to do next - Maybe close the app after?
+        // TODO: send the user to the Home Page
     }
 
     @FXML
@@ -64,10 +69,15 @@ public class LoginPageUIController {
     }
 
     @FXML
-    void btnLoginSubmitClicked(ActionEvent event) {
+    void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
         checkMandatoryFields();
 
         // TODO: Log the user in
+
+        // TODO: Check the login information is correct
+//        PasswordUtil.validatePassword(user, tfLoginEmail.getText(), pfLoginPassword.getText());
+
+        // TODO: Then direct the user to their dashboard page
     }
 
 }

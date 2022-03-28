@@ -63,6 +63,18 @@ public class InputValidation{
 		return false;
 	}
 
+	public static boolean validatePassword(TextField tf) {
+		// Check that the password has at least 7 characters
+		if(validateNotEmpty(tf)) {
+			String password = tf.getText();
+
+			if (password.length() > 6) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static boolean validateStudentID(TextField tf) {
 		// Check that the field is not empty
 		if(validateNotEmpty(tf)) {
