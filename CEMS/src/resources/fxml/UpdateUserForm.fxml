@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0"
-            prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UpdateUserUIController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.UpdateUserUIController">
    <children>
-      <BorderPane layoutX="267.0" layoutY="215.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="updateUserBorderPane" layoutX="267.0" layoutY="215.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -141,7 +131,7 @@
                         <String fx:value="no-search-match" />
                      </styleClass>
                   </Label>
-                  <TextField fx:id="tfUpdateUserFirst" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="tfUpdateUserFirst" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -150,7 +140,7 @@
                         <String fx:value="no-search-match" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="tfUpdateUserLast" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <TextField fx:id="tfUpdateUserLast" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -159,7 +149,7 @@
                         <String fx:value="no-search-match" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="tfUpdateUserPhone" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <TextField fx:id="tfUpdateUserPhone" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -168,7 +158,7 @@
                         <String fx:value="no-search-match" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="tfUpdateUserEmail" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <TextField fx:id="tfUpdateUserEmail" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -178,7 +168,7 @@
                         <String fx:value="no-search-match" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="tfUpdateUserID" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <TextField fx:id="tfUpdateUserID" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -187,7 +177,7 @@
                         <String fx:value="no-search-match" />
                      </styleClass>
                   </TextField>
-                  <ComboBox fx:id="comboUpdateUserClub" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <ComboBox fx:id="comboUpdateUserClub" disable="true" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
                      <styleClass>
                         <String fx:value="no-search-match" />
                         <String fx:value="form__combo" />
@@ -222,7 +212,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField promptText="Email address or full name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                  <TextField fx:id="tfUpdateUserSearch" promptText="Enter a users email address" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>

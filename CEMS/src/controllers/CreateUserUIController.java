@@ -94,7 +94,7 @@ public class CreateUserUIController {
         }
 
         // StudentID
-        if(!InputValidation.validateNotEmpty(tfCreateUserID)) {
+        if(!InputValidation.validateStudentID(tfCreateUserID)) {
             tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
         else {
@@ -150,7 +150,7 @@ public class CreateUserUIController {
         // Check that all mandatory fields are filled in
         checkMandatoryFields();
 
-        // Add all data to the hashmap
+        // TODO: Add all data to the hashmap
         dataToSubmit = new HashMap<Object, Object>();
         dataToSubmit.put("", tfCreateUserFirst.getText());
         dataToSubmit.put("", tfCreateUserLast.getText());

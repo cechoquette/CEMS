@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="600.0" maxWidth="900.0" prefHeight="600.0"
-            prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserManagementUIController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.UserManagementUIController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -46,7 +36,7 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body__text" text="Description: Choose from the below options. To see if a system user already exists, type in an email address or full name in the search bar below" wrappingWidth="600.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body__text" text="Choose from the options below. To see if a system user already exists, type in an email address in the search bar and click the search button." wrappingWidth="600.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -91,7 +81,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField maxWidth="350.0" prefHeight="25.0" prefWidth="304.0" promptText="Email address or Full name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                  <TextField fx:id="tfUserManagementSearch" maxWidth="350.0" prefHeight="25.0" prefWidth="304.0" promptText="Enter a users email address" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -169,7 +159,7 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Text>
-                              <Text fx:id="textUserMgmtName" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Text fx:id="textUserMgmtName" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -178,7 +168,7 @@
                                     <String fx:value="no-search-match" />
                                  </styleClass>
                               </Text>
-                              <Text fx:id="textUserMgmtEmail" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Text fx:id="textUserMgmtEmail" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -187,7 +177,7 @@
                                     <String fx:value="no-search-match" />
                                  </styleClass>
                               </Text>
-                              <Text fx:id="textUserMgmtID" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <Text fx:id="textUserMgmtID" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -196,7 +186,7 @@
                                     <String fx:value="no-search-match" />
                                  </styleClass>
                               </Text>
-                              <Text fx:id="textUserMgmtPhone" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <Text fx:id="textUserMgmtPhone" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -205,7 +195,7 @@
                                     <String fx:value="no-search-match" />
                                  </styleClass>
                               </Text>
-                              <Text fx:id="textUserMgmtClub" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <Text fx:id="textUserMgmtClub" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>
@@ -214,7 +204,7 @@
                                     <String fx:value="no-search-match" />
                                  </styleClass>
                               </Text>
-                              <Text fx:id="textUserMgmtPermissions" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                              <Text fx:id="textUserMgmtPermissions" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <GridPane.margin>
                                     <Insets left="5.0" right="5.0" />
                                  </GridPane.margin>

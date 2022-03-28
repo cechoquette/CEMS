@@ -64,7 +64,7 @@ public class PasswordUtil {
 
     /** Method to validate password in the DB **/
     // TODO: TEST
-    private static boolean validatePassword(User user, String enteredEmail, String enteredPassword) throws NoSuchProviderException {
+    public static boolean validatePassword(User user, String enteredEmail, String enteredPassword) throws NoSuchProviderException {
         // To authenticate user, hash the password using the salt retrieved from the DB - then compare this hashed PW to the one in the DB
         // Initialize variables
         String salt = user.getUserSalt(); // Retrieve the users salt from the DB and store in variable
@@ -80,7 +80,7 @@ public class PasswordUtil {
 
     /** Method to reset password in the DB **/
     // TODO: TEST
-    public static void ResetPass(User user, String enteredEmail, String enteredSecurityQuestion, String newPass)
+    public static void resetPass(User user, String enteredEmail, String enteredSecurityQuestion, String newPass)
             throws NoSuchProviderException, NoSuchAlgorithmException {
 
         // If the users email and security question are verified

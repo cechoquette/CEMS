@@ -63,6 +63,40 @@ public class InputValidation{
 		return false;
 	}
 
+	public static boolean validatePassword(TextField tf) {
+		// Check that the password has at least 7 characters
+		if(validateNotEmpty(tf)) {
+			String password = tf.getText();
+
+			if (password.length() > 6) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean validateStudentID(TextField tf) {
+		// Check that the field is not empty
+		if(validateNotEmpty(tf)) {
+			String studentID = tf.getText();
+
+			// Check that the StudentID is 9 digits long
+			if (studentID.length() == 9
+					&& Character.isDigit(studentID.charAt(0))
+					&& Character.isDigit(studentID.charAt(1))
+					&& Character.isDigit(studentID.charAt(2))
+					&& Character.isDigit(studentID.charAt(3))
+					&& Character.isDigit(studentID.charAt(4))
+					&& Character.isDigit(studentID.charAt(5))
+					&& Character.isDigit(studentID.charAt(6))
+					&& Character.isDigit(studentID.charAt(7))
+					&& Character.isDigit(studentID.charAt(8))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static boolean validateEmail(TextField tf) {//using regex pattern
 		if(validateNotEmpty(tf)){
 			String email = tf.getText();
