@@ -10,15 +10,17 @@ public class ClubEvent {
     private String eventDescription;
     private Club associatedClub;//might be club id, not sure yet
     private LocalDateTime eventDateTime;
+    private String eventLocation;
     private String[] emailGroup;
 
     public ClubEvent(){}
-    public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String[] emailGroup){
+    public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String[] emailGroup){
         this.eventID = COUNT_FOR_IDS++;
         this.eventName = name;
         this.associatedClub = club;
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
+        this.eventLocation = location;
         this.emailGroup = emailGroup;
     }
 

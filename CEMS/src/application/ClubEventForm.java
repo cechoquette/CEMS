@@ -26,9 +26,10 @@ public class ClubEventForm extends Form{
         String eventDesc = (String)hmData.get("EventDescription");
         Club eventClub = (Club)hmData.get("EventClub");//pending confirmation of data type
         LocalDateTime eventDateTime = (LocalDateTime)hmData.get("EventDateTime");
+        String eventLocation = (String)hmData.get("EventLocation");
         String[] emailGroup = (String[])hmData.get("EventEmailGroup");//pending confirmation of data type
 
-        this.clubEvent = new ClubEvent(eventName, eventDesc, eventClub, eventDateTime, emailGroup);
+        this.clubEvent = new ClubEvent(eventName, eventDesc, eventClub, eventDateTime, eventLocation, emailGroup);
 
     }
 

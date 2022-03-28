@@ -1,5 +1,6 @@
 package CEMS.src.controllers;
 
+import CEMS.src.application.Club;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,7 +29,7 @@ public class CreateClubEventUIController {
     private Button btnCreateEventSubmit;
 
     @FXML
-    private ComboBox<String> comboCreateEventClub;
+    private ComboBox<Club> comboCreateEventClub;
 
     @FXML
     private ComboBox<String> comboCreateEventEmail;
@@ -83,9 +84,10 @@ public class CreateClubEventUIController {
         HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
 
         dataToSubmit.put("EventName", tfCreateEventName.getText());
-        dataToSubmit.put("EventDescription", tfCreateEventName.getText());
-        dataToSubmit.put("EventClub", null);//either send a club, or a club id
+        dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
+        dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
         dataToSubmit.put("EventDateTime", formatDateTime());
+        dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
         dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
 
     }

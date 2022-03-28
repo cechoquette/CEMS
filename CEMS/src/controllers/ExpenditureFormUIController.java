@@ -77,7 +77,7 @@ public class ExpenditureFormUIController{
 		choicePaymentMethod.getItems().addAll(Arrays.asList(PaymentMethod.values()));
 		choiceExpenditureClub.getItems().addAll(new Club("Club 123", "This is a club"),
 				new Club("Club xyz", "This is another Club"));
-		choiceExpenditureEvent.getItems().addAll(new ClubEvent("Meeting 123", "Description", null, null, null));
+		choiceExpenditureEvent.getItems().addAll(new ClubEvent("Meeting 123", "Description", null, null, "Here", null));
 		tfExpenditureTax.setStyle("-fx-control-inner-background: #cce0ff");
 		tfExpenditureTotal.setStyle("-fx-control-inner-background: #cce0ff");
 		
