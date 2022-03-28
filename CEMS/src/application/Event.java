@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 public class Event {
     public static int COUNT_FOR_IDS;
 
-
-
     private int eventID;
     private String eventName;
     private String eventdescription;
@@ -14,9 +12,7 @@ public class Event {
     private LocalDateTime eventDateTime;
     private String[] emailGroup;
 
-    public Event(){
-        this.eventID = COUNT_FOR_IDS++;
-    }
+    public Event(){}
     public Event(String name, String desc, Club club, LocalDateTime dateTime, String[] emailGroup){
         this.eventID = COUNT_FOR_IDS++;
         this.eventName = name;

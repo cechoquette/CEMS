@@ -3,7 +3,7 @@ package CEMS.src.application;
 import java.util.ArrayList;
 
 public class EventBudget extends Budget{
-	protected static int COUNT_FOR_IDS;
+	public static int COUNT_FOR_IDS;
 	private int eventBudgetID;
 
 //	Venue
@@ -54,8 +54,10 @@ public class EventBudget extends Budget{
 	private double EventBudgetSubtotal;
 	private double EventBudgetTaxes;
 	private double EventBudgetTotal;
+
+	public EventBudget(){}
 	
-	EventBudget(ArrayList<Double> sortedData){
+	public EventBudget(ArrayList<Double> sortedData){
 		this.eventBudgetID = COUNT_FOR_IDS++;
 		
 		this.venueEntertainment = sortedData.get(0);
