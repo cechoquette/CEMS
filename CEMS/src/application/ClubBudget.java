@@ -6,6 +6,7 @@ public class ClubBudget extends Budget{
 	
 	public static int COUNT_FOR_IDS;
 	private int clubBudgetID;
+	private Club club;
 
 //	Events
 
@@ -45,9 +46,10 @@ public class ClubBudget extends Budget{
 	private double clubBudgetTotal;
 
 	public ClubBudget(){}
-	
-	ClubBudget(ArrayList<Double> filteredData){
+
+	ClubBudget(ArrayList<Double> filteredData, Club club){
 		this.clubBudgetID = ++COUNT_FOR_IDS;
+		this.club = club;
 		this.eventsVenue = filteredData.get(0);
 		this.eventsServices = filteredData.get(1);
 		this.eventsRefreshments = filteredData.get(2);
@@ -115,6 +117,36 @@ public class ClubBudget extends Budget{
 		clubBudgetTaxes + "\n" +
 		clubBudgetTotal;
 	}
-	
-	
+
+	public static int getCountForIds() {
+		return COUNT_FOR_IDS;
+	}
+
+	public static void setCountForIds(int countForIds) {
+		COUNT_FOR_IDS = countForIds;
+	}
+
+	public int getClubBudgetID() {
+		return clubBudgetID;
+	}
+
+	public void setClubBudgetID(int clubBudgetID) {
+		this.clubBudgetID = clubBudgetID;
+	}
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public double getClubBudgetTotal() {
+		return clubBudgetTotal;
+	}
+
+	public void setClubBudgetTotal(double clubBudgetTotal) {
+		this.clubBudgetTotal = clubBudgetTotal;
+	}
 }

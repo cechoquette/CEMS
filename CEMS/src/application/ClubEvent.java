@@ -7,7 +7,7 @@ public class ClubEvent {
 
     private int eventID;
     private String eventName;
-    private String eventdescription;
+    private String eventDescription;
     private Club associatedClub;//might be club id, not sure yet
     private LocalDateTime eventDateTime;
     private String[] emailGroup;
@@ -17,7 +17,7 @@ public class ClubEvent {
         this.eventID = COUNT_FOR_IDS++;
         this.eventName = name;
         this.associatedClub = club;
-        this.eventdescription = desc;
+        this.eventDescription = desc;
         this.eventDateTime = dateTime;
         this.emailGroup = emailGroup;
     }
@@ -55,12 +55,12 @@ public class ClubEvent {
         this.associatedClub = associatedClub;
     }
 
-    public String getEventdescription() {
-        return eventdescription;
+    public String getEventDescription() {
+        return eventDescription;
     }
 
-    public void setEventdescription(String eventdescription) {
-        this.eventdescription = eventdescription;
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
     }
 
     public LocalDateTime getEventDateTime() {

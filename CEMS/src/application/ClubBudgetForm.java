@@ -44,13 +44,14 @@ public class ClubBudgetForm extends Form{
 		dataForBudget.add((Double)hmData.get("ClubBudgetMiscellaneousSubtotal"));
 		dataForBudget.add((Double)hmData.get("ClubBudgetSubtotal"));
 		dataForBudget.add((Double)hmData.get("ClubBudgetTaxes"));
-		dataForBudget.add((Double)hmData.get("ClubBudgetTotal"));	
+		dataForBudget.add((Double)hmData.get("ClubBudgetTotal"));
+		Club clubBudgetClub = (Club)hmData.get("ClubBudgetClub");
 		
 //		for(int i = 0; i < dataForBudget.size(); i++) {
 //			System.out.println(dataForBudget.get(i));
 //		}
 		
-		this.clubBudget = new ClubBudget(dataForBudget);
+		this.clubBudget = new ClubBudget(dataForBudget, clubBudgetClub);
 		
 	}
 	

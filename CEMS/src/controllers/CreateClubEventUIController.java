@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
-public class CreateEventUIController {
+public class CreateClubEventUIController {
 
     @FXML
     private Button btnCreateEventBack;
