@@ -2,33 +2,38 @@ package CEMS.src.application;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.util.ArrayList;
 
 public class User {
 	
 	// Initialize variables
 	private int studentID; // query the DB to find the latest studentID
-	private static String email, password, permission,// ie: Admin, Admin+, SuperAdmin
+	private String email, password, permission,// ie: Admin, Admin+, SuperAdmin
 					firstName, lastName, phone, salt,
 					securityQuestion, securityAnswer;
+	private static Club club;
+//	private static ArrayList<String> clubs = new ArrayList<String>();
 	
 	
 	/** Constructor to create a user object **/
-	public User(String email, String password, String permission, 
-				String firstName, String lastName,
-				String phone, int studentID, String securityQuestion,
+	public User(String firstName, String lastName, String phone, String email,
+				int studentID, Club club, String permission, String securityQuestion,
 				String securityAnswer) throws NoSuchAlgorithmException, NoSuchProviderException {
-		this.studentID = studentID; // StudentID is the unique identifying value of each user
-		this.email = email;
-		this.permission = permission;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
+		this.email = email;
+		this.studentID = studentID; // StudentID is the unique identifying value of each user
+		this.club = club;
+//		clubs.add(club);
+		this.permission = permission;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
 
+		// TODO: PASSWORD - to be implemented in the PasswordUtil when a user goes through the "reset password" pathway
 		// Call the PasswordUtil method to hash the password and generate a salt
-		this.salt = PasswordUtil.generateSalt();
-		this.password = PasswordUtil.hashPassword(password, salt);
+//		this.salt = PasswordUtil.generateSalt();
+//		this.password = PasswordUtil.hashPassword(password, salt);
 	}
 
 	// Get the email
@@ -81,6 +86,11 @@ public class User {
 		return securityQuestion;
 	}
 
+	// Set the security question
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
 	// Get security answer
 	public String getSecurityAnswer() {
 		return securityAnswer;
@@ -91,10 +101,44 @@ public class User {
 		this.securityAnswer = securityAnswer;
 	}
 
-	// Set the security question
-	public void setSecurityQuestion(String securityQuestion) {
-		this.securityQuestion = securityQuestion;
+	// Get the Club
+	public Club getUserClub() {
+		return club;
 	}
+
+	// Set the club
+	public void setUserClub(Club club) {
+		this.club = club;
+	}
+
+//	// TODO: Get clubs -- ArrayList version
+//	public static String getClub(int index) {
+//		int clubSize = clubs.size();
+//		String[] clubArray = new String[clubSize];
+//
+//		for (int i = 0; i < clubSize; i++) {
+//			clubArray[i] = clubs.get(i);
+//		}
+//		// Return the requested club
+//		return clubArray[index];
+//	}
+//
+//	// TODO: Get club list
+//	public static String[] getClubList() {
+//		String[] clubArray = new String[clubs.size()];
+//		for(int i =0; i < clubs.size(); i++){
+//			clubArray[i] = clubs.get(i);
+//		}
+//		return clubArray;
+//
+//		// OR just have a return type of ArrayList and return "clubs"
+//		// return clubs;
+//	}
+//
+//	// TEMP - add club
+//	public static void addClub(String club) {
+//		clubs.add(club);
+//	}
 	
 	/** Method to update a user's permission 
 	 * @param - is the permission you wish to update it to **/
@@ -117,22 +161,25 @@ public class User {
 	
 	// Testing - temporary
 	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
-		User user = new User("erin@email.com", "pass", "Admin+",
-				"Erin", "Cameron", "8578695116", 123456, "Age?", "29");
+//		User user = new User("Erin", "Cameron", "867-878-6767",
+//				"erin@email.com", 123456789, "Club 123", "Admin", "Age?", "29");
 
-		System.out.println(user.getEmail());
-		System.out.println(user.getUserSalt());
-		System.out.println(user.getPassword());
-		System.out.println(user.getFirstName());
-		System.out.println(user.getLastName());
-		System.out.println(user.getStudentID());
-		System.out.println(user.getSecurityQuestion());
-		System.out.println(user.getSecurityAnswer());
-		System.out.println(user.getPhone());
-		System.out.println(user.getPermission());
+//		user.addClub("Test1");
+//		user.addClub("Test2");
 
-		user.updatePermission(user, "SuperAdmin");
-		System.out.println("After update Permission to SuperAdmin permission is: " + user.getPermission());
+//		System.out.println(user.getEmail());
+//		System.out.println(user.getUserSalt());
+//		System.out.println(user.getPassword());
+//		System.out.println(user.getFirstName());
+//		System.out.println(user.getLastName());
+//		System.out.println(user.getStudentID());
+//		System.out.println(user.getSecurityQuestion());
+//		System.out.println(user.getSecurityAnswer());
+//		System.out.println(user.getPhone());
+//		System.out.println(user.getPermission());
+//
+//		user.updatePermission(user, "SuperAdmin");
+//		System.out.println("After update Permission to SuperAdmin permission is: " + user.getPermission());
 	}
 	
 }
