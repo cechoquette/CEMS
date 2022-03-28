@@ -33,7 +33,7 @@ public class PasswordUtil {
             }
 
             // Store the hashed string & salt in the DB
-            PasswordUtil.storePassAndSalt(sb.toString(), salt);
+            storePassAndSalt(sb.toString(), salt);
 
             // Catch block
         } catch (NoSuchAlgorithmException e) {
@@ -57,7 +57,7 @@ public class PasswordUtil {
 
 
     /** Method to store the password in the DB **/
-    private static void storePassAndSalt(String newPass, String newSalt) {
+    public static void storePassAndSalt(String newPass, String newSalt) {
         // TODO: code to store password & salt in the DB
     }
 
@@ -80,11 +80,11 @@ public class PasswordUtil {
 
     /** Method to reset password in the DB **/
     // TODO: TEST
-    public static void resetPass(User user, String enteredEmail, String enteredSecurityQuestion, String newPass)
+    public static void resetPass(User user, String enteredEmail, String enteredSecurityAnswer, String newPass)
             throws NoSuchProviderException, NoSuchAlgorithmException {
 
         // If the users email and security question are verified
-        if (verifyPassReset(user, enteredEmail, enteredSecurityQuestion)) {
+        if (verifyPassReset(user, enteredEmail, enteredSecurityAnswer)) {
 
             // Use the users new password to overwrite the password & salt in the DB
             String newSalt = PasswordUtil.generateSalt(); // Obtain a new salt
@@ -95,9 +95,9 @@ public class PasswordUtil {
 
     /** Method to verify email and security question in the DB **/
     // TODO: TEST
-    public static boolean verifyPassReset(User user, String enteredEmail, String enteredSecurityQuestion) {
+    public static boolean verifyPassReset(User user, String enteredEmail, String enteredSecurityAnswer) {
         return user.getEmail() == enteredEmail
-                && user.getSecurityQuestion() == enteredSecurityQuestion;
+                && user.getSecurityAnswer() == enteredSecurityAnswer;
     }
 
 
