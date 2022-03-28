@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class User {
 	
 	// Initialize variables
-	private int studentID; // query the DB to find the latest studentID
-	private String email, password, permission,// ie: Admin, Admin+, SuperAdmin
+	private int studentID;
+	private String email, password, permission, // Permission ie: Admin, Admin+, SuperAdmin
 					firstName, lastName, phone, salt,
 					securityQuestion, securityAnswer;
 	private static Club club;
@@ -25,7 +25,6 @@ public class User {
 		this.email = email;
 		this.studentID = studentID; // StudentID is the unique identifying value of each user
 		this.club = club;
-//		clubs.add(club);
 		this.permission = permission;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
@@ -76,10 +75,18 @@ public class User {
 		return salt;
 	}
 
+	// Set salt
+	public void setUserSalt() {
+		this.salt = salt;
+	}
+
 	// Get password
 	public String getPassword() {
 		return password;
 	}
+
+	// Set password
+	public void setPassword(String password) { this.password = password; }
 
 	// Get security question
 	public String getSecurityQuestion() {
@@ -92,24 +99,16 @@ public class User {
 	}
 
 	// Get security answer
-	public String getSecurityAnswer() {
-		return securityAnswer;
-	}
+	public String getSecurityAnswer() { return securityAnswer; }
 
 	// Set the security answer
-	public void setSecurityAnswer(String securityAnswer) {
-		this.securityAnswer = securityAnswer;
-	}
+	public void setSecurityAnswer(String securityAnswer) { this.securityAnswer = securityAnswer; }
 
 	// Get the Club
-	public Club getUserClub() {
-		return club;
-	}
+	public Club getUserClub() { return club; }
 
 	// Set the club
-	public void setUserClub(Club club) {
-		this.club = club;
-	}
+	public void setUserClub(Club club) { this.club = club; }
 
 //	// TODO: Get clubs -- ArrayList version
 //	public static String getClub(int index) {

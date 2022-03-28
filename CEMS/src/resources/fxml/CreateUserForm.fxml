@@ -167,7 +167,7 @@
                      <GridPane.margin>
                         <Insets left="-90.0" right="100.0" />
                      </GridPane.margin></TextField>
-                  <TextField fx:id="tfCreateUserSecQ1" layoutX="432.0" layoutY="147.0" prefWidth="257.0" snapToPixel="false" styleClass="form__tf" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <TextField fx:id="tfCreateUserSecA" layoutX="432.0" layoutY="147.0" prefWidth="257.0" snapToPixel="false" styleClass="form__tf" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="-90.0" right="100.0" />
                      </GridPane.margin>
