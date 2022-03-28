@@ -26,7 +26,7 @@ public class CreateUserUIController {
     private Button btnCreateUserSubmit;
 
     @FXML
-    private ComboBox<String> comboCreateUserClub;
+    private ComboBox<Club> comboCreateUserClub;
 
     @FXML
     private ComboBox<PermissionType> comboCreateUserPermissions;

@@ -43,7 +43,7 @@ public class ReportRequestUIController {
 	@FXML
 	private ChoiceBox<ReportType> choiceReportSelectType;
 	@FXML
-	private ChoiceBox<String> choiceReportSelectClub;
+	private ChoiceBox<Club> choiceReportSelectClub;
 	@FXML
 	private ToggleGroup tgReportTimeframe;
 	@FXML

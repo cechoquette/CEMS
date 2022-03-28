@@ -53,6 +53,7 @@ public class CreateClubEventUIController {
     public void initialize(){
         //initialize club list
         //initialize email group list
+        comboCreateEventEmail.getItems().addAll("All Club Members", "None");
 
 
     }

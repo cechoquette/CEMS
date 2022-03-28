@@ -17,10 +17,16 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 
+
+
 			//Create Database (if first time running app)
 
 			//Create Clubs if Database empty
 				//Maybe make a method for this in Club class called createFirstClubs() and send to Database. Or RequestType.
+			//if doesn't already exist in Database, create:
+			final Club ALLCLUBS = new Club("All Clubs", "This is the club for all SuperAdmins.");
+			//add ALLCLUBS Club to database
+
 
 			//Retrieve and populate class static IDs from Database
 				//Club, User, Event, Expenditure, EventBudget, ClubBudget
@@ -36,11 +42,11 @@ public class Main extends Application {
 			//for Paths: use absolute paths (leading / ) and do note use .. , the resulting .jar executable will not function.
 			Parent root;
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubBudgetSubmissionForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateClubEventForm.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateClubEventForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateUserForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/DeleteUserForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubEventBudgetSubmissionForm.fxml"));
-			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
+//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ForgotPassword.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/HomePage.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/LoginPage.fxml"));
