@@ -16,7 +16,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.layout.BorderPane;
 
-public class EventBudgetUIController {
+public class ClubEventBudgetUIController {
 	HashMap<Object, Object> dataToSubmit;
 	
 	@FXML

@@ -8,6 +8,8 @@ import java.util.List;
 @Entity
 @Table(name="Club")
 public class Club {
+    public static int COUNT_FOR_IDS;
+
     @Id
     @Column(name="club_id ")
     private int clubID;
@@ -24,9 +26,9 @@ public class Club {
 
     }
 
-    public Club(int clubID, String clubName, String clubDescription) {
+    public Club(String clubName, String clubDescription) {
         super();
-        this.clubID = clubID;
+        this.clubID = ++COUNT_FOR_IDS;
         this.clubName = clubName;
         this.clubDescription = clubDescription;
     }

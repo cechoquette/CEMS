@@ -36,6 +36,15 @@ public class ExpenditureForm extends Form{
 		Vendor vendorName = (Vendor)hmData.get("ExpenditureVendor");
 		ExpenditureCategory category = (ExpenditureCategory)hmData.get("ExpenditureCategory");
 		PaymentMethod paymentMethod = (PaymentMethod)hmData.get("ExpenditurePaymentMethod");
+		Club club = (Club)hmData.get("ExpenditureClub");
+		ClubEvent clubEvent;
+		if(hmData.get("ExpenditureEvent") != null) {
+			clubEvent = (ClubEvent)hmData.get("ExpenditureEvent");//can be null
+		}
+		else{
+			clubEvent = null;
+		}
+
 		/* Keys for HashMap
 		ExpenditureDescription
 		ExpenditurePayee
@@ -49,7 +58,8 @@ public class ExpenditureForm extends Form{
 		ExpenditurePaymentMethod
 		*/
 		
-		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount, total, province, date, vendorName, category, paymentMethod);
+		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount,
+				total, province, date, vendorName, category, paymentMethod, club, clubEvent);
 	}
 	
 	public boolean isFilled() {

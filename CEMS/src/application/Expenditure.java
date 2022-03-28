@@ -1,13 +1,12 @@
 package CEMS.src.application;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name="ClubExpenditure")// annotation of table in MySQL
 
 public class Expenditure {
-	protected static int COUNT_FOR_IDS;
+	public static int COUNT_FOR_IDS;
 
 	@Id
 	@Column(name="expenditure_id")
@@ -37,11 +36,14 @@ public class Expenditure {
 	@ManyToOne
 	private Club club;  // many to one relationship, expenditure to clubs
 
-	public Expenditure(){
+	private ClubEvent clubEvent;
 
+	public Expenditure(){
 	}
 
-	public Expenditure(String description, String accountHolder, String paymentAccount, double amount, double taxAmount, double total, Province province, LocalDate date, Vendor vendorName, ExpenditureCategory category, PaymentMethod paymentMethod){
+	public Expenditure(String description, String accountHolder, String paymentAccount, double amount, double taxAmount,
+					   double total, Province province, LocalDate date, Vendor vendorName, ExpenditureCategory category,
+					   PaymentMethod paymentMethod, Club club, ClubEvent clubEvent){
 		this.expenditureID = ++COUNT_FOR_IDS;
 
 		this.description = description;
@@ -55,17 +57,19 @@ public class Expenditure {
 		this.vendorName = vendorName;
 		this.category = category;
 		this.paymentMethod = paymentMethod;
+		this.club = club;
+		this.clubEvent = clubEvent;//can be null
 		
 	}
 
-	public static int getCOUNT_FOR_IDS() {
+	public static int getCountForIds() {
 		return COUNT_FOR_IDS;
 	}
 
 
 
-	public static void setCOUNT_FOR_IDS(int cOUNT_FOR_IDS) {
-		COUNT_FOR_IDS = cOUNT_FOR_IDS;
+	public static void setCountForIds(int countForIds) {
+		COUNT_FOR_IDS = countForIds;
 	}
 
 
@@ -204,7 +208,26 @@ public class Expenditure {
 		return club;
 	}
 
-	
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	public ClubEvent getEvent() {
+		return clubEvent;
+	}
+
+	public void setEvent(ClubEvent clubEvent) {
+		this.clubEvent = clubEvent;
+	}
+
 	@Override
 	public String toString() {
 		return 
