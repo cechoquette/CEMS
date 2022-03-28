@@ -1,13 +1,11 @@
 package CEMS.src.controllers;
 
-import CEMS.src.application.Controller;
-import CEMS.src.application.MainMenu;
-import CEMS.src.application.Province;
-import CEMS.src.application.RequestType;
+import CEMS.src.application.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 import java.util.HashMap;
@@ -101,12 +99,17 @@ public class ClubEventBudgetUIController {
 	private TextField tfEventBudgetTaxes;
 	@FXML
 	private TextField tfEventBudgetTotal;
-	
-	
+	@FXML
+	private ChoiceBox<Club> choiceClubEventBudgetClub;
+	@FXML
+	private ChoiceBox<ClubEvent> choiceClubEventBudgetEvent;
+
 	
 	@FXML
 	public void initialize(){
 		eventBudgetBorderPane.setTop(new MainMenu().createMenu());
+
+		//TODO initialize club & event lists
 		
 		//setting uneditable fields to blue
 		tfEventBudgetVenueSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
@@ -165,6 +168,8 @@ public class ClubEventBudgetUIController {
 		tfEventBudgetSubtotal.setText("");
 		tfEventBudgetTaxes.setText("");
 		tfEventBudgetTotal.setText("");
+		choiceClubEventBudgetClub.setValue(null);
+		choiceClubEventBudgetEvent.setValue(null);
 		
 		setSubtotalsBaseline();
 	}
@@ -217,6 +222,9 @@ public class ClubEventBudgetUIController {
 		dataToSubmit.put("EventBudgetSubtotal", Double.parseDouble(tfEventBudgetSubtotal.getText()));
 		dataToSubmit.put("EventBudgetTaxes", Double.parseDouble(tfEventBudgetTaxes.getText()));
 		dataToSubmit.put("EventBudgetTotal", Double.parseDouble(tfEventBudgetTotal.getText()));
+		//No null values expected
+		dataToSubmit.put("EventBudgetClub", choiceClubEventBudgetClub.getValue());
+		dataToSubmit.put("EventBudgetEvent", choiceClubEventBudgetEvent.getValue());
 
 		Controller.processRequest(RequestType.SUBMIT_EVENT_BUDGET, dataToSubmit);
 		btEventBudgetClearClicked(event);
@@ -224,6 +232,13 @@ public class ClubEventBudgetUIController {
 	}
 	
 	public void checkMandatoryFields() {
+
+		//at least one field must be > 0
+		//club and event must not be null
+		choiceClubEventBudgetClub.getValue();
+		choiceClubEventBudgetEvent.getValue();
+
+
 		if(tfEventBudgetVenueEntertain.getText() == "")
 		tfEventBudgetVenueEntertain.setText("0.00");
 		if(tfEventBudgetVenueLocation.getText() == "")

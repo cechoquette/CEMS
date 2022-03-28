@@ -22,6 +22,8 @@ public class Club {
     @OneToMany
     private List<Expenditure> expenditure = new ArrayList<Expenditure>();
 
+    private ArrayList<ClubMember> clubMembers;
+
     public Club () {
 
     }
@@ -31,6 +33,14 @@ public class Club {
         this.clubID = ++COUNT_FOR_IDS;
         this.clubName = clubName;
         this.clubDescription = clubDescription;
+    }
+    //option to create Club with an existing list of ClubMembers
+    public Club(String clubName, String clubDescription, ArrayList<ClubMember> clubMembers) {
+        super();
+        this.clubID = ++COUNT_FOR_IDS;
+        this.clubName = clubName;
+        this.clubDescription = clubDescription;
+        this.clubMembers = clubMembers;
     }
 
     public int getClubID() {
@@ -73,4 +83,15 @@ public class Club {
         this.expenditure = expenditure;
     }
 
+    public ArrayList<ClubMember> getClubMembers() {
+        return clubMembers;
+    }
+
+    public void setClubMembers(ArrayList<ClubMember> clubMembers) {
+        this.clubMembers = clubMembers;
+    }
+
+    public void addClubMember(ClubMember clubMember){
+        clubMembers.add(clubMember);
+    }
 }

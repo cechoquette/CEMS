@@ -61,8 +61,12 @@ public class ClubEventBudgetForm extends Form{
 		dataForBudget.add((Double)hmData.get("EventBudgetSubtotal"));
 		dataForBudget.add((Double)hmData.get("EventBudgetTaxes"));
 		dataForBudget.add((Double)hmData.get("EventBudgetTotal"));
+
+		Club club = (Club)hmData.get("EventBudgetClub");
+		ClubEvent clubEvent = (ClubEvent)hmData.get("EventBudgetEvent");
+
 		
-		this.clubEventBudget = new ClubEventBudget(dataForBudget);
+		this.clubEventBudget = new ClubEventBudget(dataForBudget, club, clubEvent);
 		
 	}
 	

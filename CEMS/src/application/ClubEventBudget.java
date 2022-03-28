@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class ClubEventBudget extends Budget{
 	public static int COUNT_FOR_IDS;
 	private int eventBudgetID;
+	private Club club;
+	private ClubEvent clubEvent;
 
 //	Venue
 
@@ -57,7 +59,7 @@ public class ClubEventBudget extends Budget{
 
 	public ClubEventBudget(){}
 	
-	public ClubEventBudget(ArrayList<Double> sortedData){
+	public ClubEventBudget(ArrayList<Double> sortedData, Club club, ClubEvent clubEvent){
 		this.eventBudgetID = COUNT_FOR_IDS++;
 		
 		this.venueEntertainment = sortedData.get(0);
@@ -106,6 +108,10 @@ public class ClubEventBudget extends Budget{
 		this.EventBudgetSubtotal = sortedData.get(33);
 		this.EventBudgetTaxes = sortedData.get(34);
 		this.EventBudgetTotal = sortedData.get(35);
+
+		this.club = club;
+		this.clubEvent = clubEvent;
+
 	}
 	
 }
