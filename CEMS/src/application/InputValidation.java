@@ -1,5 +1,6 @@
 package CEMS.src.application;
 
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -54,6 +55,13 @@ public class InputValidation{
 	}
 	public static boolean validateNotEmpty(TextField tf) {
 		if(tf.getText().equals("")){
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean validateComboNotEmpty(ComboBox cb) {
+		if(cb.getValue() == null) {
 			return false;
 		}
 		return true;

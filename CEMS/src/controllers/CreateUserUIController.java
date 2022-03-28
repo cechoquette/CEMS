@@ -102,20 +102,20 @@ public class CreateUserUIController {
         }
 
         // TODO: Club - combobox validation in InputValidation class
-//        if(!InputValidation.validateText(tfCreateUserID)) {
-//            tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-//        }
-//        else {
-//            tfCreateUserID.setStyle(null);
-//        }
+        if(!InputValidation.validateComboNotEmpty(comboCreateUserClub)) {
+            comboCreateUserClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
+        }
+        else {
+            comboCreateUserClub.setStyle(null);
+        }
 
         // TODO: Permissions - combobox validation in InputValidation class
-//        if(!InputValidation.validateText(tfCreateUserID)) {
-//            tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-//        }
-//        else {
-//            tfCreateUserID.setStyle(null);
-//        }
+        if(!InputValidation.validateComboNotEmpty(comboCreateUserPermissions)) {
+            comboCreateUserPermissions.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");;
+        }
+        else {
+            comboCreateUserPermissions.setStyle(null);
+        }
 
     }
 
