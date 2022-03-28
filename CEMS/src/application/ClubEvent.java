@@ -15,14 +15,14 @@ public class ClubEvent {
     private String[] emailGroup;
 
     public ClubEvent(){}
-    public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String[] emailGroup){
+    public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String emailGroup){
         this.eventID = COUNT_FOR_IDS++;
         this.eventName = name;
         this.associatedClub = club;
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
         this.eventLocation = location;
-        this.emailGroup = emailGroup;//could be null
+        this.emailGroup = getEmails(emailGroup);//could be null
     }
 
     public static int getCountForIds() {
@@ -74,7 +74,8 @@ public class ClubEvent {
         this.eventDateTime = eventDateTime;
     }
 
-    public String[] getEmails() {
+    //method takes a String, either "none" or "all members..." and populates emailGroup accordingly
+    public String[] getEmails(String emailType) {
         ArrayList<ClubMember> clubMember = this.associatedClub.getClubMembers();
 
         String[] emails = new String[clubMember.size()];
@@ -82,9 +83,10 @@ public class ClubEvent {
         for (int i=0; i<clubMember.size(); i++){
             emails[i] = clubMember.get(i).getClubMemberEmail();
         }
+        if(emails == null) emails[0] = emailType;
 
         return emails;
-    }//could be null
+    }//cant be null, element 0 should be "none"
 
     public void setEmailGroup(String[] emailGroup) {
         this.emailGroup = emailGroup;

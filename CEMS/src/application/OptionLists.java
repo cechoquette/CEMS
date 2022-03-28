@@ -8,7 +8,7 @@ package CEMS.src.application;
 public class OptionLists {
 
 	public static String[] EMAIL_GROUPS(){
-		return new String[]{"All Club members", "None"};
+		return new String[]{"All Club Members", "None"};
 	}
 
 	public static ClubEvent[] getEvents(Timeframe timeframe){
