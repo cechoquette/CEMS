@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ClubBudget extends Budget{
 	
-	protected static int COUNT_FOR_IDS = 0;
+	public static int COUNT_FOR_IDS;
 	private int clubBudgetID;
 
 //	Events
@@ -43,6 +43,8 @@ public class ClubBudget extends Budget{
 	private double clubBudgetSubtotal;
 	private double clubBudgetTaxes;
 	private double clubBudgetTotal;
+
+	public ClubBudget(){}
 	
 	ClubBudget(ArrayList<Double> filteredData){
 		this.clubBudgetID = ++COUNT_FOR_IDS;

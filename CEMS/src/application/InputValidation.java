@@ -8,27 +8,27 @@ import java.util.regex.Pattern;
 
 public class InputValidation{
 
-//	public static boolean validateAmount(TextField tf) {
-//		try {
-//			Double.parseDouble(tf.getText());
-//			return true;
-//		}
-//		catch(NumberFormatException ex){
-//			System.out.println(tf.getText());
-//			return false;
-//		}
-//	}
-
-	public static boolean validateAmount(String text) {
+	public static boolean validateAmount(TextField tf) {
 		try {
-			Double.parseDouble(text);
+			Double.parseDouble(tf.getText());
 			return true;
 		}
 		catch(NumberFormatException ex){
-			System.out.println(text);
+			System.out.println(tf.getText());
 			return false;
 		}
 	}
+
+//	public static boolean validateAmount(String text) {
+//		try {
+//			Double.parseDouble(text);
+//			return true;
+//		}
+//		catch(NumberFormatException ex){
+//			System.out.println(text);
+//			return false;
+//		}
+//	}
 
 	public static boolean validateDate(DatePicker dp) {
 		if(dp.getValue() != null){
@@ -74,6 +74,16 @@ public class InputValidation{
 
 		return false;
 	}
+//
+//	public static boolean validatePhoneNumber(TextField tf){
+//		if(validateNotEmpty(tf)){
+//		String phone = tf.getText();
+//		String regexPattern = "^(\(?\s*\d{3}\s*[\)–\.]?\s*)?[2-9]\d{2}\s*[–\.]\s*\d{4}$";
+//
+//
+//		}
+//	}
+
 	//Pass a tf. Expected format is DDD-DDD-DDDD
 	public static boolean validatePhone(TextField tf){
 		if(InputValidation.validateNotEmpty(tf)) {

@@ -4,14 +4,20 @@ public class ClubMember {
 	
 	private int userID;
 	private Club club;
+	private String clubMemberName;
+	private String clubMemberEmail;
 	
-	ClubMember(Club club){
-		this.club = club;
-	}
+	public ClubMember(){}
 	
-	ClubMember(Club club, int userID){
-		this.club = club;
+	public ClubMember(int userID, String name, String email, Club club){
 		this.userID = userID;
+		this.clubMemberName = name;
+		this.clubMemberEmail = email;
+
+
+
+
+		club.addClubMember(this);
 	}
 
 }

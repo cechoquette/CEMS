@@ -17,10 +17,12 @@ public class Expenditure {
 	private Vendor vendorName;
 	private ExpenditureCategory category;
 	private PaymentMethod paymentMethod;
-	
-	Expenditure(String description, String accountHolder, String paymentAccount, double amount, double taxAmount, double total, Province province, LocalDate date, Vendor vendorName, ExpenditureCategory category, PaymentMethod paymentMethod){
-		this.expenditureID = ++COUNT_FOR_IDS;
 
+	public Expenditure(){}
+	
+	public Expenditure(String description, String accountHolder, String paymentAccount, double amount, double taxAmount, double total, Province province, LocalDate date, Vendor vendorName, ExpenditureCategory category, PaymentMethod paymentMethod){
+		super();
+		this.expenditureID = ++COUNT_FOR_IDS;
 		this.description = description;
 		this.accountHolder = accountHolder;
 		this.paymentAccount = paymentAccount;
