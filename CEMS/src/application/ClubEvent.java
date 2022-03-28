@@ -1,6 +1,7 @@
 package CEMS.src.application;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class ClubEvent {
     public static int COUNT_FOR_IDS;
@@ -21,7 +22,7 @@ public class ClubEvent {
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
         this.eventLocation = location;
-        this.emailGroup = emailGroup;
+        this.emailGroup = emailGroup;//could be null
     }
 
     public static int getCountForIds() {
@@ -73,9 +74,17 @@ public class ClubEvent {
         this.eventDateTime = eventDateTime;
     }
 
-    public String[] getEmailGroup() {
-        return emailGroup;
-    }
+    public String[] getEmails() {
+        ArrayList<ClubMember> clubMember = this.associatedClub.getClubMembers();
+
+        String[] emails = new String[clubMember.size()];
+
+        for (int i=0; i<clubMember.size(); i++){
+            emails[i] = clubMember.get(i).getClubMemberEmail();
+        }
+
+        return emails;
+    }//could be null
 
     public void setEmailGroup(String[] emailGroup) {
         this.emailGroup = emailGroup;

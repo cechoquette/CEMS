@@ -1,6 +1,7 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.Club;
+import CEMS.src.application.OptionLists;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class CreateClubEventUIController {
@@ -53,8 +55,8 @@ public class CreateClubEventUIController {
     public void initialize(){
         //initialize club list
         //initialize email group list
-        comboCreateEventEmail.getItems().addAll("All Club Members", "None");
-
+        comboCreateEventEmail.getItems().addAll(Arrays.asList(OptionLists.EMAIL_GROUPS()));
+        comboCreateEventClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
 
     }
 

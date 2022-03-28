@@ -8,8 +8,8 @@ import javafx.scene.Scene;
 
 public class Main extends Application {
 	//do not delete, global User for session. Initialize in Start.
-	public User currentUser;
-
+	public static User CURRENTUSER;
+	public static Club ALLCLUBS = new Club("All Clubs", "This is the club for all SuperAdmins.");
 
 
 
@@ -24,7 +24,7 @@ public class Main extends Application {
 			//Create Clubs if Database empty
 				//Maybe make a method for this in Club class called createFirstClubs() and send to Database. Or RequestType.
 			//if doesn't already exist in Database, create:
-			final Club ALLCLUBS = new Club("All Clubs", "This is the club for all SuperAdmins.");
+
 			//add ALLCLUBS Club to database
 
 
