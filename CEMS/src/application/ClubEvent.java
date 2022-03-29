@@ -2,19 +2,30 @@ package CEMS.src.application;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.persistence.*;
 
 import static CEMS.src.application.Main.ALLCLUBS;
 
+
+@Entity
+@Table(name="ClubEvent")
 public class ClubEvent {
     public static int COUNT_FOR_IDS;
 
+    @Id
+    @Column(name="event_id")
     private int eventID;
+    @Column(name="event_name")
     private String eventName;
+    @Column(name="event_description")
     private String eventDescription;
     private Club associatedClub;//might be club id, not sure yet
+    @Column(name="event_date")
     private LocalDateTime eventDateTime;
+    @Column(name="event_location")
     private String eventLocation;
     private String[] emailGroup;
+    @Column(name="event_attendance")
     private int attendance;
 
     public ClubEvent(){}
