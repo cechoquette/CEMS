@@ -36,7 +36,7 @@ public class Expenditure {
     private PaymentMethod paymentMethod;
     @ManyToOne
     private Club club;  // many to one relationship, expenditure to clubs
-
+    @ManyToOne
     private ClubEvent clubEvent;
 
     public Expenditure() {

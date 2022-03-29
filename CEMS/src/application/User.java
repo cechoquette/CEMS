@@ -34,8 +34,9 @@ public class User {
 	private String securityAnswer;
 	//@Column(name="club")
 	private static Club club;
-	
-	
+
+	public User() {
+	}
 	/** Constructor to create a user object **/
 	public User(String firstName, String lastName, String phone, String email,
 				int studentID, Club club, String permission, String securityQuestion,
