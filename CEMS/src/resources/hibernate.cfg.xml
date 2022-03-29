@@ -20,6 +20,9 @@
         <mapping class="CEMS.src.application.Club" />
         <mapping class="CEMS.src.application.User" />
         <mapping class="CEMS.src.application.Expenditure"/>
+        <mapping class="CEMS.src.application.ClubEvent"/>
+        <mapping class="CEMS.src.application.ClubEventBudget"/>
+        <mapping class="CEMS.src.application.ClubBudget"/>
 
     </session-factory>
 </hibernate-configuration>
