@@ -26,7 +26,7 @@ public class CreateUserUIController {
     private Button btnCreateUserSubmit;
 
     @FXML
-    private ComboBox<String> comboCreateUserClub;
+    private ComboBox<Club> comboCreateUserClub;
 
     @FXML
     private ComboBox<PermissionType> comboCreateUserPermissions;
@@ -47,6 +47,12 @@ public class CreateUserUIController {
     private TextField tfCreateUserPhone;
 
     @FXML
+    private TextField tfCreateUserSecQ;
+
+    @FXML
+    private TextField tfCreateUserSecA;
+
+    @FXML
     public void initialize() {
         // TODO: Add menu - first, add label in the FXML document
 //        createUserBorderPane.setTop(new MainMenu().createMenu());
@@ -64,64 +70,72 @@ public class CreateUserUIController {
         // First Name
         if(!InputValidation.validateNotEmpty(tfCreateUserFirst)) {
             tfCreateUserFirst.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-		}
-		else {
+		} else {
             tfCreateUserFirst.setStyle(null);
 		}
 
         // Last Name
         if(!InputValidation.validateNotEmpty(tfCreateUserLast)) {
             tfCreateUserLast.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-        }
-        else {
+        } else {
             tfCreateUserLast.setStyle(null);
         }
 
         // TODO: Phone Number - proper formatting in InputValidation class
         if(!InputValidation.validatePhone(tfCreateUserPhone)) {
             tfCreateUserPhone.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-        }
-        else {
+        } else {
             tfCreateUserPhone.setStyle(null);
         }
 
         // TODO: Email - proper formatting in InputValidation class
         if(!InputValidation.validateEmail(tfCreateUserEmail)) {
             tfCreateUserEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-        }
-        else {
+        } else {
             tfCreateUserEmail.setStyle(null);
         }
 
         // StudentID
         if(!InputValidation.validateStudentID(tfCreateUserID)) {
             tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-        }
-        else {
+        } else {
             tfCreateUserID.setStyle(null);
         }
 
-        // TODO: Club - combobox validation in InputValidation class
-//        if(!InputValidation.validateText(tfCreateUserID)) {
-//            tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-//        }
-//        else {
-//            tfCreateUserID.setStyle(null);
-//        }
+        // Club
+        if(!InputValidation.validateComboNotEmpty(comboCreateUserClub)) {
+            comboCreateUserClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
+        } else {
+            comboCreateUserClub.setStyle(null);
+        }
 
-        // TODO: Permissions - combobox validation in InputValidation class
-//        if(!InputValidation.validateText(tfCreateUserID)) {
-//            tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-//        }
-//        else {
-//            tfCreateUserID.setStyle(null);
-//        }
+        // Permissions
+        if(!InputValidation.validateComboNotEmpty(comboCreateUserPermissions)) {
+            comboCreateUserPermissions.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");;
+        } else {
+            comboCreateUserPermissions.setStyle(null);
+        }
+
+        // Security Question
+        if(!InputValidation.validateNotEmpty(tfCreateUserSecQ)) {
+            tfCreateUserSecQ.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");;
+        } else {
+            tfCreateUserSecQ.setStyle(null);
+        }
+
+        // Security Answer
+        if(!InputValidation.validateNotEmpty(tfCreateUserSecA)) {
+            tfCreateUserSecA.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");;
+        } else {
+            tfCreateUserSecA.setStyle(null);
+        }
 
     }
 
     @FXML
     void btnCreateUserBackClicked(ActionEvent event) {
         // TODO: Return user to the dashboard
+        btnCreateUserCancelClicked(event);
     }
 
     /** Method handles both cancel and clear button ActionEvents **/
@@ -139,7 +153,13 @@ public class CreateUserUIController {
         tfCreateUserID.setText(""); // StudentID
         tfCreateUserID.setStyle(null);
         comboCreateUserClub.setValue(null);
+        comboCreateUserClub.setStyle(null);
         comboCreateUserPermissions.setValue(null);
+        comboCreateUserPermissions.setStyle(null);
+        tfCreateUserSecQ.setText("");
+        tfCreateUserSecQ.setStyle(null);
+        tfCreateUserSecA.setText("");
+        tfCreateUserSecA.setStyle(null);
 
         // TODO: Return user to the dashboard
 

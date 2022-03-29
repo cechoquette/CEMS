@@ -1,22 +1,21 @@
 package CEMS.src.controllers;
 
-import CEMS.src.application.Controller;
-import CEMS.src.application.MainMenu;
-import CEMS.src.application.Province;
-import CEMS.src.application.RequestType;
+import CEMS.src.application.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javafx.event.ActionEvent;
 
 import javafx.scene.layout.BorderPane;
 
-public class EventBudgetUIController {
+public class ClubEventBudgetUIController {
 	HashMap<Object, Object> dataToSubmit;
 	
 	@FXML
@@ -101,13 +100,19 @@ public class EventBudgetUIController {
 	private TextField tfEventBudgetTaxes;
 	@FXML
 	private TextField tfEventBudgetTotal;
-	
-	
+	@FXML
+	private ChoiceBox<Club> choiceClubEventBudgetClub;
+	@FXML
+	private ChoiceBox<ClubEvent> choiceClubEventBudgetEvent;
+
 	
 	@FXML
 	public void initialize(){
 		eventBudgetBorderPane.setTop(new MainMenu().createMenu());
-		
+
+		choiceClubEventBudgetClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+		choiceClubEventBudgetEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
+
 		//setting uneditable fields to blue
 		tfEventBudgetVenueSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
 		tfEventBudgetRefreshSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
@@ -165,6 +170,8 @@ public class EventBudgetUIController {
 		tfEventBudgetSubtotal.setText("");
 		tfEventBudgetTaxes.setText("");
 		tfEventBudgetTotal.setText("");
+		choiceClubEventBudgetClub.setValue(null);
+		choiceClubEventBudgetEvent.setValue(null);
 		
 		setSubtotalsBaseline();
 	}
@@ -181,7 +188,7 @@ public class EventBudgetUIController {
 		
 		dataToSubmit = new HashMap<Object, Object>();
 		
-		dataToSubmit.put("EventBudgetVenueEntertainement", Double.parseDouble(tfEventBudgetVenueEntertain.getText()));
+		dataToSubmit.put("EventBudgetVenueEntertainment", Double.parseDouble(tfEventBudgetVenueEntertain.getText()));
 		dataToSubmit.put("EventBudgetVenueLocationRental", Double.parseDouble(tfEventBudgetVenueLocation.getText()));
 		dataToSubmit.put("EventBudgetVenueEquipmentRental", Double.parseDouble(tfEventBudgetVenueEquipRent.getText()));
 		dataToSubmit.put("EventBudgetVenueFurniture", Double.parseDouble(tfEventBudgetVenueFurniture.getText()));
@@ -217,6 +224,9 @@ public class EventBudgetUIController {
 		dataToSubmit.put("EventBudgetSubtotal", Double.parseDouble(tfEventBudgetSubtotal.getText()));
 		dataToSubmit.put("EventBudgetTaxes", Double.parseDouble(tfEventBudgetTaxes.getText()));
 		dataToSubmit.put("EventBudgetTotal", Double.parseDouble(tfEventBudgetTotal.getText()));
+		//No null values expected
+		dataToSubmit.put("EventBudgetClub", choiceClubEventBudgetClub.getValue());
+		dataToSubmit.put("EventBudgetEvent", choiceClubEventBudgetEvent.getValue());
 
 		Controller.processRequest(RequestType.SUBMIT_EVENT_BUDGET, dataToSubmit);
 		btEventBudgetClearClicked(event);
@@ -224,6 +234,13 @@ public class EventBudgetUIController {
 	}
 	
 	public void checkMandatoryFields() {
+
+		//at least one field must be > 0
+		//club and event must not be null
+		choiceClubEventBudgetClub.getValue();
+		choiceClubEventBudgetEvent.getValue();
+
+
 		if(tfEventBudgetVenueEntertain.getText() == "")
 		tfEventBudgetVenueEntertain.setText("0.00");
 		if(tfEventBudgetVenueLocation.getText() == "")

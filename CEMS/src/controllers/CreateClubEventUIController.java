@@ -1,5 +1,7 @@
 package CEMS.src.controllers;
 
+import CEMS.src.application.Club;
+import CEMS.src.application.OptionLists;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,9 +13,10 @@ import javafx.scene.control.TextField;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.HashMap;
 
-public class CreateEventUIController {
+public class CreateClubEventUIController {
 
     @FXML
     private Button btnCreateEventBack;
@@ -28,7 +31,7 @@ public class CreateEventUIController {
     private Button btnCreateEventSubmit;
 
     @FXML
-    private ComboBox<String> comboCreateEventClub;
+    private ComboBox<Club> comboCreateEventClub;
 
     @FXML
     private ComboBox<String> comboCreateEventEmail;
@@ -52,7 +55,8 @@ public class CreateEventUIController {
     public void initialize(){
         //initialize club list
         //initialize email group list
-
+        comboCreateEventEmail.getItems().addAll(Arrays.asList(OptionLists.EMAIL_GROUPS()));
+        comboCreateEventClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
 
     }
 
@@ -83,9 +87,10 @@ public class CreateEventUIController {
         HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
 
         dataToSubmit.put("EventName", tfCreateEventName.getText());
-        dataToSubmit.put("EventDescription", tfCreateEventName.getText());
-        dataToSubmit.put("EventClub", null);//either send a club, or a club id
+        dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
+        dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
         dataToSubmit.put("EventDateTime", formatDateTime());
+        dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
         dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
 
     }

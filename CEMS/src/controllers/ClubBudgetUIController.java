@@ -1,13 +1,11 @@
 package CEMS.src.controllers;
 
-import CEMS.src.application.Controller;
-import CEMS.src.application.MainMenu;
-import CEMS.src.application.Province;
-import CEMS.src.application.RequestType;
+import CEMS.src.application.*;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 import java.util.HashMap;
@@ -77,10 +75,14 @@ public class ClubBudgetUIController {
 	private TextField tfClubBudgetTaxes;
 	@FXML
 	private TextField tfClubBudgetTotal;
+	@FXML
+	private ChoiceBox<Club> choiceClubBudgetClub;
 	
 	@FXML
 	public void initialize(){
 		clubBudgetBorderPane.setTop(new MainMenu().createMenu());
+
+		//choiceClubBudgetClub set up fields
 		
 		//setting uneditable fields to blue
 		tfClubBudgetEventsSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
@@ -125,6 +127,7 @@ public class ClubBudgetUIController {
 		tfClubBudgetSubtotal.setText("");
 		tfClubBudgetTaxes.setText("");
 		tfClubBudgetTotal.setText("");
+		choiceClubBudgetClub.setValue(null);
 		
 		setSubtotalsBaseline();
 	}
@@ -165,6 +168,7 @@ public class ClubBudgetUIController {
 		dataToSubmit.put("ClubBudgetSubtotal", Double.parseDouble(tfClubBudgetSubtotal.getText()));
 		dataToSubmit.put("ClubBudgetTaxes", Double.parseDouble(tfClubBudgetTaxes.getText()));
 		dataToSubmit.put("ClubBudgetTotal", Double.parseDouble(tfClubBudgetTotal.getText()));
+		dataToSubmit.put("ClubBudgetClub", choiceClubBudgetClub.getValue());
 
 		Controller.processRequest(RequestType.SUBMIT_CLUB_BUDGET, dataToSubmit);
 		btClubBudgetClearClicked(event);

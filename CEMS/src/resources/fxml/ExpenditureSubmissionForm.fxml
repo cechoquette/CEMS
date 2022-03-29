@@ -12,13 +12,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0"
-            prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ExpenditureFormUIController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ExpenditureFormUIController">
    <children>
-      <BorderPane fx:id="expenditureBorderPane" prefHeight="575.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="expenditureBorderPane" prefHeight="568.0" prefWidth="923.0">
          <bottom>
             <GridPane alignment="CENTER" prefHeight="64.0" prefWidth="923.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -33,10 +30,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btExpenditureBack" alignment="CENTER" mnemonicParsing="false" onAction="#btBackExpenditureClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Back" />
-                  <Button fx:id="btExpenditureClear" mnemonicParsing="false" onAction="#btClearExpenditureClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" />
-                  <Button fx:id="btExpenditureCancel" mnemonicParsing="false" onAction="#btCancelExpenditureClicked" prefWidth="100.0" styleClass="form__btn" text="Cancel" GridPane.columnIndex="4" />
-                  <Button fx:id="btExpenditureSubmit" mnemonicParsing="false" onAction="#btSubmitExpenditureClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="5" />
+                  <Button fx:id="btExpenditureBack" alignment="CENTER" mnemonicParsing="false" onAction="#btBackExpenditureClicked" prefHeight="25.0" prefWidth="100.0" text="Back" />
+                  <Button fx:id="btExpenditureClear" mnemonicParsing="false" onAction="#btClearExpenditureClicked" prefHeight="25.0" prefWidth="100.0" text="Clear" GridPane.columnIndex="1" />
+                  <Button fx:id="btExpenditureCancel" mnemonicParsing="false" onAction="#btCancelExpenditureClicked" prefWidth="100.0" text="Cancel" GridPane.columnIndex="4" />
+                  <Button fx:id="btExpenditureSubmit" mnemonicParsing="false" onAction="#btSubmitExpenditureClicked" prefWidth="100.0" text="Submit" GridPane.columnIndex="5" />
                </children>
                <BorderPane.margin>
                   <Insets />
@@ -62,12 +59,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                   <Label alignment="CENTER" text="Description">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
@@ -141,46 +132,66 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Amount" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                  <Label text="Amount" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Taxes" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Label text="Taxes" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Province" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <Label text="Province" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="tfExpenditureAmount" GridPane.columnIndex="3">
+                  <TextField fx:id="tfExpenditureAmount" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="15.0" top="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfExpenditureTax" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <TextField fx:id="tfExpenditureTax" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <ChoiceBox fx:id="choiceExpenditureProvince" prefHeight="25.0" prefWidth="297.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <ChoiceBox fx:id="choiceExpenditureProvince" prefHeight="25.0" prefWidth="297.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                      </GridPane.margin>
                   </ChoiceBox>
-                  <Label text="Total" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                  <ChoiceBox fx:id="choiceExpenditureClub" prefHeight="25.0" prefWidth="328.0" GridPane.columnIndex="3">
                      <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets left="5.0" right="15.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="choiceExpenditureEvent" prefHeight="25.0" prefWidth="390.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="15.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <Label text="Club" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="tfExpenditureTotal" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Label text="Event" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="15.0" top="10.0" />
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="tfExpenditureTotal" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="15.0" />
                      </GridPane.margin>
                   </TextField>
+                  <Label text="Total" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
             </GridPane>
          </center>

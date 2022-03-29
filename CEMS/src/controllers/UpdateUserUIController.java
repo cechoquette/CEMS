@@ -30,7 +30,7 @@ public class UpdateUserUIController {
     private Button btnUpdateUserSubmit;
 
     @FXML
-    private ComboBox<String> comboUpdateUserClub;
+    private ComboBox<Club> comboUpdateUserClub;
 
     @FXML
     private ComboBox<PermissionType> comboUpdateUserPermissions;

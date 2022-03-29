@@ -43,7 +43,7 @@ public class ReportRequestUIController {
 	@FXML
 	private ChoiceBox<ReportType> choiceReportSelectType;
 	@FXML
-	private ChoiceBox<String> choiceReportSelectClub;
+	private ChoiceBox<Club> choiceReportSelectClub;
 	@FXML
 	private ToggleGroup tgReportTimeframe;
 	@FXML
@@ -119,7 +119,7 @@ public class ReportRequestUIController {
 		//if last month is selected, set timeframe to 1st of previous month until last day of previous month
 		if (rbReportTimeframeLastMonth.isSelected()) {
 			
-			start = LocalDate.of(timeframe.getToday().getYear(), timeframe.getToday().getMonthValue()-1>1?timeframe.getToday().getMonthValue()-1:1, 1);
+			start = LocalDate.of(timeframe.getToday().getYear(), timeframe.getToday().getMonthValue()-1>0?timeframe.getToday().getMonthValue()-1:12, 1);
 			timeframe.setStartDate(start);
 			timeframe.setEndDate(start.withDayOfMonth(start.lengthOfMonth()));
 			return timeframe;

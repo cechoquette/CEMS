@@ -4,30 +4,29 @@ import java.util.HashMap;
 
 public class ClubForm extends Form{
 
-//	@Override
-//	public void addField(HashMap<Object, Object> requestData) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public Object getField(Object Key) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void setField(HashMap<Object, Object> requestData) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	protected boolean delete(HashMap<Object, Object> requestData) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+    private static int formID; //needs to be called from Database, or saved and retrieved at startup
+    private boolean isFilled;
 
 
+
+    private Club club;
+
+
+
+    public ClubForm(RequestType requestType, HashMap<Object, Object> hmData){
+        createClub(hmData);
+    }
+
+    public void createClub(HashMap<Object, Object> hmData){
+        String clubName = (String)hmData.get("ClubName");
+        String clubDescription = (String)hmData.get("ClubDescription");
+
+
+        this.club = new Club(clubName, clubDescription);
+    }
+
+    public Club getClub() {
+        return club;
+    }
 
 }

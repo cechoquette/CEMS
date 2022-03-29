@@ -16,8 +16,10 @@ public class ExpenditureForm extends Form{
 		createExpenditure(hmData);
 		
 		System.out.println(expenditure);
-		System.out.println(formID);
-		System.out.println(expenditure.getExpenditureID());
+		System.out.println("FormID: " + formID);
+		System.out.println("ExpID: " + expenditure.getExpenditureID());
+		System.out.println("Club: " + expenditure.getClub());
+		System.out.println("Event: " + expenditure.getEvent());
 	}
 	
 	public Expenditure getExpenditure() {
@@ -36,6 +38,15 @@ public class ExpenditureForm extends Form{
 		Vendor vendorName = (Vendor)hmData.get("ExpenditureVendor");
 		ExpenditureCategory category = (ExpenditureCategory)hmData.get("ExpenditureCategory");
 		PaymentMethod paymentMethod = (PaymentMethod)hmData.get("ExpenditurePaymentMethod");
+		Club club = (Club)hmData.get("ExpenditureClub");
+		ClubEvent clubEvent;
+		if(hmData.get("ExpenditureEvent") != null) {
+			clubEvent = (ClubEvent)hmData.get("ExpenditureEvent");//can be null
+		}
+		else{
+			clubEvent = null;
+		}
+
 		/* Keys for HashMap
 		ExpenditureDescription
 		ExpenditurePayee
@@ -49,33 +60,9 @@ public class ExpenditureForm extends Form{
 		ExpenditurePaymentMethod
 		*/
 		
-		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount, total, province, date, vendorName, category, paymentMethod);
+		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount,
+				total, province, date, vendorName, category, paymentMethod, club, clubEvent);
 	}
-	
-//	
-//	@SuppressWarnings("rawtypes")
-//	@Override
-//	public void addField(HashMap<Object, Object> requestData) {
-//		
-////		formfields.put((String)formfield.getKey(), (Double)formfield.getValue());
-//		
-//	}
-//
-//	@Override
-//	public Object getField(Object key) {
-//		return null;
-//	}
-//
-//	@SuppressWarnings("rawtypes")
-//	@Override
-//	public void setField(HashMap<Object, Object> requestData) {
-//		//Check if field already has a value, if it does, replace with new data
-////		if(formfields.get(formfield.getKey()) != null) {
-////			formfields.remove(formfield.getKey());
-////		}
-////		addField(formfield);
-//		
-//	}
 	
 	public boolean isFilled() {
 		//iterate through all of the fields, check if mandatory fields are filled, then return true or false accordingly
@@ -83,12 +70,5 @@ public class ExpenditureForm extends Form{
 		
 		return isFilled;
 	}
-
-//
-//	@Override
-//	protected boolean delete(HashMap<Object, Object> requestData) {
-//		//Expenditures cannot be deleted
-//		return false;
-//	}
 
 }

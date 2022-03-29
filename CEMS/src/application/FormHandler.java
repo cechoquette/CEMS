@@ -12,9 +12,9 @@ import java.util.HashMap;
 public class FormHandler {
 	static HashMap<Object, Object> dataRequested;
 	static HashMap<Object, Object> dataToSend;
-	static Event event;
+	static ClubEvent clubEvent;
 	static Expenditure expenditure;
-	static EventBudget eventBudget;
+	static ClubEventBudget clubEventBudget;
 	static ClubBudget clubBudget;
 	static Club club;
 	static User user;
@@ -46,21 +46,21 @@ public class FormHandler {
 		return expenditure;
 	}
 	
-	public static Event createEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
-		EventForm eventForm = new EventForm(requestType, hmData);
-		event = eventForm.getEvent();
-		return event;
+	public static ClubEvent createClubEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);
+		clubEvent = clubEventForm.getEvent();
+		return clubEvent;
 	}
 	
-	public static EventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
-		EventBudgetForm eventBudgetForm = new EventBudgetForm(requestType, hmData);
-		eventBudget = eventBudgetForm.getEventBudget();
-		System.out.println(eventBudget);
+	public static ClubEventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		ClubEventBudgetForm clubEventBudgetForm = new ClubEventBudgetForm(requestType, hmData);
+		clubEventBudget = clubEventBudgetForm.getEventBudget();
+		System.out.println(clubEventBudget);
 		System.out.println("This worked2?");
-		return eventBudget;
+		return clubEventBudget;
 	}
-	public static EventBudget getEventBudget() {
-		return eventBudget;
+	public static ClubEventBudget getEventBudget() {
+		return clubEventBudget;
 	}
 	
 	public static ClubBudget createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
@@ -82,8 +82,8 @@ public class FormHandler {
 		return dataToSend;
 	}
 
-	public static Event getEvent() {
-		return event;
+	public static ClubEvent getEvent() {
+		return clubEvent;
 	}
 
 	public static Club getClub() {

@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -60,6 +61,10 @@ public class ExpenditureFormUIController{
 	private ChoiceBox<ExpenditureCategory> choiceExpenditureCategory;
 	@FXML
 	private ChoiceBox<PaymentMethod> choicePaymentMethod;
+	@FXML
+	private ChoiceBox<Club> choiceExpenditureClub;
+	@FXML
+	private ChoiceBox<ClubEvent> choiceExpenditureEvent;
 	@FXML 
 	private BorderPane expenditureBorderPane;
 	
@@ -70,26 +75,13 @@ public class ExpenditureFormUIController{
 		comboExpenditureVendor.getItems().addAll(Arrays.asList(Vendor.values()));
 		choiceExpenditureCategory.getItems().addAll(Arrays.asList(ExpenditureCategory.values()));
 		choicePaymentMethod.getItems().addAll(Arrays.asList(PaymentMethod.values()));
+		choiceExpenditureClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
 
+		choiceExpenditureEvent.getItems().addAll(new ClubEvent("Meeting 123", "Description", null, null, "Here", null));
 		tfExpenditureTax.setStyle("-fx-control-inner-background: #cce0ff");
 		tfExpenditureTotal.setStyle("-fx-control-inner-background: #cce0ff");
 		
 		expenditureBorderPane.setTop(new MainMenu().createMenu());
-		
-//		btExpenditureClear.addEventHandler(MouseEvent.MOUSE_CLICKED, e->{
-//
-//				tfExpenditureDescription.setText("");
-//				tfExpenditureAccountHolder.setText("");
-//				tfExpenditureAccount.setText("");
-//				tfExpenditureAmount.setText("");
-//				tfExpenditureTax.setText("");
-//				choiceExpenditureProvince.setValue(null);
-//				dpExpenditureDate.setValue(null);
-//				comboExpenditureVendor.setValue(null);
-//				choiceExpenditureCategory.setValue(null);
-//				choicePaymentMethod.setValue(null);
-//
-//		});
 
 
 	}
@@ -107,7 +99,7 @@ public class ExpenditureFormUIController{
 	}
 	
 	public void checkMandatoryFields() {
-		//mandatoryFields: All 
+		//mandatoryFields: All EXCEPT Event
 
 		if(InputValidation.validateNotEmpty(tfExpenditureAmount)) {
 			calculateTaxes();// would rather find a way to call this as an on change to the amount, along with checking it's a double, etc.
@@ -180,19 +172,15 @@ public class ExpenditureFormUIController{
 		dataToSubmit.put("ExpenditureVendor", comboExpenditureVendor.getValue());
 		dataToSubmit.put("ExpenditureCategory", choiceExpenditureCategory.getValue());
 		dataToSubmit.put("ExpenditurePaymentMethod", choicePaymentMethod.getValue());
+		dataToSubmit.put("ExpenditureClub", choiceExpenditureClub.getValue());
+		if(choiceExpenditureEvent.getValue() == null){
+			dataToSubmit.put("ExpenditureEvent", null);
+		}
+		else{
+			dataToSubmit.put("ExpenditureEvent", choiceExpenditureEvent.getValue());
+		}
 		
 		Controller.processRequest(RequestType.SUBMIT_EXPENDITURE, dataToSubmit);
-		
-//		tfExpenditureDescription.getText()
-//		tfExpenditureAccountHolder.getText()
-//		tfExpenditureAccount.getText()
-//		tfExpenditureAmount.getText()
-//		tfExpenditureTax.getText()
-//		choiceExpenditureProvince.getValue()
-//		dpExpenditureDate.getValue()
-//		comboExpenditureVendor.getValue()
-//		choiceExpenditureCategory.getValue()
-//		choicePaymentMethod.getValue();
 		
 		btClearExpenditureClicked(event);
 	}
@@ -217,6 +205,8 @@ public class ExpenditureFormUIController{
 		comboExpenditureVendor.setValue(null);
 		choiceExpenditureCategory.setValue(null);
 		choicePaymentMethod.setValue(null);
+		choiceExpenditureClub.setValue(null);
+		choiceExpenditureEvent.setValue(null);
 		
 		
 	}

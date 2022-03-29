@@ -1,14 +1,14 @@
 package CEMS.src.application;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 @Table(name="Club")
 public class Club {
+    public static int COUNT_FOR_IDS;
 
     @Id
     @Column(name="club_id ")
@@ -17,16 +17,31 @@ public class Club {
     private String clubName;
     @Column(name="club_description")
     private String clubDescription;
+    //@OneToMany   need to annotate user class
+    //private List<User> user = new ArrayList<User>();
+    @OneToMany
+    private List<Expenditure> expenditure = new ArrayList<Expenditure>();
+
+    private ArrayList<ClubMember> clubMembers;
 
     public Club () {
 
     }
 
-    public Club(int clubID, String clubName, String clubDescription) {
+    public Club(String clubName, String clubDescription) {
         super();
-        this.clubID = clubID;
+        this.clubID = ++COUNT_FOR_IDS;
         this.clubName = clubName;
         this.clubDescription = clubDescription;
+        this.clubMembers = new ArrayList<>();
+    }
+    //option to create Club with an existing list of ClubMembers
+    public Club(String clubName, String clubDescription, ArrayList<ClubMember> clubMembers) {
+        super();
+        this.clubID = ++COUNT_FOR_IDS;
+        this.clubName = clubName;
+        this.clubDescription = clubDescription;
+        this.clubMembers = clubMembers;
     }
 
     public int getClubID() {
@@ -52,5 +67,37 @@ public class Club {
     public void setClubDescription(String clubDescription) {
         this.clubDescription = clubDescription;
     }
+    /*need to annotate user class
+    public List<User> getUser() {
+        return user;
+    }
 
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+ */
+    public List<Expenditure> getExpenditure() {
+        return expenditure;
+    }
+
+    public void setExpenditure(List<Expenditure> expenditure) {
+        this.expenditure = expenditure;
+    }
+
+    public ArrayList<ClubMember> getClubMembers() {
+        return clubMembers;
+    }
+
+    public void setClubMembers(ArrayList<ClubMember> clubMembers) {
+        this.clubMembers = clubMembers;
+    }
+
+    public void addClubMember(ClubMember clubMember){
+        clubMembers.add(clubMember);
+    }
+
+    @Override
+    public String toString(){
+        return this.clubName;
+    }
 }

@@ -86,7 +86,7 @@ public class UserManagementUIController {
         textUserMgmtEmail.setText("erin@email.com");
         textUserMgmtID.setText("023485212");
         textUserMgmtPhone.setText("856-747-4534");
-        textUserMgmtClub.setText(OptionLists.getClubs()[1]);
+        textUserMgmtClub.setText(OptionLists.getClubs()[1].getClubName());
         textUserMgmtPermissions.setText(PermissionType.ADMIN.toString());
     }
 

@@ -30,7 +30,7 @@ public class DeleteUserUIController {
     private Button btnDeleteUserSubmit;
 
     @FXML
-    private ComboBox<String> comboDeleteUserClub;
+    private ComboBox<Club> comboDeleteUserClub;
 
     @FXML
     private ComboBox<PermissionType> comboDeleteUserPermissions;
