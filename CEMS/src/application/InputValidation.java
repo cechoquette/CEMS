@@ -67,6 +67,18 @@ public class InputValidation{
 		return true;
 	}
 
+	public static boolean validateSecurityAnswer(TextField tf) {
+		if(validateNotEmpty(tf)) {
+			String secAnswer = tf.getText();
+
+			// Security Answer must be greater than 4 characters
+			if (secAnswer.length() > 4) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static boolean validateInput(TextField tf) {
 		return false;
 	}
