@@ -21,12 +21,12 @@ public class OptionLists {
 		//temp Events[]
 		ClubEvent[] clubEvents = {
 		new ClubEvent(),
-				new ClubEvent("Meeting 123", "", null, null, "", null),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
+				new ClubEvent("Meeting 123", " ", null, null, "", "None"),
+				new ClubEvent("Sparklethon", " ", null, null, " ", "None")
+//				new ClubEvent(),
+//				new ClubEvent(),
+//				new ClubEvent(),
+//				new ClubEvent(),
 
 
 		};
@@ -40,12 +40,12 @@ public class OptionLists {
 		//temp Events[]
 		ClubEvent[] clubEvents = {
 				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
-				new ClubEvent(),
+				new ClubEvent("Meeting 123", " ", Main.ALLCLUBS, null, "", "None"),
+				new ClubEvent("Sparklethon", " ", Main.ALLCLUBS, null, " ", "None")
+//				new ClubEvent(),
+//				new ClubEvent(),
+//				new ClubEvent(),
+//				new ClubEvent(),
 
 
 		};

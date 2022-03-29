@@ -33,6 +33,7 @@ public class Club {
         this.clubID = ++COUNT_FOR_IDS;
         this.clubName = clubName;
         this.clubDescription = clubDescription;
+        this.clubMembers = new ArrayList<>();
     }
     //option to create Club with an existing list of ClubMembers
     public Club(String clubName, String clubDescription, ArrayList<ClubMember> clubMembers) {

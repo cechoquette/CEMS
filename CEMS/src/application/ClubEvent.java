@@ -3,6 +3,8 @@ package CEMS.src.application;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import static CEMS.src.application.Main.ALLCLUBS;
+
 public class ClubEvent {
     public static int COUNT_FOR_IDS;
 
@@ -13,6 +15,7 @@ public class ClubEvent {
     private LocalDateTime eventDateTime;
     private String eventLocation;
     private String[] emailGroup;
+    private int attendance;
 
     public ClubEvent(){}
     public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String emailGroup){
@@ -23,6 +26,12 @@ public class ClubEvent {
         this.eventDateTime = dateTime;
         this.eventLocation = location;
         this.emailGroup = getEmails(emailGroup);//could be null
+        if(club == ALLCLUBS){
+            setAttendanceLarge();
+        }
+        else{
+            setAttendanceSmall();
+        }
     }
 
     public static int getCountForIds() {
@@ -92,10 +101,36 @@ public class ClubEvent {
         this.emailGroup = emailGroup;
     }
 
+    public int getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendanceSmall() {
+        this.attendance = (int)(Math.random() * 25);
+    }
+
+    public void setAttendanceLarge() {
+        this.attendance = (int)(Math.random() * 1000);
+    }
+
+    public String getEventLocation() {
+        return eventLocation;
+    }
+
+    public void setEventLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
+    }
+
+    public String[] getEmailGroup() {
+        return emailGroup;
+    }
+
     @Override
     public String toString(){
         return this.eventName;
     }
+
+
 
 
 }

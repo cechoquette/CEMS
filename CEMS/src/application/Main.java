@@ -16,8 +16,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
-
+			ClubMember fakeClubMember = new ClubMember(232545245, "Bob", "Joe", "bobjoe@algomau.ca", ALLCLUBS);
+//			ReportHandler.createSamplePDF("TestPDF");
+//			ReportHandler.exportToExcel("TestExcel");
 
 			//Create Database (if first time running app)
 
@@ -42,10 +43,10 @@ public class Main extends Application {
 			//for Paths: use absolute paths (leading / ) and do note use .. , the resulting .jar executable will not function.
 			Parent root;
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubBudgetSubmissionForm.fxml"));
-			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateClubEventForm.fxml"));
+//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateClubEventForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateUserForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/DeleteUserForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubEventBudgetSubmissionForm.fxml"));
+			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubEventBudgetSubmissionForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ForgotPassword.fxml"));
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/HomePage.fxml"));
@@ -58,7 +59,7 @@ public class Main extends Application {
 
 
 			Scene scene = new Scene(root);
-			ReportHandler.exportToExcel();
+
 			primaryStage.setTitle("CEMS");
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

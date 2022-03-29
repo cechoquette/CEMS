@@ -21,7 +21,7 @@ public class ClubEventBudgetForm extends Form{
 	public void createEventBudget(HashMap<Object, Object> hmData){
 		ArrayList<Double> dataForBudget = new ArrayList<Double>();
 		
-		dataForBudget.add((Double)hmData.get("EventBudgetVenueEntertainement"));
+		dataForBudget.add((Double)hmData.get("EventBudgetVenueEntertainment"));
 		dataForBudget.add((Double)hmData.get("EventBudgetVenueLocationRental"));
 		dataForBudget.add((Double)hmData.get("EventBudgetVenueEquipmentRental"));
 		dataForBudget.add((Double)hmData.get("EventBudgetVenueFurniture"));
@@ -67,8 +67,27 @@ public class ClubEventBudgetForm extends Form{
 
 		
 		this.clubEventBudget = new ClubEventBudget(dataForBudget, club, clubEvent);
-		
+		//test only
+		try {
+//			ArrayList<String[]> list = new ArrayList<>();
+//
+//			for (var entry: hmData.entrySet()
+//				 ) {
+//				String[] newStringArray = {(String)entry.getKey(), entry.getValue().toString()};
+//				list.add(newStringArray);
+//			}
+//
+//
+//			ReportHandler.createSamplePDF(list, "ClubEventBudget");
+
+			ReportHandler.exportToExcel("ClubEventBuget", ReportHandler.formatClubEventBudgetReport(clubEventBudget));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
+
 	
 	
 	public ClubEventBudget getEventBudget() {

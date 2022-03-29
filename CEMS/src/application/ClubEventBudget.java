@@ -113,5 +113,324 @@ public class ClubEventBudget extends Budget{
 		this.clubEvent = clubEvent;
 
 	}
-	
+
+	public static int getCountForIds() {
+		return COUNT_FOR_IDS;
+	}
+
+	public static void setCountForIds(int countForIds) {
+		COUNT_FOR_IDS = countForIds;
+	}
+
+	public int getEventBudgetID() {
+		return eventBudgetID;
+	}
+
+	public void setEventBudgetID(int eventBudgetID) {
+		this.eventBudgetID = eventBudgetID;
+	}
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public ClubEvent getClubEvent() {
+		return clubEvent;
+	}
+
+	public void setClubEvent(ClubEvent clubEvent) {
+		this.clubEvent = clubEvent;
+	}
+
+	public double getVenueEntertainment() {
+		return venueEntertainment;
+	}
+
+	public void setVenueEntertainment(double venueEntertainment) {
+		this.venueEntertainment = venueEntertainment;
+	}
+
+	public double getVenueLocationRental() {
+		return venueLocationRental;
+	}
+
+	public void setVenueLocationRental(double venueLocationRental) {
+		this.venueLocationRental = venueLocationRental;
+	}
+
+	public double getVenueEquipmentRental() {
+		return venueEquipmentRental;
+	}
+
+	public void setVenueEquipmentRental(double venueEquipmentRental) {
+		this.venueEquipmentRental = venueEquipmentRental;
+	}
+
+	public double getVenueFurnitureRental() {
+		return venueFurnitureRental;
+	}
+
+	public void setVenueFurnitureRental(double venueFurnitureRental) {
+		this.venueFurnitureRental = venueFurnitureRental;
+	}
+
+	public double getVenueOther() {
+		return venueOther;
+	}
+
+	public void setVenueOther(double venueOther) {
+		this.venueOther = venueOther;
+	}
+
+	public double getVenueSubtotal() {
+		return venueSubtotal;
+	}
+
+	public void setVenueSubtotal(double venueSubtotal) {
+		this.venueSubtotal = venueSubtotal;
+	}
+
+	public double getServicesVenueStaff() {
+		return servicesVenueStaff;
+	}
+
+	public void setServicesVenueStaff(double servicesVenueStaff) {
+		this.servicesVenueStaff = servicesVenueStaff;
+	}
+
+	public double getServicesSecurity() {
+		return servicesSecurity;
+	}
+
+	public void setServicesSecurity(double servicesSecurity) {
+		this.servicesSecurity = servicesSecurity;
+	}
+
+	public double getServicesAVTechStaff() {
+		return servicesAVTechStaff;
+	}
+
+	public void setServicesAVTechStaff(double servicesAVTechStaff) {
+		this.servicesAVTechStaff = servicesAVTechStaff;
+	}
+
+	public double getServicesCateringStaff() {
+		return servicesCateringStaff;
+	}
+
+	public void setServicesCateringStaff(double servicesCateringStaff) {
+		this.servicesCateringStaff = servicesCateringStaff;
+	}
+
+	public double getServicesBarStaff() {
+		return servicesBarStaff;
+	}
+
+	public void setServicesBarStaff(double servicesBarStaff) {
+		this.servicesBarStaff = servicesBarStaff;
+	}
+
+	public double getServicesVolunteers() {
+		return servicesVolunteers;
+	}
+
+	public void setServicesVolunteers(double servicesVolunteers) {
+		this.servicesVolunteers = servicesVolunteers;
+	}
+
+	public double getServicesAdvertising() {
+		return servicesAdvertising;
+	}
+
+	public void setServicesAdvertising(double servicesAdvertising) {
+		this.servicesAdvertising = servicesAdvertising;
+	}
+
+	public double getServicesSocialMedia() {
+		return servicesSocialMedia;
+	}
+
+	public void setServicesSocialMedia(double servicesSocialMedia) {
+		this.servicesSocialMedia = servicesSocialMedia;
+	}
+
+	public double getServicesPhotoVideography() {
+		return servicesPhotoVideography;
+	}
+
+	public void setServicesPhotoVideography(double servicesPhotoVideography) {
+		this.servicesPhotoVideography = servicesPhotoVideography;
+	}
+
+	public double getServicesTravel() {
+		return servicesTravel;
+	}
+
+	public void setServicesTravel(double servicesTravel) {
+		this.servicesTravel = servicesTravel;
+	}
+
+	public double getServicesGratuities() {
+		return servicesGratuities;
+	}
+
+	public void setServicesGratuities(double servicesGratuities) {
+		this.servicesGratuities = servicesGratuities;
+	}
+
+	public double getServicesOther() {
+		return servicesOther;
+	}
+
+	public void setServicesOther(double servicesOther) {
+		this.servicesOther = servicesOther;
+	}
+
+	public double getServicesSubtotal() {
+		return servicesSubtotal;
+	}
+
+	public void setServicesSubtotal(double servicesSubtotal) {
+		this.servicesSubtotal = servicesSubtotal;
+	}
+
+	public double getRefreshmentsFood() {
+		return refreshmentsFood;
+	}
+
+	public void setRefreshmentsFood(double refreshmentsFood) {
+		this.refreshmentsFood = refreshmentsFood;
+	}
+
+	public double getRefreshmentsBeverages() {
+		return refreshmentsBeverages;
+	}
+
+	public void setRefreshmentsBeverages(double refreshmentsBeverages) {
+		this.refreshmentsBeverages = refreshmentsBeverages;
+	}
+
+	public double getRefreshmentsBarCosts() {
+		return refreshmentsBarCosts;
+	}
+
+	public void setRefreshmentsBarCosts(double refreshmentsBarCosts) {
+		this.refreshmentsBarCosts = refreshmentsBarCosts;
+	}
+
+	public double getRefreshmentsOther() {
+		return refreshmentsOther;
+	}
+
+	public void setRefreshmentsOther(double refreshmentsOther) {
+		this.refreshmentsOther = refreshmentsOther;
+	}
+
+	public double getRefreshmentsSubtotal() {
+		return refreshmentsSubtotal;
+	}
+
+	public void setRefreshmentsSubtotal(double refreshmentsSubtotal) {
+		this.refreshmentsSubtotal = refreshmentsSubtotal;
+	}
+
+	public double getMiscPrizesAwards() {
+		return MiscPrizesAwards;
+	}
+
+	public void setMiscPrizesAwards(double miscPrizesAwards) {
+		MiscPrizesAwards = miscPrizesAwards;
+	}
+
+	public double getMiscGiftBags() {
+		return MiscGiftBags;
+	}
+
+	public void setMiscGiftBags(double miscGiftBags) {
+		MiscGiftBags = miscGiftBags;
+	}
+
+	public double getMiscParticipantMaterials() {
+		return MiscParticipantMaterials;
+	}
+
+	public void setMiscParticipantMaterials(double miscParticipantMaterials) {
+		MiscParticipantMaterials = miscParticipantMaterials;
+	}
+
+	public double getMiscDecorations() {
+		return MiscDecorations;
+	}
+
+	public void setMiscDecorations(double miscDecorations) {
+		MiscDecorations = miscDecorations;
+	}
+
+	public double getMiscSignage() {
+		return MiscSignage;
+	}
+
+	public void setMiscSignage(double miscSignage) {
+		MiscSignage = miscSignage;
+	}
+
+	public double getMiscPermits() {
+		return MiscPermits;
+	}
+
+	public void setMiscPermits(double miscPermits) {
+		MiscPermits = miscPermits;
+	}
+
+	public double getMiscFees() {
+		return MiscFees;
+	}
+
+	public void setMiscFees(double miscFees) {
+		MiscFees = miscFees;
+	}
+
+	public double getMiscOther() {
+		return MiscOther;
+	}
+
+	public void setMiscOther(double miscOther) {
+		MiscOther = miscOther;
+	}
+
+	public double getMiscSubtotal() {
+		return MiscSubtotal;
+	}
+
+	public void setMiscSubtotal(double miscSubtotal) {
+		MiscSubtotal = miscSubtotal;
+	}
+
+	public double getEventBudgetSubtotal() {
+		return EventBudgetSubtotal;
+	}
+
+	public void setEventBudgetSubtotal(double eventBudgetSubtotal) {
+		EventBudgetSubtotal = eventBudgetSubtotal;
+	}
+
+	public double getEventBudgetTaxes() {
+		return EventBudgetTaxes;
+	}
+
+	public void setEventBudgetTaxes(double eventBudgetTaxes) {
+		EventBudgetTaxes = eventBudgetTaxes;
+	}
+
+	public double getEventBudgetTotal() {
+		return EventBudgetTotal;
+	}
+
+	public void setEventBudgetTotal(double eventBudgetTotal) {
+		EventBudgetTotal = eventBudgetTotal;
+	}
 }

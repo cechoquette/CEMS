@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javafx.event.ActionEvent;
@@ -109,8 +110,9 @@ public class ClubEventBudgetUIController {
 	public void initialize(){
 		eventBudgetBorderPane.setTop(new MainMenu().createMenu());
 
-		//TODO initialize club & event lists
-		
+		choiceClubEventBudgetClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+		choiceClubEventBudgetEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
+
 		//setting uneditable fields to blue
 		tfEventBudgetVenueSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
 		tfEventBudgetRefreshSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
@@ -186,7 +188,7 @@ public class ClubEventBudgetUIController {
 		
 		dataToSubmit = new HashMap<Object, Object>();
 		
-		dataToSubmit.put("EventBudgetVenueEntertainement", Double.parseDouble(tfEventBudgetVenueEntertain.getText()));
+		dataToSubmit.put("EventBudgetVenueEntertainment", Double.parseDouble(tfEventBudgetVenueEntertain.getText()));
 		dataToSubmit.put("EventBudgetVenueLocationRental", Double.parseDouble(tfEventBudgetVenueLocation.getText()));
 		dataToSubmit.put("EventBudgetVenueEquipmentRental", Double.parseDouble(tfEventBudgetVenueEquipRent.getText()));
 		dataToSubmit.put("EventBudgetVenueFurniture", Double.parseDouble(tfEventBudgetVenueFurniture.getText()));
