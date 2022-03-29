@@ -1,60 +1,98 @@
 package CEMS.src.application;
 
 import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
+@Table(name="EventBudget")
 public class ClubEventBudget extends Budget{
 	public static int COUNT_FOR_IDS;
+
+	@Id
+	@Column(name="event_budget_id")
 	private int eventBudgetID;
 	private Club club;
 	private ClubEvent clubEvent;
 
 //	Venue
-
+	@Column(name="venue_entertainment")
 	private double venueEntertainment;
+	@Column(name="venue_location_rental")
 	private double venueLocationRental;
+	@Column(name="venue_equipment_rental")
 	private double venueEquipmentRental;
+	@Column(name="venue_furniture_rental ")
 	private double venueFurnitureRental;
+	@Column(name="venue_furniture_rental ")
 	private double venueOther;
+	@Column(name="venue_subtotal")
 	private double venueSubtotal;
 
 //	Services
-
+	@Column(name="services_venue_staff")
 	private double servicesVenueStaff;
+	@Column(name="services_venue_staff")
 	private double servicesSecurity;
+	@Column(name="services_AVTechStaff")
 	private double servicesAVTechStaff;
+	@Column(name="services_catering_staff")
 	private double servicesCateringStaff;
+	@Column(name="services_bar_staff ")
 	private double servicesBarStaff;
+	@Column(name="services_volunteers")
 	private double servicesVolunteers;
+	@Column(name="services_advertising")
 	private double servicesAdvertising;
+	@Column(name="services_social_media")
 	private double servicesSocialMedia;
+	@Column(name="services_photo_videography")
 	private double servicesPhotoVideography;
+	@Column(name="services_travel")
 	private double servicesTravel;
+	@Column(name="services_gratuities")
 	private double servicesGratuities;
+	@Column(name="services_gratuities")
 	private double servicesOther;
+	@Column(name="services_subtotal")
 	private double servicesSubtotal;
 
 //	Refreshments
-
+@Column(name="refreshments_food")
 	private double refreshmentsFood;
+	@Column(name="refreshments_beverages ")
 	private double refreshmentsBeverages;
+	@Column(name="refreshments_bar_costs")
 	private double refreshmentsBarCosts;
+	@Column(name="refreshments_other")
 	private double refreshmentsOther;
+	@Column(name="refreshments_subtotal")
 	private double refreshmentsSubtotal;
 
 //	Miscellaneous
-
+	@Column(name="misc_prizes_awards")
 	private double MiscPrizesAwards;
+	@Column(name="misc_giftbags")
 	private double MiscGiftBags;
+	@Column(name="misc_participant_materials")
 	private double MiscParticipantMaterials;
+	@Column(name="misc_participant_materials")
 	private double MiscDecorations;
+	@Column(name="misc_signage")
 	private double MiscSignage;
+	@Column(name="misc_permits ")
 	private double MiscPermits;
+	@Column(name="misc_fees")
 	private double MiscFees;
+	@Column(name="misc_other")
 	private double MiscOther;
+	@Column(name="misc_subtotal")
 	private double MiscSubtotal;
 
+	@Column(name="event_budget_subtotal")
 	private double EventBudgetSubtotal;
+	@Column(name="event_budget_taxes")
 	private double EventBudgetTaxes;
+	@Column(name="event_budget_total")
 	private double EventBudgetTotal;
 
 	public ClubEventBudget(){}
