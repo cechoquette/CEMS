@@ -3,6 +3,7 @@ package CEMS.src.application;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.persistence.*;
+import java.util.List;
 
 import static CEMS.src.application.Main.ALLCLUBS;
 
@@ -24,15 +25,22 @@ public class ClubEvent {
     private LocalDateTime eventDateTime;
     @Column(name="event_location")
     private String eventLocation;
+    @Column(name="email_group")
     private String[] emailGroup;
     @Column(name="event_attendance")
     private int attendance;
+    @OneToMany(mappedBy = "clubEvent")
+    private List<Expenditure> expenditure = new ArrayList<Expenditure>();
+    @OneToMany(mappedBy = "clubEvent")
+    private List<ClubEventBudget> clubEvent = new ArrayList<ClubEventBudget>();
+    @ManyToOne
+    private Club club;
 
     public ClubEvent(){}
     public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String emailGroup){
         this.eventID = COUNT_FOR_IDS++;
         this.eventName = name;
-        this.associatedClub = club;
+        this.club = club;
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
         this.eventLocation = location;
@@ -74,12 +82,12 @@ public class ClubEvent {
         return associatedClub;
     }
 
-    public void setAssociatedClub(Club associatedClub) {
-        this.associatedClub = associatedClub;
+    public Club getClub() {
+        return club;
     }
 
-    public String getEventDescription() {
-        return eventDescription;
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     public void setEventDescription(String eventDescription) {

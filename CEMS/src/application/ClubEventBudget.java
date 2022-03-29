@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import javax.persistence.*;
 
 @Entity
-@Table(name="EventBudget")
+@Table(name="ClubEventBudget")
 public class ClubEventBudget extends Budget{
 	public static int COUNT_FOR_IDS;
 
 	@Id
 	@Column(name="event_budget_id")
 	private int eventBudgetID;
+	@ManyToOne
 	private Club club;
+	@ManyToOne
 	private ClubEvent clubEvent;
 
 //	Venue
@@ -23,7 +25,7 @@ public class ClubEventBudget extends Budget{
 	private double venueEquipmentRental;
 	@Column(name="venue_furniture_rental ")
 	private double venueFurnitureRental;
-	@Column(name="venue_furniture_rental ")
+	@Column(name="venue_venue_other")
 	private double venueOther;
 	@Column(name="venue_subtotal")
 	private double venueSubtotal;
@@ -31,7 +33,7 @@ public class ClubEventBudget extends Budget{
 //	Services
 	@Column(name="services_venue_staff")
 	private double servicesVenueStaff;
-	@Column(name="services_venue_staff")
+	@Column(name="service_security")
 	private double servicesSecurity;
 	@Column(name="services_AVTechStaff")
 	private double servicesAVTechStaff;
@@ -51,7 +53,7 @@ public class ClubEventBudget extends Budget{
 	private double servicesTravel;
 	@Column(name="services_gratuities")
 	private double servicesGratuities;
-	@Column(name="services_gratuities")
+	@Column(name="services_other")
 	private double servicesOther;
 	@Column(name="services_subtotal")
 	private double servicesSubtotal;
@@ -75,7 +77,7 @@ public class ClubEventBudget extends Budget{
 	private double MiscGiftBags;
 	@Column(name="misc_participant_materials")
 	private double MiscParticipantMaterials;
-	@Column(name="misc_participant_materials")
+	@Column(name="misc_decorations")
 	private double MiscDecorations;
 	@Column(name="misc_signage")
 	private double MiscSignage;

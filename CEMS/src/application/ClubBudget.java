@@ -11,6 +11,7 @@ public class ClubBudget extends Budget{
 	@Id
 	@Column(name="club_budget_id")
 	private int clubBudgetID;
+	@ManyToOne
 	private Club club;
 
 //	Events
@@ -40,13 +41,13 @@ public class ClubBudget extends Budget{
 //	Fundraising
 	@Column(name="fundraising_costs")
 	private double fundraisingCosts;
-	@Column(name="fundraising_costs")
+	@Column(name="fundraising_income")
 	private double fundraisingIncome;
 	@Column(name="fundraising_participant_fees")
 	private double fundraisingParticipantFees;
 	@Column(name="fundraising_donations")
 	private double fundraisingDonations;
-	@Column(name="fundraising_donations")
+	@Column(name="fundraising_subtotal")
 	private double fundraisingSubtotal;
 	
 //	Miscellaneous
