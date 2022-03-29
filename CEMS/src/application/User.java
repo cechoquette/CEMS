@@ -1,18 +1,39 @@
 package CEMS.src.application;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
-import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
+@Table(name="User")
 public class User {
 	
 	// Initialize variables
+	@Id
+	@Column(name="student_id ")
 	private int studentID;
-	private String email, password, permission, // Permission ie: Admin, Admin+, SuperAdmin
-					firstName, lastName, phone, salt,
-					securityQuestion, securityAnswer;
+	@Column(name="email_address")
+	private String email;
+	@Column(name="password_")
+	private String password;
+	@Column(name="permissions")
+	private String permission; // Permission ie: Admin, Admin+, SuperAdmin
+	@Column(name="first_name")
+	private String firstName;
+	@Column(name="last_name")
+	private String lastName;
+	@Column(name="phone_number")
+	private String phone;
+//	@Column(name="salt")
+	private String salt;
+//	@Column(name="security_question")
+	private String securityQuestion;
+//	@Column(name="security_answer")
+	private String securityAnswer;
+//	@Column(name="club")
 	private static Club club;
-//	private static ArrayList<String> clubs = new ArrayList<String>();
 	
 	
 	/** Constructor to create a user object **/
@@ -109,35 +130,6 @@ public class User {
 
 	// Set the club
 	public void setUserClub(Club club) { this.club = club; }
-
-//	// TODO: Get clubs -- ArrayList version
-//	public static String getClub(int index) {
-//		int clubSize = clubs.size();
-//		String[] clubArray = new String[clubSize];
-//
-//		for (int i = 0; i < clubSize; i++) {
-//			clubArray[i] = clubs.get(i);
-//		}
-//		// Return the requested club
-//		return clubArray[index];
-//	}
-//
-//	// TODO: Get club list
-//	public static String[] getClubList() {
-//		String[] clubArray = new String[clubs.size()];
-//		for(int i =0; i < clubs.size(); i++){
-//			clubArray[i] = clubs.get(i);
-//		}
-//		return clubArray;
-//
-//		// OR just have a return type of ArrayList and return "clubs"
-//		// return clubs;
-//	}
-//
-//	// TEMP - add club
-//	public static void addClub(String club) {
-//		clubs.add(club);
-//	}
 	
 	/** Method to update a user's permission 
 	 * @param - is the permission you wish to update it to **/
