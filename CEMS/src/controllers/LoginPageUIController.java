@@ -3,14 +3,18 @@ package CEMS.src.controllers;
 import CEMS.src.application.InputValidation;
 import CEMS.src.application.PasswordUtil;
 import CEMS.src.application.User;
+import CEMS.src.application.ViewBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class LoginPageUIController {
 
@@ -78,6 +82,11 @@ public class LoginPageUIController {
 //        PasswordUtil.validatePassword(user, tfLoginEmail.getText(), pfLoginPassword.getText());
 
         // TODO: Then direct the user to their dashboard page
+        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+        //Need to create fxml
+        Pane mainScreen = ViewBuilder.newScreen("");
+        defaultPane.setTop(mainScreen);
+        defaultPane.setCenter(mainScreen);
     }
 
 }
