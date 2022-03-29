@@ -19,7 +19,8 @@ public class ClubEvent {
     private String eventName;
     @Column(name="event_description")
     private String eventDescription;
-    private Club associatedClub;//might be club id, not sure yet
+
+    private Club associatedClub;
     @Column(name="event_date")
     private LocalDateTime eventDateTime;
     @Column(name="event_location")
@@ -71,7 +72,10 @@ public class ClubEvent {
     }
 
     public Club getAssociatedClub() {
-        return associatedClub;
+
+        if(associatedClub == null)
+        return ALLCLUBS;
+        else return associatedClub;
     }
 
     public void setAssociatedClub(Club associatedClub) {
@@ -96,7 +100,7 @@ public class ClubEvent {
 
     //method takes a String, either "none" or "all members..." and populates emailGroup accordingly
     public String[] getEmails(String emailType) {
-        ArrayList<ClubMember> clubMember = this.associatedClub.getClubMembers();
+        ArrayList<ClubMember> clubMember = getAssociatedClub().getClubMembers();
 
         String[] emails = new String[clubMember.size()];
 

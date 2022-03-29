@@ -162,11 +162,6 @@
                         <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                      </GridPane.margin>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="choiceExpenditureClub" prefHeight="25.0" prefWidth="328.0" GridPane.columnIndex="3">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="15.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
                   <ChoiceBox fx:id="choiceExpenditureEvent" prefHeight="25.0" prefWidth="390.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="15.0" />
@@ -192,6 +187,11 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
+                  <ChoiceBox fx:id="choiceExpenditureClub" prefHeight="25.0" prefWidth="323.0" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="15.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
                </children>
             </GridPane>
          </center>
