@@ -59,38 +59,38 @@ public class ReportHandler {
 				break;
 
 			case CLUB_EXPENDITURES:
-				DAO dao = new DAO();
-				List<Expenditure> dataExpList = dao.getExpenditures();
-				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)dataExpList);
-				reportFormatted = clubExpReport.formatReport();
-				reportFileName = clubExpReport.getFilename();
+//				DAO dao = new DAO();
+//				List<Expenditure> dataExpList = dao.getExpenditures();
+//				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)dataExpList);
+//				reportFormatted = clubExpReport.formatReport();
+//				reportFileName = clubExpReport.getFilename();
 				break;
 
 			case CLUBEVENT_EXPENDITURES:
-				DAO dao5 = new DAO();
-				List<Expenditure> dataExpList5 = dao5.getExpenditures();
-				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, (ArrayList<Expenditure>)dataExpList5);
-				reportFormatted = clubEvtExpReport.formatReport();
-				reportFileName = clubEvtExpReport.getFilename();
+//				DAO dao5 = new DAO();
+//				List<Expenditure> dataExpList5 = dao5.getExpenditures();
+//				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, (ArrayList<Expenditure>)dataExpList5);
+//				reportFormatted = clubEvtExpReport.formatReport();
+//				reportFileName = clubEvtExpReport.getFilename();
 				break;
 
 
 			case CLUB_FINANCIAL_SITUATION:
-				DAO dao2 = new DAO();
-				List<Expenditure> dataExpList2 = dao2.getExpenditures();
+//				DAO dao2 = new DAO();
+//				List<Expenditure> dataExpList2 = dao2.getExpenditures();
 //				dataReturnedSingle = dao2.getClubBudget();
-				ClubFinancialReport clubFinReport = new ClubFinancialReport(timeframe, reportFormat, (ClubBudget)dataReturnedSingle, (ArrayList<Expenditure>)dataExpList2);
-				reportFormatted = clubFinReport.formatReport();
-				reportFileName = clubFinReport.getFilename();
+//				ClubFinancialReport clubFinReport = new ClubFinancialReport(timeframe, reportFormat, (ClubBudget)dataReturnedSingle, (ArrayList<Expenditure>)dataExpList2);
+//				reportFormatted = clubFinReport.formatReport();
+//				reportFileName = clubFinReport.getFilename();
 				break;
 
 			case CLUBEVENT_FINANCIAL_SITUATION:
-				DAO dao3 = new DAO();
-				List<Expenditure> dataExpList3 = dao3.getExpenditures();
+//				DAO dao3 = new DAO();
+//				List<Expenditure> dataExpList3 = dao3.getExpenditures();
 //				dataReturnedSingle = dao3.getClubEventBudget();
-				ClubEventFinancialReport clubEvtFinReport = new ClubEventFinancialReport(reportFormat, (ClubEventBudget)dataReturnedSingle, (ArrayList<Expenditure>)dataExpList3);
-				reportFormatted = clubEvtFinReport.formatReport();
-				reportFileName = clubEvtFinReport.getFilename();
+//				ClubEventFinancialReport clubEvtFinReport = new ClubEventFinancialReport(reportFormat, (ClubEventBudget)dataReturnedSingle, (ArrayList<Expenditure>)dataExpList3);
+//				reportFormatted = clubEvtFinReport.formatReport();
+//				reportFileName = clubEvtFinReport.getFilename();
 				break;
 
 			case CLUB_MEMBERSHIP_SUMMARY:
