@@ -67,7 +67,7 @@ public class ClubDAO {
             }
             return clubs;
         }
-    */ //
+    */ // getallclubs
     @SuppressWarnings("null")
     public void deleteClub(int clubID) {
         Transaction transaction = null;
