@@ -36,7 +36,7 @@ public class Controller {
 		switch(requestType) {
 		case CREATE_CLUB:
 			ClubDAO clubDao1 = new ClubDAO();
-			clubDao1.saveClub(FormHandler.createClub(requestType, dataToProcess));
+			clubDao1.saveClub(FormHandler.createClubForm(requestType, dataToProcess));
 			break;
 		case CREATE_CLUB_MEMBER:
 			break;
@@ -45,14 +45,23 @@ public class Controller {
 		case CREATE_EVENT:
 			break;
 		case CREATE_USER:
+			//UserDAO userDao1 = new UserDAO();
+			//userDao1.saveUser(FormHandler.createUserForm(requestType, dataToProcess));
+
 			break;
 		case DELETE_CLUB:
+			//needs to call the database
+
 			break;
 		case DELETE_EVENT:
+			//needs to call the database
+
 			break;
 		case DELETE_FROM_DATABASE:
 			break;
 		case DELETE_USER:
+			//needs to call the database
+
 			break;
 		case DISPLAY_CALENDAR:
 			break;

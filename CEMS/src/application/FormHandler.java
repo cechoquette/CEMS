@@ -46,22 +46,18 @@ public class FormHandler {
 		return expenditure;
 	}
 	
-	public static ClubEvent createClubEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
-		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);
-		clubEvent = clubEventForm.getEvent();
-		return clubEvent;
-	}
-	
 	public static ClubEventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubEventBudgetForm clubEventBudgetForm = new ClubEventBudgetForm(requestType, hmData);
 		clubEventBudget = clubEventBudgetForm.getEventBudget();
 
 		return clubEventBudget;
 	}
+
 	public static ClubEventBudget getEventBudget() {
 		return clubEventBudget;
 	}
-	
+
+
 	public static ClubBudget createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubBudgetForm clubBudgetForm = new ClubBudgetForm(requestType, hmData);
 		clubBudget = clubBudgetForm.getClubBudget();
@@ -69,7 +65,11 @@ public class FormHandler {
 		return clubBudget;
 	}
 
-	public static Club createClub(RequestType requestType, HashMap<Object, Object> hmData ){
+	public static ClubBudget getClubBudget() {
+		return clubBudget;
+	}
+
+	public static Club createClubForm(RequestType requestType, HashMap<Object, Object> hmData ){
 		ClubForm clubForm = new ClubForm(requestType, hmData);
 		club = clubForm.getClub();
 
@@ -80,7 +80,7 @@ public class FormHandler {
 		return club;
 	}
 
-	public static User createUser(RequestType requestType, HashMap<Object, Object> hmData){
+	public static User createUserForm(RequestType requestType, HashMap<Object, Object> hmData){
 		UserForm userForm = new UserForm(requestType, hmData);
 		user = userForm.getUser();
 
@@ -92,6 +92,16 @@ public class FormHandler {
 
 
 
+	public static ClubEvent createClubEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);
+		clubEvent = clubEventForm.getEvent();
+		return clubEvent;
+	}
+
+	public static ClubEvent getEvent() {
+		return clubEvent;
+	}
+
 
 
 
@@ -99,9 +109,7 @@ public class FormHandler {
 
 	//getters and setters
 
-	public static ClubBudget getClubBudget() {
-		return clubBudget;
-	}
+
 
 	public static HashMap<Object, Object> getDataRequested() {
 		return dataRequested;
@@ -111,9 +119,7 @@ public class FormHandler {
 		return dataToSend;
 	}
 
-	public static ClubEvent getEvent() {
-		return clubEvent;
-	}
+
 
 
 
