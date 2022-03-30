@@ -69,12 +69,14 @@ public class LoginPageUIController {
         btnLoginForgot.setStyle("-fx-text-fill: turquoise; -fx-background-color: transparent;");
 
         // TODO: link to the forgot password page
+        Pane mainScreen = ViewBuilder.newScreen("ForgotPassword");
+        defaultPane.setCenter(mainScreen);
 
     }
 
     @FXML
     void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
-        checkMandatoryFields();
+        //checkMandatoryFields();
 
         // Log the user in
         // TODO: Check the login information is correct - is the user authenticated?
@@ -87,11 +89,10 @@ public class LoginPageUIController {
 //            defaultPane.setCenter(mainScreen);
 //        }
 
-        // TODO: Then direct the user to their dashboard page
+        // Then direct the user to their dashboard page
         Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-        //Need to create fxml
-        Pane mainScreen = ViewBuilder.newScreen("");
-        defaultPane.setTop(mainScreen);
+        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+        defaultPane.setTop(menuScreen);
         defaultPane.setCenter(mainScreen);
     }
 

@@ -1,5 +1,5 @@
 package CEMS.src.application;
-
+/*
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.*;
@@ -108,3 +108,4 @@ public class DAO {
         dao.addClub(club);
     }
 }
+*/

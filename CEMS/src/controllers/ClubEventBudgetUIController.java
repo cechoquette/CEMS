@@ -108,7 +108,6 @@ public class ClubEventBudgetUIController {
 	
 	@FXML
 	public void initialize(){
-		eventBudgetBorderPane.setTop(new MainMenu().createMenu());
 
 		choiceClubEventBudgetClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
 		choiceClubEventBudgetEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
@@ -126,8 +125,10 @@ public class ClubEventBudgetUIController {
 	// Event Listener on Button[#btEventBudgetBack].onAction
 	@FXML
 	public void btEventBudgetBackClicked(ActionEvent event) {
-		//this method should return user to dashboard
-		
+		// Clear the user inputs
+		btEventBudgetClearClicked(event);
+
+		// TODO: this method should return user to dashboard
 		
 	}
 	// Event Listener on Button[#btEventBudgetClear].onAction
@@ -302,7 +303,109 @@ public class ClubEventBudgetUIController {
 		tfEventBudgetMiscFees.setText("0.00");
 		if(tfEventBudgetMiscOther.getText() == "")
 		tfEventBudgetMiscOther.setText("0.00");
-		
+
+		if((Double.parseDouble(tfEventBudgetVenueEntertain.getText()) != Double.parseDouble("0.00")
+			|| Double.parseDouble(tfEventBudgetVenueLocation.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetVenueEquipRent.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetVenueFurniture.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetVenueOther.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetRefreshFood.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetRefreshBeverage.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetRefreshBar.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetRefreshOther.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesSecurity.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesAVTech.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesCatering.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesBar.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesVolunteers.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesAdvertising.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesSocial.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesPhoto.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesTravel.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesGratuities.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetServicesOther.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscPrizes.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscGiftBags.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscMaterials.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscDeco.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscSignage.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscPermits.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscFees.getText()) != Double.parseDouble("0.00")
+				|| Double.parseDouble(tfEventBudgetMiscOther.getText()) != Double.parseDouble("0.00"))
+				&& (choiceClubEventBudgetClub.getValue() != null
+				&& choiceClubEventBudgetEvent.getValue() != null)) {
+
+			// Set style to null - no error state
+			tfEventBudgetVenueEntertain.setStyle(null);
+			tfEventBudgetVenueLocation.setStyle(null);
+			tfEventBudgetVenueEquipRent.setStyle(null);
+			tfEventBudgetVenueFurniture.setStyle(null);
+			tfEventBudgetVenueOther.setStyle(null);
+			tfEventBudgetRefreshFood.setStyle(null);
+			tfEventBudgetRefreshBeverage.setStyle(null);
+			tfEventBudgetRefreshBar.setStyle(null);
+			tfEventBudgetRefreshOther.setStyle(null);
+			tfEventBudgetServicesVenue.setStyle(null);
+			tfEventBudgetServicesSecurity.setStyle(null);
+			tfEventBudgetServicesAVTech.setStyle(null);
+			tfEventBudgetServicesCatering.setStyle(null);
+			tfEventBudgetServicesBar.setStyle(null);
+			tfEventBudgetServicesVolunteers.setStyle(null);
+			tfEventBudgetServicesAdvertising.setStyle(null);
+			tfEventBudgetServicesSocial.setStyle(null);
+			tfEventBudgetServicesPhoto.setStyle(null);
+			tfEventBudgetServicesTravel.setStyle(null);
+			tfEventBudgetServicesGratuities.setStyle(null);
+			tfEventBudgetServicesOther.setStyle(null);
+			tfEventBudgetMiscPrizes.setStyle(null);
+			tfEventBudgetMiscGiftBags.setStyle(null);
+			tfEventBudgetMiscMaterials.setStyle(null);
+			tfEventBudgetMiscDeco.setStyle(null);
+			tfEventBudgetMiscSignage.setStyle(null);
+			tfEventBudgetMiscPermits.setStyle(null);
+			tfEventBudgetMiscFees.setStyle(null);
+			tfEventBudgetMiscOther.setStyle(null);
+			choiceClubEventBudgetClub.setStyle(null);
+			choiceClubEventBudgetEvent.setStyle(null);
+		} else {
+			// Set style to error state
+			tfEventBudgetVenueEntertain.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetVenueLocation.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetVenueEquipRent.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetVenueFurniture.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetVenueOther.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetRefreshFood.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetRefreshBeverage.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetRefreshBar.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetRefreshOther.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesVenue.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesSecurity.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesAVTech.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesCatering.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesBar.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesVolunteers.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesAdvertising.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesSocial.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesPhoto.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesTravel.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesGratuities.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetServicesOther.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscPrizes.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscGiftBags.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscMaterials.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscDeco.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscSignage.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscPermits.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscFees.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfEventBudgetMiscOther.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			choiceClubEventBudgetClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
+			choiceClubEventBudgetEvent.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
+
+		}
+
+
+
+
 	}
 	
 	public void calculateSubtotals() {

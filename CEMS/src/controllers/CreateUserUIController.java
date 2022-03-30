@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class CreateUserUIController {
     HashMap<Object, Object> dataToSubmit;
@@ -54,13 +57,10 @@ public class CreateUserUIController {
 
     @FXML
     public void initialize() {
-        // TODO: Add menu - first, add label in the FXML document
-//        createUserBorderPane.setTop(new MainMenu().createMenu());
-
         // Add the values to the Permissions dropdown
         comboCreateUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
 
-        // TODO: Add the values to the Clubs dropdown
+        // Add the values to the Clubs dropdown
         comboCreateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
     }
 
@@ -134,8 +134,12 @@ public class CreateUserUIController {
 
     @FXML
     void btnCreateUserBackClicked(ActionEvent event) {
-        // TODO: Return user to the dashboard
+        // Clear the fields
         btnCreateUserCancelClicked(event);
+
+        // Return user to the dashboard
+        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
+        defaultPane.setCenter(mainScreen);
     }
 
     /** Method handles both cancel and clear button ActionEvents **/
