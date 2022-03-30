@@ -42,23 +42,12 @@ public class Main extends Application {
 
 
 			//for Paths: use absolute paths (leading / ) and do note use .. , the resulting .jar executable will not function.
-			//Parent root;
+			/* Keeping this code segnment in case anyone needs to test individual fxml pages*/
+//			Parent root;
 //			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubBudgetSubmissionForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateClubEventForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/CreateUserForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/DeleteUserForm.fxml"));
-			//root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubEventBudgetSubmissionForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ForgotPassword.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/HomePage.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/LoginPage.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ProfilePage.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ReportRequestForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/RequestAccessForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/UpdateUserForm.fxml"));
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/UserManagement.fxml"));
+//			Scene scene = new Scene(root, 900, 575);
 
-			Pane defaultMenu = ViewBuilder.newScreen("MenuBar");
+			Pane defaultMenu = ViewBuilder.newScreen("LoginMenuBar");
 			Pane defaultMain = ViewBuilder.newScreen("LoginPage");
 
 			defaultPane.setTop(defaultMenu);

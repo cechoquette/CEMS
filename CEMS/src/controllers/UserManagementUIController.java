@@ -3,12 +3,16 @@ package CEMS.src.controllers;
 import CEMS.src.application.InputValidation;
 import CEMS.src.application.OptionLists;
 import CEMS.src.application.PermissionType;
+import CEMS.src.application.ViewBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class UserManagementUIController {
 
@@ -62,12 +66,14 @@ public class UserManagementUIController {
 
     @FXML
     void btnUserMgmtCreateClicked(ActionEvent event) {
-        // TODO: link to the Create a User form
+        Pane mainScreen = ViewBuilder.newScreen("CreateUserForm");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML
     void btnUserMgmtDeleteClicked(ActionEvent event) {
-        // TODO: link to the Delete a User form
+        Pane mainScreen = ViewBuilder.newScreen("DeleteUserForm");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML
@@ -103,7 +109,8 @@ public class UserManagementUIController {
 
     @FXML
     void btnUserMgmtUpdateClicked(ActionEvent event) {
-        // TODO: link to the Update a User form
+        Pane mainScreen = ViewBuilder.newScreen("UpdateUserForm");
+        defaultPane.setCenter(mainScreen);
     }
 
 }

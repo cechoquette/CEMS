@@ -69,6 +69,8 @@ public class LoginPageUIController {
         btnLoginForgot.setStyle("-fx-text-fill: turquoise; -fx-background-color: transparent;");
 
         // TODO: link to the forgot password page
+        Pane mainScreen = ViewBuilder.newScreen("ForgotPassword");
+        defaultPane.setCenter(mainScreen);
 
     }
 
@@ -87,7 +89,7 @@ public class LoginPageUIController {
 //            defaultPane.setCenter(mainScreen);
 //        }
 
-        // TODO: Then direct the user to their dashboard page
+        // Then direct the user to their dashboard page
         Pane menuScreen = ViewBuilder.newScreen("MenuBar");
         Pane mainScreen = ViewBuilder.newScreen("HomePage");
         defaultPane.setTop(menuScreen);
