@@ -58,8 +58,6 @@ public class DeleteUserUIController {
 
     @FXML
     public void initialize() {
-        // TODO: Add menu - first, add label in the FXML document
-        deleteUserBorderPane.setTop(new MainMenu().createMenu());
 
         // Add the values to the Permissions dropdown
         comboDeleteUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));

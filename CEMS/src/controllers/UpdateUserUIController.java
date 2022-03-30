@@ -58,8 +58,6 @@ public class UpdateUserUIController {
 
     @FXML
     public void initialize() {
-        // TODO: Add menu - first, add label in the FXML document
-        updateUserBorderPane.setTop(new MainMenu().createMenu());
 
         // Add the values to the Permissions dropdown
         comboUpdateUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
