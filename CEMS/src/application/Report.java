@@ -4,10 +4,10 @@ public abstract class Report {
 	private static int reportID;
 	private Timeframe timeframe;
 	private String filename;
+	private ReportType reportType;
 	
 	
-	public Report generateReport() {
-		return null;
+	public abstract Report generateReport();
 	}
 	
 	
