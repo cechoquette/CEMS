@@ -12,7 +12,7 @@ public class PasswordUtil {
     /** Method to hash and salt a password using SHA-256 encryption
      * @return a string to the calling method **/
     // TODO: TEST
-    public static String hashPassword(String password, String salt) throws NoSuchProviderException {
+    public static String hashPassword(User user, String password, String salt) throws NoSuchProviderException {
 
         // Initialize variables & create a StringBuilder
         MessageDigest md;
@@ -33,7 +33,7 @@ public class PasswordUtil {
             }
 
             // Store the hashed string & salt in the DB
-            storePassAndSalt(sb.toString(), salt);
+            storePassAndSalt(user, sb.toString(), salt);
 
             // Catch block
         } catch (NoSuchAlgorithmException e) {
@@ -57,7 +57,7 @@ public class PasswordUtil {
 
 
     /** Method to store the password in the DB **/
-    public static void storePassAndSalt(String newPass, String newSalt) {
+    public static void storePassAndSalt(User user, String newPass, String newSalt) {
         // TODO: code to store password & salt in the DB
     }
 
@@ -67,10 +67,10 @@ public class PasswordUtil {
     public static boolean validatePassword(User user, String enteredEmail, String enteredPassword) throws NoSuchProviderException {
         // To authenticate user, hash the password using the salt retrieved from the DB - then compare this hashed PW to the one in the DB
         // Initialize variables
-        String salt = user.getUserSalt(); // Retrieve the users salt from the DB and store in variable
+        String salt = user.getUserSalt(); // TODO: Retrieve the users salt from the DB and store in variable
 
         // Hash the password entered with the user's salt
-        String hashedPass = PasswordUtil.hashPassword(enteredPassword, salt);
+        String hashedPass = PasswordUtil.hashPassword(user, enteredPassword, salt);
 
         // Return a boolean to determine if the passwords and emails match
         return user.getPassword() == hashedPass
@@ -88,8 +88,8 @@ public class PasswordUtil {
 
             // Use the users new password to overwrite the password & salt in the DB
             String newSalt = PasswordUtil.generateSalt(); // Obtain a new salt
-            String newHashedPass = PasswordUtil.hashPassword(newPass, newSalt); // Hash the new password with a new salt
-            PasswordUtil.storePassAndSalt(newHashedPass, newSalt); // Store new password & salt in DB
+            String newHashedPass = PasswordUtil.hashPassword(user, newPass, newSalt); // Hash the new password with a new salt
+            PasswordUtil.storePassAndSalt(user, newHashedPass, newSalt); // Store new password & salt in DB
         }
     }
 
@@ -114,10 +114,10 @@ public class PasswordUtil {
 
         // Hash the password
         String testSalt = PasswordUtil.generateSalt();
-        String hashed = PasswordUtil.hashPassword(pw, testSalt);
+//        String hashed = PasswordUtil.hashPassword(user, pw, testSalt);
 
         // Display the hashed password
-        System.out.println("Hashed password with salt: " + hashed);
+//        System.out.println("Hashed password with salt: " + hashed);
 
         // Validate the password
 //        System.out.println(HashPass.validatePassword(hashed, email, pw));

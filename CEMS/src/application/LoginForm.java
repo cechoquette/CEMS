@@ -13,7 +13,10 @@ public class LoginForm extends Form {
 
     /** Method to log a user into the system - cross-references user data from the DB **/
     public void logUserIn(HashMap<Object, Object> hmData) {
-        // TODO: Code
+
+        if (isFilled()) {
+            // TODO: Code
+        }
     }
 
     public boolean isFilled() {
