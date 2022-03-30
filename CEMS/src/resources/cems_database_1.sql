@@ -1,5 +1,5 @@
--- CREATE USER 'CEMSAdmin'@'localhost' IDENTIFIED BY 'CEMS321'; -- uncomment first time use
--- GRANT ALL PRIVILEGES ON *.* TO 'CEMSAdmin'@'localhost'; -- uncomment first time use
+CREATE USER IF NOT EXISTS 'CEMSAdmin'@'localhost' IDENTIFIED BY 'CEMS321';
+GRANT ALL PRIVILEGES ON *.* TO 'CEMSAdmin'@'localhost';
 -- DROP DATABASE IF EXISTS CEMSDatabase; -- drop database for testing when duplicates created
 
 CREATE DATABASE IF NOT EXISTS CEMSDatabase ;
