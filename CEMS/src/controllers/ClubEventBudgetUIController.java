@@ -332,8 +332,8 @@ public class ClubEventBudgetUIController {
 				|| Double.parseDouble(tfEventBudgetMiscPermits.getText()) != Double.parseDouble("0.00")
 				|| Double.parseDouble(tfEventBudgetMiscFees.getText()) != Double.parseDouble("0.00")
 				|| Double.parseDouble(tfEventBudgetMiscOther.getText()) != Double.parseDouble("0.00"))
-				&& choiceClubEventBudgetClub.getValue() != null
-				&& choiceClubEventBudgetEvent.getValue() != null) {
+				&& (choiceClubEventBudgetClub.getValue() != null
+				&& choiceClubEventBudgetEvent.getValue() != null)) {
 
 			// Set style to null - no error state
 			tfEventBudgetVenueEntertain.setStyle(null);
