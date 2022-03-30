@@ -81,13 +81,24 @@ public class UserManagementUIController {
         // TODO: If not found, display 0 results found
 
         // TEST DATA TO APPEAR ON SUBMIT
-        textUserMgmtResultsNum.setText("1");
-        textUserMgmtName.setText("Erin");
-        textUserMgmtEmail.setText("erin@email.com");
-        textUserMgmtID.setText("023485212");
-        textUserMgmtPhone.setText("856-747-4534");
-        textUserMgmtClub.setText(OptionLists.getClubs()[1].getClubName());
-        textUserMgmtPermissions.setText(PermissionType.ADMIN.toString());
+        if (InputValidation.validateNotEmpty(tfUserManagementSearch)) {
+            textUserMgmtResultsNum.setText("1");
+            textUserMgmtName.setText("Erin");
+            textUserMgmtEmail.setText("erin@email.com");
+            textUserMgmtID.setText("023485212");
+            textUserMgmtPhone.setText("856-747-4534");
+            textUserMgmtClub.setText(OptionLists.getClubs()[1].getClubName());
+            textUserMgmtPermissions.setText(PermissionType.ADMIN.toString());
+        } else {
+            textUserMgmtResultsNum.setText("0");
+            textUserMgmtName.setText("(user name)");
+            textUserMgmtEmail.setText("(email)");
+            textUserMgmtID.setText("(student ID)");
+            textUserMgmtPhone.setText("(phone number)");
+            textUserMgmtClub.setText("(club name)");
+            textUserMgmtPermissions.setText("(permissions)");
+        }
+
     }
 
     @FXML

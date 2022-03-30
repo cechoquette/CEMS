@@ -76,10 +76,16 @@ public class LoginPageUIController {
     void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
         checkMandatoryFields();
 
-        // TODO: Log the user in
-
-        // TODO: Check the login information is correct
-//        PasswordUtil.validatePassword(user, tfLoginEmail.getText(), pfLoginPassword.getText());
+        // Log the user in
+        // TODO: Check the login information is correct - is the user authenticated?
+//        if (PasswordUtil.validatePassword(user, tfLoginEmail.getText(), pfLoginPassword.getText())) {
+//            // TODO: Then direct the user to their dashboard page
+//            Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+//            //Need to create fxml
+//            Pane mainScreen = ViewBuilder.newScreen("");
+//            defaultPane.setTop(mainScreen);
+//            defaultPane.setCenter(mainScreen);
+//        }
 
         // TODO: Then direct the user to their dashboard page
         Pane menuScreen = ViewBuilder.newScreen("MenuBar");

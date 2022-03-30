@@ -72,7 +72,7 @@ public class ResetPasswordUIController {
         checkMandatoryFields();
 
         // Hash password (and store in DB with salt)
-        PasswordUtil.hashPassword(tfResetPass.getText(), PasswordUtil.generateSalt());
+//        PasswordUtil.hashPassword(user, tfResetPass.getText(), PasswordUtil.generateSalt());
     }
 
 

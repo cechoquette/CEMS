@@ -123,13 +123,24 @@ public class DeleteUserUIController {
 //        tfUpdateUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
 
         // TEST DATA TO APPEAR ON SUBMIT
-        tfDeleteUserFirst.setText("Erin");
-        tfDeleteUserLast.setText("Cameron");
-        tfDeleteUserPhone.setText("857-685-3453");
-        tfDeleteUserEmail.setText("erin@email.com");
-        tfDeleteUserID.setText("023485212");
-        comboDeleteUserClub.setValue(OptionLists.getClubs()[1]);
-        comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
+        if (InputValidation.validateNotEmpty(tfDeleteUserSearch)) {
+            tfDeleteUserFirst.setText("Erin");
+            tfDeleteUserLast.setText("Cameron");
+            tfDeleteUserPhone.setText("857-685-3453");
+            tfDeleteUserEmail.setText("erin@email.com");
+            tfDeleteUserID.setText("023485212");
+            comboDeleteUserClub.setValue(OptionLists.getClubs()[1]);
+            comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
+        } else {
+            tfDeleteUserFirst.setText("");
+            tfDeleteUserLast.setText("");
+            tfDeleteUserPhone.setText("");
+            tfDeleteUserEmail.setText("");
+            tfDeleteUserID.setText("");
+            comboDeleteUserClub.setValue(null);
+            comboDeleteUserPermissions.setValue(null);
+        }
+
     }
 
     @FXML
