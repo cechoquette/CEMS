@@ -7,7 +7,7 @@ import org.hibernate.*;
 
 public class DAO {
 
-    //// ClubDAO
+    ////////// ClubDAO
     public void addClub(Club club) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -169,7 +169,7 @@ public class DAO {
         }
     }
 
-    //// ClubBudgetDAO
+    ///////// ClubBudgetDAO
 
     public void saveClubBudget(ClubBudget clubBudget) {
         Transaction transaction = null;
@@ -252,7 +252,7 @@ public class DAO {
         }
     }
 
-    //// ClubEventDAO
+    ////////// ClubEventDAO
 
     public void addClubEvent(ClubEvent clubEvent) {
         Transaction transaction = null;
@@ -335,7 +335,7 @@ public class DAO {
         }
     }
 
-    //// ClubEventBudget DAO
+    ////////// ClubEventBudget DAO
 
     public void addClubEventBudget(ClubEventBudget clubEventBudget){
         Transaction transaction = null;
@@ -408,6 +408,88 @@ public class DAO {
             clubEventBudget = session.get(ClubEventBudget.class, eventBudgetID);
             if (clubEventBudget!= null) {
                 session.delete(clubEventBudget);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+
+    /////////ExpenditureDAO
+
+    public void addExpenditure(Expenditure expenditure){
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Object object = session.save(expenditure);
+            session.get(Expenditure.class, (Serializable) object);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public void updateExpenditure(Expenditure expenditure) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(expenditure);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public Expenditure getExpenditure(int expenditureID) {
+        Transaction transaction = null;
+        Expenditure expenditure = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            expenditure = session.get(Expenditure.class, expenditureID); //get student object by id
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return expenditure;
+    }
+    /*
+        @SuppressWarnings("unchecked")
+        public List<Expenditure> getAllExpenditure() {
+            Transaction transaction = null;
+            List<Expenditure> expenditure = null;
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                transaction = session.beginTransaction();
+                clubEventBudget = session.createQuery("from expenditure").list();
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            }
+            return expenditure;
+        }
+    */ // get all not working yet
+    @SuppressWarnings("null")
+    public void deleteExpenditure(int expenditureID) {
+        Transaction transaction = null;
+        Expenditure expenditure = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            expenditure = session.get(Expenditure.class, expenditureID);
+            if (expenditure != null) {
+                session.delete(expenditure );
             }
             transaction.commit();
         } catch (Exception e) {
