@@ -2,26 +2,46 @@ package CEMS.src.application;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.persistence.*;
+import java.util.List;
 
 import static CEMS.src.application.Main.ALLCLUBS;
 
+
+@Entity
+@Table(name="ClubEvent")
 public class ClubEvent {
     public static int COUNT_FOR_IDS;
 
+    @Id
+    @Column(name="event_id")
     private int eventID;
+    @Column(name="event_name")
     private String eventName;
+    @Column(name="event_description")
     private String eventDescription;
-    private Club associatedClub;//might be club id, not sure yet
+
+    private Club associatedClub;
+    @Column(name="event_date")
     private LocalDateTime eventDateTime;
+    @Column(name="event_location")
     private String eventLocation;
+    @Column(name="email_group")
     private String[] emailGroup;
+    @Column(name="event_attendance")
     private int attendance;
+    @OneToMany(mappedBy = "clubEvent")
+    private List<Expenditure> expenditure = new ArrayList<Expenditure>();
+    @OneToMany(mappedBy = "clubEvent")
+    private List<ClubEventBudget> clubEvent = new ArrayList<ClubEventBudget>();
+    @ManyToOne
+    private Club club;
 
     public ClubEvent(){}
     public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String emailGroup){
         this.eventID = COUNT_FOR_IDS++;
         this.eventName = name;
-        this.associatedClub = club;
+        this.club = club;
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
         this.eventLocation = location;
@@ -60,15 +80,18 @@ public class ClubEvent {
     }
 
     public Club getAssociatedClub() {
-        return associatedClub;
+
+        if(associatedClub == null)
+        return ALLCLUBS;
+        else return associatedClub;
     }
 
-    public void setAssociatedClub(Club associatedClub) {
-        this.associatedClub = associatedClub;
+    public Club getClub() {
+        return club;
     }
 
-    public String getEventDescription() {
-        return eventDescription;
+    public void setClub(Club club) {
+        this.club = club;
     }
 
     public void setEventDescription(String eventDescription) {
@@ -85,7 +108,7 @@ public class ClubEvent {
 
     //method takes a String, either "none" or "all members..." and populates emailGroup accordingly
     public String[] getEmails(String emailType) {
-        ArrayList<ClubMember> clubMember = this.associatedClub.getClubMembers();
+        ArrayList<ClubMember> clubMember = getAssociatedClub().getClubMembers();
 
         String[] emails = new String[clubMember.size()];
 

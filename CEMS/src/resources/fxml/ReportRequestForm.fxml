@@ -13,10 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="reportBorderPane" maxHeight="575.0" maxWidth="900.0" minHeight="575.0"
-            minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ReportRequestUIController">
+<BorderPane fx:id="reportBorderPane" maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ReportRequestUIController">
    <bottom>
       <GridPane alignment="CENTER" prefHeight="97.0" prefWidth="923.0" BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -42,95 +41,119 @@
       </GridPane>
    </bottom>
    <center>
-      <GridPane prefHeight="464.0" prefWidth="535.0" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="154.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="533.0" minWidth="10.0" prefWidth="290.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="Report Type" GridPane.halignment="LEFT" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets left="15.0" right="5.0" />
-               </padding>
+            <Label text="Request to Generate Report">
+               <VBox.margin>
+                  <Insets left="50.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Label>
-            <Label text="Club" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets left="15.0" right="5.0" />
-               </padding>
-            </Label>
-            <ChoiceBox fx:id="choiceReportSelectType" prefHeight="25.0" prefWidth="292.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" />
-               </GridPane.margin>
-            </ChoiceBox>
-            <ChoiceBox fx:id="choiceReportSelectClub" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" />
-               </GridPane.margin>
-            </ChoiceBox>
-            <RadioButton fx:id="rbReportTimeframeYeartodate" mnemonicParsing="false" onAction="#rbReportYearSelected" text="Year-To-Date" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <toggleGroup>
-                  <ToggleGroup fx:id="tgReportTimeframe" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="rbReportTimeframeCurrentMonth" mnemonicParsing="false" onAction="#rbReportCurrentMonthSelected" text="Current Month" toggleGroup="$tgReportTimeframe" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <RadioButton fx:id="rbReportTimeframeLastMonth" mnemonicParsing="false" onAction="#rbReportLastMonthSelected" text="Last Month" toggleGroup="$tgReportTimeframe" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <RadioButton fx:id="rbReportTimeframeCustom" mnemonicParsing="false" onAction="#rbReportCustomSelected" text="Custom" toggleGroup="$tgReportTimeframe" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <DatePicker fx:id="dpReportStartDate" prefHeight="25.0" prefWidth="293.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin>
-            </DatePicker>
-            <DatePicker fx:id="dpReportEndDate" prefHeight="25.0" prefWidth="294.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin>
-            </DatePicker>
-            <Label fx:id="lbReportFrom" text="From" GridPane.rowIndex="8">
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets right="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="lbReportTo" text="To" GridPane.rowIndex="9">
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets right="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Report Timeframe" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin>
-            </Label>
+            <GridPane prefHeight="464.0" prefWidth="535.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="154.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="533.0" minWidth="10.0" prefWidth="290.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" text="Report Type" GridPane.halignment="LEFT">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="15.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Club" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="15.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <ChoiceBox fx:id="choiceReportSelectType" prefHeight="25.0" prefWidth="292.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="choiceReportSelectClub" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <RadioButton fx:id="rbReportTimeframeYeartodate" mnemonicParsing="false" onAction="#rbReportYearSelected" text="Year-To-Date" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="tgReportTimeframe" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="rbReportTimeframeCurrentMonth" mnemonicParsing="false" onAction="#rbReportCurrentMonthSelected" text="Current Month" toggleGroup="$tgReportTimeframe" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <RadioButton fx:id="rbReportTimeframeLastMonth" mnemonicParsing="false" onAction="#rbReportLastMonthSelected" text="Last Month" toggleGroup="$tgReportTimeframe" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <RadioButton fx:id="rbReportTimeframeCustom" mnemonicParsing="false" onAction="#rbReportCustomSelected" text="Custom" toggleGroup="$tgReportTimeframe" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <DatePicker fx:id="dpReportStartDate" prefHeight="25.0" prefWidth="293.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <DatePicker fx:id="dpReportEndDate" prefHeight="25.0" prefWidth="294.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <Label fx:id="lbReportFrom" text="From" GridPane.rowIndex="8">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lbReportTo" text="To" GridPane.rowIndex="9">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Report Timeframe" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <ChoiceBox fx:id="choiceReportEvent" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <Label fx:id="lbReportEvent" text="Event" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="15.0" right="5.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
-      </GridPane>
+      </VBox>
    </center>
    <right>
       <GridPane prefHeight="504.0" prefWidth="388.0" BorderPane.alignment="CENTER">

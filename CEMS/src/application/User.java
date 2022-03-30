@@ -26,16 +26,17 @@ public class User {
 	private String lastName;
 	@Column(name="phone_number")
 	private String phone;
-//	@Column(name="salt")
+	@Column(name="salt")
 	private String salt;
-//	@Column(name="security_question")
+	@Column(name="security_question")
 	private String securityQuestion;
-//	@Column(name="security_answer")
+	@Column(name="security_answer")
 	private String securityAnswer;
-//	@Column(name="club")
+	//@Column(name="club")
 	private static Club club;
-	
-	
+
+	public User() {
+	}
 	/** Constructor to create a user object **/
 	public User(String firstName, String lastName, String phone, String email,
 				int studentID, Club club, String permission, String securityQuestion,

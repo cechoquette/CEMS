@@ -19,8 +19,12 @@ public class Club {
     private String clubDescription;
     //@OneToMany   need to annotate user class
     //private List<User> user = new ArrayList<User>();
-    @OneToMany
+    @OneToMany(mappedBy = "club")
     private List<Expenditure> expenditure = new ArrayList<Expenditure>();
+    @OneToMany(mappedBy = "club")
+    private List<ClubBudget> clubBudget = new ArrayList<ClubBudget>();
+    @OneToMany(mappedBy = "club")
+    private List<ClubEventBudget> clubEventBudget = new ArrayList<ClubEventBudget>();
 
     private ArrayList<ClubMember> clubMembers;
 

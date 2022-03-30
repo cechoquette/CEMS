@@ -5,7 +5,9 @@ public enum Vendor {
 	//TODO LONG LIST
 	
 	AMAZON("Amazon"),
-	CATERING_CO("Catering Co.");
+	CATERING_CO("Catering Co."),
+	COUNTRY_WIDE("Country Wide Furnishing"),
+	FURNITURE_GALLERY("The Furniture Gallery");
 
 	private String vendorName;
 	

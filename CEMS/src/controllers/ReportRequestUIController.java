@@ -2,6 +2,7 @@ package CEMS.src.controllers;
 
 
 import CEMS.src.application.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -70,20 +71,43 @@ public class ReportRequestUIController {
 	private RadioButton rbReportExportExcel;
 	@FXML
 	private RadioButton rbReportExportPrint;
-	
+	@FXML
+	private Label lbReportEvent;
+	@FXML
+	private ChoiceBox<ClubEvent> choiceReportEvent;
+
+
 	@FXML
 	public void initialize(){
 		reportBorderPane.setTop(new MainMenu().createMenu());
 		
 		choiceReportSelectType.getItems().addAll(Arrays.asList(ReportType.values()));
 		choiceReportSelectClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
-		
+
+		choiceReportEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
+
+		choiceReportSelectType.setOnAction(
+				e -> choiceReportTypeChanged()
+		);
+
+		//remove this option for now
+		rbReportExportPrint.setVisible(false);
+
 		initializeDates();
 		setCustomInvisible();
+		setEventsInvisible();
 		
+	}
+
+	public void setEventsInvisible(){
+		choiceReportEvent.setValue(null);
+		lbReportEvent.setVisible(false);
+		choiceReportEvent.setVisible(false);
 	}
 	
 	public void setCustomInvisible() {
+		dpReportStartDate.setValue(null);
+		dpReportEndDate.setValue(null);
 		lbReportFrom.setVisible(false);
 		lbReportTo.setVisible(false);
 		dpReportStartDate.setVisible(false);
@@ -179,6 +203,7 @@ public class ReportRequestUIController {
 		rbReportExportExcel.setSelected(false);
 		rbReportExportPrint.setSelected(false);
 		setCustomInvisible();
+		setEventsInvisible();
 	}
 	// Event Listener on Button[#btReportCancel].onAction
 	@FXML
@@ -193,9 +218,11 @@ public class ReportRequestUIController {
 		dataToSubmit = new HashMap<Object, Object>();
 		
 		dataToSubmit.put("ReportType", choiceReportSelectType.getValue());//ReportType
-		dataToSubmit.put("ReportClub", choiceReportSelectClub.getValue());//String : Club
+		dataToSubmit.put("ReportClub", choiceReportSelectClub.getValue());//Club
 		dataToSubmit.put("ReportTimeframe", getTimeframe());
 		dataToSubmit.put("ReportFormat", getFormat());
+		dataToSubmit.put("ReportEvent", choiceReportEvent.getValue());//can be null
+
 
 		Controller.processRequest(RequestType.GENERATE_REPORT, dataToSubmit);
 	}
@@ -217,9 +244,26 @@ public class ReportRequestUIController {
 	// Event Listener on RadioButton[#rbReportTimeframeCustom].onAction
 	@FXML
 	public void rbReportCustomSelected(ActionEvent event) {
+		initializeDates();
 		lbReportFrom.setVisible(true);
 		lbReportTo.setVisible(true);
 		dpReportStartDate.setVisible(true);
 		dpReportEndDate.setVisible(true);
+	}
+	public void choiceReportTypeChanged() {
+		if (choiceReportSelectType.getValue() != null) {
+			if (choiceReportSelectType.getValue() == ReportType.CLUBEVENT_BUDGET ||
+					choiceReportSelectType.getValue() == ReportType.CLUBEVENT_ATTENDANCE ||
+					choiceReportSelectType.getValue() == ReportType.CLUBEVENT_EXPENDITURES) {
+				lbReportEvent.setVisible(true);
+				choiceReportEvent.setVisible(true);
+			}
+			else{
+				setEventsInvisible();
+			}
+		}
+		else{
+			setEventsInvisible();
+		}
 	}
 }

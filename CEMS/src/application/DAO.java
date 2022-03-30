@@ -2,9 +2,7 @@ package CEMS.src.application;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.Query;
+import org.hibernate.*;
 
 public class DAO {
     //// Add
@@ -100,5 +98,13 @@ public class DAO {
             session.close();
         }
         return expenditures;
+    }
+
+    //////////TEST
+    public static void main(String[] args) {
+
+        DAO dao = new DAO();
+        Club club = new Club("knitting club","we enjoy knitting");
+        dao.addClub(club);
     }
 }
