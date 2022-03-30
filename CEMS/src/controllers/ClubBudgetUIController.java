@@ -1,6 +1,8 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.*;
+import javafx.css.PseudoClass;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -8,10 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javafx.event.ActionEvent;
 
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
 public class ClubBudgetUIController {
@@ -80,10 +84,10 @@ public class ClubBudgetUIController {
 	
 	@FXML
 	public void initialize(){
-		clubBudgetBorderPane.setTop(new MainMenu().createMenu());
 
 		//choiceClubBudgetClub set up fields
-		
+		choiceClubBudgetClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+
 		//setting uneditable fields to blue
 		tfClubBudgetEventsSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
 		tfClubBudgetActivitiesSubtotal.setStyle("-fx-control-inner-background: #cce0ff");
@@ -136,6 +140,8 @@ public class ClubBudgetUIController {
 	public void btClubBudgetCancelClicked(ActionEvent event) {
 		btClubBudgetClearClicked(event);
 	}
+
+
 	// Event Listener on Button[#btClubBudgetSubmit].onAction
 	@FXML
 	public void btClubBudgetSubmitClicked(ActionEvent event) {
@@ -224,53 +230,113 @@ public class ClubBudgetUIController {
 		tfClubBudgetTaxes.setText("0.00");
 		if(tfClubBudgetTotal.getText() == "")
 		tfClubBudgetTotal.setText("0.00");
-		
+
+		if ((Double.parseDouble(tfClubBudgetEventsVenue.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetEventsServices.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetEventsRefreshments.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetEventsMisc.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetActivitiesMeetings.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetActivitiesSpace.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetActivitiesEquipment.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetActivitiesOther.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetFundraisingCosts.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetFundraisingIncome.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetFundraisingParticipant.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetFundraisingDonations.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetMiscAdminFees.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetMiscBankFees.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetMiscBankInterest.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetMiscUtilities.getText()) > Double.parseDouble("0.00")
+				|| Double.parseDouble(tfClubBudgetMiscOther.getText()) > Double.parseDouble("0.00"))
+				&& choiceClubBudgetClub.getValue() != null)  {
+
+			// Set style to null - no error state
+			tfClubBudgetEventsVenue.setStyle(null);
+			tfClubBudgetEventsServices.setStyle(null);
+			tfClubBudgetEventsRefreshments.setStyle(null);
+			tfClubBudgetEventsMisc.setStyle(null);
+			tfClubBudgetActivitiesMeetings.setStyle(null);
+			tfClubBudgetActivitiesSpace.setStyle(null);
+			tfClubBudgetActivitiesEquipment.setStyle(null);
+			tfClubBudgetActivitiesOther.setStyle(null);
+			tfClubBudgetFundraisingCosts.setStyle(null);
+			tfClubBudgetFundraisingIncome.setStyle(null);
+			tfClubBudgetFundraisingParticipant.setStyle(null);
+			tfClubBudgetFundraisingDonations.setStyle(null);
+			tfClubBudgetMiscAdminFees.setStyle(null);
+			tfClubBudgetMiscBankFees.setStyle(null);
+			tfClubBudgetMiscBankInterest.setStyle(null);
+			tfClubBudgetMiscUtilities.setStyle(null);
+			tfClubBudgetMiscOther.setStyle(null);
+			choiceClubBudgetClub.setStyle(null);
+		} else {
+			// Set style to error state
+			tfClubBudgetEventsVenue.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetEventsServices.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetEventsRefreshments.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetEventsMisc.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetActivitiesMeetings.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetActivitiesSpace.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetActivitiesEquipment.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetActivitiesOther.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetFundraisingCosts.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetFundraisingIncome.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetFundraisingParticipant.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetFundraisingDonations.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetMiscAdminFees.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetMiscBankFees.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetMiscBankInterest.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetMiscUtilities.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			tfClubBudgetMiscOther.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+			choiceClubBudgetClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
+		}
+
 	}
-	
+
 	public void calculateSubtotals() {
 
-		double eventsSubtotal =  
-			Double.parseDouble(tfClubBudgetEventsVenue.getText()) +
-			Double.parseDouble(tfClubBudgetEventsServices.getText()) +
-			Double.parseDouble(tfClubBudgetEventsRefreshments.getText()) +
-			Double.parseDouble(tfClubBudgetEventsMisc.getText());
-	
-		tfClubBudgetEventsSubtotal.setText(String.format("%.2f", eventsSubtotal));
+			double eventsSubtotal =
+					Double.parseDouble(tfClubBudgetEventsVenue.getText()) +
+							Double.parseDouble(tfClubBudgetEventsServices.getText()) +
+							Double.parseDouble(tfClubBudgetEventsRefreshments.getText()) +
+							Double.parseDouble(tfClubBudgetEventsMisc.getText());
 
-		double clubActivitiesSubtotal =  
-				Double.parseDouble(tfClubBudgetActivitiesMeetings.getText()) +
-				Double.parseDouble(tfClubBudgetActivitiesSpace.getText()) +
-				Double.parseDouble(tfClubBudgetActivitiesEquipment.getText()) +
-				Double.parseDouble(tfClubBudgetActivitiesOther.getText());
+			tfClubBudgetEventsSubtotal.setText(String.format("%.2f", eventsSubtotal));
 
-		tfClubBudgetActivitiesSubtotal.setText(String.format("%.2f", clubActivitiesSubtotal));
-				
-		double fundraisingSubtotal =  
-				Double.parseDouble(tfClubBudgetFundraisingCosts.getText()) +
-				Double.parseDouble(tfClubBudgetFundraisingIncome.getText()) +
-				Double.parseDouble(tfClubBudgetFundraisingParticipant.getText()) +
-				Double.parseDouble(tfClubBudgetFundraisingDonations.getText());
+			double clubActivitiesSubtotal =
+					Double.parseDouble(tfClubBudgetActivitiesMeetings.getText()) +
+							Double.parseDouble(tfClubBudgetActivitiesSpace.getText()) +
+							Double.parseDouble(tfClubBudgetActivitiesEquipment.getText()) +
+							Double.parseDouble(tfClubBudgetActivitiesOther.getText());
 
-		tfClubBudgetFundraisingSubtotal.setText(String.format("%.2f", fundraisingSubtotal));
-		
-		double miscellaneousSubtotal =  
-				Double.parseDouble(tfClubBudgetMiscAdminFees.getText()) +
-				Double.parseDouble(tfClubBudgetMiscBankFees.getText()) +
-				Double.parseDouble(tfClubBudgetMiscBankInterest.getText()) +
-				Double.parseDouble(tfClubBudgetMiscUtilities.getText()) +
-				Double.parseDouble(tfClubBudgetMiscOther.getText());
+			tfClubBudgetActivitiesSubtotal.setText(String.format("%.2f", clubActivitiesSubtotal));
 
-		tfClubBudgetMiscSubtotal.setText(String.format("%.2f", miscellaneousSubtotal));
-		
-		double fullBudgetSubtotal = eventsSubtotal + clubActivitiesSubtotal + fundraisingSubtotal + miscellaneousSubtotal;
+			double fundraisingSubtotal =
+					Double.parseDouble(tfClubBudgetFundraisingCosts.getText()) +
+							Double.parseDouble(tfClubBudgetFundraisingIncome.getText()) +
+							Double.parseDouble(tfClubBudgetFundraisingParticipant.getText()) +
+							Double.parseDouble(tfClubBudgetFundraisingDonations.getText());
 
-		tfClubBudgetSubtotal.setText(String.format("%.2f", fullBudgetSubtotal));
-		
-		double taxes = Province.ONTARIO.getTaxRate()*fullBudgetSubtotal;
-		double total = fullBudgetSubtotal + taxes;
-		
-		tfClubBudgetTaxes.setText(String.format("%.2f", taxes));
-		tfClubBudgetTotal.setText(String.format("%.2f", total));
+			tfClubBudgetFundraisingSubtotal.setText(String.format("%.2f", fundraisingSubtotal));
+
+			double miscellaneousSubtotal =
+					Double.parseDouble(tfClubBudgetMiscAdminFees.getText()) +
+							Double.parseDouble(tfClubBudgetMiscBankFees.getText()) +
+							Double.parseDouble(tfClubBudgetMiscBankInterest.getText()) +
+							Double.parseDouble(tfClubBudgetMiscUtilities.getText()) +
+							Double.parseDouble(tfClubBudgetMiscOther.getText());
+
+			tfClubBudgetMiscSubtotal.setText(String.format("%.2f", miscellaneousSubtotal));
+
+			double fullBudgetSubtotal = eventsSubtotal + clubActivitiesSubtotal + fundraisingSubtotal + miscellaneousSubtotal;
+
+			tfClubBudgetSubtotal.setText(String.format("%.2f", fullBudgetSubtotal));
+
+			double taxes = Province.ONTARIO.getTaxRate()*fullBudgetSubtotal;
+			double total = fullBudgetSubtotal + taxes;
+
+			tfClubBudgetTaxes.setText(String.format("%.2f", taxes));
+			tfClubBudgetTotal.setText(String.format("%.2f", total));
 		
 	}
 	
