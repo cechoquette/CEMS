@@ -35,6 +35,8 @@ public class Controller {
 		
 		switch(requestType) {
 		case CREATE_CLUB:
+			ClubDAO clubDao1 = new ClubDAO();
+			clubDao1.saveClub(FormHandler.createClub(requestType, dataToProcess));
 			break;
 		case CREATE_CLUB_MEMBER:
 			break;
@@ -64,17 +66,17 @@ public class Controller {
 			}
 
 			break;
-		case GENERATE_BUDGET_REPORT:
-			break;
-		case GENERATE_CLUB_REPORT:
-			break;
-		case GENERATE_EVENT_REPORT:
-			break;
-		case GENERATE_EXPENDITURE_REPORT: 
-			break;
+//		case GENERATE_BUDGET_REPORT:
+//			break;
+//		case GENERATE_CLUB_REPORT:
+//			break;
+//		case GENERATE_EVENT_REPORT:
+//			break;
+//		case GENERATE_EXPENDITURE_REPORT:
+//			break;
 		case LOGIN_USER:
 			break;
-		case MODIFY_CLUB:
+		case MODIFY_CLUB://No
 			break;
 		case MODIFY_EVENT:
 			break;

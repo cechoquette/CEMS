@@ -55,8 +55,7 @@ public class FormHandler {
 	public static ClubEventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubEventBudgetForm clubEventBudgetForm = new ClubEventBudgetForm(requestType, hmData);
 		clubEventBudget = clubEventBudgetForm.getEventBudget();
-		System.out.println(clubEventBudget);
-		System.out.println("This worked2?");
+
 		return clubEventBudget;
 	}
 	public static ClubEventBudget getEventBudget() {
@@ -66,10 +65,40 @@ public class FormHandler {
 	public static ClubBudget createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubBudgetForm clubBudgetForm = new ClubBudgetForm(requestType, hmData);
 		clubBudget = clubBudgetForm.getClubBudget();
-		System.out.println(clubBudget);
-		System.out.println("This worked?");
+
 		return clubBudget;
 	}
+
+	public static Club createClub(RequestType requestType, HashMap<Object, Object> hmData ){
+		ClubForm clubForm = new ClubForm(requestType, hmData);
+		club = clubForm.getClub();
+
+		return club;
+	}
+
+	public static Club getClub() {
+		return club;
+	}
+
+	public static User createUser(RequestType requestType, HashMap<Object, Object> hmData){
+		UserForm userForm = new UserForm(requestType, hmData);
+		user = userForm.getUser();
+
+		return user;
+
+	}
+
+	public static User getUser(){ return user; };
+
+
+
+
+
+
+
+
+	//getters and setters
+
 	public static ClubBudget getClubBudget() {
 		return clubBudget;
 	}
@@ -86,55 +115,15 @@ public class FormHandler {
 		return clubEvent;
 	}
 
-	public static Club getClub() {
-		return club;
-	}
 
-	public static User getUser() {
-		return user;
-	}
+
+
 
 	public static ClubMember getClubMember() {
 		return clubMember;
 	}
 	
-//	
-//	public static EmailForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
-//	
-//	public static ExpenditureForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
-//	
-//	public static ExpenditureForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
-//	
-//	public static ExpenditureForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
-//	
-//	public static ExpenditureForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
-//	
-//	public static ExpenditureForm createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
-//		ExpenditureForm expenditureForm = new ExpenditureForm();
-//		
-//		return expenditureForm;
-//	}
-//	
+
 	//new comment
 	//newest comment
 	//newestest comment
