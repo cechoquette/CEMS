@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ClubEventBudgetUIController">
    <children>
-      <BorderPane fx:id="eventBudgetBorderPane" prefHeight="568.0" prefWidth="923.0">
+      <BorderPane fx:id="eventBudgetBorderPane" prefHeight="575.0" prefWidth="900.0">
          <bottom>
             <GridPane alignment="CENTER" prefHeight="48.0" prefWidth="923.0" BorderPane.alignment="CENTER">
                <columnConstraints>
