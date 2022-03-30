@@ -12,10 +12,11 @@ public class ClubExpendituresReport extends Report{
     private static final ReportType reportType = ReportType.CLUB_EXPENDITURES;
     private LocalDate today;
 
-    public ClubExpendituresReport() {
+    public ClubExpendituresReport(Timeframe timeframe) {
+        this.timeframe = timeframe;
         this.today = LocalDate.now();
         this.reportID = ++COUNT_FOR_IDS;
-        this.filename = "ClubExpendituresReport_" + reportID + "_" + timeframe;
+        this.filename = "ClubExpendituresReport_" + reportID + "_" + this.timeframe;
     }
 
     @Override
