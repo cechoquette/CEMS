@@ -26,7 +26,7 @@ public class ClubMemberForm extends Form{
         return clubMember;
     }
 
-    public void updateMember(ClubMember clubMember){
+    public void updateMember(ClubMember clubMember){//data coming in will be the same as with a User Update, check User Profile UI for keys
         //Todo code
     }
 

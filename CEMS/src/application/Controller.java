@@ -106,13 +106,18 @@ public class Controller {
 			sendToDatabase(FormHandler.createClubBudgetForm(requestType, dataToProcess));
 			break;
 		case SUBMIT_EVENT_BUDGET:
-			sendToDatabase(FormHandler.createEventBudgetForm(requestType, dataToProcess));
+			DAO dao2 = new DAO();
+//			dao2.saveEventBudget(FormHandler.createEventBudgetForm(requestType, dataToProcess));
 			break;
 		case SUBMIT_EXPENDITURE:
-			sendToDatabase(FormHandler.createExpenditureForm(requestType, dataToProcess));
+			DAO dao1 = new DAO();
+//			dao1.saveExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
 			break;
+		case UPDATE_CLUB_MEMBER:
+			FormHandler.updateClubMemberForm(requestType, dataToProcess);
+				break;
 			
 		default: //do nothing
 			break;

@@ -89,8 +89,8 @@ public class FormHandler {
 
 	}
 
-	public static void createLoginForm(RequestType requestType, HashMap<Object, Object> hmData){
-		LoginForm loginForm = new LoginForm(requestType, hmData);
+	public static void createLoginForm(RequestType requestType, HashMap<Object, Object> hmData){//void method. No such thing as a Login Object
+		LoginForm loginForm = new LoginForm(requestType, hmData);//creating a loginForm should call a login() method
 
 	}
 
