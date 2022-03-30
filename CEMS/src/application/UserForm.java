@@ -9,17 +9,28 @@ public class UserForm {
     private boolean isFilled;
 
     private User user;
+    private HashMap<Object, Object> hmData;
 
     public UserForm(RequestType requestType, HashMap<Object, Object> hmData){
 
-        createUser(hmData);
+
+        this.hmData = hmData;
     }
 
-    public void createUser(HashMap<Object, Object> hmData){
+    public User createUser(){
+        //process data
 
 
 
+        this.user = new User();//add parameters
+        return user;
+    }
 
+    public void updateUser(){
+
+    }
+
+    public void updateUserPermissions(){
 
     }
 

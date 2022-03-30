@@ -9,12 +9,13 @@ public class ExpenditureForm extends Form{
 	private static int formID; //needs to be called from Database, or saved and retrieved at startup
 	private boolean isFilled;
 	private Expenditure expenditure;
+	private HashMap<Object, Object> hmData;
 	
 	public ExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData){
-//		this.formfields = new HashMap<String, Double>();
+		this.hmData = hmData;
+
 		this.formID = ++super.COUNT_FOR_IDS;
-		createExpenditure(hmData);
-		
+
 		System.out.println(expenditure);
 		System.out.println("FormID: " + formID);
 		System.out.println("ExpID: " + expenditure.getExpenditureID());
@@ -26,7 +27,7 @@ public class ExpenditureForm extends Form{
 		return expenditure;
 	}
 	
-	private void createExpenditure(HashMap<Object, Object> hmData) {
+	public Expenditure createExpenditure() {
 		String description = (String)hmData.get("ExpenditureDescription");
 		String accountHolder = (String)hmData.get("ExpenditureAccountHolder");
 		String paymentAccount = (String)hmData.get("ExpenditureAccount");
@@ -62,6 +63,8 @@ public class ExpenditureForm extends Form{
 		
 		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount,
 				total, province, date, vendorName, category, paymentMethod, club, clubEvent);
+
+		return expenditure;
 	}
 	
 	public boolean isFilled() {

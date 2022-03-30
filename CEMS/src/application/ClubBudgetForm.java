@@ -4,21 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ClubBudgetForm extends Form{
-	
-//	private double subtotal;
-//	private double taxes;
-//	private double total;
-//	
-	private static int budgetFormID;
+	public static int COUNT_FOR_IDS;
+	private static int formID;
 	private boolean isFilled;
 	private ClubBudget clubBudget;
-	
+	private HashMap<Object, Object> hmData;
+
 	ClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData){
-		this.budgetFormID++;
-		createClubBudget(hmData);
+		this.hmData = hmData;
+		this.formID = ++COUNT_FOR_IDS;
 	}
 	
-	public void createClubBudget(HashMap<Object, Object> hmData){
+	public ClubBudget createClubBudget(){
 		ArrayList<Double> dataForBudget = new ArrayList<Double>();
 
 		dataForBudget.add((Double)hmData.get("ClubBudgetEventsVenue"));
@@ -52,7 +49,7 @@ public class ClubBudgetForm extends Form{
 //		}
 		
 		this.clubBudget = new ClubBudget(dataForBudget, clubBudgetClub);
-		
+		return clubBudget;
 	}
 	
 	public ClubBudget getClubBudget() {

@@ -4,28 +4,34 @@ import java.util.HashMap;
 
 public class ClubMemberForm extends Form{
 
-//	@Override
-//	public void addField(HashMap<Object, Object> requestData) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public Object getField(Object Key) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void setField(HashMap<Object, Object> requestData) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	protected boolean delete(HashMap<Object, Object> requestData) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+    public static int COUNT_FOR_IDS;
+    private ClubMember clubMember;
+    private int formID;
+    private HashMap<Object, Object> hmData;
+
+    public ClubMemberForm(RequestType requestType, HashMap<Object, Object> hmData){
+        this.hmData = hmData;
+        this.formID = ++COUNT_FOR_IDS;
+
+    }
+
+    public ClubMember getClubMember(){
+        return clubMember;
+    }
+
+    public ClubMember createMember(){
+    //Todo code
+
+        this.clubMember = new ClubMember();
+        return clubMember;
+    }
+
+    public void updateMember(ClubMember clubMember){
+        //Todo code
+    }
+
+    public void deleteMember(){
+
+    }
 
 }

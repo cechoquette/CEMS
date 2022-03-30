@@ -101,11 +101,15 @@ public class Controller {
 			break;
 		case STORE_DATA_IN_DATABASE:
 			break;
-		case SUBMIT_CLUB_BUDGET: sendToDatabase(FormHandler.createClubBudgetForm(requestType, dataToProcess));
+		case SUBMIT_CLUB_BUDGET:
+
+			sendToDatabase(FormHandler.createClubBudgetForm(requestType, dataToProcess));
 			break;
-		case SUBMIT_EVENT_BUDGET: sendToDatabase(FormHandler.createEventBudgetForm(requestType, dataToProcess));
+		case SUBMIT_EVENT_BUDGET:
+			sendToDatabase(FormHandler.createEventBudgetForm(requestType, dataToProcess));
 			break;
-		case SUBMIT_EXPENDITURE: sendToDatabase(FormHandler.createExpenditureForm(requestType, dataToProcess));
+		case SUBMIT_EXPENDITURE:
+			sendToDatabase(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
 			break;

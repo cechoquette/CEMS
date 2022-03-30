@@ -35,72 +35,96 @@ public class FormHandler {
 //		
 		return null;
 	}
-	
+
+
+////// CREATION
+
 	public static Expenditure createExpenditureForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ExpenditureForm expenditureForm = new ExpenditureForm(requestType, hmData);
-		expenditure = expenditureForm.getExpenditure();
-		return expenditure;
-	}
-	
-	public static Expenditure getExpenditure() {
+		expenditure = expenditureForm.createExpenditure();
 		return expenditure;
 	}
 	
 	public static ClubEventBudget createEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubEventBudgetForm clubEventBudgetForm = new ClubEventBudgetForm(requestType, hmData);
-		clubEventBudget = clubEventBudgetForm.getEventBudget();
+		clubEventBudget = clubEventBudgetForm.createClubEventBudget();
 
 		return clubEventBudget;
 	}
-
-	public static ClubEventBudget getEventBudget() {
-		return clubEventBudget;
-	}
-
 
 	public static ClubBudget createClubBudgetForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubBudgetForm clubBudgetForm = new ClubBudgetForm(requestType, hmData);
-		clubBudget = clubBudgetForm.getClubBudget();
+		clubBudget = clubBudgetForm.createClubBudget();
 
-		return clubBudget;
-	}
-
-	public static ClubBudget getClubBudget() {
 		return clubBudget;
 	}
 
 	public static Club createClubForm(RequestType requestType, HashMap<Object, Object> hmData ){
 		ClubForm clubForm = new ClubForm(requestType, hmData);
-		club = clubForm.getClub();
+		club = clubForm.createClub();
 
-		return club;
-	}
-
-	public static Club getClub() {
 		return club;
 	}
 
 	public static User createUserForm(RequestType requestType, HashMap<Object, Object> hmData){
 		UserForm userForm = new UserForm(requestType, hmData);
-		user = userForm.getUser();
+		user = userForm.createUser();
 
 		return user;
 
 	}
 
-	public static User getUser(){ return user; };
+	public static ClubMember createClubMemberForm(RequestType requestType, HashMap<Object, Object> hmData){
+		ClubMemberForm clubMemberForm = new ClubMemberForm(requestType, hmData);
+		clubMember = clubMemberForm.createMember();
 
-
+		return clubMember;
+	}
 
 	public static ClubEvent createClubEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);
 		clubEvent = clubEventForm.getEvent();
+
 		return clubEvent;
+
 	}
 
-	public static ClubEvent getEvent() {
-		return clubEvent;
+	public static void createLoginForm(RequestType requestType, HashMap<Object, Object> hmData){
+		LoginForm loginForm = new LoginForm(requestType, hmData);
+
 	}
+
+///// UPDATE
+	public static void updateUserForm(RequestType requestType, HashMap<Object, Object> hmData){
+		UserForm userForm = new UserForm(requestType, hmData);
+		userForm.updateUser();
+		Controller.processRequest(RequestType.UPDATE_CLUB_MEMBER, hmData);//calling update Club Member to kill two birds
+	}
+
+	public static void updateClubEventForm(RequestType requestType, HashMap<Object, Object> hmData){
+
+
+		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);
+
+		if(hmData.get("ClubEvent") != null){
+			clubEventForm.updateClubEvent((ClubEvent)hmData.get("ClubEvent"));
+		}
+
+	}
+
+	public static void updateClubMemberForm(RequestType requestType, HashMap<Object, Object> hmData){
+		ClubMemberForm clubMemberForm = new ClubMemberForm(requestType, hmData);
+
+		if(hmData.get("ClubMember") != null){
+			clubMemberForm.updateMember((ClubMember)hmData.get("ClubMember"));
+		}
+
+
+	}
+
+
+
+
 
 
 
@@ -109,7 +133,24 @@ public class FormHandler {
 
 	//getters and setters
 
+	public static Expenditure getExpenditure() {
+		return expenditure;
+	}
 
+	public static ClubEventBudget getEventBudget() {
+		return clubEventBudget;
+	}
+
+	public static ClubBudget getClubBudget() {
+		return clubBudget;
+	}
+
+	public static Club getClub() {
+		return club;
+	}
+
+	public static User getUser(){ return user; };
+	public static ClubEvent getEvent() { return clubEvent; }
 
 	public static HashMap<Object, Object> getDataRequested() {
 		return dataRequested;

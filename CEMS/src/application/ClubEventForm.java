@@ -8,19 +8,18 @@ public class ClubEventForm extends Form{
     public static int COUNT_FOR_IDS;
     private ClubEvent clubEvent;
     private int formID;
+    private HashMap<Object, Object> hmData;
 
     public ClubEventForm(RequestType requestType, HashMap<Object, Object> hmData){
+        this.hmData = hmData;
         this.formID = ++COUNT_FOR_IDS;
-
-        createEvent(hmData);
-
     }
 
     public ClubEvent getEvent(){
         return clubEvent;
     }
 
-    public void createEvent(HashMap<Object, Object> hmData){
+    public ClubEvent createClubEvent(){
 
         String eventName = (String)hmData.get("EventName");
         String eventDesc = (String)hmData.get("EventDescription");
@@ -30,11 +29,12 @@ public class ClubEventForm extends Form{
         String emailGroup = (String)hmData.get("EventEmailGroup");
 
         this.clubEvent = new ClubEvent(eventName, eventDesc, eventClub, eventDateTime, eventLocation, emailGroup);
-
+        return clubEvent;
     }
 
-    public void updateEvent(){
+    public void updateClubEvent(ClubEvent clubEvent){
 
+        //todo code
     }
 
     public void deleteEvent(){
