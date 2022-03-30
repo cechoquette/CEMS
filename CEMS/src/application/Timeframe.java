@@ -64,5 +64,10 @@ public class Timeframe {
 	public void setPeriodBetween(Period periodBetween) {
 		this.periodBetween = periodBetween;
 	}
+
+	@Override
+	public String toString(){
+		return startDate + "_" + endDate;
+	}
 	
 }

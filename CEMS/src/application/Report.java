@@ -4,7 +4,8 @@ public abstract class Report {
 	private static int reportID;
 	private Timeframe timeframe;
 	private String filename;
-	private ReportType reportType;
+	private ReportFormat reportformat;
+
 	
 	
 //	public abstract Report generateReport();
