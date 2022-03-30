@@ -2,8 +2,10 @@ package CEMS.src.application;
 
 public class ClubBudgetReport extends Report{
 
+
+
     @Override
-    public Report generateReport() {
-        return null;
+    public Object[][] formatReport() {
+        return new Object[0][];
     }
 }

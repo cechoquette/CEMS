@@ -7,8 +7,9 @@ public abstract class Report {
 	private ReportType reportType;
 	
 	
-	public abstract Report generateReport();
-	}
-	
+//	public abstract Report generateReport();
+
+
+	public abstract Object[][] formatReport();
 	
 }
