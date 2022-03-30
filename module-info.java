@@ -9,7 +9,8 @@ module CEMS {
     requires org.hibernate.orm.core;
 	requires java.sql;
 	requires org.mybatis;
+	requires mysql.connector.java;
 
-	opens CEMS.src.application to javafx.graphics, javafx.fxml,org.hibernate.orm.core;
+    opens CEMS.src.application to javafx.graphics, javafx.fxml,org.hibernate.orm.core;
     opens CEMS.src.controllers to javafx.fxml, javafx.graphics;
 }
