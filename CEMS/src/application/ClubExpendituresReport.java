@@ -13,6 +13,9 @@ public class ClubExpendituresReport extends Report{
     private LocalDate today;
 
     public ClubExpendituresReport() {
+        this.today = LocalDate.now();
+        this.reportID = ++COUNT_FOR_IDS;
+        this.filename = "ClubExpendituresReport_" + reportID + "_" + timeframe;
     }
 
     @Override
