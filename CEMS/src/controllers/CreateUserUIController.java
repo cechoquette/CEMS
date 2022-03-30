@@ -54,13 +54,10 @@ public class CreateUserUIController {
 
     @FXML
     public void initialize() {
-        // TODO: Add menu - first, add label in the FXML document
-//        createUserBorderPane.setTop(new MainMenu().createMenu());
-
         // Add the values to the Permissions dropdown
         comboCreateUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
 
-        // TODO: Add the values to the Clubs dropdown
+        // Add the values to the Clubs dropdown
         comboCreateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
     }
 
