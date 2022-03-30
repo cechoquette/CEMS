@@ -2,14 +2,18 @@ package CEMS.src.controllers;
 
 import CEMS.src.application.InputValidation;
 import CEMS.src.application.PasswordUtil;
+import CEMS.src.application.ViewBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class ResetPasswordUIController {
 
@@ -62,7 +66,12 @@ public class ResetPasswordUIController {
         tfResetPassConfirm.setText("");
         tfResetPassConfirm.setStyle(null);
 
-        // TODO: return the user to the dashboard if logged in, and the login page if not logged in
+        // Return the user to the dashboard if logged in, and the login page if not logged in
+        // TODO: currently only returns them to login page, need something to tell us where to send them
+        Pane menuScreen = ViewBuilder.newScreen("LoginMenuBar");
+        Pane mainScreen = ViewBuilder.newScreen("LoginPage");
+        defaultPane.setTop(menuScreen);
+        defaultPane.setCenter(mainScreen);
 
     }
 
