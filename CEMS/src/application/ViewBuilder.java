@@ -14,7 +14,7 @@ public class ViewBuilder {
         }
 
         catch (Exception e) {
-            System.out.println("buildView method cannot find the referenced FXML file");
+            System.out.println("buildView method cannot find the referenced FXML file " + fxmlFile);
         }
         return view;
     }
