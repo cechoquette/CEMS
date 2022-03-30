@@ -1,6 +1,5 @@
 package CEMS.src.application;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserForm {
@@ -26,7 +25,7 @@ public class UserForm {
         return user;
     }
 
-    public void updateUser(){
+    public void updateUser(User CURRENTUSER){
 
     }
 
