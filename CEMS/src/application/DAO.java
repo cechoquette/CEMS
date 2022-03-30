@@ -71,22 +71,6 @@ public class DAO {
         }
     */ // getall() not working yet
     @SuppressWarnings("null")
-    public void deleteClub(int clubID) {
-        Transaction transaction = null;
-        Club club = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            club = session.get(Club.class, clubID);
-            if (club != null) {
-                session.delete(club);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-    }
 
     //// UserDAO
     public void addUser(User user ){
