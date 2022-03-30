@@ -1,16 +1,26 @@
 package CEMS.src.application;
 
 import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
+@Table(name="User")
 public class ClubMember {
 	//No need for ID count. Primary key is based on student IDs as in User class.
+	@Id
+	@Column(name="student_id")
 	private int studentID;
-	private Club club;
+	@Column(name="club_member_first_name")
 	private String clubMemberFirstName;
+	@Column(name="club_member_last_name")
 	private String clubMemberLastName;
+	@Column(name="club_member_email")
 	private String clubMemberEmail;
+	@ManyToOne
 	private User user;
-	
+	@ManyToOne
+	private Club club;
+
 	public ClubMember(){}
 	//Constructor for creating a ClubMember who is not a User. In this case private field User remains null. Can be changed later.
 	public ClubMember(int studentID, String firstName, String lastName, String email, Club club){

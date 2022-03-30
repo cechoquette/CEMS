@@ -25,7 +25,7 @@ public class Club {
     private List<ClubBudget> clubBudget = new ArrayList<ClubBudget>();
     @OneToMany(mappedBy = "club")
     private List<ClubEventBudget> clubEventBudget = new ArrayList<ClubEventBudget>();
-
+    @OneToMany(mappedBy = "club")
     private ArrayList<ClubMember> clubMembers;
 
     public Club () {
