@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
-public class databaseRunner {
+public class DatabaseRunner {
 
     public static void setUPDB() throws Exception {
         String script = "CEMS/src/resources/cems_database_1.sql";
