@@ -7,7 +7,7 @@ import org.hibernate.*;
 
 public class DAO {
 
-
+    //// ClubDAO
     public void addClub(Club club) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -88,8 +88,8 @@ public class DAO {
         }
     }
 
-//// User
-    public void saveUser(User user ){
+    //// UserDAO
+    public void addUser(User user ){
     Transaction transaction = null;
     try (Session session = HibernateUtil.getSessionFactory().openSession()) {
         transaction = session.beginTransaction();
@@ -169,6 +169,88 @@ public class DAO {
         }
     }
 
+    //// ClubBudgetDAO
+
+    public void saveClubBudget(ClubBudget clubBudget) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Object object = session.save(clubBudget);
+            session.get(ClubBudget.class, (Serializable) object);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public void updateClubBudget(ClubBudget clubBudget) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(clubBudget);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public ClubBudget getClubBudget(int clubBudgetID) {
+        Transaction transaction = null;
+        ClubBudget clubBudget = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            clubBudget = session.get(ClubBudget.class, clubBudgetID);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return clubBudget;
+    }
+
+    /*    @SuppressWarnings("unchecked")
+        public List<ClubBudget> getAllClubBudgets() {
+            Transaction transaction = null;
+            List<ClubBudgets> clubBudgets = null;
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                transaction = session.beginTransaction();
+                clubs = session.createQuery("from ClubBudget").list();
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            }
+            return clubBudgets;
+        }
+    */ // getAllClubbBudgets
+
+    @SuppressWarnings("null")
+    public void deleteClubBudget(int clubBudgetID) {
+        Transaction transaction = null;
+        ClubBudget clubBudget = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            clubBudget = session.get(ClubBudget.class, clubBudgetID);
+            if (clubBudget != null) {
+                session.delete(clubBudget);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
 
 
 
