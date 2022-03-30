@@ -116,7 +116,7 @@
                      </GridPane.margin>
                   </TextArea>
                   <Button fx:id="btnRequestAccessBack" alignment="CENTER" mnemonicParsing="false" onAction="#btnRequestAccessBackClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="TOP" />
-                  <Button fx:id="btnRequestAccessClear" mnemonicParsing="false" onAction="#btnRequestAccessCancelClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP" />
+                  <Button fx:id="btnRequestAccessClear" mnemonicParsing="false" onAction="#btnRequestAccessClearClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP" />
                   <Button fx:id="btnRequestAccessCancel" mnemonicParsing="false" onAction="#btnRequestAccessCancelClicked" prefWidth="100.0" styleClass="form__btn" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP" />
                   <Button fx:id="btnRequestAccessSubmit" mnemonicParsing="false" onAction="#btnRequestAccessSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP" />
                </children>
