@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="50.0" maxWidth="900.0" minHeight="50.0" minWidth="900.0"
             prefHeight="50.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.resources.fxml.LoginMenuBar">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.LoginMenuBarUIController">
    <children>
       <Button fx:id="btnLoginMenuNavLogin" layoutX="750.0" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#btnLoginMenuNavLoginClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: none; -fx-cursor: pointer;" styleClass="nav__btn" text="Login">
          <font>
