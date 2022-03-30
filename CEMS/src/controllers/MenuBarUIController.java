@@ -68,7 +68,7 @@ public class MenuBarUIController {
 
     @FXML
     void menuEventsCreateClicked(ActionEvent event) {
-        Pane mainScreen = ViewBuilder.newScreen("CreateEventForm");
+        Pane mainScreen = ViewBuilder.newScreen("CreateClubEventForm");
         defaultPane.setCenter(mainScreen);
     }
 
@@ -99,7 +99,7 @@ public class MenuBarUIController {
 
     @FXML
     void menuItemReportingEventsClicked(ActionEvent event) {
-        Pane mainScreen = ViewBuilder.newScreen("EventBudgetSubmissionForm");
+        Pane mainScreen = ViewBuilder.newScreen("ClubEventBudgetSubmissionForm");
         defaultPane.setCenter(mainScreen);
     }
 

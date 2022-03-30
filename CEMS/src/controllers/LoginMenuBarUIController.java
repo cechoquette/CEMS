@@ -24,7 +24,7 @@ public class LoginMenuBarUIController {
 
     @FXML
     void btnLoginMenuNavRequestAccessClicked(ActionEvent event) {
-        Pane mainScreen = ViewBuilder.newScreen("RequestAccess");
+        Pane mainScreen = ViewBuilder.newScreen("RequestAccessForm");
         defaultPane.setCenter(mainScreen);
     }
 
