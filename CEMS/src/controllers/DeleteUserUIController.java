@@ -7,9 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class DeleteUserUIController {
     HashMap<Object, Object> dataToSubmit;
@@ -89,7 +92,9 @@ public class DeleteUserUIController {
         // Clear the fields
         btnDeleteUserCancelClicked(event);
 
-        // TODO: return the user to the User Management page
+        // Return the user to the User Management page
+        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML

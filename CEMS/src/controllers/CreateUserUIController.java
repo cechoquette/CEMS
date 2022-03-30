@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class CreateUserUIController {
     HashMap<Object, Object> dataToSubmit;
@@ -131,8 +134,12 @@ public class CreateUserUIController {
 
     @FXML
     void btnCreateUserBackClicked(ActionEvent event) {
-        // TODO: Return user to the dashboard
+        // Clear the fields
         btnCreateUserCancelClicked(event);
+
+        // Return user to the dashboard
+        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
+        defaultPane.setCenter(mainScreen);
     }
 
     /** Method handles both cancel and clear button ActionEvents **/
