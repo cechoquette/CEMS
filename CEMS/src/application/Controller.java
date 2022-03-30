@@ -55,11 +55,14 @@ public class Controller {
 		case DISPLAY_CALENDAR:
 			break;
 		case GENERATE_REPORT:
-			//first, get the data requested from database
-//			dataToProcess.put()
 
-			//then send back new data merged with received data from request, send to ReportHandler
-			ReportHandler.generateReport(dataToProcess);
+			//send to ReportHandler for creation
+			try {
+				ReportHandler.generateReport(dataToProcess);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			break;
 		case GENERATE_BUDGET_REPORT:
 			break;
