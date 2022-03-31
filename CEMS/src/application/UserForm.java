@@ -20,15 +20,15 @@ public class UserForm {
 
     public User createUser() {
         //process data
-        Integer userStudentID = (Integer)hmData.get("UserStudentID");
-        String userFirstName = (String)hmData.get("UserFirstName");
-        String userLastName = (String)hmData.get("UserLastName");
-        String userEmail = (String)hmData.get("UserEmail");
-        String userPhone = (String)hmData.get("UserPhone");
-        String userPermission = (String)hmData.get("UserPermission");
-        String userSecurityQ = (String)hmData.get("UserSecurityQ");
-        String userSecurityA = (String)hmData.get("UserSecurityA");
-        Club userClub = (Club)hmData.get("UserClub");
+        Integer userStudentID = (Integer)hmData.get("CreateUserStudentID");
+        String userFirstName = (String)hmData.get("CreateUserFirstName");
+        String userLastName = (String)hmData.get("CreateUserLastName");
+        String userEmail = (String)hmData.get("CreateUserEmail");
+        String userPhone = (String)hmData.get("CreateUserPhone");
+        String userPermission = (String)hmData.get("CreateUserPermission");
+        String userSecurityQ = (String)hmData.get("CreateUserSecurityQ");
+        String userSecurityA = (String)hmData.get("CreateUserSecurityA");
+        Club userClub = (Club)hmData.get("CreateUserClub");
 
         try {
             this.user = new User(userFirstName, userLastName, userPhone, userEmail,
