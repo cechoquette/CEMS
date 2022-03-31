@@ -118,47 +118,61 @@ public class DeleteUserUIController {
     void btnDeleteUserSearchClicked(ActionEvent event) {
         checkMandatoryFields();
 
-        // TODO: send a query to the DB for the users email address
+        // Add data to the hashmap
+        dataToSubmit = new HashMap<Object, Object>();
+        dataToSubmit.put("DeleteSearchEmail", tfDeleteUserSearch.getText());
 
-        // TODO: If found, return results in the correct fields
+        // Send a query to the DB for the users email address
+        dataToSubmit = Controller.processRequest(RequestType.SEARCH_FOR_USER, dataToSubmit);
+//        System.out.println(dataToSubmit);
 
-        // TODO: If not found, highlight the search bar red
-//        tfUpdateUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+        // If found, return results in the correct fields
+        User user = (User)dataToSubmit.get("User");
 
-        // TEST DATA TO APPEAR ON SUBMIT
-        if (InputValidation.validateNotEmpty(tfDeleteUserSearch)) {
-            tfDeleteUserFirst.setText("Erin");
-            tfDeleteUserLast.setText("Cameron");
-            tfDeleteUserPhone.setText("857-685-3453");
-            tfDeleteUserEmail.setText("erin@email.com");
-            tfDeleteUserID.setText("023485212");
-            comboDeleteUserClub.setValue(OptionLists.getClubs()[1]);
-            comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
+        if (user != null) {
+            tfDeleteUserFirst.setText(user.getFirstName());
+            tfDeleteUserLast.setText(user.getLastName());
+            tfDeleteUserEmail.setText(user.getEmail());
+            tfDeleteUserID.setText(String.valueOf(user.getStudentID()));
+            tfDeleteUserPhone.setText(user.getPhone());
         } else {
-            tfDeleteUserFirst.setText("");
-            tfDeleteUserLast.setText("");
-            tfDeleteUserPhone.setText("");
-            tfDeleteUserEmail.setText("");
-            tfDeleteUserID.setText("");
-            comboDeleteUserClub.setValue(null);
-            comboDeleteUserPermissions.setValue(null);
+            tfDeleteUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
+
+        
+//        // TEST DATA TO APPEAR ON SUBMIT
+//        if (InputValidation.validateNotEmpty(tfDeleteUserSearch)) {
+//            tfDeleteUserFirst.setText("Erin");
+//            tfDeleteUserLast.setText("Cameron");
+//            tfDeleteUserPhone.setText("857-685-3453");
+//            tfDeleteUserEmail.setText("erin@email.com");
+//            tfDeleteUserID.setText("023485212");
+//            comboDeleteUserClub.setValue(OptionLists.getClubs()[1]);
+//            comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
+//        } else {
+//            tfDeleteUserFirst.setText("");
+//            tfDeleteUserLast.setText("");
+//            tfDeleteUserPhone.setText("");
+//            tfDeleteUserEmail.setText("");
+//            tfDeleteUserID.setText("");
+//            comboDeleteUserClub.setValue(null);
+//            comboDeleteUserPermissions.setValue(null);
+//        }
 
     }
 
     @FXML
     void btnDeleteUserSubmitClicked(ActionEvent event) {
-        // TODO: send query to the DB to remove the user from the DB
+        checkMandatoryFields();
 
-        // TODO: Add the user information to delete to the hashmap
+        // Add information to the hashmap
         dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("", tfDeleteUserFirst.getText());
-        dataToSubmit.put("", tfDeleteUserLast.getText());
-        dataToSubmit.put("", tfDeleteUserPhone.getText());
-        dataToSubmit.put("", tfDeleteUserEmail.getText());
-        dataToSubmit.put("", tfDeleteUserID.getText());
-        dataToSubmit.put("", comboDeleteUserClub.getValue());
-        dataToSubmit.put("", comboDeleteUserPermissions.getValue());
+        dataToSubmit.put("DeleteUserFirstName", tfDeleteUserFirst.getText());
+        dataToSubmit.put("DeleteUserLastName", tfDeleteUserLast.getText());
+        dataToSubmit.put("DeleteUserPhone", tfDeleteUserPhone.getText());
+        dataToSubmit.put("DeleteUserEmail", tfDeleteUserEmail.getText());
+        dataToSubmit.put("DeleteUserClub", comboDeleteUserClub.getValue());
+        dataToSubmit.put("DeleteUserPermission", comboDeleteUserPermissions.getValue());
 
         // Send data to the controller
         Controller.processRequest(RequestType.DELETE_USER, dataToSubmit);
