@@ -54,6 +54,14 @@ public class OptionLists {
 
 	}
 
+	public static String[] getAdmins(){
+		return new String[0];
+	}
+
+	public static String[] getGeneralMembers(){
+		return new String[0];
+	}
+
 	public static Club[] getClubs() {
 		//method to get list of all clubs from database
 		//call controller //give it the main User's ID, it should get you the clubs
