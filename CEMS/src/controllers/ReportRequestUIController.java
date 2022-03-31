@@ -79,7 +79,6 @@ public class ReportRequestUIController {
 
 	@FXML
 	public void initialize(){
-		reportBorderPane.setTop(new MainMenu().createMenu());
 		
 		choiceReportSelectType.getItems().addAll(Arrays.asList(ReportType.values()));
 		choiceReportSelectClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));

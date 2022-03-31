@@ -1,50 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="50.0" maxWidth="900.0" minHeight="50.0" minWidth="900.0"
-            prefHeight="50.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.MenuBarUIController">
+<AnchorPane maxHeight="50.0" maxWidth="900.0" minHeight="50.0" minWidth="900.0" prefHeight="50.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.MenuBarUIController">
    <children>
-      <MenuBar layoutX="80.0" layoutY="13.0" prefHeight="50.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem fx:id="menuFileUserMgmt" mnemonicParsing="false" onAction="#menuFileUserMgmtClicked" text="User Management" />
-                  <MenuItem fx:id="menuFileLogout" mnemonicParsing="false" onAction="#menuFileLogoutClicked" text="Log Out" />
-                  <MenuItem fx:id="menuFileExit" mnemonicParsing="false" onAction="#menuFileExitClicked" text="Exit Application" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Profile">
-            <items>
-              <MenuItem fx:id="menuProfilePage" mnemonicParsing="false" onAction="#menuProfilePageClicked" text="Profile Page" />
-                  <MenuItem fx:id="menuProfilePassword" mnemonicParsing="false" onAction="#menuProfilePasswordClicked" text="Change Password" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Clubs">
-            <items>
-              <MenuItem fx:id="menuClubsProfile" mnemonicParsing="false" onAction="#menuClubsProfileClicked" text="Club Profile" />
-                  <MenuItem fx:id="menuClubsMember" mnemonicParsing="false" onAction="#menuClubsMemberClicked" text="Member Management" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Events">
-              <items>
-                <MenuItem fx:id="menuEventsCreate" mnemonicParsing="false" onAction="#menuEventsCreateClicked" text="Create Event" />
-                  <MenuItem fx:id="menuEventsCalendar" mnemonicParsing="false" onAction="#menuEventsCalendarClicked" text="View Calendar" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Reporting">
-              <items>
-                <MenuItem fx:id="menuItemReportingFinance" mnemonicParsing="false" onAction="#menuItemReportingFinanceClicked" text="Finance" />
-                  <MenuItem fx:id="menuItemReportingEvents" mnemonicParsing="false" onAction="#menuItemReportingEventsClicked" text="Events" />
-                  <MenuItem fx:id="menuItemReportingClubs" mnemonicParsing="false" onAction="#menuItemReportingClubsClicked" text="Clubs" />
-              </items>
-            </Menu>
-        </menus>
-      </MenuBar>
+      <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar prefHeight="50.0" prefWidth="900.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="menuFileUserMgmt" mnemonicParsing="false" onAction="#menuFileUserMgmtClicked" text="User Management" />
+                        <MenuItem fx:id="menuFileLogout" mnemonicParsing="false" onAction="#menuFileLogoutClicked" text="Log Out" />
+                        <MenuItem fx:id="menuFileExit" mnemonicParsing="false" onAction="#menuFileExitClicked" text="Exit Application" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Profile">
+                  <items>
+                    <MenuItem fx:id="menuProfilePage" mnemonicParsing="false" onAction="#menuProfilePageClicked" text="Profile Page" />
+                        <MenuItem fx:id="menuProfilePassword" mnemonicParsing="false" onAction="#menuProfilePasswordClicked" text="Change Password" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Clubs">
+                  <items>
+                    <MenuItem fx:id="menuClubsProfile" mnemonicParsing="false" onAction="#menuClubsProfileClicked" text="Club Profile" />
+                        <MenuItem fx:id="menuClubsMember" mnemonicParsing="false" onAction="#menuClubsMemberClicked" text="Member Management" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Events">
+                    <items>
+                      <MenuItem fx:id="menuEventsCreate" mnemonicParsing="false" onAction="#menuEventsCreateClicked" text="Create Event" />
+                        <MenuItem fx:id="menuEventsCalendar" mnemonicParsing="false" onAction="#menuEventsCalendarClicked" text="View Calendar" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Reporting">
+                    <items>
+                        <Menu mnemonicParsing="false" text="Finance">
+                          <items>
+                            <MenuItem fx:id="menuItemReportingExpenditure" mnemonicParsing="false" onAction="#menuItemReportingExpenditureClicked" text="Expenditure" />
+                              <MenuItem fx:id="menuItemReportingClubs" mnemonicParsing="false" onAction="#menuItemReportingClubsClicked" text="Club Budget" />
+                              <MenuItem fx:id="menuItemReportingEvents" mnemonicParsing="false" onAction="#menuItemReportingEventsClicked" text="Event Budget" />
+                          </items>
+                        </Menu>
+                      <MenuItem fx:id="menuItemReport" mnemonicParsing="false" onAction="#menuItemReportClicked" text="Report" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </AnchorPane>
    </children>
 </AnchorPane>

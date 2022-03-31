@@ -1,9 +1,13 @@
 package CEMS.src.controllers;
 
+import CEMS.src.application.ViewBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class ProfilePageUIController {
 
@@ -20,13 +24,7 @@ public class ProfilePageUIController {
     private TextField tfProfileFirst;
 
     @FXML
-    private TextField tfProfileID;
-
-    @FXML
     private TextField tfProfileLast;
-
-    @FXML
-    private TextField tfProfileMiddle;
 
     @FXML
     private TextField tfProfileRecoveryAnswer;
@@ -35,8 +33,14 @@ public class ProfilePageUIController {
     private TextField tfProfileRecoveryQuestion;
 
     @FXML
-    void btnProfilePasswordClicked(ActionEvent event) {
+    public void initialize(){
+        //TODO: Need to populate the text fields
+    }
 
+    @FXML
+    void btnProfilePasswordClicked(ActionEvent event) {
+        Pane mainScreen = ViewBuilder.newScreen("ForgotPassword");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML

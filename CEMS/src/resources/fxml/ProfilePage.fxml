@@ -12,9 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0"
-            prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ProfilePageUIController">
+<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ProfilePageUIController">
    <children>
       <BorderPane layoutX="266.0" layoutY="94.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -23,8 +21,8 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.20001220703125" minWidth="10.0" prefWidth="251.20001220703125" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.39996337890625" minWidth="10.0" prefWidth="48.79998779296875" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
               </columnConstraints>
               <rowConstraints>
@@ -55,12 +53,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="form__label" text="Middle Name" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label styleClass="form__label" text="Last Name" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <Label styleClass="form__label" text="Last Name" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -70,12 +63,7 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfProfileMiddle" styleClass="form__tf" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfProfileLast" styleClass="form__tf" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                  <TextField fx:id="tfProfileLast" styleClass="form__tf" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -85,17 +73,12 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfProfileID" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                  <TextField fx:id="tfProfileRecoveryQuestion" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfProfileRecoveryQuestion" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfProfileRecoveryAnswer" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                  <TextField fx:id="tfProfileRecoveryAnswer" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -105,28 +88,23 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="form__label" text="Student ID" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                  <Label styleClass="form__label" text="Password" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="form__label" text="Password" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                  <Label styleClass="form__label" text="Recovery Question" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="form__label" text="Recovery Question" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                  <Label styleClass="form__label" text="Recovery Answer" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="form__label" text="Recovery Answer" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Button fx:id="btnProfileSubmit" mnemonicParsing="false" onAction="#btnProfileSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP" />
-                  <Button fx:id="btnProfilePassword" maxWidth="290.0" minWidth="290.0" mnemonicParsing="false" onAction="#btnProfilePasswordClicked" prefWidth="290.0" styleClass="form__btn" text="Change Password" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
+                  <Button fx:id="btnProfileSubmit" mnemonicParsing="false" onAction="#btnProfileSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP" />
+                  <Button fx:id="btnProfilePassword" maxWidth="290.0" minWidth="290.0" mnemonicParsing="false" onAction="#btnProfilePasswordClicked" prefWidth="290.0" styleClass="form__btn" text="Change Password" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
