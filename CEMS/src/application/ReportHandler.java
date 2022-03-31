@@ -120,15 +120,25 @@ public class ReportHandler {
 				break;
 
 			case CLUB_MEMBERSHIP_DETAIL:
-//				ClubMembershipDetailReport clubMembershipDetailReport = new ClubMembershipDetailReport(reportFormat, reportClub);
-//				reportFormatted = clubMembershipSummaryReport.formatReport();
-//				reportFileName = clubMembershipSummaryReport.getFilename();
+				ClubMembershipDetailReport clubMembershipDetailReport = new ClubMembershipDetailReport(reportFormat, reportClub);
+				reportFormatted = clubMembershipDetailReport.formatReport();
+				reportFileName = clubMembershipDetailReport.getFilename();
 				reportSize = 2;
 				break;
 
-			case CLUBEVENT_ATTENDANCE: break;
+			case CLUBEVENT_ATTENDANCE:
+				ClubEventAttendanceReport clubEventAttendanceReport = new ClubEventAttendanceReport(reportFormat, (ClubEvent)hmData.get("ClubEvent"));
+				reportFormatted = clubEventAttendanceReport.formatReport();
+				reportFileName = clubEventAttendanceReport.getFilename();
+				reportSize = 3;
+				break;
 
-			case CLUBEVENTS_SUMMARY: break;
+			case CLUBEVENTS_SUMMARY:
+//				ClubMembershipDetailReport clubMembershipDetailReport = new ClubMembershipDetailReport(reportFormat, reportClub);
+//				reportFormatted = clubMembershipDetailReport.formatReport();
+//				reportFileName = clubMembershipDetailReport.getFilename();
+//				reportSize = 2;
+				break;
 
 			default: return null;
 		}
