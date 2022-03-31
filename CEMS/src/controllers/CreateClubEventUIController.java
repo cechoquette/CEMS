@@ -8,12 +8,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class CreateClubEventUIController {
 
@@ -69,15 +72,23 @@ public class CreateClubEventUIController {
 
         return eventDateTime;
     }
+    @FXML
+    void btnCreateEventClearClicked(ActionEvent event) {
+        Pane mainScreen = ViewBuilder.newScreen("CreateClubEventForm");
+        defaultPane.setCenter(mainScreen);
+    }
 
     @FXML
     void btnCreateEventBackClicked(ActionEvent event) {
-
+        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML
     void btnCreateEventCancelClicked(ActionEvent event) {
 
+        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML
