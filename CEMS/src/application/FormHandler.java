@@ -1,5 +1,6 @@
 package CEMS.src.application;
 
+import java.security.NoSuchProviderException;
 import java.util.HashMap;
 
 /*
@@ -80,7 +81,14 @@ public class FormHandler {
 	}
 
 	public static void createLoginForm(RequestType requestType, HashMap<Object, Object> hmData){//void method. No such thing as a Login Object
-		LoginForm loginForm = new LoginForm(requestType, hmData);//creating a loginForm should call a login() method
+		LoginForm loginForm = null;//creating a loginForm should call a login() method
+		try {
+			loginForm = new LoginForm(requestType, hmData);
+		} catch (NoSuchProviderException e) {
+			e.printStackTrace();
+		}
+
+		loginForm.logUserIn();
 
 	}
 

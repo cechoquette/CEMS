@@ -1,4 +1,5 @@
 package CEMS.src.application;
+import java.security.NoSuchProviderException;
 import java.util.HashMap;
 
 public class Controller {
@@ -100,8 +101,17 @@ public class Controller {
 			DAO dao16 = new DAO();
 //			dao16.getClubMember()
 			break;
-		case LOGIN_USER:
-			break;
+			case LOGIN_USER:
+				try {
+					FormHandler.createLoginForm(requestType, dataToProcess);
+				} catch (NoSuchProviderException e) {
+					e.printStackTrace();
+				}
+				break;
+			case GET_USER: // get user based on email address for logins
+				DAO dao18 = new DAO();
+				dao18.getUser(((User)dataToProcess.get("User")).getEmail());
+				break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
 			FormHandler.updateClubForm(requestType, dataToProcess);
@@ -112,7 +122,7 @@ public class Controller {
 			FormHandler.updateClubEventForm(requestType, dataToProcess);
 			dao9.updateClubEvent((ClubEvent)dataToProcess.get("ClubEvent"));
 			break;
-		case MODIFY_USER:
+		case MODIFY_USER: // Updating users permissions
 			DAO dao10 = new DAO();
 			FormHandler.updateUserForm(requestType, dataToProcess);
 			dao10.updateUser(Main.CURRENTUSER);
