@@ -104,15 +104,21 @@ public class Controller {
 		case GET_CLUB_MEMBER:
 			DAO dao16 = new DAO();
 			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("StudentID"));//Takes an int StudentID
-			dataToProcess.put("ClubMember", clubMember);
+			if(clubMember != null) {
+				dataToProcess.put("ClubMember", clubMember);
+			}
+			//null check
 			break;
 		case LOGIN_USER:
 			FormHandler.createLoginForm(requestType, dataToProcess);
 			break;
 		case GET_USER: // get user based on email address for logins
-			DAO dao18 = new DAO();
+			case SEARCH_FOR_USER: //call database, return if found
+				DAO dao18 = new DAO();
 			User user = dao18.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
-			dataToProcess.put("User", user);
+			if(user != null){
+				dataToProcess.put("User", user);
+			}//this could end up being null, do a null check on the receiving end
 			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
@@ -157,14 +163,7 @@ public class Controller {
 			DAO dao13 = new DAO();
 			dao13.addExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
-		case SEARCH_FOR_USER: //call database, return if found
-			DAO dao20 = new DAO();
-			User userSearch = dao20.getUser((String)dataToProcess.get("UserEmail"));
-			if(userSearch != null){
-				dataToProcess.put("User", userSearch);
-			}
-			//this could end up being null, do a null check on the receiving end
-			break;
+
 		case UPDATE_CLUB_MEMBER:
 			DAO dao14 = new DAO();
 			FormHandler.updateClubMemberForm(requestType, dataToProcess);
