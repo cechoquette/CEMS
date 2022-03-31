@@ -96,8 +96,18 @@ public class FormHandler {
 
 	public static void updateUserPermissionForm(RequestType requestType, HashMap<Object, Object> hmData){
 		UserForm userForm = new UserForm(requestType, hmData);
-		userForm.updateUserPermission(Main.CURRENTUSER);
+		userForm.updateUser(Main.CURRENTUSER);
 
+	}
+
+	public static void updatePasswordResetForm(RequestType requestType, HashMap<Object, Object> hmData){//void method. No such thing as a Login Object
+		LoginForm loginForm = null;
+		try {
+			loginForm = new LoginForm(requestType, hmData);
+		} catch (NoSuchProviderException e) {
+			e.printStackTrace();
+		}
+		loginForm.passwordReset(Main.CURRENTUSER);
 	}
 
 	public static void updateClubEventForm(RequestType requestType, HashMap<Object, Object> hmData){
