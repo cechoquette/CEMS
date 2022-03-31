@@ -32,7 +32,7 @@ public class Controller {
 		//call database controller
 	}
 	
-	public static void processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
+	public static HashMap<Object, Object> processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
 		
 		switch(requestType) {
 		case CREATE_CLUB:
@@ -41,10 +41,14 @@ public class Controller {
 			break;
 		case CREATE_CLUB_MEMBER:
 			DAO dao2 = new DAO();
-//			dao2.addClubMember(FormHandler.createClubMemberForm(requestType, dataToProcess));
+			dao2.addClubMember(FormHandler.createClubMemberForm(requestType, dataToProcess));
 			break;
 		case CREATE_EMAIL:
 			//Not a DAO task
+
+			//call MailUtil
+
+
 			break;
 		case CREATE_EVENT:
 			DAO dao3 = new DAO();
@@ -55,7 +59,7 @@ public class Controller {
 			dao4.addUser(FormHandler.createUserForm(requestType, dataToProcess));
 
 			break;
-		case DELETE_CLUB:
+		case DELETE_CLUB://method doesn't exist
 			//Not a FormHandler task
 			DAO dao5 = new DAO();
 //			dao5.deleteClub(((Club)dataToProcess.get("Club")).getClubID());
@@ -79,7 +83,7 @@ public class Controller {
 		case DISPLAY_CALENDAR:
 			//remove
 			break;
-		case GENERATE_REPORT:
+		case GENERATE_REPORT://ReportHandler calls its own DAO methods
 
 			//send to ReportHandler for creation
 			try {
@@ -99,14 +103,16 @@ public class Controller {
 //			break;
 		case GET_CLUB_MEMBER:
 			DAO dao16 = new DAO();
-//			dao16.getClubMember()
+			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("StudentID"));//Takes an int StudentID
+			dataToProcess.put("ClubMember", clubMember);
 			break;
 		case LOGIN_USER:
 			FormHandler.createLoginForm(requestType, dataToProcess);
 			break;
 		case GET_USER: // get user based on email address for logins
 			DAO dao18 = new DAO();
-			dao18.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
+			User user = dao18.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
+			dataToProcess.put("User", user);
 			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
@@ -153,18 +159,25 @@ public class Controller {
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
 			DAO dao20 = new DAO();
-//			dao20.getUser();
+			User userSearch = dao20.getUser((String)dataToProcess.get("UserEmail"));
+			if(userSearch != null){
+				dataToProcess.put("User", userSearch);
+			}
+			//this could end up being null, do a null check on the receiving end
 			break;
 		case UPDATE_CLUB_MEMBER:
 			DAO dao14 = new DAO();
 			FormHandler.updateClubMemberForm(requestType, dataToProcess);
-//			dao14.updateClubMember((ClubMember)dataToProcess.get("ClubMember"));
+			dao14.updateClubMember((ClubMember)dataToProcess.get("ClubMember"));
 			break;
 			
 		default: //do nothing
 			break;
 		
 		}
+
+
+		return dataToProcess;
 		
 	}
 	
