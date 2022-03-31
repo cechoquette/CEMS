@@ -1,9 +1,8 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.Club;
-import CEMS.src.application.Controller;
+import CEMS.src.application.MailUtil;
 import CEMS.src.application.OptionLists;
-import CEMS.src.application.RequestType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -86,16 +85,42 @@ public class CreateClubEventUIController {
     @FXML
     void btnCreateEventSubmitClicked(ActionEvent event) {
 
-        HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
+        /*HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
 
         dataToSubmit.put("EventName", tfCreateEventName.getText());
         dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
         dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
         dataToSubmit.put("EventDateTime", formatDateTime());
         dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
-        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
+        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());*/
 
-        Controller.processRequest(RequestType.CREATE_EVENT, dataToSubmit);
+        /* *** Sample Email Utility call code segment start *** */
+        String[] mailingList = {
+                "zgwekwerere@algomau.ca",
+                "lclimenhage@algomau.ca",
+                "cchoquette@algomau.ca",
+                "ercameron@algomau.ca"
+        };
+
+        LocalDateTime eventDateTime =  LocalDateTime.of(2022, 04, 01, 12, 00);
+
+        HashMap<Object, Object> hmEventData = new HashMap<>();
+        hmEventData.put("EventName", "Food fight");
+        hmEventData.put("EventDescription", "Our 8th annual food fight festival! Fun for the full family!");
+        hmEventData.put("EventDateTime", eventDateTime);
+        hmEventData.put("EventLocation", "West Cafeteria");
+        hmEventData.put("EventEmailGroup", mailingList);
+
+        try {
+            MailUtil.sendEmail(hmEventData);
+            System.out.println("Message sent successfully");
+        }
+        catch (Exception e) {
+            System.out.println("Error sending email");
+            e.printStackTrace();
+        }
+        /* *** Sample Email Utility call code segment end *** */
+
     }
 
 }
