@@ -17,6 +17,9 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class ClubBudgetUIController {
 	HashMap<Object, Object> dataToSubmit;
@@ -102,6 +105,8 @@ public class ClubBudgetUIController {
 	@FXML
 	public void btClubBudgetBackClicked(ActionEvent event) {
 		//method should return user to dashboard
+		Pane mainScreen = ViewBuilder.newScreen("HomePage");
+		defaultPane.setCenter(mainScreen);
 	}
 	// Event Listener on Button[#btClubBudgetClear].onAction
 	@FXML
@@ -138,7 +143,9 @@ public class ClubBudgetUIController {
 	// Event Listener on Button[#btClubBudgetCancel].onAction
 	@FXML
 	public void btClubBudgetCancelClicked(ActionEvent event) {
+
 		btClubBudgetClearClicked(event);
+		btClubBudgetBackClicked(event);
 	}
 
 

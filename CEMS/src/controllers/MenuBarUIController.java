@@ -99,9 +99,9 @@ public class MenuBarUIController {
 /* **** Buttons under the 'Events' tab **** */
     @FXML
     void menuEventsCalendarClicked(ActionEvent event) {
-        //Need to create fxml
-//        Pane mainScreen = ViewBuilder.newScreen("");
-//        defaultPane.setCenter(mainScreen);
+        //TODO: Need to create fxml
+        Pane mainScreen = ViewBuilder.newScreen("");
+        defaultPane.setCenter(mainScreen);
     }
 
     @FXML
@@ -125,9 +125,15 @@ public class MenuBarUIController {
     }
 
     @FXML
-    void menuItemReportingFinanceClicked(ActionEvent event) {
+    void menuItemReportingExpenditureClicked(ActionEvent event) {
         //Need to create fxml
         Pane mainScreen = ViewBuilder.newScreen("ExpenditureSubmissionForm");
+        defaultPane.setCenter(mainScreen);
+    }
+
+    @FXML
+    void menuItemReportClicked(ActionEvent event) {
+        Pane mainScreen = ViewBuilder.newScreen("ReportRequestForm");
         defaultPane.setCenter(mainScreen);
     }
 

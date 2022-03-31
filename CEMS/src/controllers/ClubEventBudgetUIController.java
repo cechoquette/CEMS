@@ -14,6 +14,9 @@ import java.util.HashMap;
 import javafx.event.ActionEvent;
 
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class ClubEventBudgetUIController {
 	HashMap<Object, Object> dataToSubmit;
@@ -128,7 +131,8 @@ public class ClubEventBudgetUIController {
 		// Clear the user inputs
 		btEventBudgetClearClicked(event);
 
-		// TODO: this method should return user to dashboard
+		Pane mainScreen = ViewBuilder.newScreen("HomePage");
+		defaultPane.setCenter(mainScreen);
 		
 	}
 	// Event Listener on Button[#btEventBudgetClear].onAction
@@ -179,9 +183,15 @@ public class ClubEventBudgetUIController {
 	// Event Listener on Button[#btEventBudgetCancel].onAction
 	@FXML
 	public void btEventBudgetCancelClicked(ActionEvent event) {
+
 		btEventBudgetClearClicked(event);
+
+		Pane mainScreen = ViewBuilder.newScreen("HomePage");
+		defaultPane.setCenter(mainScreen);
 	}
 	// Event Listener on Button[#btEventBudgetSubmit].onAction
+
+
 	@FXML
 	public void btEventBudgetSubmitClicked(ActionEvent event) {
 		checkMandatoryFields();

@@ -26,6 +26,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.Pane;
+
+import static CEMS.src.application.Main.defaultPane;
 
 
 public class ExpenditureFormUIController{
@@ -200,9 +203,9 @@ public class ExpenditureFormUIController{
 	@FXML
 	public void btCancelExpenditureClicked(ActionEvent event) {
 		//calls clear then send back to dashboard?
+		btClearExpenditureClicked(event);
+		btBackExpenditureClicked(event);
 	}
-
-	
 	
 	@FXML
 	public void btClearExpenditureClicked(ActionEvent event) {
@@ -219,15 +222,13 @@ public class ExpenditureFormUIController{
 		choicePaymentMethod.setValue(null);
 		choiceExpenditureClub.setValue(null);
 		choiceExpenditureEvent.setValue(null);
-		
-		
 	}
-	
-	
 	
 	@FXML
 	public void btBackExpenditureClicked(ActionEvent event) {
 		//sends back to dashboard
+		Pane mainScreen = ViewBuilder.newScreen("HomePage");
+		defaultPane.setCenter(mainScreen);
 	}
 	
 	@FXML
@@ -239,8 +240,5 @@ public class ExpenditureFormUIController{
 	public void tfExpenditureDescriptionChanged (ActionEvent event) {
 //		tfExpenditureDescription.setStyle(null);
 	}
-
-
-	
 	
 }

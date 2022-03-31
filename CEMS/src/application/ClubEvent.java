@@ -146,6 +146,30 @@ public class ClubEvent {
         return emailGroup;
     }
 
+    public String getEventDescription() {
+        return eventDescription;
+    }
+
+    public void setAttendance(int attendance) {
+        this.attendance = attendance;
+    }
+
+    public List<Expenditure> getExpenditure() {
+        return expenditure;
+    }
+
+    public void setExpenditure(List<Expenditure> expenditure) {
+        this.expenditure = expenditure;
+    }
+
+    public List<ClubEventBudget> getClubEvent() {
+        return clubEvent;
+    }
+
+    public void setClubEvent(List<ClubEventBudget> clubEvent) {
+        this.clubEvent = clubEvent;
+    }
+
     @Override
     public String toString(){
         return this.eventName;
