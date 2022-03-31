@@ -1,7 +1,9 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.Club;
+import CEMS.src.application.Controller;
 import CEMS.src.application.OptionLists;
+import CEMS.src.application.RequestType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -93,6 +95,7 @@ public class CreateClubEventUIController {
         dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
         dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
 
+        Controller.processRequest(RequestType.CREATE_EVENT, dataToSubmit);
     }
 
 }
