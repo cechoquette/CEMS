@@ -21,7 +21,7 @@ public class FormHandler {
 	static ClubBudget clubBudget;
 	static Club club;
 	static User user;
-	static ClubMember clubMember;
+//	static ClubMember clubMember;
 //	Email email;
 //	LoginSession loginSession;
 
@@ -65,12 +65,7 @@ public class FormHandler {
 
 	}
 
-	public static ClubMember createClubMemberForm(RequestType requestType, HashMap<Object, Object> hmData){
-		ClubMemberForm clubMemberForm = new ClubMemberForm(requestType, hmData);
-		clubMember = clubMemberForm.createMember();
 
-		return clubMember;
-	}
 
 	public static ClubEvent createClubEventForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);
@@ -96,13 +91,13 @@ public class FormHandler {
 	public static void updateUserForm(RequestType requestType, HashMap<Object, Object> hmData){
 		UserForm userForm = new UserForm(requestType, hmData);
 		userForm.updateUser(Main.CURRENTUSER);
-		Controller.processRequest(RequestType.UPDATE_CLUB_MEMBER, hmData);//calling update Club Member with same data to kill two birds
+
 	}
 
 	public static void updateUserPermissionForm(RequestType requestType, HashMap<Object, Object> hmData){
 		UserForm userForm = new UserForm(requestType, hmData);
 		userForm.updateUserPermission(Main.CURRENTUSER);
-		Controller.processRequest(RequestType.UPDATE_CLUB_MEMBER, hmData);//calling update Club Member with same data to kill two birds
+
 	}
 
 	public static void updateClubEventForm(RequestType requestType, HashMap<Object, Object> hmData){
@@ -115,15 +110,7 @@ public class FormHandler {
 
 	}
 
-	public static void updateClubMemberForm(RequestType requestType, HashMap<Object, Object> hmData){
-		ClubMemberForm clubMemberForm = new ClubMemberForm(requestType, hmData);
 
-		if(hmData.get("ClubMember") != null){
-			clubMemberForm.updateMember((ClubMember)hmData.get("ClubMember"));
-		}
-
-
-	}
 
 	public static void updateClubForm(RequestType requestType, HashMap<Object, Object> hmData) {
 		ClubForm clubForm = new ClubForm(requestType, hmData);
@@ -161,14 +148,6 @@ public class FormHandler {
 	}
 
 
-
-
-
-
-
-	public static ClubMember getClubMember() {
-		return clubMember;
-	}
 	
 
 	//new comment
