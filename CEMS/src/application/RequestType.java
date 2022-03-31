@@ -3,7 +3,8 @@ public enum RequestType {
 
 	CREATE_USER("Create User"),
 	GET_USER("Get User"), // Retrieve the User from DB (CURRENTUSER)
-	MODIFY_USER(""),
+	MODIFY_USER("Modify User"),
+	MODIFY_USER_PERMISSION("Modify User Permission"),
 	DELETE_USER("Delete User"),
 	SUBMIT_EXPENDITURE("Submit Expenditure"),
 	SUBMIT_CLUB_BUDGET("Submit Club Budget"),
