@@ -106,7 +106,7 @@ public class Controller {
 			break;
 		case GET_USER: // get user based on email address for logins
 			DAO dao18 = new DAO();
-			dao18.getUser(((User)dataToProcess.get("User")).getEmail());
+			dao18.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
 			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
