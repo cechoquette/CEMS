@@ -102,13 +102,13 @@ public class DAO {
         }
     }
 
-    public User getUser(int studentID) {
+    public User getUser(String email) {
         Transaction transaction = null;
         User user = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            user = session.get(User.class, studentID); //get student object by id
+            user = session.get(User.class, email); //get student object by email on login
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

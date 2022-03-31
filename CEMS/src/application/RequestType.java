@@ -2,6 +2,7 @@ package CEMS.src.application;
 public enum RequestType {
 
 	CREATE_USER("Create User"),
+	GET_USER("Get User"), // Retrieve the User from DB (CURRENTUSER)
 	MODIFY_USER(""),
 	DELETE_USER("Delete User"),
 	SUBMIT_EXPENDITURE("Submit Expenditure"),

@@ -1,6 +1,9 @@
 package CEMS.src.application;
 
+import java.security.NoSuchProviderException;
 import java.util.HashMap;
+
+import static CEMS.src.application.Main.CURRENTUSER;
 
 public class LoginForm extends Form {
 
@@ -8,7 +11,7 @@ public class LoginForm extends Form {
     private HashMap<Object, Object> hmData;
 
     // Constructor
-    LoginForm(RequestType requestType, HashMap<Object, Object> hmData){
+    LoginForm(RequestType requestType, HashMap<Object, Object> hmData) throws NoSuchProviderException {
         this.hmData = hmData;
         logUserIn();
     }
@@ -17,9 +20,32 @@ public class LoginForm extends Form {
     public void logUserIn() {
         //hmData is now a class data member. No need for parameters this way.
 
-        if (isFilled()) {
-            // TODO: Code
+        // Retrieve the user's email & password on login attempt
+        String email = (String)hmData.get("LoginUserEmail");
+        String password = (String)hmData.get("LoginUserPassword");
+
+        // Retrieve the user's salt from the DB
+        String salt = CURRENTUSER.getUserSalt();
+
+        // Hash the entered password
+        String hashedPassword = null;
+        try {
+            hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, password, salt);
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
         }
+
+        // Compare the email and the hashed password to the one stored in the DB
+        // Check the email & pass
+        if (CURRENTUSER.getEmail().equals(email) && CURRENTUSER.getPassword().equals(hashedPassword)) {
+            // do something
+        } else {
+            // do something;
+        }
+
+//        if (isFilled()) {
+//            // TODO: Code
+//        }
     }
 
     public boolean isFilled() {
