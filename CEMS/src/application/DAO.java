@@ -102,13 +102,13 @@ public class DAO {
         }
     }
 
-    public User getUser(int studentID) {
+    public User getUser(String email) {
         Transaction transaction = null;
         User user = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            user = session.get(User.class, studentID); //get student object by id
+            user = session.get(User.class, email); //get student object by email on login
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -170,19 +170,6 @@ public class DAO {
         }
     }
 
-    public void updateClubBudget(ClubBudget clubBudget) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.saveOrUpdate(clubBudget);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-    }
 
     public ClubBudget getClubBudget(int clubBudgetID) {
         Transaction transaction = null;
@@ -218,23 +205,6 @@ public class DAO {
         }
     */ // getAllClubbBudgets
 
-    @SuppressWarnings("null")
-    public void deleteClubBudget(int clubBudgetID) {
-        Transaction transaction = null;
-        ClubBudget clubBudget = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            clubBudget = session.get(ClubBudget.class, clubBudgetID);
-            if (clubBudget != null) {
-                session.delete(clubBudget);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-    }
 
     ////////// ClubEventDAO
 
@@ -336,19 +306,6 @@ public class DAO {
         }
     }
 
-    public void updateClubEventBudget(ClubEventBudget clubEventBudget) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.saveOrUpdate(clubEventBudget);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-    }
 
     public ClubEventBudget getClubEventBudget(int eventBudgetID) {
         Transaction transaction = null;
@@ -383,23 +340,6 @@ public class DAO {
             return clubEventBudget;
         }
     */ // get all not working yet
-    @SuppressWarnings("null")
-    public void deleteClubEventBudget(int eventBudgetID) {
-        Transaction transaction = null;
-        ClubEventBudget clubEventBudget = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            clubEventBudget = session.get(ClubEventBudget.class, eventBudgetID);
-            if (clubEventBudget!= null) {
-                session.delete(clubEventBudget);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-    }
 
     /////////ExpenditureDAO
 
@@ -409,20 +349,6 @@ public class DAO {
             transaction = session.beginTransaction();
             Object object = session.save(expenditure);
             session.get(Expenditure.class, (Serializable) object);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-    }
-
-    public void updateExpenditure(Expenditure expenditure) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.saveOrUpdate(expenditure);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -465,23 +391,7 @@ public class DAO {
             return expenditure;
         }
     */ // get all not working yet
-    @SuppressWarnings("null")
-    public void deleteExpenditure(int expenditureID) {
-        Transaction transaction = null;
-        Expenditure expenditure = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            expenditure = session.get(Expenditure.class, expenditureID);
-            if (expenditure != null) {
-                session.delete(expenditure );
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-    }
+
 
     /////////ClubMemberDAO
     public void addClubMember (ClubMember clubMember) {

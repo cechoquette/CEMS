@@ -2,6 +2,7 @@ package CEMS.src.application;
 
 import java.util.ArrayList;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="User")
@@ -58,7 +59,7 @@ public class ClubMember {
 
 	public ClubMember getClubMember(Club club, int studentID){//method may return null if ClubMember not found.
 		if(club.getClubMembers() != null){
-			ArrayList<ClubMember> clubMemberList = club.getClubMembers();
+			List<ClubMember> clubMemberList = club.getClubMembers();
 			for(int i = 0; i<clubMemberList.size(); i++){
 				if (clubMemberList.get(i).getStudentID() == studentID){
 					return clubMemberList.get(i);

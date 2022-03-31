@@ -50,11 +50,6 @@ public class User {
 		this.permission = permission;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
-
-		// TODO: PASSWORD - to be implemented in the PasswordUtil when a user goes through the "reset password" pathway
-		// Call the PasswordUtil method to hash the password and generate a salt
-//		this.salt = PasswordUtil.generateSalt();
-//		this.password = PasswordUtil.hashPassword(password, salt);
 	}
 
 	// Get the email
@@ -98,7 +93,7 @@ public class User {
 	}
 
 	// Set salt
-	public void setUserSalt() {
+	public void setUserSalt(String salt) {
 		this.salt = salt;
 	}
 
