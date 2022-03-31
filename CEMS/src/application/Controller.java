@@ -102,11 +102,7 @@ public class Controller {
 //			dao16.getClubMember()
 			break;
 			case LOGIN_USER:
-				try {
-					FormHandler.createLoginForm(requestType, dataToProcess);
-				} catch (NoSuchProviderException e) {
-					e.printStackTrace();
-				}
+				FormHandler.createLoginForm(requestType, dataToProcess);
 				break;
 			case GET_USER: // get user based on email address for logins
 				DAO dao18 = new DAO();
