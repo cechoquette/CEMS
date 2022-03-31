@@ -1,6 +1,7 @@
 package CEMS.src.application;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ClubMembershipSummaryReport extends Report{
     //Report shows summary of Club membership numbers, if ALLCLUBS selected, shows numbers for each club
@@ -23,7 +24,33 @@ public class ClubMembershipSummaryReport extends Report{
 
     @Override
     public Object[][] formatReport() {
-        return new Object[0][];
+
+        Object[][] reportArray;
+
+        ArrayList<ClubMember> clubMembers = club.getClubMembers();
+
+        if (club == Main.ALLCLUBS){
+            Club[] allclubs = OptionLists.getClubs();
+            reportArray = new Object[allclubs.length+1][2];
+
+            reportArray[0][0] = "Club Name: ";
+            reportArray[0][1] = "Club Members: ";
+
+            for(int i=0; i < allclubs.length; i++){
+                reportArray[i+1][0] = allclubs[i].toString();
+                reportArray[i+1][1] = String.valueOf(allclubs[i].getClubMembers().size());
+            }
+
+        }
+        else{
+            reportArray = new Object[2][2];
+            reportArray[0][0] = "Club Name: ";
+            reportArray[0][1] = "Club Members: ";
+            reportArray[1][0] = Main.CURRENTUSER.getUserClub().toString();
+            reportArray[1][0] = String.valueOf(Main.CURRENTUSER.getUserClub().getClubMembers().size());
+        }
+
+        return reportArray;
     }
 
     public static int getCountForIds() {

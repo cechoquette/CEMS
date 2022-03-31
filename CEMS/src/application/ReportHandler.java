@@ -47,7 +47,7 @@ public class ReportHandler {
 
 				DAO dao1 = new DAO();
 //				dataReturnedSingle = dao1.getClubBudget();//need a ClubBudgetID
-				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)dataReturnedSingle);
+				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)hmData.get("ClubBudget"));
 				reportFormatted = cbReport.formatReport();
 				reportFileName = cbReport.getFilename();
 
