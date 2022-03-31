@@ -101,13 +101,13 @@ public class Controller {
 			DAO dao16 = new DAO();
 //			dao16.getClubMember()
 			break;
-			case LOGIN_USER:
-				FormHandler.createLoginForm(requestType, dataToProcess);
-				break;
-			case GET_USER: // get user based on email address for logins
-				DAO dao18 = new DAO();
-				dao18.getUser(((User)dataToProcess.get("User")).getEmail());
-				break;
+		case LOGIN_USER:
+			FormHandler.createLoginForm(requestType, dataToProcess);
+			break;
+		case GET_USER: // get user based on email address for logins
+			DAO dao18 = new DAO();
+			dao18.getUser(((User)dataToProcess.get("User")).getEmail());
+			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
 			FormHandler.updateClubForm(requestType, dataToProcess);
@@ -118,14 +118,20 @@ public class Controller {
 			FormHandler.updateClubEventForm(requestType, dataToProcess);
 			dao9.updateClubEvent((ClubEvent)dataToProcess.get("ClubEvent"));
 			break;
-		case MODIFY_USER: // Updating users permissions
+		case MODIFY_USER: // Updating users details
 			DAO dao10 = new DAO();
 			FormHandler.updateUserForm(requestType, dataToProcess);
 			dao10.updateUser(Main.CURRENTUSER);
 			break;
+		case MODIFY_USER_PERMISSION: // Updating a users permissions (SuperAdmin only)
+			DAO dao19 = new DAO();
+			FormHandler.updateUserPermissionForm(requestType, dataToProcess);
+			dao19.updateUser(Main.CURRENTUSER);
+			break;
 		case PASSWORD_RESET:
 			break;
 		case PASSWORD_RETRIEVE:
+
 			break;
 		case QUERY_DATABASE:
 			break;
@@ -146,6 +152,8 @@ public class Controller {
 			dao13.addExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
+			DAO dao20 = new DAO();
+//			dao20.getUser();
 			break;
 		case UPDATE_CLUB_MEMBER:
 			DAO dao14 = new DAO();

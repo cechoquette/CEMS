@@ -99,6 +99,12 @@ public class FormHandler {
 		Controller.processRequest(RequestType.UPDATE_CLUB_MEMBER, hmData);//calling update Club Member with same data to kill two birds
 	}
 
+	public static void updateUserPermissionForm(RequestType requestType, HashMap<Object, Object> hmData){
+		UserForm userForm = new UserForm(requestType, hmData);
+		userForm.updateUserPermission(Main.CURRENTUSER);
+		Controller.processRequest(RequestType.UPDATE_CLUB_MEMBER, hmData);//calling update Club Member with same data to kill two birds
+	}
+
 	public static void updateClubEventForm(RequestType requestType, HashMap<Object, Object> hmData){
 
 		ClubEventForm clubEventForm = new ClubEventForm(requestType, hmData);

@@ -72,26 +72,31 @@ public class LoginPageUIController {
     void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
         checkMandatoryFields();
 
+        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+        defaultPane.setTop(menuScreen);
+        defaultPane.setCenter(mainScreen);
+
         // Query the DB to retrieve the CURRENTUSER
         dataToSubmit = new HashMap<Object, Object>();
         dataToSubmit.put("LoginUserEmail", tfLoginEmail.getText());
         dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
 
-        Controller.processRequest(RequestType.GET_USER, dataToSubmit);
+//        Controller.processRequest(RequestType.GET_USER, dataToSubmit);
 
         // Once the GET_USER request has run, add the remaining data to the hashmap and process the next login request
-        dataToSubmit.put("UserStudentID", CURRENTUSER.getStudentID());
-        dataToSubmit.put("UserFirstName", CURRENTUSER.getFirstName());
-        dataToSubmit.put("UserLastName", CURRENTUSER.getLastName());
-        dataToSubmit.put("UserEmail", CURRENTUSER.getEmail());
-        dataToSubmit.put("UserPassword", CURRENTUSER.getPassword());
-        dataToSubmit.put("UserPhoneNumber", CURRENTUSER.getPhone());
-        dataToSubmit.put("UserPermissions", CURRENTUSER.getPermission());
-        dataToSubmit.put("UserSalt", CURRENTUSER.getUserSalt());
-        dataToSubmit.put("UserSecurityQ", CURRENTUSER.getSecurityQuestion());
-        dataToSubmit.put("UserSecurityA", CURRENTUSER.getSecurityAnswer());
+//        dataToSubmit.put("UserStudentID", CURRENTUSER.getStudentID());
+//        dataToSubmit.put("UserFirstName", CURRENTUSER.getFirstName());
+//        dataToSubmit.put("UserLastName", CURRENTUSER.getLastName());
+//        dataToSubmit.put("UserEmail", CURRENTUSER.getEmail());
+//        dataToSubmit.put("UserPassword", CURRENTUSER.getPassword());
+//        dataToSubmit.put("UserPhoneNumber", CURRENTUSER.getPhone());
+//        dataToSubmit.put("UserPermissions", CURRENTUSER.getPermission());
+//        dataToSubmit.put("UserSalt", CURRENTUSER.getUserSalt());
+//        dataToSubmit.put("UserSecurityQ", CURRENTUSER.getSecurityQuestion());
+//        dataToSubmit.put("UserSecurityA", CURRENTUSER.getSecurityAnswer());
 
-        Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
+//        Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
 
 //        // Retrieve the user's email on login attempt
 //        String email = tfLoginEmail.getText();
