@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
 public class DAO {
 
     ////////// ClubDAO
@@ -53,14 +56,17 @@ public class DAO {
         return club;
     }
 
-    /*    @SuppressWarnings("unchecked")
+      @SuppressWarnings("unchecked")
         public List<Club> getAllClubs() {
             Transaction transaction = null;
             List<Club> clubs = null;
             try {
                 Session session = HibernateUtil.getSessionFactory().openSession();
                 transaction = session.beginTransaction();
-                clubs = session.createQuery("from club").list();
+                CriteriaBuilder builder = session.getCriteriaBuilder();
+                CriteriaQuery<Club> criteria = builder.createQuery(Club.class);
+                criteria.from(Club.class);
+                clubs = session.createQuery(criteria).getResultList();
                 transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
@@ -69,24 +75,24 @@ public class DAO {
             }
             return clubs;
         }
-    */ // getall() not working yet
+
     @SuppressWarnings("null")
 
     //// UserDAO
-    public void addUser(User user ){
-    Transaction transaction = null;
-    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-        transaction = session.beginTransaction();
-        Object object = session.save(user);
-        session.get(User.class, (Serializable) object);
-        transaction.commit();
-    } catch (Exception e) {
-        if (transaction != null) {
-            transaction.rollback();
+    public void addUser(User user) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Object object = session.save(user);
+            session.get(User.class, (Serializable) object);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
         }
-        e.printStackTrace();
     }
-}
 
     public void updateUser(User user) {
         Transaction transaction = null;
@@ -117,6 +123,7 @@ public class DAO {
         }
         return user;
     }
+
     /*
         @SuppressWarnings("unchecked")
         public List<User> getAllUsers() {
@@ -142,7 +149,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             user = session.get(User.class, studentID);
-            if (user!= null) {
+            if (user != null) {
                 session.delete(user);
             }
             transaction.commit();
@@ -237,20 +244,20 @@ public class DAO {
         }
     }
 
-    public ClubEvent  getClubEvent(int eventID) {
+    public ClubEvent getClubEvent(int eventID) {
         Transaction transaction = null;
         ClubEvent clubEvent = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            clubEvent  = session.get(ClubEvent.class, eventID);
+            clubEvent = session.get(ClubEvent.class, eventID);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
-        return clubEvent ;
+        return clubEvent;
     }
 
     /*    @SuppressWarnings("unchecked")
@@ -291,7 +298,7 @@ public class DAO {
 
     ////////// ClubEventBudget DAO
 
-    public void addClubEventBudget(ClubEventBudget clubEventBudget){
+    public void addClubEventBudget(ClubEventBudget clubEventBudget) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -309,7 +316,7 @@ public class DAO {
 
     public ClubEventBudget getClubEventBudget(int eventBudgetID) {
         Transaction transaction = null;
-        ClubEventBudget clubEventBudget  = null;
+        ClubEventBudget clubEventBudget = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
@@ -343,7 +350,7 @@ public class DAO {
 
     /////////ExpenditureDAO
 
-    public void addExpenditure(Expenditure expenditure){
+    public void addExpenditure(Expenditure expenditure) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -394,7 +401,7 @@ public class DAO {
 
 
     /////////ClubMemberDAO
-    public void addClubMember (ClubMember clubMember) {
+    public void addClubMember(ClubMember clubMember) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -463,7 +470,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             clubMember = session.get(ClubMember.class, student_id);
-            if (clubMember!= null) {
+            if (clubMember != null) {
                 session.delete(clubMember);
             }
             transaction.commit();
@@ -580,4 +587,24 @@ public class DAO {
     }
 
     */
+
+
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+/*
+        Club club = new Club("knitting club", "we enjoy knitting");
+        Club club1 = new Club("sowing club", "we enjoy sowing");
+        Club club2 = new Club("running club", "we enjoy runnig");
+        Club club3 = new Club("cs club", "we enjoy cs");
+        dao.addClub(club);
+        dao.addClub(club1);
+        dao.addClub(club2);
+        dao.addClub(club3);
+        System.out.println(dao.getClub(1));
+        club2.setClubName("singing");
+        dao.updateClub(club2);
+        System.out.println(dao.getClub(1));
+        System.out.println(dao.getAllClubs());
+*/
+    }
 }
