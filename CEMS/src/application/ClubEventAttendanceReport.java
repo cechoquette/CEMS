@@ -32,7 +32,8 @@ public class ClubEventAttendanceReport extends Report{
 
             reportArray[1][0] = clubEvent.getClub().toString();
             reportArray[1][1] = clubEvent.getEventName();
-            reportArray[1][2] = clubEvent.getAttendance();
+            reportArray[1][2] = String.valueOf(clubEvent.getAttendance());
+        System.out.println("Test from Report class: Attendance set for Event " + clubEvent.getEventName() + " to " + clubEvent.getAttendance());
 
         return reportArray;
     }

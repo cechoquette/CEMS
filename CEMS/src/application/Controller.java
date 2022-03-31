@@ -96,6 +96,7 @@ public class Controller {
 			break;
 		case CREATE_USER:
 			DAO dao4 = new DAO();
+
 			dao4.addUser(FormHandler.createUserForm(requestType, dataToProcess));
 
 			break;
@@ -143,7 +144,7 @@ public class Controller {
 //			break;
 		case GET_CLUB_MEMBER:
 			DAO dao16 = new DAO();
-			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("StudentID"));//Takes an int StudentID
+			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("MemberID"));//Takes an int StudentID
 			if(clubMember != null) {
 				dataToProcess.put("ClubMember", clubMember);
 			}
