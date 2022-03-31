@@ -26,7 +26,7 @@ public class Club {
     @OneToMany(mappedBy = "club")
     private List<ClubEventBudget> clubEventBudget = new ArrayList<ClubEventBudget>();
     @OneToMany(mappedBy = "club")
-    private ArrayList<ClubMember> clubMembers;
+    private List<ClubMember> clubMembers = new ArrayList<>();
 
     public Club () {
 
@@ -88,7 +88,7 @@ public class Club {
         this.expenditure = expenditure;
     }
 
-    public ArrayList<ClubMember> getClubMembers() {
+    public List<ClubMember> getClubMembers() {
         return clubMembers;
     }
 
