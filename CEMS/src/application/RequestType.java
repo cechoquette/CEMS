@@ -29,7 +29,9 @@ public enum RequestType {
 	QUERY_DATABASE("Query Database"),//use if searching if something is in Database, not to return data
 	DELETE_FROM_DATABASE("Delete from Database"),
 	SEARCH_FOR_USER("Search for User"),
-	UPDATE_CLUB_MEMBER("Update Club Member");
+	UPDATE_CLUB_MEMBER("Update Club Member"),
+	DELETE_CLUB_MEMBER("Delete Club Member"),
+	GET_CLUB_MEMBER("Get Club Member from Database");
 	
 	
 	

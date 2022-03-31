@@ -35,10 +35,22 @@ public class ClubEventForm extends Form{
     public void updateClubEvent(ClubEvent clubEvent){
 
         //todo code
+        if(hmData.get("EventName") != null)
+            clubEvent.setEventName((String)hmData.get("EventName"));
+        if(hmData.get("EventDescription") != null)
+            clubEvent.setEventDescription((String)hmData.get("EventDescription"));
+        if(hmData.get("EventClub") != null)
+            clubEvent.setClub((Club)hmData.get("EventClub"));
+        if(hmData.get("EventDateTime") != null)
+            clubEvent.setEventDateTime((LocalDateTime)hmData.get("EventDateTime"));
+        if(hmData.get("EventLocation") != null)
+            clubEvent.setEventLocation((String)hmData.get("EventLocation"));
+        if(hmData.get("EventName") != null)
+            clubEvent.setEmails((String)hmData.get("EventEmailGroup"));
     }
 
-    public void deleteEvent(){
-
+    public void deleteEvent(ClubEvent clubEvent){
+        clubEvent = null;
     }
 
 

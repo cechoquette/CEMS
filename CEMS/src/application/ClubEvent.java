@@ -44,7 +44,7 @@ public class ClubEvent {
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
         this.eventLocation = location;
-        this.emailGroup = getEmails(emailGroup);//could be null
+        setEmails(emailGroup);//could be null
         if(club == ALLCLUBS){
             setAttendanceLarge();
         }
@@ -102,18 +102,21 @@ public class ClubEvent {
     }
 
     //method takes a String, either "none" or "all members..." and populates emailGroup accordingly
-    public String[] getEmails(String emailType) {
-        ArrayList<ClubMember> clubMember = getClub().getClubMembers();
+    public String[] setEmails(String emailType) {
+        ArrayList<ClubMember> clubMembers = getClub().getClubMembers();
 
-        String[] emails = new String[clubMember.size()];
+        String[] emails = new String[clubMembers.size()];
 
-        for (int i=0; i<clubMember.size(); i++){
-            emails[i] = clubMember.get(i).getClubMemberEmail();
+        for (int i=0; i<clubMembers.size(); i++){
+            emails[i] = clubMembers.get(i).getClubMemberEmail();
         }
         if(emails == null) emails[0] = emailType;
 
+        this.emailGroup = emails;
         return emails;
     }//cant be null, element 0 should be "none"
+    
+    
 
     public void setEmailGroup(String[] emailGroup) {
         this.emailGroup = emailGroup;
