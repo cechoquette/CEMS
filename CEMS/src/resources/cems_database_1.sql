@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS User (
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45) NOT NULL,
   email_address VARCHAR(45) NOT NULL,
-  password_ VARCHAR(45) NULL,
+  password_ VARCHAR(100) NULL,
   phone_number VARCHAR(45) NOT NULL,
   permissions VARCHAR(45) NOT NULL DEFAULT 'admin',
   salt VARCHAR(45)  NULL,
