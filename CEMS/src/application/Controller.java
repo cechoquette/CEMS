@@ -2,6 +2,8 @@ package CEMS.src.application;
 import CEMS.src.controllers.LoginPageUIController;
 
 import java.security.NoSuchProviderException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Controller {
@@ -37,6 +39,44 @@ public class Controller {
 	public static HashMap<Object, Object> processRequest(RequestType requestType, HashMap<Object, Object> dataToProcess) {
 		
 		switch(requestType) {
+		case CHECK_FOR_EVENTS:
+			DAO dao21 = new DAO();
+			Timeframe timeframe = (Timeframe)dataToProcess.get("Timeframe");
+			//Code for calling the Database
+//			Boolean isThereAnEvent = dao21.getClubEvent(timeframe) == null? false: true;
+//			dataToProcess.put("CheckForEvent", isThereAnEvent);
+
+
+			//This code is For Luke's CalendarUIController -->
+//			LocalDate date = LocalDate.of(2022, 3, 25);//Comment//assume this is taken from a field
+//			Timeframe timeframe = new Timeframe(date, date);//Comment//for a single day, give the same day twice
+//
+//			HashMap<Object, Object> dataToSend = new HashMap<Object, Object>();
+//			dataToSend.put("Timeframe", timeframe);//Comment//Use this specific key
+//			//Comment//Use this Boolean for your method. ex. if(checkForEvent) { //put a little dot };
+//			Boolean checkForEvent = (Boolean)Controller.processRequest(RequestType.CHECK_FOR_EVENTS, dataToSend).get("CheckForEvent");
+
+				break;
+		case GET_EVENTS:
+			DAO dao22 = new DAO();
+			Timeframe timeframe2 = (Timeframe)dataToProcess.get("Timeframe");
+			//Code for calling the Database
+//			ArrayList<ClubEvent> clubEvents = dao22.getAllClubEvents(timeframe2);
+//			dataToProcess.put("ClubEvents", clubEvents);
+
+
+//			//This code is For Luke's CalendarUIController --> Not ready
+//			LocalDate startDate = LocalDate.of(2022, 3, 25);//Comment//assume this is taken from a field
+//			LocalDate endDate = LocalDate.of(2022, 3, 25);//Comment//assume this is taken from a field
+//			Timeframe timeframe3 = new Timeframe(date, date);//Comment//for a single day, give the same day twice
+//
+//			HashMap<Object, Object> dataToSend = new HashMap<Object, Object>();
+//			dataToSend.put("Timeframe", timeframe3);//Comment//Use this specific key
+//			//Comment//Use this Boolean for your method. ex. if(checkForEvent) { //put a little dot };
+//			Boolean checkForEvent = (Boolean)Controller.processRequest(RequestType.CHECK_FOR_EVENTS, dataToSend).get("CheckForEvent");
+
+				break;
+
 		case CREATE_CLUB:
 			DAO dao1 = new DAO();
 			dao1.addClub(FormHandler.createClubForm(requestType, dataToProcess));
@@ -58,6 +98,7 @@ public class Controller {
 			break;
 		case CREATE_USER:
 			DAO dao4 = new DAO();
+
 			dao4.addUser(FormHandler.createUserForm(requestType, dataToProcess));
 
 			break;
@@ -105,7 +146,7 @@ public class Controller {
 //			break;
 		case GET_CLUB_MEMBER:
 			DAO dao16 = new DAO();
-			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("StudentID"));//Takes an int StudentID
+			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("MemberID"));//Takes an int StudentID
 			if(clubMember != null) {
 				dataToProcess.put("ClubMember", clubMember);
 			}

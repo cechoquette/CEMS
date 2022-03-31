@@ -55,7 +55,8 @@ public class ReportHandler {
 
 				DAO dao1 = new DAO();
 //				dataReturnedSingle = dao1.getClubBudget();//need a ClubBudgetID
-				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)hmData.get("ClubBudget"));
+				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)hmData.get("ClubBudget"));//test line
+//				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, dao1.getClubBudget(reportClub));//real line
 				reportFormatted = cbReport.formatReport();
 				reportFileName = cbReport.getFilename();
 				reportSize = 3;
@@ -65,32 +66,35 @@ public class ReportHandler {
 				DAO dao2 = new DAO();
 //				dataReturnedSingle = DAO.getClubEventBudget((ClubEvent)reportClubEvent))
 
-				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)hmData.get("Budget"));
+				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)hmData.get("Budget"));//test line
+//				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, dao2.getClubEventBudget(reportClub));//real Line
 				reportFormatted = cebReport.formatReport();
 				reportFileName = cebReport.getFilename();
 				reportSize = 3;
 				break;
 
 			case CLUB_EXPENDITURES:
-//				DAO dao = new DAO();
-//				List<Expenditure> dataExpList = dao.getExpenditures();
-				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)hmData.get("Expenditures"));
+				DAO dao3 = new DAO();
+//				List<Expenditure> dataExpList = dao3.getExpenditures();
+				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)hmData.get("Expenditures"));//test line
+//				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, dao3.getAllExpenditures(timeframe, reportClub));//real line
+
 				reportFormatted = clubExpReport.formatReport();
 				reportFileName = clubExpReport.getFilename();
 				reportSize = 1;
 				break;
 
 			case CLUBEVENT_EXPENDITURES:
-//				DAO dao5 = new DAO();
-//				List<Expenditure> dataExpList5 = dao5.getExpenditures();
-//				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, (ArrayList<Expenditure>)dataExpList5);
+				DAO dao5 = new DAO();
+//				List<Expenditure> dataExpList5 = dao5.getAllExpenditures(reportEvent);
+//				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, (ArrayList<Expenditure>)dataExpList5);//real line
 //				reportFormatted = clubEvtExpReport.formatReport();
 //				reportFileName = clubEvtExpReport.getFilename();
 				reportSize = 1;
 				break;
 
 
-			case CLUB_FINANCIAL_SITUATION:
+			case CLUB_FINANCIAL_SITUATION://not done****
 //				DAO dao2 = new DAO();
 //				List<Expenditure> dataExpList2 = dao2.getExpenditures();
 //				dataReturnedSingle = dao2.getClubBudget();
@@ -100,7 +104,7 @@ public class ReportHandler {
 				reportSize = 2;
 				break;
 
-			case CLUBEVENT_FINANCIAL_SITUATION:
+			case CLUBEVENT_FINANCIAL_SITUATION://not done****
 //				DAO dao3 = new DAO();
 //				List<Expenditure> dataExpList3 = dao3.getExpenditures();
 //				dataReturnedSingle = dao3.getClubEventBudget();
@@ -111,8 +115,6 @@ public class ReportHandler {
 				break;
 
 			case CLUB_MEMBERSHIP_SUMMARY:
-//				DAO dao4 = new DAO();
-//				dataReturnedSingle = dao4.getClub();//actually, if you have the club already, you don't need to get it again
 				ClubMembershipSummaryReport clubMembershipSummaryReport = new ClubMembershipSummaryReport(reportFormat, reportClub);
 				reportFormatted = clubMembershipSummaryReport.formatReport();
 				reportFileName = clubMembershipSummaryReport.getFilename();
@@ -127,17 +129,19 @@ public class ReportHandler {
 				break;
 
 			case CLUBEVENT_ATTENDANCE:
-				ClubEventAttendanceReport clubEventAttendanceReport = new ClubEventAttendanceReport(reportFormat, (ClubEvent)hmData.get("ClubEvent"));
+				ClubEventAttendanceReport clubEventAttendanceReport = new ClubEventAttendanceReport(reportFormat, reportEvent);
 				reportFormatted = clubEventAttendanceReport.formatReport();
 				reportFileName = clubEventAttendanceReport.getFilename();
 				reportSize = 3;
 				break;
 
 			case CLUBEVENTS_SUMMARY:
-//				ClubMembershipDetailReport clubMembershipDetailReport = new ClubMembershipDetailReport(reportFormat, reportClub);
-//				reportFormatted = clubMembershipDetailReport.formatReport();
-//				reportFileName = clubMembershipDetailReport.getFilename();
-//				reportSize = 2;
+//				DAO dao10 = new DAO();
+//				List<ClubEvent> clubEvents = dao10.getAllClubEvents(reportClub);
+//				ClubEventsSummaryReport clubEventsSummaryReport = new ClubEventsSummaryReport(reportFormat, (ArrayList<ClubEvent>) clubEvents);//real code
+//				reportFormatted = clubEventsSummaryReport.formatReport();
+//				reportFileName = clubEventsSummaryReport.getFilename();
+				reportSize = 2;
 				break;
 
 			default: return null;
