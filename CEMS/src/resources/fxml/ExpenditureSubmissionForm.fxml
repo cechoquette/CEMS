@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ExpenditureFormUIController">
+<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ExpenditureFormUIController">
    <children>
-      <BorderPane fx:id="expenditureBorderPane" prefHeight="600.0" prefWidth="900.0">
+      <BorderPane fx:id="expenditureBorderPane" prefHeight="575.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
             <GridPane alignment="CENTER" prefHeight="64.0" prefWidth="873.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -45,7 +45,7 @@
          <center>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Expenditre Submission Form">
+                  <Label text="Expenditure Submission Form">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

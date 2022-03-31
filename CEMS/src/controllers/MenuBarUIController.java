@@ -127,8 +127,8 @@ public class MenuBarUIController {
     @FXML
     void menuItemReportingFinanceClicked(ActionEvent event) {
         //Need to create fxml
-//        Pane mainScreen = ViewBuilder.newScreen("");
-//        defaultPane.setCenter(mainScreen);
+        Pane mainScreen = ViewBuilder.newScreen("ExpenditureSubmissionForm");
+        defaultPane.setCenter(mainScreen);
     }
 
 }
