@@ -4,21 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ClubEventBudgetForm extends Form{
-
-//	private double subtotal;
-//	private double taxes;
-//	private double total;
-	
-	private static int budgetFormID;
+	public static int COUNT_FOR_IDS;
+	private static int formID;
 	private boolean isFilled;
 	private ClubEventBudget clubEventBudget;
-	
+	private HashMap<Object, Object> hmData;
+
 	ClubEventBudgetForm(RequestType requestType, HashMap<Object, Object> hmData){
-		this.budgetFormID++;
-		createEventBudget(hmData);
+		this.hmData = hmData;
+		this.formID = ++COUNT_FOR_IDS;
 	}
 	
-	public void createEventBudget(HashMap<Object, Object> hmData){
+	public ClubEventBudget createClubEventBudget(){
 		ArrayList<Double> dataForBudget = new ArrayList<Double>();
 		
 		dataForBudget.add((Double)hmData.get("EventBudgetVenueEntertainment"));
@@ -67,55 +64,13 @@ public class ClubEventBudgetForm extends Form{
 
 		
 		this.clubEventBudget = new ClubEventBudget(dataForBudget, club, clubEvent);
-		//test only
-		try {
-//			ArrayList<String[]> list = new ArrayList<>();
-//
-//			for (var entry: hmData.entrySet()
-//				 ) {
-//				String[] newStringArray = {(String)entry.getKey(), entry.getValue().toString()};
-//				list.add(newStringArray);
-//			}
-//
-//
-//			ReportHandler.createSamplePDF(list, "ClubEventBudget");
 
-			ReportHandler.exportToExcel("ClubEventBuget", ReportHandler.formatClubEventBudgetReport(clubEventBudget));
+		return clubEventBudget;
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
-
-	
-	
-	public ClubEventBudget getEventBudget() {
+	public ClubEventBudget getClubEventBudget() {
 		return clubEventBudget;
 	}
-	
-//	public double getSubtotal() {
-//		return subtotal;
-//	}
-//	public void setSubtotal(double subtotal) {
-//		this.subtotal = subtotal;
-//	}
-//	public double getTaxes() {
-//		taxes = subtotal * 0.13;
-//		return taxes;
-//	}
-//	public void setTaxes(double taxes) {
-//		this.taxes = taxes;
-//	}
-//	public double getTotal() {
-//		total = subtotal + taxes;
-//		return total;
-//	}
-//	public void setTotal(double total) {
-//		this.total = total;
-//	}
 
-
-	
-	
 }

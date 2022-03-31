@@ -5,14 +5,17 @@ import java.util.HashMap;
 public class LoginForm extends Form {
 
     private boolean isFilled;
+    private HashMap<Object, Object> hmData;
 
     // Constructor
     LoginForm(RequestType requestType, HashMap<Object, Object> hmData){
-        logUserIn(hmData);
+        this.hmData = hmData;
+        logUserIn();
     }
 
     /** Method to log a user into the system - cross-references user data from the DB **/
-    public void logUserIn(HashMap<Object, Object> hmData) {
+    public void logUserIn() {
+        //hmData is now a class data member. No need for parameters this way.
 
         if (isFilled()) {
             // TODO: Code

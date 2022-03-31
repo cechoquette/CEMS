@@ -67,7 +67,7 @@ public class ClubDAO {
             }
             return clubs;
         }
-    */ //
+    */ // getallclubs
     @SuppressWarnings("null")
     public void deleteClub(int clubID) {
         Transaction transaction = null;
@@ -86,7 +86,7 @@ public class ClubDAO {
         }
     }
     // TEST
-/*
+
     public static void main(String[] args) {
 
         ClubDAO clubdao = new ClubDAO();
@@ -103,6 +103,6 @@ public class ClubDAO {
         clubdao.deleteClub(1);
 
     }
-*/
+
 
 }
