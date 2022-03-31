@@ -2,6 +2,7 @@ package CEMS.src.application;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClubMembershipSummaryReport extends Report{
     //Report shows summary of Club membership numbers, if ALLCLUBS selected, shows numbers for each club
@@ -19,7 +20,7 @@ public class ClubMembershipSummaryReport extends Report{
         this.club = club;
         this.today = LocalDate.now();
         this.reportID = ++COUNT_FOR_IDS;
-        this.filename = "MembershipSummaryReport_" + reportID + "_" + today;
+        this.filename = "Membership_Summary_Report_" + reportID + "_" + today;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class ClubMembershipSummaryReport extends Report{
 
         Object[][] reportArray;
 
-        ArrayList<ClubMember> clubMembers = club.getClubMembers();
+        List<ClubMember> clubMembers = club.getClubMembers();
 
         if (club == Main.ALLCLUBS){
             Club[] allclubs = OptionLists.getClubs();
