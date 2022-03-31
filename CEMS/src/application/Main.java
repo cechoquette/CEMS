@@ -14,6 +14,8 @@ public class Main extends Application {
 	public static Club ALLCLUBS = new Club("All Clubs", "This is the club for all SuperAdmins.");
 	public static BorderPane defaultPane = new BorderPane();
 
+
+
 	@Override
 	public void start(Stage primaryStage) {
 		try { DatabaseRunner.setUPDB();
@@ -43,8 +45,9 @@ public class Main extends Application {
 
 			//for Paths: use absolute paths (leading / ) and do note use .. , the resulting .jar executable will not function.
 			/* Keeping this code segnment in case anyone needs to test individual fxml pages*/
-//			Parent root;
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ClubBudgetSubmissionForm.fxml"));
+			Parent root;
+			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
+
 //			Scene scene = new Scene(root, 900, 575);
 
 			Pane defaultMenu = ViewBuilder.newScreen("LoginMenuBar");
@@ -53,7 +56,9 @@ public class Main extends Application {
 			defaultPane.setTop(defaultMenu);
 			defaultPane.setCenter(defaultMain);
 
-			Scene scene = new Scene(defaultPane, 900, 625);
+//			Scene scene = new Scene(defaultPane, 900, 625);
+						Scene scene = new Scene(root, 900, 625);
+
 
 			primaryStage.setTitle("CEMS");
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

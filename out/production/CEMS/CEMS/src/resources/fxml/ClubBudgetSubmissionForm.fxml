@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0"
-            prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ClubBudgetUIController">
+<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ClubBudgetUIController">
    <children>
-      <BorderPane fx:id="clubBudgetBorderPane" prefHeight="568.0" prefWidth="923.0">
+      <BorderPane fx:id="clubBudgetBorderPane" prefHeight="575.0" prefWidth="900.0">
          <bottom>
             <GridPane alignment="CENTER" prefHeight="64.0" prefWidth="923.0" BorderPane.alignment="CENTER">
                <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btClubBudgetBack" alignment="CENTER" mnemonicParsing="false" onAction="#btClubBudgetBackClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Back" />
-                  <Button fx:id="btClubBudgetClear" mnemonicParsing="false" onAction="#btClubBudgetClearClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" />
-                  <Button fx:id="btClubBudgetCancel" mnemonicParsing="false" onAction="#btClubBudgetCancelClicked" prefWidth="100.0" styleClass="form__btn" text="Cancel" GridPane.columnIndex="4" />
-                  <Button fx:id="btClubBudgetSubmit" mnemonicParsing="false" onAction="#btClubBudgetSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="5" />
+                  <Button fx:id="btClubBudgetBack" alignment="CENTER" mnemonicParsing="false" onAction="#btClubBudgetBackClicked" prefHeight="25.0" prefWidth="100.0" text="Back" />
+                  <Button fx:id="btClubBudgetClear" mnemonicParsing="false" onAction="#btClubBudgetClearClicked" prefHeight="25.0" prefWidth="100.0" text="Clear" GridPane.columnIndex="1" />
+                  <Button fx:id="btClubBudgetCancel" mnemonicParsing="false" onAction="#btClubBudgetCancelClicked" prefWidth="100.0" text="Cancel" GridPane.columnIndex="4" />
+                  <Button fx:id="btClubBudgetSubmit" mnemonicParsing="false" onAction="#btClubBudgetSubmitClicked" prefWidth="100.0" text="Submit" GridPane.columnIndex="5" />
                </children>
                <BorderPane.margin>
                   <Insets />
@@ -41,335 +33,368 @@
             </GridPane>
          </bottom>
          <center>
-            <GridPane prefHeight="416.0" prefWidth="878.0" BorderPane.alignment="CENTER">
-               <columnConstraints>
-                  <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <VBox BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" text="Venue" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Services" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Refreshments" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Miscellaneous" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Events Subtotal" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Club Activities" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                  <Label text="Club Budget Submission Form">
+                     <VBox.margin>
+                        <Insets left="50.0" right="15.0" top="10.0" />
+                     </VBox.margin>
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Meetings" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Space Rental &amp; Fees" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Equipment" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Costs (outgoing)" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Estimated Income" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Participant Fees" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Donations" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="tfClubBudgetEventsVenue" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="277.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetEventsServices" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetEventsRefreshments" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetEventsMisc" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetEventsSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetActivitiesMeetings" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetActivitiesSpace" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetActivitiesEquipment" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetActivitiesOther" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetActivitiesSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetFundraisingCosts" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetFundraisingIncome" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetFundraisingParticipant" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetFundraisingDonations" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetFundraisingSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="3" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetMiscAdminFees" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetMiscBankFees" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="8">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetMiscBankInterest" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="9">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetMiscUtilities" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="10">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetMiscOther" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="11">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetMiscSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="3" GridPane.rowIndex="12">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="5" GridPane.rowIndex="10">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="15.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetTaxes" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="5" GridPane.rowIndex="11">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="15.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="tfClubBudgetTotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="5" GridPane.rowIndex="12">
-                     <GridPane.margin>
-                        <Insets left="5.0" right="15.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label text="Other" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Activities Subtotal" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Fundraising Subtotal" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Administrative Fees" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Banking Fees" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Banking Interest" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Utilities" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Other" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Miscellaneous Subtotal" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <Label text="Club Budget Subtotal" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Taxes" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Club Budget Total" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Events" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Fundraising" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Miscellaneous" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
+                  <GridPane prefHeight="479.0" prefWidth="923.0">
+                     <columnConstraints>
+                        <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" maxWidth="244.33334350585938" minWidth="10.0" prefWidth="172.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="10.0" prefWidth="127.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="371.0" minWidth="10.0" prefWidth="178.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="124.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="310.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" text="Venue" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Services" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Refreshments" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Miscellaneous" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Events Subtotal" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Club Activities" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Meetings" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Space Rental &amp; Fees" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Equipment" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Costs (outgoing)" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Estimated Income" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Participant Fees" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Donations" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="tfClubBudgetEventsVenue" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="277.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetEventsServices" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetEventsRefreshments" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetEventsMisc" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetEventsSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetActivitiesMeetings" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetActivitiesSpace" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetActivitiesEquipment" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetActivitiesOther" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetActivitiesSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetFundraisingCosts" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetFundraisingIncome" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetFundraisingParticipant" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetFundraisingDonations" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetFundraisingSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetMiscAdminFees" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetMiscBankFees" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetMiscBankInterest" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetMiscUtilities" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetMiscOther" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="11">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetMiscSubtotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="3" GridPane.rowIndex="12">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetSubtotal" alignment="CENTER_RIGHT" editable="false" prefHeight="25.0" prefWidth="173.0" text="0.00" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets left="150.0" right="15.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetTaxes" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="4" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets left="150.0" right="15.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tfClubBudgetTotal" alignment="CENTER_RIGHT" editable="false" text="0.00" GridPane.columnIndex="4" GridPane.rowIndex="12">
+                           <GridPane.margin>
+                              <Insets left="150.0" right="15.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label text="Other" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Activities Subtotal" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Fundraising Subtotal" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Administrative Fees" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Banking Fees" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Banking Interest" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Utilities" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Other" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Miscellaneous Subtotal" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Club Budget Subtotal" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets right="15.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Taxes" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets right="15.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Club Budget Total" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets right="15.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Events" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Fundraising" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Miscellaneous" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="choiceClubBudgetClub" prefHeight="25.0" prefWidth="314.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin>
+                        </ChoiceBox>
+                        <Label text="Select Club" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="15.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
                </children>
-            </GridPane>
+            </VBox>
          </center>
       </BorderPane>
    </children>

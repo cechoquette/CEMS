@@ -44,7 +44,9 @@ public class ReportHandler {
 		switch(reportType){
 
 			case CLUB_BUDGET:
-//				dataReturnedSingle = DAO.getBudget((Club)reportClub);
+
+				DAO dao1 = new DAO();
+//				dataReturnedSingle = dao1.getClubBudget();//need a ClubBudgetID
 				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)dataReturnedSingle);
 				reportFormatted = cbReport.formatReport();
 				reportFileName = cbReport.getFilename();
@@ -52,8 +54,10 @@ public class ReportHandler {
 				break;
 
 			case CLUBEVENT_BUDGET:
+				DAO dao2 = new DAO();
 //				dataReturnedSingle = DAO.getClubEventBudget((ClubEvent)reportClubEvent))
-				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)dataReturnedSingle);
+
+				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)hmData.get("Budget"));
 				reportFormatted = cebReport.formatReport();
 				reportFileName = cebReport.getFilename();
 				break;
@@ -61,9 +65,9 @@ public class ReportHandler {
 			case CLUB_EXPENDITURES:
 //				DAO dao = new DAO();
 //				List<Expenditure> dataExpList = dao.getExpenditures();
-//				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)dataExpList);
-//				reportFormatted = clubExpReport.formatReport();
-//				reportFileName = clubExpReport.getFilename();
+				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)hmData.get("Expenditures"));
+				reportFormatted = clubExpReport.formatReport();
+				reportFileName = clubExpReport.getFilename();
 				break;
 
 			case CLUBEVENT_EXPENDITURES:
@@ -281,34 +285,34 @@ public class ReportHandler {
 		return reportArray;
 	}
 
-	public static Object[][] formatClubBudgetReport(ClubBudget clubBudget){
-		return null;
-	}
-
-	public static Object[][] formatClubExpendituresReport(List<Expenditure> expenditures) {
-		return null;
-	}
-
-	public static Object[][] formatClubEventExpendituresReport(List<Expenditure> expenditures) {
-		return null;
-	}
-
-	public static Object[][] formatClubFSReport(List<Expenditure> expenditures) {
-		return null;
-	}
-
-	public static Object[][] formatMembershipSummaryReport(Club club) {
-		return null;
-	}
-
-	public static Object[][] formatMembershipDetailReport(Club club) {
-		return null;
-	}
-	public static Object[][] formatClubEventAttendanceReport(ClubEvent clubevent) {
-		return null;
-	}
-	public static Object[][] formatClubEventsSummaryReport(Club club) {//need club, need ALL that club's events
-		return null;
-	}
+//	public static Object[][] formatClubBudgetReport(ClubBudget clubBudget){
+//		return null;
+//	}
+//
+//	public static Object[][] formatClubExpendituresReport(List<Expenditure> expenditures) {
+//		return null;
+//	}
+//
+//	public static Object[][] formatClubEventExpendituresReport(List<Expenditure> expenditures) {
+//		return null;
+//	}
+//
+//	public static Object[][] formatClubFSReport(List<Expenditure> expenditures) {
+//		return null;
+//	}
+//
+//	public static Object[][] formatMembershipSummaryReport(Club club) {
+//		return null;
+//	}
+//
+//	public static Object[][] formatMembershipDetailReport(Club club) {
+//		return null;
+//	}
+//	public static Object[][] formatClubEventAttendanceReport(ClubEvent clubevent) {
+//		return null;
+//	}
+//	public static Object[][] formatClubEventsSummaryReport(Club club) {//need club, need ALL that club's events
+//		return null;
+//	}
 
 }

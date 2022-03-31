@@ -22,13 +22,41 @@ public class ClubBudgetReport extends Report{
         this.clubBudget = clubBudget;
         this.today = LocalDate.now();
         this.reportID = ++COUNT_FOR_IDS;
-        this.filename = "ClubBudgetReport_" + reportID + "_" + today;
+        this.filename = "Club Budget Report_" + reportID + "_" + today;
     }
 
     @Override
     public Object[][] formatReport() {
+        Object[][] reportArray =
+            {{"Club: ",  clubBudget.getClub().toString()},
+                {"Budget ID: ", String.valueOf(clubBudget.getClubBudgetID())},
+                {"Events Venue", clubBudget.getEventsVenue()},
+                {"Events Services", clubBudget.getEventsServices()},
+                {"Events Refreshments", clubBudget.getEventsRefreshments()},
+                {"Events Miscellaneous", clubBudget.getEventsMiscellaneous()},
+                {"Events Subtotal", clubBudget.getEventsSubtotal()},
+                {"Club Activities Meetings", clubBudget.getClubMeetings()},
+                {"Club Activities Space Rental", clubBudget.getClubSpaceRentalOrFees()},
+                {"Club Activities Equipment", clubBudget.getClubEquipment()},
+                {"Club Activities Other", clubBudget.getClubActivitiesOther()},
+                {"Club Activities Subtotal", clubBudget.getClubActivitiesSubtotal()},
+                {"Fundraising Costs", clubBudget.getFundraisingCosts()},
+                {"Fundraising Income", clubBudget.getFundraisingIncome()},
+                {"Fundraising Participant Fees", clubBudget.getFundraisingParticipantFees()},
+                {"Fundraising Donations", clubBudget.getFundraisingDonations()},
+                {"Fundraising Subtotal", clubBudget.getFundraisingSubtotal()},
+                {"Miscellaneous Administrative Fees", clubBudget.getMiscAdminFees()},
+                {"Miscellaneous Banking Fees", clubBudget.getMiscBankingFees()},
+                {"Miscellaneous Banking Interest", clubBudget.getMiscBankingInterestIncome()},
+                {"Miscellaneous Utilities", clubBudget.getMiscUtilities()},
+                {"Miscellaneous Other", clubBudget.getMiscOther()},
+                {"Miscellaneous Subtotal", clubBudget.getMiscSubtotal()},
+                {"Club Budget Subtotal", clubBudget.getClubBudgetSubtotal()},
+                {"Club Budget Taxes", clubBudget.getClubBudgetTaxes()},
+                {"Club Budget Total", clubBudget.getClubBudgetTotal()}
+        };
 
-        return new Object[0][];
+        return reportArray;
     }
 
     public static int getCountForIds() {

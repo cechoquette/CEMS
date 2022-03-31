@@ -65,6 +65,23 @@ public class ClubEventBudgetForm extends Form{
 		
 		this.clubEventBudget = new ClubEventBudget(dataForBudget, club, clubEvent);
 
+		//Testing
+
+		HashMap<Object, Object> dataToSubmit = new HashMap<>();
+		dataToSubmit.put("ReportType", ReportType.CLUBEVENT_BUDGET);//ReportType
+		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
+		dataToSubmit.put("ReportTimeframe", new Timeframe());
+		dataToSubmit.put("ReportFormat", ReportFormat.EXCEL);
+		dataToSubmit.put("ReportEvent", null);//can be null
+		dataToSubmit.put("Budget", this.clubEventBudget);
+
+		try {
+			ReportHandler.generateReport(dataToSubmit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
 		return clubEventBudget;
 
 	}

@@ -23,7 +23,54 @@ public class ClubEventBudgetReport extends Report{
 
     @Override
     public Object[][] formatReport() {
-        return new Object[0][];
+        Object[][] reportArray =
+                {{"Club: ", clubEventBudget.getClub().toString()},
+                        {"Event: ", clubEventBudget.getClubEvent().toString()},
+                        {"Budget ID: ", String.valueOf(clubEventBudget.getEventBudgetID())},
+                        {"Venue: ", " "},
+                        {"Venue Entertainment ", clubEventBudget.getVenueEntertainment()},
+                        {"Venue Location Rental ", clubEventBudget.getVenueLocationRental()},
+                        {"Venue Equipment Rental ", clubEventBudget.getVenueEquipmentRental()},
+                        {"VenueFurnitureRental ", clubEventBudget.getVenueFurnitureRental()},
+                        {"VenueOther ", clubEventBudget.getVenueOther()},
+                        {"VenueSubtotal ", clubEventBudget.getVenueSubtotal()},
+                        {"Services: ", " "},
+                        {"Services Venue Staff ", clubEventBudget.getServicesVenueStaff()},
+                        {"Services Security ", clubEventBudget.getServicesSecurity()},
+                        {"Services AV Tech Staff ", clubEventBudget.getServicesAVTechStaff()},
+                        {"Services Catering Staff ", clubEventBudget.getServicesCateringStaff()},
+                        {"Services Bar Staff ", clubEventBudget.getServicesBarStaff()},
+                        {"Services Volunteers ", clubEventBudget.getServicesVolunteers()},
+                        {"Services Advertising ", clubEventBudget.getServicesAdvertising()},
+                        {"Services Social Media ", clubEventBudget.getServicesSocialMedia()},
+                        {"Services Photography & Videography ", clubEventBudget.getServicesPhotoVideography()},
+                        {"Services Travel ", clubEventBudget.getServicesTravel()},
+                        {"Services Gratuities ", clubEventBudget.getServicesGratuities()},
+                        {"Services Other ", clubEventBudget.getServicesOther()},
+                        {"Services Subtotal ", clubEventBudget.getServicesSubtotal()},
+                        {"Refreshments: ", " "},
+                        {"Refreshments Food ", clubEventBudget.getRefreshmentsFood()},
+                        {"Refreshments Beverages ", clubEventBudget.getRefreshmentsBeverages()},
+                        {"Refreshments BarCosts ", clubEventBudget.getRefreshmentsBarCosts()},
+                        {"Refreshments Other ", clubEventBudget.getRefreshmentsOther()},
+                        {"Refreshments Subtotal ", clubEventBudget.getRefreshmentsSubtotal()},
+                        {"Miscellaneous: ", " "},
+                        {"Miscellaneous PrizesAwards ", clubEventBudget.getMiscPrizesAwards()},
+                        {"Miscellaneous GiftBags ", clubEventBudget.getMiscGiftBags()},
+                        {"Miscellaneous ParticipantMaterials ", clubEventBudget.getMiscParticipantMaterials()},
+                        {"Miscellaneous Decorations ", clubEventBudget.getMiscDecorations()},
+                        {"Miscellaneous Signage ", clubEventBudget.getMiscSignage()},
+                        {"Miscellaneous Permits ", clubEventBudget.getMiscPermits()},
+                        {"Miscellaneous Fees ", clubEventBudget.getMiscFees()},
+                        {"Miscellaneous Other ", clubEventBudget.getMiscOther()},
+                        {"Miscellaneous Subtotal ", clubEventBudget.getMiscSubtotal()},
+                        {"Total: ", " "},
+                        {"Event Budget Subtotal ", clubEventBudget.getEventBudgetSubtotal()},
+                        {"Event Budget Taxes ", clubEventBudget.getEventBudgetTaxes()},
+                        {"Event Budget Total ", clubEventBudget.getEventBudgetTotal()}
+
+                };
+        return reportArray;
     }
 
     public static int getCountForIds() {

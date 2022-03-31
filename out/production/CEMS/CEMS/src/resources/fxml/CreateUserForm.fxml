@@ -14,9 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0"
-            prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.CreateUserUIController">
+<AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.CreateUserUIController">
    <children>
       <BorderPane layoutX="267.0" layoutY="215.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -40,11 +38,23 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnCreateUserBack" alignment="CENTER" mnemonicParsing="false" onAction="#btnCreateUserBackClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP" />
-                  <Button fx:id="btnCreateUserClear" mnemonicParsing="false" onAction="#btnCreateUserCancelClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP" />
-                  <Button fx:id="btnCreateUserCancel1" mnemonicParsing="false" onAction="#btnCreateUserCancelClicked" prefWidth="100.0" styleClass="form__btn" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP" />
-                  <Button fx:id="btnCreateUserSubmit" mnemonicParsing="false" onAction="#btnCreateUserSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP" />
-                  <Label styleClass="form__label" text="First Name" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                  <Button fx:id="btnCreateUserBack" alignment="CENTER" mnemonicParsing="false" onAction="#btnCreateUserBackClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnCreateUserClear" mnemonicParsing="false" onAction="#btnCreateUserCancelClicked" prefHeight="25.0" prefWidth="100.0" styleClass="form__btn" text="Clear" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnCreateUserCancel1" mnemonicParsing="false" onAction="#btnCreateUserCancelClicked" prefWidth="100.0" styleClass="form__btn" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button fx:id="btnCreateUserSubmit" mnemonicParsing="false" onAction="#btnCreateUserSubmitClicked" prefWidth="100.0" styleClass="form__btn" text="Submit" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Label styleClass="form__label" text="First Name" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -52,7 +62,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form__label" text="Last Name" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <Label styleClass="form__label" text="Last Name" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -60,7 +70,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form__label" text="Phone Number" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                  <Label styleClass="form__label" text="Phone Number" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -68,7 +78,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form__label" text="Email Address" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                  <Label styleClass="form__label" text="Email Address" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -76,7 +86,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form__label" text="Student ID" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                  <Label styleClass="form__label" text="Student ID" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -84,7 +94,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form__label" text="Club" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                  <Label styleClass="form__label" text="Club" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -92,7 +102,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label styleClass="form__label" text="Permissions" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                  <Label styleClass="form__label" text="Permissions" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -100,22 +110,22 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfCreateUserFirst" styleClass="form__tf" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="tfCreateUserFirst" styleClass="form__tf" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfCreateUserLast" styleClass="form__tf" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="tfCreateUserLast" styleClass="form__tf" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfCreateUserPhone" styleClass="form__tf" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <TextField fx:id="tfCreateUserPhone" styleClass="form__tf" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tfCreateUserEmail" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <TextField fx:id="tfCreateUserEmail" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
@@ -124,16 +134,16 @@
                         <String fx:value="email__tf" />
                      </styleClass>
                   </TextField>
-                  <TextField fx:id="tfCreateUserID" styleClass="form__tf" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                  <TextField fx:id="tfCreateUserID" styleClass="form__tf" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <ComboBox fx:id="comboCreateUserClub" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <ComboBox fx:id="comboCreateUserClub" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin></ComboBox>
-                  <ComboBox fx:id="comboCreateUserPermissions" prefHeight="25.0" prefWidth="228.0" styleClass="form__combo" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                  <ComboBox fx:id="comboCreateUserPermissions" prefHeight="25.0" prefWidth="228.0" styleClass="form__combo" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin></ComboBox>
@@ -145,6 +155,31 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin>
                   </Text>
+                  <Label layoutX="166.0" layoutY="91.0" styleClass="form__label" text="Security Question" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="580.0" layoutY="91.0" styleClass="form__label" text="Security Answer" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="tfCreateUserSecQ" layoutX="240.0" layoutY="88.0" prefWidth="257.0" snapToPixel="false" styleClass="form__tf" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="-90.0" right="100.0" />
+                     </GridPane.margin></TextField>
+                  <TextField fx:id="tfCreateUserSecA" layoutX="432.0" layoutY="147.0" prefWidth="257.0" snapToPixel="false" styleClass="form__tf" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="-90.0" right="100.0" />
+                     </GridPane.margin>
+                  </TextField>
                </children>
             </GridPane>
          </center>

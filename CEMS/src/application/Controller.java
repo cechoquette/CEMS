@@ -40,7 +40,7 @@ public class Controller {
 			break;
 		case CREATE_CLUB_MEMBER:
 			DAO dao2 = new DAO();
-			dao2.addClubMember(FormHandler.createClubMemberForm(requestType, dataToProcess));
+//			dao2.addClubMember(FormHandler.createClubMemberForm(requestType, dataToProcess));
 			break;
 		case CREATE_EMAIL:
 			//Not a DAO task
@@ -144,7 +144,7 @@ public class Controller {
 		case UPDATE_CLUB_MEMBER:
 			DAO dao14 = new DAO();
 			FormHandler.updateClubMemberForm(requestType, dataToProcess);
-			dao14.updateClubMember((ClubMember)dataToProcess.get("ClubMember"));
+//			dao14.updateClubMember((ClubMember)dataToProcess.get("ClubMember"));
 			break;
 			
 		default: //do nothing

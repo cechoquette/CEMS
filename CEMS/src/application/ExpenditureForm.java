@@ -1,5 +1,6 @@
 package CEMS.src.application;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ExpenditureForm extends Form{
@@ -16,11 +17,7 @@ public class ExpenditureForm extends Form{
 
 		this.formID = ++super.COUNT_FOR_IDS;
 
-		System.out.println(expenditure);
-		System.out.println("FormID: " + formID);
-		System.out.println("ExpID: " + expenditure.getExpenditureID());
-		System.out.println("Club: " + expenditure.getClub());
-		System.out.println("Event: " + expenditure.getEvent());
+
 	}
 	
 	public Expenditure getExpenditure() {
@@ -63,6 +60,34 @@ public class ExpenditureForm extends Form{
 		
 		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount,
 				total, province, date, vendorName, category, paymentMethod, club, clubEvent);
+
+		//Testing
+
+		System.out.println(expenditure);
+		System.out.println("FormID: " + formID);
+		System.out.println("ExpID: " + expenditure.getExpenditureID());
+		System.out.println("Club: " + expenditure.getClub());
+		System.out.println("Event: " + expenditure.getEvent());
+
+		ArrayList<Expenditure> al = new ArrayList<>();
+		al.add(expenditure);
+
+		HashMap<Object, Object> dataToSubmit = new HashMap<>();
+		dataToSubmit.put("ReportType", ReportType.CLUB_EXPENDITURES);//ReportType
+		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
+		dataToSubmit.put("ReportTimeframe", new Timeframe());
+		dataToSubmit.put("ReportFormat", ReportFormat.EXCEL);
+		dataToSubmit.put("ReportEvent", null);//can be null
+		dataToSubmit.put("Expenditures", al);
+
+		try {
+			ReportHandler.generateReport(dataToSubmit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
+
 
 		return expenditure;
 	}

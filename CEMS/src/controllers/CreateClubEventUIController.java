@@ -1,8 +1,6 @@
 package CEMS.src.controllers;
 
-import CEMS.src.application.Club;
-import CEMS.src.application.MailUtil;
-import CEMS.src.application.OptionLists;
+import CEMS.src.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -85,14 +83,16 @@ public class CreateClubEventUIController {
     @FXML
     void btnCreateEventSubmitClicked(ActionEvent event) {
 
-        /*HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
+        HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
 
-        dataToSubmit.put("EventName", tfCreateEventName.getText());
-        dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
-        dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
-        dataToSubmit.put("EventDateTime", formatDateTime());
-        dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
-        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());*/
+//        dataToSubmit.put("EventName", tfCreateEventName.getText());
+//        dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
+//        dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
+//        dataToSubmit.put("EventDateTime", formatDateTime());
+//        dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
+//        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
+
+//        Controller.processRequest(RequestType.CREATE_EVENT, dataToSubmit);
 
         /* *** Sample Email Utility call code segment start *** */
         String[] mailingList = {

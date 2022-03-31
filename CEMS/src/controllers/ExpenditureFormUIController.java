@@ -76,6 +76,9 @@ public class ExpenditureFormUIController{
 		choiceExpenditureCategory.getItems().addAll(Arrays.asList(ExpenditureCategory.values()));
 		choicePaymentMethod.getItems().addAll(Arrays.asList(PaymentMethod.values()));
 
+		choiceExpenditureProvince.setOnAction(
+				e -> choiceExpenditureProvinceChanged()
+		);
 
 
 
@@ -89,7 +92,14 @@ public class ExpenditureFormUIController{
 
 
 	}
-	
+
+	private void choiceExpenditureProvinceChanged() {
+		if (choiceExpenditureProvince.getValue() != null) {
+			calculateTaxes();
+		}
+
+	}
+
 	public void calculateTaxes() {
 		double subtotal =  Double.parseDouble(tfExpenditureAmount.getText());
 		
@@ -97,8 +107,8 @@ public class ExpenditureFormUIController{
 		
 		double total = subtotal + taxes;
 		
-		tfExpenditureTax.setText("" + taxes);
-		tfExpenditureTotal.setText("" + total);
+		tfExpenditureTax.setText(String.format("%.2f", taxes));
+		tfExpenditureTotal.setText(String.format("%.2f", total));
 		 
 	}
 	

@@ -27,7 +27,47 @@ public class ClubExpendituresReport extends Report{
 
     @Override
     public Object[][] formatReport() {
-        return new Object[0][];
+
+        Object[][] reportArray = new Object[expenditures.size() + 5][14];
+
+        reportArray[0][0] = "Expenditure_ID";
+        reportArray[0][1] = "Club";
+        reportArray[0][2] = "Club_Event";
+        reportArray[0][3] = "Description";
+        reportArray[0][4] = "Vendor_Name";
+        reportArray[0][5] = "Category";
+        reportArray[0][6] = "Account_Holder";
+        reportArray[0][7] = "Payment_Account";
+        reportArray[0][8] = "Payment_Method";
+        reportArray[0][9] = "Province";
+        reportArray[0][10] = "Date";
+        reportArray[0][11] = "Subtotal";
+        reportArray[0][12] = "Taxes";
+        reportArray[0][13] = "Total";
+
+
+        for (int i = 1; i < expenditures.size()+1; i++){
+
+            reportArray[i][0] = (Integer)expenditures.get(i-1).getExpenditureID();
+            reportArray[i][1] = expenditures.get(i-1).getClub().toString();
+            if (expenditures.get(i-1).getEvent() != null)
+            reportArray[i][2] = expenditures.get(i-1).getEvent();
+            else
+                reportArray[i][2] = "N/A";
+            reportArray[i][3] = expenditures.get(i-1).getDescription();
+            reportArray[i][4] = expenditures.get(i-1).getVendorName().toString();
+            reportArray[i][5] = expenditures.get(i-1).getCategory().toString();
+            reportArray[i][6] = expenditures.get(i-1).getAccountHolder();
+            reportArray[i][7] = expenditures.get(i-1).getPaymentAccount();
+            reportArray[i][8] = expenditures.get(i-1).getPaymentMethod().toString();
+            reportArray[i][9] = expenditures.get(i-1).getProvince().toString();
+            reportArray[i][10] = expenditures.get(i-1).getDate().toString();
+            reportArray[i][11] = String.valueOf(expenditures.get(i-1).getAmount());
+            reportArray[i][12] = String.valueOf(expenditures.get(i-1).getTaxAmount());
+            reportArray[i][13] = String.valueOf(expenditures.get(i-1).getTotal());
+        }
+
+        return reportArray;
     }
 
     public static int getCountForIds() {

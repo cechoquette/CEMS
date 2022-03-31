@@ -175,4 +175,188 @@ public class ClubBudget extends Budget{
 	public void setClubBudgetTotal(double clubBudgetTotal) {
 		this.clubBudgetTotal = clubBudgetTotal;
 	}
+
+	public double getEventsVenue() {
+		return eventsVenue;
+	}
+
+	public void setEventsVenue(double eventsVenue) {
+		this.eventsVenue = eventsVenue;
+	}
+
+	public double getEventsServices() {
+		return eventsServices;
+	}
+
+	public void setEventsServices(double eventsServices) {
+		this.eventsServices = eventsServices;
+	}
+
+	public double getEventsRefreshments() {
+		return eventsRefreshments;
+	}
+
+	public void setEventsRefreshments(double eventsRefreshments) {
+		this.eventsRefreshments = eventsRefreshments;
+	}
+
+	public double getEventsMiscellaneous() {
+		return eventsMiscellaneous;
+	}
+
+	public void setEventsMiscellaneous(double eventsMiscellaneous) {
+		this.eventsMiscellaneous = eventsMiscellaneous;
+	}
+
+	public double getEventsSubtotal() {
+		return eventsSubtotal;
+	}
+
+	public void setEventsSubtotal(double eventsSubtotal) {
+		this.eventsSubtotal = eventsSubtotal;
+	}
+
+	public double getClubMeetings() {
+		return clubMeetings;
+	}
+
+	public void setClubMeetings(double clubMeetings) {
+		this.clubMeetings = clubMeetings;
+	}
+
+	public double getClubSpaceRentalOrFees() {
+		return clubSpaceRentalOrFees;
+	}
+
+	public void setClubSpaceRentalOrFees(double clubSpaceRentalOrFees) {
+		this.clubSpaceRentalOrFees = clubSpaceRentalOrFees;
+	}
+
+	public double getClubEquipment() {
+		return clubEquipment;
+	}
+
+	public void setClubEquipment(double clubEquipment) {
+		this.clubEquipment = clubEquipment;
+	}
+
+	public double getClubActivitiesOther() {
+		return clubActivitiesOther;
+	}
+
+	public void setClubActivitiesOther(double clubActivitiesOther) {
+		this.clubActivitiesOther = clubActivitiesOther;
+	}
+
+	public double getClubActivitiesSubtotal() {
+		return clubActivitiesSubtotal;
+	}
+
+	public void setClubActivitiesSubtotal(double clubActivitiesSubtotal) {
+		this.clubActivitiesSubtotal = clubActivitiesSubtotal;
+	}
+
+	public double getFundraisingCosts() {
+		return fundraisingCosts;
+	}
+
+	public void setFundraisingCosts(double fundraisingCosts) {
+		this.fundraisingCosts = fundraisingCosts;
+	}
+
+	public double getFundraisingIncome() {
+		return fundraisingIncome;
+	}
+
+	public void setFundraisingIncome(double fundraisingIncome) {
+		this.fundraisingIncome = fundraisingIncome;
+	}
+
+	public double getFundraisingParticipantFees() {
+		return fundraisingParticipantFees;
+	}
+
+	public void setFundraisingParticipantFees(double fundraisingParticipantFees) {
+		this.fundraisingParticipantFees = fundraisingParticipantFees;
+	}
+
+	public double getFundraisingDonations() {
+		return fundraisingDonations;
+	}
+
+	public void setFundraisingDonations(double fundraisingDonations) {
+		this.fundraisingDonations = fundraisingDonations;
+	}
+
+	public double getFundraisingSubtotal() {
+		return fundraisingSubtotal;
+	}
+
+	public void setFundraisingSubtotal(double fundraisingSubtotal) {
+		this.fundraisingSubtotal = fundraisingSubtotal;
+	}
+
+	public double getMiscAdminFees() {
+		return miscAdminFees;
+	}
+
+	public void setMiscAdminFees(double miscAdminFees) {
+		this.miscAdminFees = miscAdminFees;
+	}
+
+	public double getMiscBankingFees() {
+		return miscBankingFees;
+	}
+
+	public void setMiscBankingFees(double miscBankingFees) {
+		this.miscBankingFees = miscBankingFees;
+	}
+
+	public double getMiscBankingInterestIncome() {
+		return miscBankingInterestIncome;
+	}
+
+	public void setMiscBankingInterestIncome(double miscBankingInterestIncome) {
+		this.miscBankingInterestIncome = miscBankingInterestIncome;
+	}
+
+	public double getMiscUtilities() {
+		return miscUtilities;
+	}
+
+	public void setMiscUtilities(double miscUtilities) {
+		this.miscUtilities = miscUtilities;
+	}
+
+	public double getMiscOther() {
+		return miscOther;
+	}
+
+	public void setMiscOther(double miscOther) {
+		this.miscOther = miscOther;
+	}
+
+	public double getMiscSubtotal() {
+		return miscSubtotal;
+	}
+
+	public void setMiscSubtotal(double miscSubtotal) {
+		this.miscSubtotal = miscSubtotal;
+	}
+
+	public double getClubBudgetSubtotal() {
+		return clubBudgetSubtotal;
+	}
+
+	public void setClubBudgetSubtotal(double clubBudgetSubtotal) {
+		this.clubBudgetSubtotal = clubBudgetSubtotal;
+	}
+
+	public double getClubBudgetTaxes() {
+		return clubBudgetTaxes;
+	}
+
+	public void setClubBudgetTaxes(double clubBudgetTaxes) {
+		this.clubBudgetTaxes = clubBudgetTaxes;
+	}
 }
