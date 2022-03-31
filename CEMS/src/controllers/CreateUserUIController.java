@@ -176,13 +176,15 @@ public class CreateUserUIController {
 
         // TODO: Add all data to the hashmap
         dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("", tfCreateUserFirst.getText());
-        dataToSubmit.put("", tfCreateUserLast.getText());
-        dataToSubmit.put("", tfCreateUserPhone.getText());
-        dataToSubmit.put("", tfCreateUserEmail.getText());
-        dataToSubmit.put("", tfCreateUserID.getText());
-        dataToSubmit.put("", comboCreateUserClub.getValue());
-        dataToSubmit.put("", comboCreateUserPermissions.getValue());
+        dataToSubmit.put("CreateUserFirstName", tfCreateUserFirst.getText());
+        dataToSubmit.put("CreateUserLastName", tfCreateUserLast.getText());
+        dataToSubmit.put("CreateUserPhone", tfCreateUserPhone.getText());
+        dataToSubmit.put("CreateUserEmail", tfCreateUserEmail.getText());
+        dataToSubmit.put("CreateUserStudentID", tfCreateUserID.getText());
+        dataToSubmit.put("CreateUserClub", comboCreateUserClub.getValue());
+        dataToSubmit.put("CreateUserPermission", comboCreateUserPermissions.getValue());
+        dataToSubmit.put("CreateUserSecurityQ", tfCreateUserSecQ.getText());
+        dataToSubmit.put("CreateUserSecurityA", tfCreateUserSecA.getText());
 
         // Send data to the controller
         Controller.processRequest(RequestType.CREATE_USER, dataToSubmit);

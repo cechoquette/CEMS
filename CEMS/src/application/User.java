@@ -57,6 +57,11 @@ public class User {
 		return email;
 	}
 
+	// Set email
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	// Get the permission
 	public String getPermission() {
 		return permission;
@@ -72,9 +77,19 @@ public class User {
 		return firstName;
 	}
 
+	// Set first name
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	// Get last name
 	public String getLastName() {
 		return lastName;
+	}
+
+	// Set last name
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	// Get phone number
@@ -85,6 +100,11 @@ public class User {
 	// Get student ID number
 	public int getStudentID() {
 		return studentID;
+	}
+
+	// Set student ID number
+	public void setStudentID(int studentID) {
+		this.studentID = studentID;
 	}
 
 	// Get salt
