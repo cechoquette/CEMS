@@ -1,8 +1,6 @@
 package CEMS.src.controllers;
 
-import CEMS.src.application.InputValidation;
-import CEMS.src.application.PasswordUtil;
-import CEMS.src.application.ViewBuilder;
+import CEMS.src.application.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,10 +10,12 @@ import javafx.scene.layout.Pane;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.util.HashMap;
 
 import static CEMS.src.application.Main.defaultPane;
 
 public class ResetPasswordUIController {
+    HashMap<Object, Object> dataToSubmit;
 
     @FXML
     private Button btnResetPass;
@@ -80,8 +80,13 @@ public class ResetPasswordUIController {
         // Check that all mandatory fields are filled
         checkMandatoryFields();
 
-        // Hash password (and store in DB with salt)
-//        PasswordUtil.hashPassword(user, tfResetPass.getText(), PasswordUtil.generateSalt());
+        // Add data to the hashmap
+        dataToSubmit = new HashMap<Object, Object>();
+        dataToSubmit.put("ResetUserPassword", tfResetPass);
+        dataToSubmit.put("ResetUserPasswordConfirm", tfResetPassConfirm);
+
+        // Send data to the controller
+        Controller.processRequest(RequestType.PASSWORD_RESET, dataToSubmit);
     }
 
 
