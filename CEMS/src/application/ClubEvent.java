@@ -103,12 +103,12 @@ public class ClubEvent {
 
     //method takes a String, either "none" or "all members..." and populates emailGroup accordingly
     public String[] setEmails(String emailType) {
-        List<ClubMember> clubMembers = getClub().getClubMembers();
+        List<User> clubUsers = getClub().getClubUsers();
 
-        String[] emails = new String[clubMembers.size()];
+        String[] emails = new String[clubUsers.size()];
 
-        for (int i=0; i<clubMembers.size(); i++){
-            emails[i] = clubMembers.get(i).getClubMemberEmail();
+        for (int i=0; i<clubUsers.size(); i++){
+            emails[i] = clubUsers.get(i).getEmail();
         }
         if(emails == null) emails[0] = emailType;
 

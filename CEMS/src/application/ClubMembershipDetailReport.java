@@ -25,37 +25,32 @@ public class ClubMembershipDetailReport extends Report{
 
     @Override
     public Object[][] formatReport() {
-        ArrayList<ClubMember> clubMembers = (ArrayList<ClubMember>) club.getClubMembers();
+        ArrayList<User> clubUsers = (ArrayList<User>) club.getClubUsers();
 
 
 
 
-        Object[][] reportArray = new Object[clubMembers.size()+1][6];
+        Object[][] reportArray = new Object[clubUsers.size()+1][5];
 
         reportArray[0][0] = "Club: ";
         reportArray[0][1] = "First Name";
         reportArray[0][2] = "Last Name";
         reportArray[0][3] = "Email";
         reportArray[0][4] = "Student ID";
-        reportArray[0][5] = "Is a CEMS User";
 
 
 
-        for (int i = 0; i<clubMembers.size(); i++){
-            ClubMember tempMember = clubMembers.get(i);
 
-            reportArray[i+1][0] = tempMember.getClub().toString();
-            reportArray[i+1][1] = tempMember.getClubMemberFirstName();
-            reportArray[i+1][2] = tempMember.getClubMemberLastName();
-            reportArray[i+1][3] = tempMember.getClubMemberEmail();
-            reportArray[i+1][4] = tempMember.getStudentID();
+        for (int i = 0; i<clubUsers.size(); i++){
+            User tempUser = clubUsers.get(i);
 
-            if(tempMember.getUser() != null){
-                reportArray[i][5] = "Yes";
-            }
-            else{
-                reportArray[i][5] = "No";
-            }
+            reportArray[i+1][0] = tempUser.getUserClub().toString();
+            reportArray[i+1][1] = tempUser.getFirstName();
+            reportArray[i+1][2] = tempUser.getLastName();
+            reportArray[i+1][3] = tempUser.getEmail();
+            reportArray[i+1][4] = tempUser.getStudentID();
+
+
         }
 
 

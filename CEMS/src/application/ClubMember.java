@@ -1,25 +1,25 @@
 package CEMS.src.application;
 
 import java.util.ArrayList;
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name="User")
+//@Entity
+//@Table(name="User")
 public class ClubMember {
 	//No need for ID count. Primary key is based on student IDs as in User class.
-	@Id
-	@Column(name="student_id")
+//	@Id
+//	@Column(name="student_id")
 	private int studentID;
-	@Column(name="club_member_first_name")
+//	@Column(name="club_member_first_name")
 	private String clubMemberFirstName;
-	@Column(name="club_member_last_name")
+//	@Column(name="club_member_last_name")
 	private String clubMemberLastName;
-	@Column(name="club_member_email")
+//	@Column(name="club_member_email")
 	private String clubMemberEmail;
-	@ManyToOne
+//	@ManyToOne
 	private User user;
-	@ManyToOne
+//	@ManyToOne
 	private Club club;
 
 	public ClubMember(){}
@@ -30,7 +30,7 @@ public class ClubMember {
 		this.clubMemberLastName = lastName;
 		this.clubMemberEmail = email;
 
-		club.addClubMember(this);
+//		club.addClubMember(this);
 	}
 	//Constructor for creating a ClubMember from a User.
 	public ClubMember(User user){
@@ -41,7 +41,7 @@ public class ClubMember {
 //		this.club = user.getClub...
 		this.user = user;
 
-		club.addClubMember(this);
+//		club.addClubMember(this);
 	}
 	//user this if ClubMember already exists for that User. i.e. They are already in Club List as a Member, not yet as User.
 	public void addUserToClubMember(User user){
@@ -58,14 +58,14 @@ public class ClubMember {
 	//need a method to get a specific ClubMember. Probably from Database, or from Club memberList.
 
 	public ClubMember getClubMember(Club club, int studentID){//method may return null if ClubMember not found.
-		if(club.getClubMembers() != null){
-			List<ClubMember> clubMemberList = club.getClubMembers();
-			for(int i = 0; i<clubMemberList.size(); i++){
-				if (clubMemberList.get(i).getStudentID() == studentID){
-					return clubMemberList.get(i);
-				}
-			}
-		}
+//		if(club.getClubMembers() != null){
+//			List<ClubMember> clubMemberList = club.getClubMembers();
+//			for(int i = 0; i<clubMemberList.size(); i++){
+//				if (clubMemberList.get(i).getStudentID() == studentID){
+//					return clubMemberList.get(i);
+//				}
+//			}
+//		}
 		return null;
 	}
 

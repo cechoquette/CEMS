@@ -33,7 +33,7 @@ public class User {
 	@Column(name="security_answer")
 	private String securityAnswer;
 	//@Column(name="club")
-	private static Club club;
+	private Club club;
 
 	public User() {
 	}
@@ -50,6 +50,8 @@ public class User {
 		this.permission = permission;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
+
+		club.addUser(this);
 	}
 
 	// Get the email
