@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ClubForm extends Form{
     public static int COUNT_FOR_IDS;
-    private static int formID; //needs to be called from Database, or saved and retrieved at startup
+    static int formID; //needs to be called from Database, or saved and retrieved at startup
     private boolean isFilled;
 
     private Club club;
@@ -13,16 +13,16 @@ public class ClubForm extends Form{
 
     public ClubForm(RequestType requestType, HashMap<Object, Object> hmData){
 
-        this.formID = ++COUNT_FOR_IDS;
+        formID = ++COUNT_FOR_IDS;
         this.hmData = hmData;
     }
 
     public Club createClub(){
         String clubName = (String)hmData.get("ClubName");
         String clubDescription = (String)hmData.get("ClubDescription");
-        if(hmData.get("ClubMembers") != null){
-            ArrayList<ClubMember> clubMembers = (ArrayList<ClubMember>)hmData.get("ClubMembers");
-            this.club = new Club(clubName, clubDescription, clubMembers);
+        if(hmData.get("ClubUsers") != null){
+            ArrayList<User> clubUsers = (ArrayList<User>)hmData.get("ClubUsers");
+            this.club = new Club(clubName, clubDescription, clubUsers);
         }
         else {
             this.club = new Club(clubName, clubDescription);
@@ -39,7 +39,7 @@ public class ClubForm extends Form{
             club.setClubName((String)hmData.get("ClubName"));
         if(hmData.get("ClubDescription") != null)
             club.setClubDescription((String)hmData.get("ClubDescription"));
-        if (hmData.get("ClubMembers") != null)
-            club.setClubMembers((ArrayList<ClubMember>)hmData.get("ClubMembers"));
+        if (hmData.get("ClubUsers") != null)
+            club.setClubUsers((ArrayList<User>)hmData.get("ClubUsers"));
     }
 }

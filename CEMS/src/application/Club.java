@@ -26,7 +26,7 @@ public class Club {
     @OneToMany(mappedBy = "club")
     private List<ClubEventBudget> clubEventBudget = new ArrayList<ClubEventBudget>();
     @OneToMany(mappedBy = "club")
-    private List<ClubMember> clubMembers = new ArrayList<>();
+    private List<User> clubUsers = new ArrayList<>();
 
     public Club () {
 
@@ -37,15 +37,15 @@ public class Club {
         this.clubID = ++COUNT_FOR_IDS;
         this.clubName = clubName;
         this.clubDescription = clubDescription;
-        this.clubMembers = new ArrayList<>();
+        this.clubUsers = new ArrayList<>();
     }
-    //option to create Club with an existing list of ClubMembers
-    public Club(String clubName, String clubDescription, ArrayList<ClubMember> clubMembers) {
+    //option to create Club with an existing list of Users
+    public Club(String clubName, String clubDescription, ArrayList<User> clubUsers) {
         super();
         this.clubID = ++COUNT_FOR_IDS;
         this.clubName = clubName;
         this.clubDescription = clubDescription;
-        this.clubMembers = clubMembers;
+        this.clubUsers = clubUsers;
     }
 
     public int getClubID() {
@@ -88,17 +88,43 @@ public class Club {
         this.expenditure = expenditure;
     }
 
-    public List<ClubMember> getClubMembers() {
-        return clubMembers;
+    public static int getCountForIds() {
+        return COUNT_FOR_IDS;
     }
 
-    public void setClubMembers(ArrayList<ClubMember> clubMembers) {
-        this.clubMembers = clubMembers;
+    public static void setCountForIds(int countForIds) {
+        COUNT_FOR_IDS = countForIds;
     }
 
-    public void addClubMember(ClubMember clubMember){
-        clubMembers.add(clubMember);
+    public List<ClubBudget> getClubBudget() {
+        return clubBudget;
     }
+
+    public void setClubBudget(List<ClubBudget> clubBudget) {
+        this.clubBudget = clubBudget;
+    }
+
+    public List<ClubEventBudget> getClubEventBudget() {
+        return clubEventBudget;
+    }
+
+    public void setClubEventBudget(List<ClubEventBudget> clubEventBudget) {
+        this.clubEventBudget = clubEventBudget;
+    }
+
+    public List<User> getClubUsers() {
+        return clubUsers;
+    }
+
+    public void setClubUsers(List<User> clubUsers) {
+        this.clubUsers = clubUsers;
+    }
+
+    public void addUser(User user){
+        clubUsers.add(user);
+    }
+
+
 
     @Override
     public String toString(){

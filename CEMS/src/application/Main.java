@@ -19,7 +19,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try { DatabaseRunner.setUPDB();
-			//ClubMember fakeClubMember = new ClubMember(232545245, "Bob", "Joe", "bobjoe@algomau.ca", ALLCLUBS);
+
 //			ReportHandler.createSamplePDF("TestPDF");
 //			ReportHandler.exportToExcel("TestExcel");
 

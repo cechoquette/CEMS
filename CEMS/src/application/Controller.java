@@ -81,10 +81,7 @@ public class Controller {
 			DAO dao1 = new DAO();
 			dao1.addClub(FormHandler.createClubForm(requestType, dataToProcess));
 			break;
-		case CREATE_CLUB_MEMBER:
-			DAO dao2 = new DAO();
-			dao2.addClubMember(FormHandler.createClubMemberForm(requestType, dataToProcess));
-			break;
+
 		case CREATE_EMAIL:
 			//Not a DAO task
 
@@ -107,10 +104,7 @@ public class Controller {
 			DAO dao5 = new DAO();
 //			dao5.deleteClub(((Club)dataToProcess.get("Club")).getClubID());
 			break;
-		case DELETE_CLUB_MEMBER:
-			DAO dao15 = new DAO();
-			dao15.deleteClubMember(((ClubMember)dataToProcess.get("ClubMember")).getStudentID());
-			break;
+
 		case DELETE_EVENT:
 			//needs to call the database
 			DAO dao6 = new DAO();
@@ -144,14 +138,7 @@ public class Controller {
 //			break;
 //		case GENERATE_EXPENDITURE_REPORT:
 //			break;
-		case GET_CLUB_MEMBER:
-			DAO dao16 = new DAO();
-			ClubMember clubMember = dao16.getClubMember((Integer)dataToProcess.get("MemberID"));//Takes an int StudentID
-			if(clubMember != null) {
-				dataToProcess.put("ClubMember", clubMember);
-			}
-			//null check
-			break;
+
 		case LOGIN_USER:
 			FormHandler.createLoginForm(requestType, dataToProcess);
 			break;
@@ -190,9 +177,9 @@ public class Controller {
 //			dao19.updateUser(dataToProcess.get("SearchUserEmail")); // modify the user searched for's permission
 			break;
 		case PASSWORD_RESET:
-			DAO dao21 = new DAO();
+			DAO dao25 = new DAO();
 			FormHandler.updatePasswordResetForm(requestType, dataToProcess);
-			dao21.updateUser(Main.CURRENTUSER);
+			dao25.updateUser(Main.CURRENTUSER);
 			break;
 		case PASSWORD_RETRIEVE: // consider using GET_USER to set CURRENTUSER, then removing this
 //			DAO dao22 = new DAO();
@@ -216,16 +203,8 @@ public class Controller {
 			DAO dao13 = new DAO();
 			dao13.addExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
-//		case SEARCH_FOR_USER: //call database, return if found
-//			DAO dao20 = new DAO();
-////			dao20.getUser((String)dataToProcess.get("SearchEmail"));
-//			break;
-		case UPDATE_CLUB_MEMBER:
-			DAO dao14 = new DAO();
-			FormHandler.updateClubMemberForm(requestType, dataToProcess);
-			dao14.updateClubMember((ClubMember)dataToProcess.get("ClubMember"));
-			break;
 			
+
 		default: //do nothing
 			break;
 		

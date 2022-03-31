@@ -23,7 +23,7 @@
         <mapping class="CEMS.src.application.ClubEvent"/>
         <mapping class="CEMS.src.application.ClubEventBudget"/>
         <mapping class="CEMS.src.application.ClubBudget"/>
-        <mapping class="CEMS.src.application.ClubMember"/>
+<!--        <mapping class="CEMS.src.application.ClubMember"/>-->
 
 
 
