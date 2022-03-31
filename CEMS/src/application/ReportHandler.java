@@ -7,11 +7,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+//import static org.apache.pdfbox.pdmodel.common.PDRectangle.POINTS_PER_MM;
 
 
 public class ReportHandler {
@@ -38,6 +45,7 @@ public class ReportHandler {
 
 		Object[][] reportFormatted = new Object[0][];
 		String reportFileName = "Report";
+		int reportSize = 1;
 
 //		formatClubEventBudgetReport((ClubEventBudget) object);
 
@@ -47,10 +55,10 @@ public class ReportHandler {
 
 				DAO dao1 = new DAO();
 //				dataReturnedSingle = dao1.getClubBudget();//need a ClubBudgetID
-				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)dataReturnedSingle);
+				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)hmData.get("ClubBudget"));
 				reportFormatted = cbReport.formatReport();
 				reportFileName = cbReport.getFilename();
-
+				reportSize = 3;
 				break;
 
 			case CLUBEVENT_BUDGET:
@@ -60,6 +68,7 @@ public class ReportHandler {
 				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)hmData.get("Budget"));
 				reportFormatted = cebReport.formatReport();
 				reportFileName = cebReport.getFilename();
+				reportSize = 3;
 				break;
 
 			case CLUB_EXPENDITURES:
@@ -68,6 +77,7 @@ public class ReportHandler {
 				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)hmData.get("Expenditures"));
 				reportFormatted = clubExpReport.formatReport();
 				reportFileName = clubExpReport.getFilename();
+				reportSize = 1;
 				break;
 
 			case CLUBEVENT_EXPENDITURES:
@@ -76,6 +86,7 @@ public class ReportHandler {
 //				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, (ArrayList<Expenditure>)dataExpList5);
 //				reportFormatted = clubEvtExpReport.formatReport();
 //				reportFileName = clubEvtExpReport.getFilename();
+				reportSize = 1;
 				break;
 
 
@@ -86,6 +97,7 @@ public class ReportHandler {
 //				ClubFinancialReport clubFinReport = new ClubFinancialReport(timeframe, reportFormat, (ClubBudget)dataReturnedSingle, (ArrayList<Expenditure>)dataExpList2);
 //				reportFormatted = clubFinReport.formatReport();
 //				reportFileName = clubFinReport.getFilename();
+				reportSize = 2;
 				break;
 
 			case CLUBEVENT_FINANCIAL_SITUATION:
@@ -95,6 +107,7 @@ public class ReportHandler {
 //				ClubEventFinancialReport clubEvtFinReport = new ClubEventFinancialReport(reportFormat, (ClubEventBudget)dataReturnedSingle, (ArrayList<Expenditure>)dataExpList3);
 //				reportFormatted = clubEvtFinReport.formatReport();
 //				reportFileName = clubEvtFinReport.getFilename();
+				reportSize = 2;
 				break;
 
 			case CLUB_MEMBERSHIP_SUMMARY:
@@ -103,12 +116,14 @@ public class ReportHandler {
 				ClubMembershipSummaryReport clubMembershipSummaryReport = new ClubMembershipSummaryReport(reportFormat, reportClub);
 				reportFormatted = clubMembershipSummaryReport.formatReport();
 				reportFileName = clubMembershipSummaryReport.getFilename();
+				reportSize = 3;
 				break;
 
 			case CLUB_MEMBERSHIP_DETAIL:
 //				ClubMembershipDetailReport clubMembershipDetailReport = new ClubMembershipDetailReport(reportFormat, reportClub);
 //				reportFormatted = clubMembershipSummaryReport.formatReport();
 //				reportFileName = clubMembershipSummaryReport.getFilename();
+				reportSize = 2;
 				break;
 
 			case CLUBEVENT_ATTENDANCE: break;
@@ -123,7 +138,7 @@ public class ReportHandler {
 				exportToExcel(reportFileName, reportFormatted);
 			}
 			else if (reportFormat == ReportFormat.PDF){
-				exportToPDF(reportFileName, reportFormatted);
+				exportToPDF(reportFileName, reportFormatted, reportSize);
 			}
 		}
 
@@ -181,54 +196,90 @@ public class ReportHandler {
 
 
 	}
+////PDF METHOD for exporting reports
+	public static void exportToPDF(String fileName, Object[][] strings, int size) throws Exception{
+		try  {
 
-	public static void exportToPDF(String fileName, Object[][] strings) throws Exception{
-//		 try (PDDocument doc = new PDDocument()) {
-//
-////			 = new ArrayList<>();
-////			valuesToExport.add(new String[]{"Title1", "Title2", "Title3"});
-////			valuesToExport.add(new String[]{"123", "456", "789"});
-////			valuesToExport.add(new String[]{"abc", "def", "ghi"});
-//			String home = System.getProperty("user.home");
-//
-//			FileOutputStream outputStream = new FileOutputStream(home+"/Downloads/" + fileName + ".pdf");
-//
-//
-//			PDFont font = PDType1Font.HELVETICA;
-//			PDPage page = new PDPage();
-//			doc.addPage(page);
-//
-//			PDPageContentStream content = new PDPageContentStream(doc, page);
-//			content.setFont(font, 12);
-//
-//			int lines = 1;
-//			float pageHeight = page.getMediaBox().getHeight();
-//			for (String[] row : valuesToExport) {
-//
-//				int startX = 100;
-//				for (String column : row) {
-//					content.beginText();
-////					content.moveTo(100, 100);
-//					content.newLineAtOffset(startX, pageHeight - 300 * lines);
-//					startX += startX + 350;
-//					content.showText(column);
-//					content.endText();
-//				}
-//				++lines;
-//				if (lines > 10) {
-//					lines = 1;
-//					page = new PDPage();
-//					doc.addPage(page);
-//					content.close();
-//					content = new PDPageContentStream(doc, page);
-//					content.setFont(font, 12);
-//				}
-//			}
-//			content.close();
-//			doc.save(outputStream);
-//		} catch (IOException ex) {
-//			//either log exception or rethrow it
-//		}
+			PDDocument doc = new PDDocument();
+		//			 = new ArrayList<>();
+		//			valuesToExport.add(new String[]{"Title1", "Title2", "Title3"});
+		//			valuesToExport.add(new String[]{"123", "456", "789"});
+		//			valuesToExport.add(new String[]{"abc", "def", "ghi"});
+			String home = System.getProperty("user.home");
+
+			FileOutputStream outputStream = new FileOutputStream(home+"/Downloads/" + fileName + ".pdf");
+
+			float POINTS_PER_INCH = 72;
+			float POINTS_PER_MM = 1 / (10 * 2.54f) * POINTS_PER_INCH;
+			PDFont font = PDType1Font.HELVETICA;
+			int newWidth;
+			int newHeight;
+			switch (size){
+				case 2:
+					newWidth = 841;
+					newHeight = 594;
+					break;
+				case 3:
+					newWidth = 400;
+					newHeight = 210;
+					break;
+				case 1:
+				default:
+					newWidth = 1189;
+					newHeight = 841;
+					break;
+			}
+
+			PDPage page = new PDPage(new PDRectangle(newWidth * POINTS_PER_MM, newHeight * POINTS_PER_MM));
+			doc.addPage(page);
+
+			PDPageContentStream content = new PDPageContentStream(doc, page);
+			content.setFont(font, 12);
+			content.setLeading(14.5f);
+
+
+			int lines = 1;
+			float pageHeight = page.getMediaBox().getHeight();
+			for (Object[] row : strings) {
+				content.setFont(PDType1Font.HELVETICA, 12);
+				int startX = 25;
+				for (Object column : row) {
+					content.beginText();
+//					content.moveTo(100, 100);
+					content.newLineAtOffset(startX, pageHeight - (20 * lines));
+					startX += 250;
+					if (column instanceof String) {
+						if(((String) column).contains("total")
+								||((String) column).contains("Total")
+								||((String) column).contains(":")
+								||((String) column).contains("axes")){
+							content.setFont(PDType1Font.HELVETICA_BOLD, 12);
+						}
+						content.showText((String) column);
+
+
+					} else if (column instanceof Double) {
+						content.showText(String.valueOf(column));
+					}
+//					content.showText((String) column);
+					content.endText();
+				}
+				++lines;
+				if (lines > 50) {
+					lines = 1;
+					page = new PDPage(new PDRectangle(1189 * POINTS_PER_MM, 841 * POINTS_PER_MM));
+					doc.addPage(page);
+					content.close();
+					content = new PDPageContentStream(doc, page);
+					content.setFont(font, 12);
+				}
+			}
+			content.close();
+			doc.save(outputStream);
+			doc.close();
+		} catch (IOException ex) {
+			//either log exception or rethrow it
+		}
 	}
 
 	public static Object[][] formatClubEventBudgetReport(ClubEventBudget clubEventBudget){

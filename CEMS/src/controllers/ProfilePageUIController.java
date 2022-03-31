@@ -1,4 +1,4 @@
-package controllers;
+package CEMS.src.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

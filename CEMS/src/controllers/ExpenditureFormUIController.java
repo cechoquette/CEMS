@@ -87,8 +87,6 @@ public class ExpenditureFormUIController{
 		choiceExpenditureEvent.getItems().addAll(new ClubEvent("Meeting 123", "Description", null, null, "Here", null));
 		tfExpenditureTax.setStyle("-fx-control-inner-background: #cce0ff");
 		tfExpenditureTotal.setStyle("-fx-control-inner-background: #cce0ff");
-		
-		expenditureBorderPane.setTop(new MainMenu().createMenu());
 
 
 	}

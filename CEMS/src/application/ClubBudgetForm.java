@@ -49,6 +49,45 @@ public class ClubBudgetForm extends Form{
 //		}
 		
 		this.clubBudget = new ClubBudget(dataForBudget, clubBudgetClub);
+
+		//Testing
+
+
+
+
+//		ClubBudgetReport testing:
+		HashMap<Object, Object> dataToSubmit = new HashMap<>();
+		dataToSubmit.put("ReportType", ReportType.CLUB_BUDGET);//ReportType
+		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
+		dataToSubmit.put("ReportTimeframe", new Timeframe());
+		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
+		dataToSubmit.put("ReportEvent", null);//can be null
+		dataToSubmit.put("ClubBudget", clubBudget);
+
+		try {
+			ReportHandler.generateReport(dataToSubmit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		//ClubMembershipSummaryReport testing:
+//		HashMap<Object, Object> dataToSubmit = new HashMap<>();
+//		dataToSubmit.put("ReportType", ReportType.CLUB_MEMBERSHIP_SUMMARY);//ReportType
+//		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
+//		dataToSubmit.put("ReportTimeframe", new Timeframe());
+//		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
+//		dataToSubmit.put("ReportEvent", null);//can be null
+//		dataToSubmit.put("Club", Main.ALLCLUBS);
+//
+//		try {
+//			ReportHandler.generateReport(dataToSubmit);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+
+
+
+
 		return clubBudget;
 	}
 	

@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="575.0" maxWidth="900.0" minHeight="575.0" minWidth="900.0"
             prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfilePageUIController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.src.controllers.ProfilePageUIController">
    <children>
       <BorderPane layoutX="266.0" layoutY="94.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>

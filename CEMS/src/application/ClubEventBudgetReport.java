@@ -18,7 +18,7 @@ public class ClubEventBudgetReport extends Report{
         this.clubEventBudget = clubEventBudget;
         this.today = LocalDate.now();
         this.reportID = ++COUNT_FOR_IDS;
-        this.filename = "EventBudgetReport_" + reportID + "_" + today;
+        this.filename = "Event_Budget_Report_" + reportID + "_" + today;
     }
 
     @Override

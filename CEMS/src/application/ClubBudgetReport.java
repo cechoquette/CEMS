@@ -22,7 +22,7 @@ public class ClubBudgetReport extends Report{
         this.clubBudget = clubBudget;
         this.today = LocalDate.now();
         this.reportID = ++COUNT_FOR_IDS;
-        this.filename = "Club Budget Report_" + reportID + "_" + today;
+        this.filename = "Club_Budget_Report_" + reportID + "_" + today;
     }
 
     @Override

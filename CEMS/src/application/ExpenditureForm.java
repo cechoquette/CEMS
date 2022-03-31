@@ -76,7 +76,7 @@ public class ExpenditureForm extends Form{
 		dataToSubmit.put("ReportType", ReportType.CLUB_EXPENDITURES);//ReportType
 		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
 		dataToSubmit.put("ReportTimeframe", new Timeframe());
-		dataToSubmit.put("ReportFormat", ReportFormat.EXCEL);
+		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
 		dataToSubmit.put("ReportEvent", null);//can be null
 		dataToSubmit.put("Expenditures", al);
 
