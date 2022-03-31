@@ -10,6 +10,7 @@ module CEMS {
 	requires java.sql;
 	requires org.mybatis;
 	requires mysql.connector.java;
+    requires java.mail;
 
     opens CEMS.src.application to javafx.graphics, javafx.fxml,org.hibernate.orm.core;
     opens CEMS.src.controllers to javafx.fxml, javafx.graphics;
