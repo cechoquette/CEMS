@@ -1,4 +1,6 @@
 package CEMS.src.application;
+import CEMS.src.controllers.LoginPageUIController;
+
 import java.security.NoSuchProviderException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -145,12 +147,18 @@ public class Controller {
 			FormHandler.createLoginForm(requestType, dataToProcess);
 			break;
 		case GET_USER: // get user based on email address for logins
+
+			DAO dao18 = new DAO();
+			dao18.getUser((String)dataToProcess.get("LoginUserEmail"));
+			dao18.updateUser(Main.CURRENTUSER);
+
 			case SEARCH_FOR_USER: //call database, return if found
-				DAO dao18 = new DAO();
-			User user = dao18.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
+				DAO dao24 = new DAO();
+			User user = dao24.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
 			if(user != null){
 				dataToProcess.put("User", user);
 			}//this could end up being null, do a null check on the receiving end
+
 			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
@@ -170,12 +178,16 @@ public class Controller {
 		case MODIFY_USER_PERMISSION: // Updating a users permissions (SuperAdmin only)
 			DAO dao19 = new DAO();
 			FormHandler.updateUserPermissionForm(requestType, dataToProcess);
-			dao19.updateUser(Main.CURRENTUSER);
+//			dao19.updateUser(dataToProcess.get("SearchUserEmail")); // modify the user searched for's permission
 			break;
 		case PASSWORD_RESET:
+			DAO dao25 = new DAO();
+			FormHandler.updatePasswordResetForm(requestType, dataToProcess);
+			dao25.updateUser(Main.CURRENTUSER);
 			break;
-		case PASSWORD_RETRIEVE:
-
+		case PASSWORD_RETRIEVE: // consider using GET_USER to set CURRENTUSER, then removing this
+//			DAO dao22 = new DAO();
+//			dao22.getUser();
 			break;
 		case QUERY_DATABASE:
 			break;
@@ -195,7 +207,7 @@ public class Controller {
 			DAO dao13 = new DAO();
 			dao13.addExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
 			break;
-
+			
 
 		default: //do nothing
 			break;

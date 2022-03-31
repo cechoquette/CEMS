@@ -45,8 +45,8 @@ public class Main extends Application {
 
 			//for Paths: use absolute paths (leading / ) and do note use .. , the resulting .jar executable will not function.
 			/* Keeping this code segnment in case anyone needs to test individual fxml pages*/
-			Parent root;
-			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
+//			Parent root;
+//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
 
 //			Scene scene = new Scene(root, 900, 575);
 
@@ -56,8 +56,8 @@ public class Main extends Application {
 			defaultPane.setTop(defaultMenu);
 			defaultPane.setCenter(defaultMain);
 
-//			Scene scene = new Scene(defaultPane, 900, 625);
-						Scene scene = new Scene(root, 900, 625);
+			Scene scene = new Scene(defaultPane, 900, 625);
+//						Scene scene = new Scene(root, 900, 625);
 
 
 			primaryStage.setTitle("CEMS");
