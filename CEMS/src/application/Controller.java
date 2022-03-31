@@ -1,4 +1,6 @@
 package CEMS.src.application;
+import CEMS.src.controllers.LoginPageUIController;
+
 import java.security.NoSuchProviderException;
 import java.util.HashMap;
 
@@ -106,7 +108,8 @@ public class Controller {
 			break;
 		case GET_USER: // get user based on email address for logins
 			DAO dao18 = new DAO();
-			dao18.getUser(((User)dataToProcess.get("User")).getEmail());
+			dao18.getUser((String)dataToProcess.get("LoginUserEmail"));
+			dao18.updateUser(Main.CURRENTUSER);
 			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
@@ -126,12 +129,16 @@ public class Controller {
 		case MODIFY_USER_PERMISSION: // Updating a users permissions (SuperAdmin only)
 			DAO dao19 = new DAO();
 			FormHandler.updateUserPermissionForm(requestType, dataToProcess);
-			dao19.updateUser(Main.CURRENTUSER);
+//			dao19.updateUser(dataToProcess.get("SearchUserEmail")); // modify the user searched for's permission
 			break;
 		case PASSWORD_RESET:
+			DAO dao21 = new DAO();
+			FormHandler.updatePasswordResetForm(requestType, dataToProcess);
+			dao21.updateUser(Main.CURRENTUSER);
 			break;
-		case PASSWORD_RETRIEVE:
-
+		case PASSWORD_RETRIEVE: // consider using GET_USER to set CURRENTUSER, then removing this
+//			DAO dao22 = new DAO();
+//			dao22.getUser();
 			break;
 		case QUERY_DATABASE:
 			break;
@@ -153,7 +160,7 @@ public class Controller {
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
 			DAO dao20 = new DAO();
-//			dao20.getUser();
+//			dao20.getUser((String)dataToProcess.get("SearchEmail"));
 			break;
 		case UPDATE_CLUB_MEMBER:
 			DAO dao14 = new DAO();
