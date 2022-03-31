@@ -34,4 +34,12 @@ public class ClubForm extends Form{
         return club;
     }
 
+    public void updateClub(Club club) {
+        if(hmData.get("ClubName") != null)
+            club.setClubName((String)hmData.get("ClubName"));
+        if(hmData.get("ClubDescription") != null)
+            club.setClubDescription((String)hmData.get("ClubDescription"));
+        if (hmData.get("ClubMembers") != null)
+            club.setClubMembers((ArrayList<ClubMember>)hmData.get("ClubMembers"));
+    }
 }

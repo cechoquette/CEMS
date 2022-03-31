@@ -111,6 +111,13 @@ public class FormHandler {
 
 	}
 
+	public static void updateClubForm(RequestType requestType, HashMap<Object, Object> hmData) {
+		ClubForm clubForm = new ClubForm(requestType, hmData);
+
+		if (hmData.get("Club") != null) {
+			clubForm.updateClub((Club)hmData.get("Club"));
+		}
+	}
 
 
 
