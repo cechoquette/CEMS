@@ -474,7 +474,7 @@ public class DAO {
     }
 
 
-    public Integer max() {
+    public Integer maxClubId() {
         Integer result = null;
         Transaction transaction = null;
         try {
@@ -490,8 +490,55 @@ public class DAO {
         }
         return result;
     }
-
-    public Integer maxID() {
+    public Integer maxClubEventId() {
+        Integer result = null;
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(ce.eventID) from ClubEvent ce");
+            result = (int) query.getResultList().get(0);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return result;
+    }
+    public Integer maxClubBudgetId() {
+        Integer result = null;
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(cb.clubBudgetID) from ClubBudget cb");
+            result = (int) query.getResultList().get(0);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return result;
+    }
+    public Integer maxClubEventBudget() {
+        Integer result = null;
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(ceb.eventBudgetID from ClubEventBudget ceb");
+            result = (int) query.getResultList().get(0);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return result;
+    }
+    public Integer maxExpenditureID() {
         Integer result = null;
         Transaction transaction = null;
         try {
