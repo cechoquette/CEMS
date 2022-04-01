@@ -33,6 +33,8 @@ public class User {
 	@Column(name="security_answer")
 	private String securityAnswer;
 	//@Column(name="club")
+	//private Club club;
+	@ManyToOne (fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	private Club club;
 
 	public User() {
@@ -148,25 +150,7 @@ public class User {
 
 	// Set the club
 	public void setUserClub(Club club) { this.club = club; }
-	
-	/** Method to update a user's permission 
-	 * @param - is the permission you wish to update it to **/
-	public static void updatePermission(User user, String newPermission) {
-		// If the userID is not already set to the specified permission
-		if (user.getPermission() != newPermission) {
-			// Update the permissions to the new permission
-			user.setPermission(newPermission);
-		}
-	}
-	
-	/** Method to delete a user 
-	 * @param **/
-	public static void deleteUser(User user, String enteredEmail) {
-		// Remove the user from the database and send a confirmation that this was completed
-		if (user.getEmail() == enteredEmail) {
-			user = null; // Dereference the object
-		}
-	}
+
 	
 	// Testing - temporary
 	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {

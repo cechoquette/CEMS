@@ -1,17 +1,24 @@
-CREATE USER IF NOT EXISTS 'CEMSAdmin'@'localhost' IDENTIFIED BY 'CEMS321';
-GRANT ALL PRIVILEGES ON *.* TO 'CEMSAdmin'@'localhost';
--- DROP DATABASE IF EXISTS CEMSDatabase; -- drop database for testing when duplicates created
+-- CREATE USER 'CEMSAdmin'@'localhost' IDENTIFIED BY 'CEMS321';
+-- GRANT ALL PRIVILEGES ON *.* TO 'CEMSAdmin'@'localhost';
+-- DROP DATABASE IF EXISTS CEMSDatabase; -- use for testing for blank database
 
 CREATE DATABASE IF NOT EXISTS CEMSDatabase ;
 USE CEMSDatabase ;
 
+-- Table Club
+CREATE TABLE IF NOT EXISTS Club (
+  club_id INT(11) NOT NULL AUTO_INCREMENT,
+  club_name VARCHAR(45) NOT NULL,
+  club_description MEDIUMTEXT NOT NULL,
+  PRIMARY KEY (club_id));
 
+-- Table Club
 CREATE TABLE IF NOT EXISTS User (
   student_id INT NOT NULL,
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45) NOT NULL,
   email_address VARCHAR(45) NOT NULL,
-  password_ VARCHAR(45) NULL,
+  password_ VARCHAR(100) NULL,
   phone_number VARCHAR(45) NOT NULL,
   permissions VARCHAR(45) NOT NULL DEFAULT 'admin',
   salt VARCHAR(45)  NULL,
@@ -22,14 +29,6 @@ CREATE TABLE IF NOT EXISTS User (
 
 
 
--- Table Club
-CREATE TABLE IF NOT EXISTS Club (
-  club_id INT NOT NULL AUTO_INCREMENT,
-  club_name VARCHAR(45) NOT NULL,
-  club_description MEDIUMTEXT NOT NULL,
-  PRIMARY KEY (club_id));
-  
-
 -- Table Event
 CREATE TABLE IF NOT EXISTS ClubEvent (
   event_id INT NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE IF NOT EXISTS ClubEvent (
   event_date DATE NULL,
   event_location VARCHAR(45) NULL,
   email_group VARCHAR(45) NULL,
-  event_attendance INT null,
+  event_attendance INT NULL,
   club_id INT NULL,
   PRIMARY KEY (event_id),
   INDEX (club_id ASC) VISIBLE,
@@ -48,7 +47,7 @@ CREATE TABLE IF NOT EXISTS ClubEvent (
     ON UPDATE CASCADE );
 
 
--- Table EventBudget 
+-- Table EventBudget
 CREATE TABLE IF NOT EXISTS ClubEventBudget (
   event_budget_id INT NOT NULL,
   event_id INT NULL,
@@ -94,8 +93,8 @@ CREATE TABLE IF NOT EXISTS ClubEventBudget (
     REFERENCES CEMSDatabase.ClubEvent  (event_id)
     ON DELETE NO ACTION
     ON UPDATE CASCADE );
-    
-    -- Table ClubBudget 
+
+    -- Table ClubBudget
 CREATE TABLE IF NOT EXISTS ClubBudget (
   club_budget_id INT NOT NULL,
   club_id INT NOT NULL,
@@ -122,7 +121,7 @@ CREATE TABLE IF NOT EXISTS ClubBudget (
   misc_subtotal DECIMAL(13,2) DEFAULT 0,
   club_budget_subtotal DECIMAL(13,2) DEFAULT 0,
   club_budget_taxes DECIMAL(13,2) DEFAULT 0,
-  club_budget_total DECIMAL(13,2) DEFAULT 0, 
+  club_budget_total DECIMAL(13,2) DEFAULT 0,
   PRIMARY KEY (club_budget_id),
     FOREIGN KEY (club_id)
     REFERENCES CEMSDatabase.Club (club_id)
@@ -131,7 +130,7 @@ CREATE TABLE IF NOT EXISTS ClubBudget (
 
 
 
--- Table ClubExpenditure 
+-- Table ClubExpenditure
 CREATE TABLE IF NOT EXISTS ClubExpenditure (
   expenditure_id INT NOT NULL ,
   club_id INT NOT NULL ,
@@ -148,27 +147,6 @@ CREATE TABLE IF NOT EXISTS ClubExpenditure (
   payment_method VARCHAR(45) ,
   PRIMARY KEY (expenditure_id),
   INDEX (club_id ASC) VISIBLE,
-    FOREIGN KEY (club_id)
-    REFERENCES CEMSDatabase.Club (club_id)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE );
-
-
-
--- Table ClubMember
-CREATE TABLE IF NOT EXISTS ClubMember(
-  clubmember_id INT NOT Null,
-  student_id INT NOT NULL,
-  club_id INT NOT NULL,
-  club_member_permission VARCHAR(45) NULL,
-  PRIMARY KEY (student_id,club_id),
-  INDEX (club_id ASC) VISIBLE,
-  INDEX (student_id ASC) VISIBLE,
-    FOREIGN KEY (student_id)
-    REFERENCES CEMSDatabase.User (student_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT 
     FOREIGN KEY (club_id)
     REFERENCES CEMSDatabase.Club (club_id)
     ON DELETE NO ACTION

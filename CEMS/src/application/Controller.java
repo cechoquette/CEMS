@@ -154,7 +154,7 @@ public class Controller {
 
 			case SEARCH_FOR_USER: //call database, return if found
 				DAO dao24 = new DAO();
-			User user = dao24.getUser(((String)dataToProcess.get("UserEmail")));//Changed this. DAO takes a String email.
+			User user = dao24.getUser(((String)dataToProcess.get("DeleteSearchEmail")));//Changed this. DAO takes a String email.
 			if(user != null){
 				dataToProcess.put("User", user);
 			}//this could end up being null, do a null check on the receiving end

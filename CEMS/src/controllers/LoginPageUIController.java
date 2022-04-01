@@ -77,14 +77,16 @@ public class LoginPageUIController {
         defaultPane.setTop(menuScreen);
         defaultPane.setCenter(mainScreen);
 
-        // Query the DB to retrieve the CURRENTUSER
+        // Query the DB to retrieve and populate the CURRENTUSER
         dataToSubmit = new HashMap<Object, Object>();
         dataToSubmit.put("LoginUserEmail", tfLoginEmail.getText());
         dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
 
-//        Controller.processRequest(RequestType.GET_USER, dataToSubmit);
+//        dataToSubmit = Controller.processRequest(RequestType.GET_USER, dataToSubmit);
 
-        // Once the GET_USER request has run, add the remaining data to the hashmap and process the next login request
+//        System.out.println((String)dataToSubmit.get("UserFirstName")); // test
+
+        // Once the GET_USER request has run, add the remaining data to the hashmap and process the login request
 //        dataToSubmit.put("UserStudentID", CURRENTUSER.getStudentID());
 //        dataToSubmit.put("UserFirstName", CURRENTUSER.getFirstName());
 //        dataToSubmit.put("UserLastName", CURRENTUSER.getLastName());
