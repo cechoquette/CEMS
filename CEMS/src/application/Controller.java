@@ -74,7 +74,7 @@ public class Controller {
 //			dataToSend.put("Timeframe", timeframe3);//Comment//Use this specific key
 //			//Comment//Use this Boolean for your method. ex. if(checkForEvent) { //put a little dot };
 //			Boolean checkForEvent = (Boolean)Controller.processRequest(RequestType.CHECK_FOR_EVENTS, dataToSend).get("CheckForEvent");
-
+//			ArrayList<ClubEvent> dailyEvents = (ArrayList<ClubEvent>)Controller.processRequest(RequestType.GET_EVENTS, hashmap).get("DailyEvents");
 				break;
 
 		case CREATE_CLUB:
