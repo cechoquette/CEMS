@@ -81,7 +81,7 @@ public class DAO {
         return club;
     }
 
-      @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
         public List<Club> getAllClubs() {
             Transaction transaction = null;
             List<Club> clubs = null;
@@ -100,8 +100,6 @@ public class DAO {
             }
             return clubs;
         }
-
-    @SuppressWarnings("null")
 
     //// UserDAO
     public void addUser(User user) {
@@ -153,25 +151,6 @@ public class DAO {
         return user;
     }
 
-    /*
-        @SuppressWarnings("unchecked")
-        public List<User> getAllUsers() {
-            Transaction transaction = null;
-            List<User> users = null;
-            try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                users = session.createQuery("from user").list();
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
-            }
-            return users;
-        }
-    */ // get all not working yet
-    @SuppressWarnings("null")
     public void deleteUser(int studentID) {
         Transaction transaction = null;
         User user = null;
@@ -453,15 +432,20 @@ public class DAO {
         User user = new User("Erin", "Cameron", "867-878-6767",
                 "erin@algoma.ca", 123456789, club1, "Admin", "Age?", "29");
         dao.addClub(club1);
-        //dao.getClub("cs club");
+        dao.getClubByName("cs club");
         dao.addUser(user);
         System.out.println(dao.getClubByName("cs club"));
-        //user.setPassword("25163");
-        //dao.updateUser(user);
+        user.setPassword("25163");
+        dao.updateUser(user);
         System.out.println(dao.getUser("erin@algoma.ca"));
-*/
+        user.setPassword("glokmn");
+        user.setUserSalt("35789");
+        dao.updateUser(user);
+        System.out.println(dao.getUser("erin@algoma.ca"));
+    }
+ */
      //Club Test
- /*   public static void main(String[] args){
+/*    public static void main(String[] args){
         DAO dao = new DAO();
         Club club = new Club("knitting club", "we enjoy knitting");
         Club club1 = new Club("sowing club", "we enjoy sowing");
