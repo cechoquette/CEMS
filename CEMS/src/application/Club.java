@@ -15,15 +15,12 @@ public class Club {
     public static int COUNT_FOR_IDS;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="club_id ")
     private int clubID;
     @Column(name="club_name")
     private String clubName;
     @Column(name="club_description")
     private String clubDescription;
-    //@OneToMany   need to annotate user class
-    //private List<User> user = new ArrayList<User>();
     @OneToMany(mappedBy = "club")
     private List<Expenditure> expenditure = new ArrayList<Expenditure>();
     @OneToMany(mappedBy = "club")
