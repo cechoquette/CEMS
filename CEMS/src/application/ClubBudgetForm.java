@@ -56,19 +56,19 @@ public class ClubBudgetForm extends Form{
 
 
 //		ClubBudgetReport testing:
-		HashMap<Object, Object> dataToSubmit = new HashMap<>();
-		dataToSubmit.put("ReportType", ReportType.CLUB_BUDGET);//ReportType
-		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
-		dataToSubmit.put("ReportTimeframe", new Timeframe());
-		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
-		dataToSubmit.put("ReportEvent", null);//can be null
-		dataToSubmit.put("ClubBudget", clubBudget);
-
-		try {
-			ReportHandler.generateReport(dataToSubmit);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		HashMap<Object, Object> dataToSubmit = new HashMap<>();
+//		dataToSubmit.put("ReportType", ReportType.CLUB_BUDGET);//ReportType
+//		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
+//		dataToSubmit.put("ReportTimeframe", new Timeframe());
+//		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
+//		dataToSubmit.put("ReportEvent", null);//can be null
+//		dataToSubmit.put("ClubBudget", clubBudget);
+//
+//		try {
+//			ReportHandler.generateReport(dataToSubmit);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		//ClubMembershipSummaryReport testing:
 //		HashMap<Object, Object> dataToSubmit = new HashMap<>();

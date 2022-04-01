@@ -12,11 +12,11 @@ import java.util.List;
 @Entity
 @Table(name="Club")
 public class Club {
-    public static int COUNT_FOR_IDS;
+    public static int COUNT_FOR_IDS = 10;
 
     @Id
     @Column(name="club_id ")
-    private int clubID;
+    private int clubID = 5;
     @Column(name="club_name")
     private String clubName;
     @Column(name="club_description")
