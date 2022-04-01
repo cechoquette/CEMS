@@ -126,7 +126,6 @@ public class DeleteUserUIController {
         // Send a query to the DB for the users email address
         HashMap<Object, Object> hm;
         hm = Controller.processRequest(RequestType.SEARCH_FOR_USER, dataToSubmit);
-//        System.out.println(dataToSubmit);
 
         User user = (User)hm.get("User");
 
@@ -140,7 +139,6 @@ public class DeleteUserUIController {
             comboDeleteUserClub.setValue(user.getUserClub());
             if (user.getPermission().equals(PermissionType.ADMIN.toString())) {
                 comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
-                comboDeleteUserPermissions.setVisible(true);
             }
             if (user.getPermission().equals(PermissionType.ADMIN_PLUS.toString())) {
                 comboDeleteUserPermissions.setValue(PermissionType.ADMIN_PLUS);

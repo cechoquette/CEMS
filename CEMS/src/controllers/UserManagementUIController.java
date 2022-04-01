@@ -87,7 +87,6 @@ public class UserManagementUIController {
         // Send a query to the DB for the users email address
         HashMap<Object, Object> hm;
         hm = Controller.processRequest(RequestType.SEARCH_FOR_USER_USERMGMT, dataToSubmit);
-//        System.out.println(dataToSubmit);
 
         // If found, return results in the correct fields
         User user = (User)hm.get("User");

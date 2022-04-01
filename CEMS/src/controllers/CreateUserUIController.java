@@ -183,7 +183,7 @@ public class CreateUserUIController {
         // Check that all mandatory fields are filled in
         checkMandatoryFields();
 
-        // TODO: Add all data to the hashmap
+        // Add all data to the hashmap
         dataToSubmit = new HashMap<Object, Object>();
         dataToSubmit.put("CreateUserFirstName", tfCreateUserFirst.getText());
         dataToSubmit.put("CreateUserLastName", tfCreateUserLast.getText());
@@ -197,6 +197,8 @@ public class CreateUserUIController {
 
         // Send data to the controller
         Controller.processRequest(RequestType.CREATE_USER, dataToSubmit);
+        
+        btnCreateUserCancelClicked(event);
     }
 
 }

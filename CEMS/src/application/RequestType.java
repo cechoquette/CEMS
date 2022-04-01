@@ -32,6 +32,7 @@ public enum RequestType {
 	DELETE_FROM_DATABASE("Delete from Database"),
 	SEARCH_FOR_USER("Search for User"),
 	SEARCH_FOR_USER_USERMGMT("Search for User - User Management"),
+	SEARCH_FOR_USER_UPDATE("Search for User - Update User Form"),
 //	UPDATE_CLUB_MEMBER("Update Club Member"),
 //	DELETE_CLUB_MEMBER("Delete Club Member"),
 //	GET_CLUB_MEMBER("Get Club Member from Database"),

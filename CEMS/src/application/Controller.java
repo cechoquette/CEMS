@@ -154,18 +154,24 @@ public class Controller {
 			PasswordUtil.setCurrentUser(currentUser);
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
-				DAO dao24 = new DAO();
+			DAO dao24 = new DAO();
 			User userSearch = dao24.getUser(((String)dataToProcess.get("DeleteSearchEmail")));//Changed this. DAO takes a String email.
 			if(userSearch != null){
 				dataToProcess.put("User", userSearch);
 			}//this could end up being null, do a null check on the receiving end
-
 			break;
 		case SEARCH_FOR_USER_USERMGMT: //call database, return if found
 			DAO dao26 = new DAO();
 			User userMgmtSearch = dao26.getUser(((String)dataToProcess.get("UserManagementSearchEmail")));//Changed this. DAO takes a String email.
 			if(userMgmtSearch != null){
 				dataToProcess.put("User", userMgmtSearch);
+			}//this could end up being null, do a null check on the receiving end
+			break;
+		case SEARCH_FOR_USER_UPDATE: //call database, return if found
+			DAO dao27 = new DAO();
+			User userUpdateSearch = dao27.getUser(((String)dataToProcess.get("UpdateUserPermissionSearchEmail")));//Changed this. DAO takes a String email.
+			if(userUpdateSearch != null){
+				dataToProcess.put("User", userUpdateSearch);
 			}//this could end up being null, do a null check on the receiving end
 			break;
 		case MODIFY_CLUB:
@@ -186,7 +192,7 @@ public class Controller {
 		case MODIFY_USER_PERMISSION: // Updating a users permissions (SuperAdmin only)
 			DAO dao19 = new DAO();
 			FormHandler.updateUserPermissionForm(requestType, dataToProcess);
-//			dao19.updateUser(dataToProcess.get("SearchUserEmail")); // modify the user searched for's permission
+			dao19.updateUser((User)dataToProcess.get("UpdateUserPermission")); // modify the user searched for's permission
 			break;
 		case PASSWORD_RESET:
 			DAO dao25 = new DAO();
