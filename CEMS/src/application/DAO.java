@@ -308,6 +308,7 @@ public class DAO {
         return clubEvent;
     }
 
+
     /*    @SuppressWarnings("unchecked")
         public List<ClubEvent> getAllClubEvents() {
             Transaction transaction = null;

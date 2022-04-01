@@ -7,7 +7,7 @@ USE CEMSDatabase ;
 
 -- Table Club
 CREATE TABLE IF NOT EXISTS Club (
-  club_id INT(11) NOT NULL AUTO_INCREMENT,
+  club_id INT NOT NULL ,
   club_name VARCHAR(45) NOT NULL,
   club_description MEDIUMTEXT NOT NULL,
   PRIMARY KEY (club_id));
@@ -39,12 +39,7 @@ CREATE TABLE IF NOT EXISTS ClubEvent (
   email_group VARCHAR(45) NULL,
   event_attendance INT NULL,
   club_id INT NULL,
-  PRIMARY KEY (event_id),
-  INDEX (club_id ASC) VISIBLE,
-    FOREIGN KEY (club_id)
-    REFERENCES CEMSDatabase.Club (club_id)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE );
+  PRIMARY KEY (event_id));
 
 
 -- Table EventBudget
@@ -122,11 +117,7 @@ CREATE TABLE IF NOT EXISTS ClubBudget (
   club_budget_subtotal DECIMAL(13,2) DEFAULT 0,
   club_budget_taxes DECIMAL(13,2) DEFAULT 0,
   club_budget_total DECIMAL(13,2) DEFAULT 0,
-  PRIMARY KEY (club_budget_id),
-    FOREIGN KEY (club_id)
-    REFERENCES CEMSDatabase.Club (club_id)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE );
+  PRIMARY KEY (club_budget_id) );
 
 
 
@@ -145,15 +136,9 @@ CREATE TABLE IF NOT EXISTS ClubExpenditure (
   vendor_name VARCHAR(45) ,
   category VARCHAR(45) ,
   payment_method VARCHAR(45) ,
-  PRIMARY KEY (expenditure_id),
-  INDEX (club_id ASC) VISIBLE,
-    FOREIGN KEY (club_id)
-    REFERENCES CEMSDatabase.Club (club_id)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE );
+  PRIMARY KEY (expenditure_id));
 
 
-ALTER TABLE club AUTO_INCREMENT=1001;
 
 --INSERT INTO user VALUES (
 --	999999999, "Master", "User", "master@email.com",
