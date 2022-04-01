@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 
 import java.util.HashMap;
 
+import static CEMS.src.application.Main.CURRENTUSER;
 import static CEMS.src.application.Main.defaultPane;
 
 public class ForgotPasswordUIController {
@@ -33,7 +34,7 @@ public class ForgotPasswordUIController {
 
     @FXML
     private void initialize() {
-        lbForgotPassSecQ.setText("What is your mother's maiden name?");
+        lbForgotPassSecQ.setText(Main.CURRENTUSER.getSecurityQuestion());
     }
 
     @FXML
@@ -63,7 +64,7 @@ public class ForgotPasswordUIController {
         }
 
         // Security Answer
-        if (!InputValidation.validateSecurityAnswer(tfForgotPassSecA)) {
+        if (!InputValidation.validateSecurity(tfForgotPassSecA)) {
             tfForgotPassSecA.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         } else {
             tfForgotPassSecA.setStyle(null);
@@ -76,25 +77,34 @@ public class ForgotPasswordUIController {
         // Check that all mandatory fields are filled
         checkMandatoryFields();
 
-        // Put data into hashmap and send to controller
-        dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("ForgotPasswordEmail", tfForgotEmail.getText());
-        dataToSubmit.put("ForgotPasswordSecurityA", tfForgotPassSecA.getText());
-
-        Controller.processRequest(RequestType.GET_USER, dataToSubmit);
+//        // Put data into hashmap and send to controller
+//        dataToSubmit = new HashMap<Object, Object>();
+//        dataToSubmit.put("ForgotPasswordEmail", tfForgotEmail.getText());
+//        dataToSubmit.put("ForgotPasswordSecurityA", tfForgotPassSecA.getText());
+//
+//        HashMap<Object, Object> hm;
+//        hm = Controller.processRequest(RequestType.GET_USER_FORGOT_PASS, dataToSubmit);
+//
+//        User user = (User)hm.get("User");
 
         // Once the GET_USER request has run, confirm user and conditionally progress through app
-        if (dataToSubmit.get("ForgotPasswordEmail").equals(Main.CURRENTUSER.getEmail())) {
-            if (dataToSubmit.get("ForgotPasswordSecA").equals(Main.CURRENTUSER.getSecurityAnswer())) {
-                // Conditionally send the user to a Reset Password page
-                Pane mainScreen = ViewBuilder.newScreen("ResetPassword");
-                defaultPane.setCenter(mainScreen);
+        if (Main.CURRENTUSER != null) {
+            if (Main.CURRENTUSER.getEmail().equals(tfForgotEmail.getText())) {
+                if (Main.CURRENTUSER.getSecurityAnswer().equals(tfForgotPassSecA.getText())) {
+                    // Conditionally send the user to a Reset Password page
+                    Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+                    Pane mainScreen = ViewBuilder.newScreen("ResetPassword");
+                    defaultPane.setTop(menuScreen);
+                    defaultPane.setCenter(mainScreen);
+                } else {
+                    tfForgotPassSecA.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+                }
             } else {
-                tfForgotPassSecA.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+                tfForgotEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
             }
-        } else {
-            tfForgotEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
+
+
     }
 }
 

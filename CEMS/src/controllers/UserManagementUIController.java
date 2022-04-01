@@ -85,11 +85,11 @@ public class UserManagementUIController {
         dataToSubmit.put("UserManagementSearchEmail", tfUserManagementSearch.getText());
 
         // Send a query to the DB for the users email address
-        dataToSubmit = Controller.processRequest(RequestType.SEARCH_FOR_USER, dataToSubmit);
-//        System.out.println(dataToSubmit);
+        HashMap<Object, Object> hm;
+        hm = Controller.processRequest(RequestType.SEARCH_FOR_USER_USERMGMT, dataToSubmit);
 
         // If found, return results in the correct fields
-        User user = (User)dataToSubmit.get("User");
+        User user = (User)hm.get("User");
 
         // If found, return results in the correct fields
         if (user != null) {

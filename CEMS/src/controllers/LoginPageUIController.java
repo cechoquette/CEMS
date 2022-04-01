@@ -17,6 +17,8 @@ import static CEMS.src.application.Main.*;
 public class LoginPageUIController {
     HashMap<Object, Object> dataToSubmit;
 
+    private boolean fieldsValid = true;
+
     @FXML
     private Button btnLoginCancel;
 
@@ -37,15 +39,19 @@ public class LoginPageUIController {
         // Email
         if(!InputValidation.validateEmail(tfLoginEmail)) {
             tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
         } else {
             tfLoginEmail.setStyle(null);
+            fieldsValid = true;
         }
 
         // Password
         if(!InputValidation.validatePassword(pfLoginPassword)) {
             pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
         } else {
             pfLoginPassword.setStyle(null);
+            fieldsValid = true;
         }
     }
 
@@ -72,51 +78,55 @@ public class LoginPageUIController {
     void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
         checkMandatoryFields();
 
+//        if (fieldsValid) {
+//            // Query the DB to retrieve and populate the CURRENTUSER
+//            dataToSubmit = new HashMap<Object, Object>();
+//            dataToSubmit.put("LoginUserEmail", tfLoginEmail.getText());
+//            dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
+//
+//            Controller.processRequest(RequestType.GET_USER, dataToSubmit);
+//
+//            if (Main.CURRENTUSER != null) {
+//                Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
+//
+//                // Retrieve the user's email on login attempt
+//                String email = tfLoginEmail.getText();
+//
+//                // Retrieve the user's salt from the DB
+//                String salt = CURRENTUSER.getUserSalt();
+//
+//                // Hash the entered password
+//                String hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, pfLoginPassword.getText(), salt);
+//
+//                // Compare the email and the hashed password to the one stored in the DB
+//                // Check the email
+//                if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
+//                    System.out.println("Email is correct");
+//                    // Check the password
+//                    if (CURRENTUSER.getPassword().equals(hashedPassword)) {
+//                        System.out.println("Password is correct");
+//                        // Link to the home page
+//                        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+//                        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+//                        defaultPane.setTop(menuScreen);
+//                        defaultPane.setCenter(mainScreen);
+//                    } else {
+//                        // Set the password field as an error state
+//                        pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+//                    }
+//                }
+//            } else {
+//                // Set the email field as an error state
+//                tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+//            }
+//        }
+
         Pane menuScreen = ViewBuilder.newScreen("MenuBar");
         Pane mainScreen = ViewBuilder.newScreen("HomePage");
         defaultPane.setTop(menuScreen);
         defaultPane.setCenter(mainScreen);
 
-        // Query the DB to retrieve and populate the CURRENTUSER
-        dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("LoginUserEmail", tfLoginEmail.getText());
-        dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
 
-        Controller.processRequest(RequestType.GET_USER, dataToSubmit);
-
-//        if (Main.CURRENTUSER != null) {
-//            Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
-//
-//            // Retrieve the user's email on login attempt
-//            String email = tfLoginEmail.getText();
-//
-//            // Retrieve the user's salt from the DB
-//            String salt = CURRENTUSER.getUserSalt();
-//
-//            // Hash the entered password
-//            String hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, pfLoginPassword.getText(), salt);
-//
-//            // Compare the email and the hashed password to the one stored in the DB
-//            // Check the email
-//            if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
-//                System.out.println("Email is correct");
-//                // Check the password
-//                if (CURRENTUSER.getPassword().equals(hashedPassword)) {
-//                    System.out.println("Password is correct");
-//                    // Link to the home page
-//                    Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-//                    Pane mainScreen = ViewBuilder.newScreen("HomePage");
-//                    defaultPane.setTop(menuScreen);
-//                    defaultPane.setCenter(mainScreen);
-//                } else {
-//                    // Set the password field as an error state
-//                    pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-//                }
-//            }
-//        } else {
-//            // Set the email field as an error state
-//            tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-//        }
 
     }
 
