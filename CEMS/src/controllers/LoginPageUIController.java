@@ -105,10 +105,8 @@ public class LoginPageUIController {
 //                // Compare the email and the hashed password to the one stored in the DB
 //                // Check the email
 //                if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
-//                    System.out.println("Email is correct");
 //                    // Check the password
 //                    if (CURRENTUSER.getPassword().equals(hashedPassword)) {
-//                        System.out.println("Password is correct");
 //                        // Link to the home page
 //                        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
 //                        Pane mainScreen = ViewBuilder.newScreen("HomePage");

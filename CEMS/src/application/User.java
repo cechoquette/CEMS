@@ -151,7 +151,8 @@ public class User {
 	// Set the club
 	public void setUserClub(Club club) { this.club = club; }
 
-	
+
+
 	// Testing - temporary
 	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
 //		User user = new User("Erin", "Cameron", "867-878-6767",

@@ -17,6 +17,8 @@ import static CEMS.src.application.Main.defaultPane;
 
 public class UpdateUserUIController {
     HashMap<Object, Object> dataToSubmit;
+    HashMap<Object, Object> hm;
+    User searchedForUser;
 
     @FXML
     private Button btnUpdateUserBack;
@@ -132,27 +134,26 @@ public class UpdateUserUIController {
         dataToSubmit.put("UpdateUserPermissionSearchEmail", tfUpdateUserSearch.getText());
 
         // Send a query to the DB for the users email address
-        HashMap<Object, Object> hm;
+        hm = new HashMap<Object, Object>();
         hm = Controller.processRequest(RequestType.SEARCH_FOR_USER_UPDATE, dataToSubmit);
 
-        User user = (User)hm.get("User");
+        searchedForUser = (User)hm.get("User");
 
-        if (user != null) {
-            System.out.println(user.getEmail() + "is not null");
-            tfUpdateUserFirst.setText(user.getFirstName());
-            tfUpdateUserLast.setText(user.getLastName());
-            tfUpdateUserID.setText(String.valueOf(user.getStudentID()));
-            tfUpdateUserEmail.setText(user.getEmail());
-            tfUpdateUserPhone.setText(user.getPhone());
-            comboUpdateUserClub.setValue(user.getUserClub());
-            if (user.getPermission().equals(PermissionType.ADMIN.toString())) {
+        if (searchedForUser != null) {
+            tfUpdateUserFirst.setText(searchedForUser.getFirstName());
+            tfUpdateUserLast.setText(searchedForUser.getLastName());
+            tfUpdateUserID.setText(String.valueOf(searchedForUser.getStudentID()));
+            tfUpdateUserEmail.setText(searchedForUser.getEmail());
+            tfUpdateUserPhone.setText(searchedForUser.getPhone());
+            comboUpdateUserClub.setValue(searchedForUser.getUserClub());
+            if (searchedForUser.getPermission().equals(PermissionType.ADMIN.toString())) {
                 comboUpdateUserPermissions.setValue(PermissionType.ADMIN);
                 comboUpdateUserPermissions.setVisible(true);
             }
-            if (user.getPermission().equals(PermissionType.ADMIN_PLUS.toString())) {
+            if (searchedForUser.getPermission().equals(PermissionType.ADMIN_PLUS.toString())) {
                 comboUpdateUserPermissions.setValue(PermissionType.ADMIN_PLUS);
             }
-            if (user.getPermission().equals(PermissionType.SUPER_ADMIN.toString())) {
+            if (searchedForUser.getPermission().equals(PermissionType.SUPER_ADMIN.toString())) {
                 comboUpdateUserPermissions.setValue(PermissionType.SUPER_ADMIN);
             }
         } else {
@@ -180,12 +181,19 @@ public class UpdateUserUIController {
 
         // Add the permission update to the hashmap
         dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("UpdateUserPermission", comboUpdateUserPermissions.getValue());
 
-        // Send data to the controller
-        Controller.processRequest(RequestType.MODIFY_USER_PERMISSION, dataToSubmit);
+        // If the user is not null
+        if (searchedForUser != null) {
+            // Add data to the hashmap
+            hm.put("UpdateUserPermission", comboUpdateUserPermissions.getValue());
 
-        btnUpdateUserCancelClicked(event);
+            // Send data to the controller
+            Controller.processRequest(RequestType.MODIFY_USER_PERMISSION, dataToSubmit);
+
+            // Navigate user back to previous page
+            btnUpdateUserCancelClicked(event);
+        }
+
     }
 
 }
