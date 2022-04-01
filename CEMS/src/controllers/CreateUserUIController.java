@@ -57,6 +57,7 @@ public class CreateUserUIController {
     @FXML
     private TextField tfCreateUserSecA;
 
+    /** Initialize Method - sets fields on load **/
     @FXML
     public void initialize() {
         // Add the values to the Permissions dropdown
@@ -75,7 +76,7 @@ public class CreateUserUIController {
         tfCreateUserSecA.setPromptText("security answer");
     }
 
-
+    /** Method to check that mandatory fields have been filled **/
     public void checkMandatoryFields() {
         // All fields in the form are mandatory, so check them all
         // First Name
@@ -161,6 +162,7 @@ public class CreateUserUIController {
 
     }
 
+    /** EventHandler Method - Back button **/
     @FXML
     void btnCreateUserBackClicked(ActionEvent event) {
         // Clear the fields
@@ -198,6 +200,7 @@ public class CreateUserUIController {
 
     }
 
+    /** EventHandler Method - Submit button **/
     @FXML
     void btnCreateUserSubmitClicked(ActionEvent event) {
         // Check that all mandatory fields are filled in

@@ -59,6 +59,7 @@ public class UpdateUserUIController {
     @FXML
     private BorderPane updateUserBorderPane;
 
+    /** Initialize Method - sets fields on form on load **/
     @FXML
     public void initialize() {
 
@@ -77,6 +78,7 @@ public class UpdateUserUIController {
         comboUpdateUserClub.setStyle("-fx-control-inner-background: #cce0ff");
     }
 
+    /** Method to check that all mandatory fields have been filled **/
     public void checkMandatoryFields() {
         // Check the search field
         if (!InputValidation.validateNotEmpty(tfUpdateUserSearch)) {
@@ -86,6 +88,7 @@ public class UpdateUserUIController {
         }
     }
 
+    /** EventHandler Method - Back button **/
     @FXML
     void btnUpdateUserBackClicked(ActionEvent event) {
         // Clear the fields
@@ -97,6 +100,7 @@ public class UpdateUserUIController {
 
     }
 
+    /** EventHandler Method - Cancel button **/
     @FXML
     void btnUpdateUserCancelClicked(ActionEvent event) {
         // Clear the fields
@@ -115,6 +119,7 @@ public class UpdateUserUIController {
 
     }
 
+    /** EventHandler Method - Search button **/
     @FXML
     void btnUpdateUserSearchClicked(ActionEvent event) {
         checkMandatoryFields();
@@ -152,6 +157,7 @@ public class UpdateUserUIController {
         }
     }
 
+    /** EventHandler Method - Submit button **/
     @FXML
     void btnUpdateUserSubmitClicked(ActionEvent event) {
         checkMandatoryFields();

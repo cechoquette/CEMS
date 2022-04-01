@@ -60,6 +60,7 @@ public class DeleteUserUIController {
     @FXML
     private BorderPane deleteUserBorderPane;
 
+    /** Initialize Method - method to set fields on load **/
     @FXML
     public void initialize() {
 
@@ -79,6 +80,7 @@ public class DeleteUserUIController {
         comboDeleteUserPermissions.setStyle("-fx-control-inner-background: #cce0ff");
     }
 
+    /** Method to check that all mandatory fields are filled **/
     public void checkMandatoryFields() {
         // Check the search field
         if (!InputValidation.validateNotEmpty(tfDeleteUserSearch)) {
@@ -88,6 +90,7 @@ public class DeleteUserUIController {
         }
     }
 
+    /** EventHandler Method - Back button **/
     @FXML
     void btnDeleteUserBackClicked(ActionEvent event) {
         // Clear the fields
@@ -98,6 +101,7 @@ public class DeleteUserUIController {
         defaultPane.setCenter(mainScreen);
     }
 
+    /** EventHandler Method - Cancel button **/
     @FXML
     void btnDeleteUserCancelClicked(ActionEvent event) {
         // Clear the fields
@@ -115,6 +119,7 @@ public class DeleteUserUIController {
 
     }
 
+    /** EventHandler Method - Search button **/
     @FXML
     void btnDeleteUserSearchClicked(ActionEvent event) {
         checkMandatoryFields();
@@ -148,11 +153,13 @@ public class DeleteUserUIController {
             }
 
         } else {
+            // Else, error state
             tfDeleteUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
 
     }
 
+    /** EventHandler Method - Submit button **/
     @FXML
     void btnDeleteUserSubmitClicked(ActionEvent event) {
         checkMandatoryFields();
@@ -168,6 +175,9 @@ public class DeleteUserUIController {
 
         // Send data to the controller
         Controller.processRequest(RequestType.DELETE_USER, dataToSubmit);
+
+        // Clear form and send user to previous page
+        btnDeleteUserBackClicked(event);
     }
 
 }
