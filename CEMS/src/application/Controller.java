@@ -148,10 +148,14 @@ public class Controller {
 			FormHandler.createLoginForm(requestType, dataToProcess);
 			break;
 		case GET_USER: // get user based on email address for logins
-
 			DAO dao18 = new DAO();
 			User currentUser = dao18.getUser((String)dataToProcess.get("LoginUserEmail"));
 			PasswordUtil.setCurrentUser(currentUser);
+			break;
+		case GET_USER_FORGOT_PASS: // get user based on email address for logins
+			DAO dao28 = new DAO();
+			User forgotUser = dao28.getUser((String)dataToProcess.get("ForgotPasswordEmail"));
+			PasswordUtil.setCurrentUser(forgotUser);
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
 			DAO dao24 = new DAO();

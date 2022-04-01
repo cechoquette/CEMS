@@ -17,6 +17,8 @@ import static CEMS.src.application.Main.defaultPane;
 public class ResetPasswordUIController {
     HashMap<Object, Object> dataToSubmit;
 
+    private boolean fieldsValid = true;
+
     @FXML
     private Button btnResetPass;
 
@@ -38,20 +40,25 @@ public class ResetPasswordUIController {
         if (!tfResetPass.getText().equals(tfResetPassConfirm.getText())) {
             tfResetPass.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
             tfResetPassConfirm.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
         } else {
 
             // Check the password field
             if (!InputValidation.validatePassword(tfResetPass)) {
                 tfResetPass.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+                fieldsValid = false;
             } else {
                 tfResetPass.setStyle(null);
+                fieldsValid = true;
             }
 
             // Confirm password field
             if (!InputValidation.validatePassword(tfResetPassConfirm)) {
                 tfResetPassConfirm.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+                fieldsValid = false;
             } else {
                 tfResetPassConfirm.setStyle(null);
+                fieldsValid = true;
             }
 
         }
@@ -80,13 +87,16 @@ public class ResetPasswordUIController {
         // Check that all mandatory fields are filled
         checkMandatoryFields();
 
-        // Add data to the hashmap
-        dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("ResetUserPassword", tfResetPass);
-        dataToSubmit.put("ResetUserPasswordConfirm", tfResetPassConfirm);
+        if (fieldsValid){
+            // Add data to the hashmap
+            dataToSubmit = new HashMap<Object, Object>();
+            dataToSubmit.put("ResetUserPassword", tfResetPass);
+            dataToSubmit.put("ResetUserPasswordConfirm", tfResetPassConfirm);
 
-        // Send data to the controller
-        Controller.processRequest(RequestType.PASSWORD_RESET, dataToSubmit);
+            // Send data to the controller
+            Controller.processRequest(RequestType.PASSWORD_RESET, dataToSubmit);
+        }
+
     }
 
 
