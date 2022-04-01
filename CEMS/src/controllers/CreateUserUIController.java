@@ -62,6 +62,15 @@ public class CreateUserUIController {
 
         // Add the values to the Clubs dropdown
         comboCreateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+
+        // Set placeholder text
+        tfCreateUserFirst.setPromptText("first name");
+        tfCreateUserLast.setPromptText("last name");
+        tfCreateUserEmail.setPromptText("example@email.com");
+        tfCreateUserID.setPromptText("123456789");
+        tfCreateUserPhone.setPromptText("555-123-4567");
+        tfCreateUserSecQ.setPromptText("security question");
+        tfCreateUserSecA.setPromptText("security answer");
     }
 
 

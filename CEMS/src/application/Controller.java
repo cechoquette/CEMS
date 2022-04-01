@@ -155,11 +155,18 @@ public class Controller {
 			break;
 		case SEARCH_FOR_USER: //call database, return if found
 				DAO dao24 = new DAO();
-			User user = dao24.getUser(((String)dataToProcess.get("DeleteSearchEmail")));//Changed this. DAO takes a String email.
-			if(user != null){
-				dataToProcess.put("User", user);
+			User userSearch = dao24.getUser(((String)dataToProcess.get("DeleteSearchEmail")));//Changed this. DAO takes a String email.
+			if(userSearch != null){
+				dataToProcess.put("User", userSearch);
 			}//this could end up being null, do a null check on the receiving end
 
+			break;
+		case SEARCH_FOR_USER_USERMGMT: //call database, return if found
+			DAO dao26 = new DAO();
+			User userMgmtSearch = dao26.getUser(((String)dataToProcess.get("UserManagementSearchEmail")));//Changed this. DAO takes a String email.
+			if(userMgmtSearch != null){
+				dataToProcess.put("User", userMgmtSearch);
+			}//this could end up being null, do a null check on the receiving end
 			break;
 		case MODIFY_CLUB:
 			DAO dao8 = new DAO();
