@@ -15,6 +15,7 @@ public class Club {
     public static int COUNT_FOR_IDS = 10;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="club_id ")
     private int clubID = 5;
     @Column(name="club_name")
@@ -135,7 +136,7 @@ public class Club {
         return this.clubName;
     }
 
-    public Integer max() {
+    public Integer maxClubId() {
         Integer result = null;
         Transaction transaction = null;
         try {

@@ -156,6 +156,15 @@ public class DeleteUserUIController {
 
         } else {
             // Else, error state
+            tfDeleteUserSearch.setText("");
+            tfDeleteUserSearch.setStyle(null);
+            tfDeleteUserFirst.setText("");
+            tfDeleteUserLast.setText("");
+            tfDeleteUserPhone.setText("");
+            tfDeleteUserEmail.setText("");
+            tfDeleteUserID.setText("");
+            comboDeleteUserClub.setValue(null);
+            comboDeleteUserPermissions.setValue(null);
             tfDeleteUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
 
