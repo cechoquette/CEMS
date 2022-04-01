@@ -20,13 +20,14 @@ public class ClubEvent {
     private String eventName;
     @Column(name="event_description")
     private String eventDescription;
-//    private Club associatedClub;
     @Column(name="event_date")
     private LocalDateTime eventDateTime;
     @Column(name="event_location")
     private String eventLocation;
-    @Column(name="email_group")//****To change
-    private List<String> emailGroup;
+    @ElementCollection
+    private List<String> emailGroup= new ArrayList<String>();
+    //@Column(name="email_group")//****To change
+    //private List<String> emailGroup;
     @Column(name="event_attendance")
     private int attendance;
     @OneToMany(mappedBy = "clubEvent")

@@ -133,20 +133,4 @@ public class Club {
         return this.clubName;
     }
 
-    public Integer maxClubId() {
-        Integer result = null;
-        Transaction transaction = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
-            Query query = session.createQuery("select max(c.clubID) from Club c");
-            result = (int) query.getResultList().get(0);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-        return result;
-    }
 }
