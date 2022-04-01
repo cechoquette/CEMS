@@ -1,6 +1,7 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,7 +68,9 @@ public class UpdateUserUIController {
         comboUpdateUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
 
         // Add the values to the Clubs dropdown
-        comboUpdateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+
+//        comboUpdateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
+        comboUpdateUserClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
 
         // Set all TextFields to have non-editable styling
         tfUpdateUserFirst.setStyle("-fx-control-inner-background: #cce0ff");

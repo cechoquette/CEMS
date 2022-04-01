@@ -1,6 +1,7 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -58,7 +59,8 @@ public class CreateClubEventUIController {
         //initialize club list
         //initialize email group list
         comboCreateEventEmail.getItems().addAll(Arrays.asList(OptionLists.EMAIL_GROUPS()));
-        comboCreateEventClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+//        comboCreateEventClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
+        comboCreateEventClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
 
     }
 

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 @Table(name="ClubBudget")
 public class ClubBudget extends Budget{
 	
-	public static int COUNT_FOR_IDS;
+	public static int COUNT_FOR_IDS = 0;
 	@Id
 	@Column(name="club_budget_id")
-	private int clubBudgetID;
+	private int clubBudgetID = 0;
 	@ManyToOne
 	private Club club;
 

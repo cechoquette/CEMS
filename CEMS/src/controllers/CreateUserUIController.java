@@ -1,6 +1,7 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -64,7 +65,8 @@ public class CreateUserUIController {
         comboCreateUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
 
         // Add the values to the Clubs dropdown
-        comboCreateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+//        comboCreateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
+        comboCreateUserClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
 
         // Set placeholder text
         tfCreateUserFirst.setPromptText("first name");
