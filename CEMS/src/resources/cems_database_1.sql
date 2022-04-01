@@ -154,3 +154,19 @@ CREATE TABLE IF NOT EXISTS ClubExpenditure (
 
 
 ALTER TABLE club AUTO_INCREMENT=1001;
+
+INSERT INTO user VALUES (
+	999999999, "Master", "User", "master@email.com",
+    "ff0120461cdb27bc43d56335dcc9634b30891ceaebb150837a01ec41ac84d4e3",
+    "555-123-4567", "SuperAdmin", "[B@4bcdcfa",
+    "What course is this project for?", "COSC3506",
+    null, null, null, 11, null
+);
+
+INSERT INTO user VALUES (
+	111111111, "System", "Testing", "test@email.com",
+    "3c519bff0ca6e159c872bbd4d496223a60d3be4de7aabb0319475b05ea9a9e26",
+    "555-123-4567", "Admin+", "[B@e99d198",
+    "What course is this project for?", "COSC3506",
+    null, null, null, 11, null
+);
