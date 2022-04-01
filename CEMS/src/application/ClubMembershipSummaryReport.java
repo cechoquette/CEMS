@@ -31,15 +31,16 @@ public class ClubMembershipSummaryReport extends Report{
         List<User> clubUsers = club.getClubUsers();
 
         if (club == Main.ALLCLUBS){
-            Club[] allclubs = OptionLists.getClubs();
-            reportArray = new Object[allclubs.length+1][2];
+//            Club[] allclubs = OptionLists.getClubs();
+            List<Club> allclubs = OptionLists.getAllClubsList();
+            reportArray = new Object[allclubs.size()+1][2];
 
             reportArray[0][0] = "Club Name: ";
             reportArray[0][1] = "Club Members: ";
 
-            for(int i=0; i < allclubs.length; i++){
-                reportArray[i+1][0] = allclubs[i].toString();
-                reportArray[i+1][1] = String.valueOf(allclubs[i].getClubUsers().size());
+            for(int i=0; i < allclubs.size(); i++){
+                reportArray[i+1][0] = allclubs.get(i).toString();
+                reportArray[i+1][1] = String.valueOf(allclubs.get(i).getClubUsers().size());
             }
 
         }

@@ -1,6 +1,7 @@
 package CEMS.src.application;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 // class to use for storing arrays for drop-down menus,
@@ -35,6 +36,16 @@ public class OptionLists {
 
 		return clubEvents;
 	}
+	//method returns list of current user's club's events, ordered by date
+	public static List<ClubEvent> getUserEventsList(){
+		DAO dao2 = new DAO();
+		List<Club> clubEvents ;
+//				= dao2.getAllClubEventsByClub();
+//		return clubEvents;
+
+
+		return new ArrayList<>();
+	}
 
 	public static ClubEvent[] getEvents(){//no timeframe, all ClubEvents
 		//method will get all ClubEvents from the current User's Club from Database and populate an array of ClubEvents
@@ -64,13 +75,13 @@ public class OptionLists {
 		return new String[0];
 	}
 
-	public static List<Club> getClubs2(){
+	public static List<Club> getAllClubsList(){
 		DAO dao1 = new DAO();
 		List<Club> clubs = dao1.getAllClubs();
 		return clubs;
 	}
 
-
+	//method is for testing only. For real method, use getAllClubsList()
 	public static Club[] getClubs() {
 		//method to get list of all clubs from database
 		//call controller //give it the main User's ID, it should get you the clubs

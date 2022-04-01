@@ -1,6 +1,7 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.*;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -111,9 +112,11 @@ public class ClubEventBudgetUIController {
 	
 	@FXML
 	public void initialize(){
-
-		choiceClubEventBudgetClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
-		choiceClubEventBudgetEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
+		//populate drop-down menus
+//		choiceClubEventBudgetClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
+//		choiceClubEventBudgetEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));//use for testing only
+		choiceClubEventBudgetEvent.getItems().addAll(FXCollections.observableList(OptionLists.getUserEventsList()));
+		choiceClubEventBudgetClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
 
 		//setting uneditable fields to blue
 		tfEventBudgetVenueSubtotal.setStyle("-fx-control-inner-background: #cce0ff");

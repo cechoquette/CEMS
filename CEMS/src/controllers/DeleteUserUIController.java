@@ -1,6 +1,7 @@
 package CEMS.src.controllers;
 
 import CEMS.src.application.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -68,7 +69,8 @@ public class DeleteUserUIController {
         comboDeleteUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
 
         // Add the values to the Clubs dropdown
-        comboDeleteUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+//        comboDeleteUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
+        comboDeleteUserClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
 
         // Set all TextFields to have non-editable styling
         tfDeleteUserFirst.setStyle("-fx-control-inner-background: #cce0ff");

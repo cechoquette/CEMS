@@ -25,8 +25,8 @@ public class ClubEvent {
     private LocalDateTime eventDateTime;
     @Column(name="event_location")
     private String eventLocation;
-    @Column(name="email_group")
-    private String[] emailGroup;
+    @Column(name="email_group")//****To change
+    private List<String> emailGroup;
     @Column(name="event_attendance")
     private int attendance;
     @OneToMany(mappedBy = "clubEvent")
@@ -80,8 +80,9 @@ public class ClubEvent {
 
     public Club getClub() {
         if(club == null)
-        return ALLCLUBS;
-        else return club;
+            return ALLCLUBS;
+        else
+            return this.club;
     }
 
 
@@ -102,15 +103,15 @@ public class ClubEvent {
     }
 
     //method takes a String, either "none" or "all members..." and populates emailGroup accordingly
-    public String[] setEmails(String emailType) {
+    public List<String> setEmails(String emailType) {
         List<User> clubUsers = getClub().getClubUsers();
 
-        String[] emails = new String[clubUsers.size()];
+        List<String> emails = new ArrayList<>();
 
         for (int i=0; i<clubUsers.size(); i++){
-            emails[i] = clubUsers.get(i).getEmail();
+            emails.add(clubUsers.get(i).getEmail());
         }
-        if(emails == null) emails[0] = emailType;
+        if(emails.isEmpty() || emailType.matches("None")) emails.add("test@email.com");
 
         this.emailGroup = emails;
         return emails;
@@ -118,7 +119,7 @@ public class ClubEvent {
     
     
 
-    public void setEmailGroup(String[] emailGroup) {
+    public void setEmailGroup(List<String> emailGroup) {
         this.emailGroup = emailGroup;
     }
 
@@ -142,7 +143,7 @@ public class ClubEvent {
         this.eventLocation = eventLocation;
     }
 
-    public String[] getEmailGroup() {
+    public List<String> getEmailGroup() {
         return emailGroup;
     }
 

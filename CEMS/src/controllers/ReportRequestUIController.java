@@ -3,7 +3,6 @@ package CEMS.src.controllers;
 
 import CEMS.src.application.*;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -12,7 +11,6 @@ import javafx.scene.control.ToggleGroup;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -82,9 +80,10 @@ public class ReportRequestUIController {
 	public void initialize(){
 		
 		choiceReportSelectType.getItems().addAll(Arrays.asList(ReportType.values()));
-//		choiceReportSelectClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
-		choiceReportSelectClub.getItems().addAll(FXCollections.observableList(OptionLists.getClubs2()));
-		choiceReportEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
+//		choiceReportSelectClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
+		choiceReportSelectClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
+//		choiceReportEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));//use for testing only
+		choiceReportEvent.getItems().addAll(FXCollections.observableList(OptionLists.getUserEventsList()));
 
 		choiceReportSelectType.setOnAction(
 				e -> choiceReportTypeChanged()
