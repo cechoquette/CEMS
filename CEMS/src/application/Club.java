@@ -136,7 +136,7 @@ public class Club {
         return this.clubName;
     }
 
-    public Integer max() {
+    public Integer maxClubId() {
         Integer result = null;
         Transaction transaction = null;
         try {

@@ -32,11 +32,13 @@ public class ForgotPasswordUIController {
     @FXML
     private Label lbForgotPassSecQ;
 
+    /** Initialize Method - initializes the Security Question text **/
     @FXML
     private void initialize() {
         lbForgotPassSecQ.setText(Main.CURRENTUSER.getSecurityQuestion());
     }
 
+    /** EventHandler Method - Back button **/
     @FXML
     void btnForgotBackClicked(ActionEvent event) {
         // Clear the fields
@@ -72,20 +74,11 @@ public class ForgotPasswordUIController {
 
     }
 
+    /** EventHandler Method - Reset Password button **/
     @FXML
     void btnForgotRecoverClicked(ActionEvent event) {
         // Check that all mandatory fields are filled
         checkMandatoryFields();
-
-//        // Put data into hashmap and send to controller
-//        dataToSubmit = new HashMap<Object, Object>();
-//        dataToSubmit.put("ForgotPasswordEmail", tfForgotEmail.getText());
-//        dataToSubmit.put("ForgotPasswordSecurityA", tfForgotPassSecA.getText());
-//
-//        HashMap<Object, Object> hm;
-//        hm = Controller.processRequest(RequestType.GET_USER_FORGOT_PASS, dataToSubmit);
-//
-//        User user = (User)hm.get("User");
 
         // Once the GET_USER request has run, confirm user and conditionally progress through app
         if (Main.CURRENTUSER != null) {
