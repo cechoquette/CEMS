@@ -415,7 +415,7 @@ public class DAO {
             Transaction transaction = null;
             List<Expenditure> expenditure = null;
             try {
-                    Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             CriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery<Expenditure> criteria = builder.createQuery(Expenditure.class);
@@ -429,6 +429,7 @@ public class DAO {
             }
             return expenditure;
         }
+
 
     public Integer max() {
         Integer result = null;
@@ -468,6 +469,7 @@ public class DAO {
         }
     */
     //Club Test
+
 /*    public static void main(String[] args){
         DAO dao = new DAO();
         Club club = new Club("knitting club", "we enjoy knitting");
@@ -484,9 +486,9 @@ public class DAO {
         System.out.println(dao.getClub(1));
         System.out.println(dao.getAllClubs());
         System.out.println(club1.max());
-          System.out.println(dao.getClubBudgetByClub("sowing club"));
-
+        System.out.println(dao.getClubBudgetByClub("sowing club"));
+        System.out.println(dao.getAllClubs());
+        System.out.println(dao.getAllExpenditure());
     }
-*/
-
+    */
 }
