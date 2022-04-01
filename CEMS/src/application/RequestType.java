@@ -3,6 +3,7 @@ public enum RequestType {
 
 	CREATE_USER("Create User"),
 	GET_USER("Get User"), // Retrieve the User from DB (CURRENTUSER)
+	GET_USER_FORGOT_PASS("Get User - Forgot Password"),
 	MODIFY_USER("Modify User"),
 	MODIFY_USER_PERMISSION("Modify User Permission"),
 	DELETE_USER("Delete User"),
@@ -31,6 +32,8 @@ public enum RequestType {
 	QUERY_DATABASE("Query Database"),//use if searching if something is in Database, not to return data
 	DELETE_FROM_DATABASE("Delete from Database"),
 	SEARCH_FOR_USER("Search for User"),
+	SEARCH_FOR_USER_USERMGMT("Search for User - User Management"),
+	SEARCH_FOR_USER_UPDATE("Search for User - Update User Form"),
 //	UPDATE_CLUB_MEMBER("Update Club Member"),
 //	DELETE_CLUB_MEMBER("Delete Club Member"),
 //	GET_CLUB_MEMBER("Get Club Member from Database"),

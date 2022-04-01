@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 
 import static CEMS.src.application.Main.defaultPane;
 
@@ -59,6 +60,7 @@ public class DeleteUserUIController {
     @FXML
     private BorderPane deleteUserBorderPane;
 
+    /** Initialize Method - method to set fields on load **/
     @FXML
     public void initialize() {
 
@@ -78,6 +80,7 @@ public class DeleteUserUIController {
         comboDeleteUserPermissions.setStyle("-fx-control-inner-background: #cce0ff");
     }
 
+    /** Method to check that all mandatory fields are filled **/
     public void checkMandatoryFields() {
         // Check the search field
         if (!InputValidation.validateNotEmpty(tfDeleteUserSearch)) {
@@ -87,6 +90,7 @@ public class DeleteUserUIController {
         }
     }
 
+    /** EventHandler Method - Back button **/
     @FXML
     void btnDeleteUserBackClicked(ActionEvent event) {
         // Clear the fields
@@ -97,6 +101,7 @@ public class DeleteUserUIController {
         defaultPane.setCenter(mainScreen);
     }
 
+    /** EventHandler Method - Cancel button **/
     @FXML
     void btnDeleteUserCancelClicked(ActionEvent event) {
         // Clear the fields
@@ -114,6 +119,7 @@ public class DeleteUserUIController {
 
     }
 
+    /** EventHandler Method - Search button **/
     @FXML
     void btnDeleteUserSearchClicked(ActionEvent event) {
         checkMandatoryFields();
@@ -123,44 +129,37 @@ public class DeleteUserUIController {
         dataToSubmit.put("DeleteSearchEmail", tfDeleteUserSearch.getText());
 
         // Send a query to the DB for the users email address
-        dataToSubmit = Controller.processRequest(RequestType.SEARCH_FOR_USER, dataToSubmit);
-//        System.out.println(dataToSubmit);
+        HashMap<Object, Object> hm;
+        hm = Controller.processRequest(RequestType.SEARCH_FOR_USER, dataToSubmit);
+
+        User user = (User)hm.get("User");
 
         // If found, return results in the correct fields
-        User user = (User)dataToSubmit.get("User");
-
         if (user != null) {
             tfDeleteUserFirst.setText(user.getFirstName());
             tfDeleteUserLast.setText(user.getLastName());
             tfDeleteUserEmail.setText(user.getEmail());
             tfDeleteUserID.setText(String.valueOf(user.getStudentID()));
             tfDeleteUserPhone.setText(user.getPhone());
+            comboDeleteUserClub.setValue(user.getUserClub());
+            if (user.getPermission().equals(PermissionType.ADMIN.toString())) {
+                comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
+            }
+            if (user.getPermission().equals(PermissionType.ADMIN_PLUS.toString())) {
+                comboDeleteUserPermissions.setValue(PermissionType.ADMIN_PLUS);
+            }
+            if (user.getPermission().equals(PermissionType.SUPER_ADMIN.toString())) {
+                comboDeleteUserPermissions.setValue(PermissionType.SUPER_ADMIN);
+            }
+
         } else {
+            // Else, error state
             tfDeleteUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
 
-        
-//        // TEST DATA TO APPEAR ON SUBMIT
-//        if (InputValidation.validateNotEmpty(tfDeleteUserSearch)) {
-//            tfDeleteUserFirst.setText("Erin");
-//            tfDeleteUserLast.setText("Cameron");
-//            tfDeleteUserPhone.setText("857-685-3453");
-//            tfDeleteUserEmail.setText("erin@email.com");
-//            tfDeleteUserID.setText("023485212");
-//            comboDeleteUserClub.setValue(OptionLists.getClubs()[1]);
-//            comboDeleteUserPermissions.setValue(PermissionType.ADMIN);
-//        } else {
-//            tfDeleteUserFirst.setText("");
-//            tfDeleteUserLast.setText("");
-//            tfDeleteUserPhone.setText("");
-//            tfDeleteUserEmail.setText("");
-//            tfDeleteUserID.setText("");
-//            comboDeleteUserClub.setValue(null);
-//            comboDeleteUserPermissions.setValue(null);
-//        }
-
     }
 
+    /** EventHandler Method - Submit button **/
     @FXML
     void btnDeleteUserSubmitClicked(ActionEvent event) {
         checkMandatoryFields();
@@ -176,6 +175,9 @@ public class DeleteUserUIController {
 
         // Send data to the controller
         Controller.processRequest(RequestType.DELETE_USER, dataToSubmit);
+
+        // Clear form and send user to previous page
+        btnDeleteUserBackClicked(event);
     }
 
 }

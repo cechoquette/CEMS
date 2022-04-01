@@ -55,6 +55,7 @@ public class UserManagementUIController {
     @FXML
     private Text textUserMgmtResultsNum;
 
+    /** Method to check that all mandatory fields are filled in **/
     public void checkMandatoryFields() {
         // Check the search field
         if (!InputValidation.validateNotEmpty(tfUserManagementSearch)) {
@@ -64,18 +65,21 @@ public class UserManagementUIController {
         }
     }
 
+    /** EventHandler Method - Create User button **/
     @FXML
     void btnUserMgmtCreateClicked(ActionEvent event) {
         Pane mainScreen = ViewBuilder.newScreen("CreateUserForm");
         defaultPane.setCenter(mainScreen);
     }
 
+    /** EventHandler Method - Delete User button **/
     @FXML
     void btnUserMgmtDeleteClicked(ActionEvent event) {
         Pane mainScreen = ViewBuilder.newScreen("DeleteUserForm");
         defaultPane.setCenter(mainScreen);
     }
 
+    /** EventHandler Method - Search button **/
     @FXML
     void btnUserMgmtSearchClicked(ActionEvent event) {
         checkMandatoryFields();
@@ -85,11 +89,11 @@ public class UserManagementUIController {
         dataToSubmit.put("UserManagementSearchEmail", tfUserManagementSearch.getText());
 
         // Send a query to the DB for the users email address
-        dataToSubmit = Controller.processRequest(RequestType.SEARCH_FOR_USER, dataToSubmit);
-//        System.out.println(dataToSubmit);
+        HashMap<Object, Object> hm;
+        hm = Controller.processRequest(RequestType.SEARCH_FOR_USER_USERMGMT, dataToSubmit);
 
         // If found, return results in the correct fields
-        User user = (User)dataToSubmit.get("User");
+        User user = (User)hm.get("User");
 
         // If found, return results in the correct fields
         if (user != null) {
@@ -106,27 +110,9 @@ public class UserManagementUIController {
             tfUserManagementSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
 
-//        // TEST DATA TO APPEAR ON SUBMIT
-//        if (InputValidation.validateNotEmpty(tfUserManagementSearch)) {
-//            textUserMgmtResultsNum.setText("1");
-//            textUserMgmtName.setText("Erin");
-//            textUserMgmtEmail.setText("erin@email.com");
-//            textUserMgmtID.setText("023485212");
-//            textUserMgmtPhone.setText("856-747-4534");
-//            textUserMgmtClub.setText(OptionLists.getClubs()[1].getClubName());
-//            textUserMgmtPermissions.setText(PermissionType.ADMIN.toString());
-//        } else {
-//            textUserMgmtResultsNum.setText("0");
-//            textUserMgmtName.setText("(user name)");
-//            textUserMgmtEmail.setText("(email)");
-//            textUserMgmtID.setText("(student ID)");
-//            textUserMgmtPhone.setText("(phone number)");
-//            textUserMgmtClub.setText("(club name)");
-//            textUserMgmtPermissions.setText("(permissions)");
-//        }
-
     }
 
+    /** EventHandler Method - Update User button **/
     @FXML
     void btnUserMgmtUpdateClicked(ActionEvent event) {
         Pane mainScreen = ViewBuilder.newScreen("UpdateUserForm");

@@ -1,5 +1,9 @@
 package CEMS.src.application;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,5 +133,22 @@ public class Club {
     @Override
     public String toString(){
         return this.clubName;
+    }
+
+    public Integer max() {
+        Integer result = null;
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(c.clubID) from Club c");
+            result = (int) query.getResultList().get(0);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return result;
     }
 }

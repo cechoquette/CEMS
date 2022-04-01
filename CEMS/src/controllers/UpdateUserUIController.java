@@ -59,6 +59,7 @@ public class UpdateUserUIController {
     @FXML
     private BorderPane updateUserBorderPane;
 
+    /** Initialize Method - sets fields on form on load **/
     @FXML
     public void initialize() {
 
@@ -77,6 +78,7 @@ public class UpdateUserUIController {
         comboUpdateUserClub.setStyle("-fx-control-inner-background: #cce0ff");
     }
 
+    /** Method to check that all mandatory fields have been filled **/
     public void checkMandatoryFields() {
         // Check the search field
         if (!InputValidation.validateNotEmpty(tfUpdateUserSearch)) {
@@ -86,6 +88,7 @@ public class UpdateUserUIController {
         }
     }
 
+    /** EventHandler Method - Back button **/
     @FXML
     void btnUpdateUserBackClicked(ActionEvent event) {
         // Clear the fields
@@ -97,6 +100,7 @@ public class UpdateUserUIController {
 
     }
 
+    /** EventHandler Method - Cancel button **/
     @FXML
     void btnUpdateUserCancelClicked(ActionEvent event) {
         // Clear the fields
@@ -115,37 +119,57 @@ public class UpdateUserUIController {
 
     }
 
+    /** EventHandler Method - Search button **/
     @FXML
     void btnUpdateUserSearchClicked(ActionEvent event) {
         checkMandatoryFields();
 
-        // TODO: send a query to the DB for the users email address
+        // Add data to the hashmap
+        dataToSubmit = new HashMap<Object, Object>();
+        dataToSubmit.put("UpdateUserPermissionSearchEmail", tfUpdateUserSearch.getText());
 
-        // TODO: If found, return results in the correct textfields
+        // Send a query to the DB for the users email address
+        HashMap<Object, Object> hm;
+        hm = Controller.processRequest(RequestType.SEARCH_FOR_USER_UPDATE, dataToSubmit);
 
-        // TODO: If not found, highlight the search bar red
-//        tfUpdateUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+        User user = (User)hm.get("User");
 
-        // TEST DATA TO APPEAR ON SUBMIT
-        tfUpdateUserFirst.setText("Erin");
-        tfUpdateUserLast.setText("Cameron");
-        tfUpdateUserPhone.setText("857-685-3453");
-        tfUpdateUserEmail.setText("erin@email.com");
-        tfUpdateUserID.setText("023485212");
-        comboUpdateUserClub.setValue(OptionLists.getClubs()[1]);
-        comboUpdateUserPermissions.setValue(PermissionType.ADMIN);
-
+        if (user != null) {
+            System.out.println(user.getEmail() + "is not null");
+            tfUpdateUserFirst.setText(user.getFirstName());
+            tfUpdateUserLast.setText(user.getLastName());
+            tfUpdateUserID.setText(String.valueOf(user.getStudentID()));
+            tfUpdateUserEmail.setText(user.getEmail());
+            tfUpdateUserPhone.setText(user.getPhone());
+            comboUpdateUserClub.setValue(user.getUserClub());
+            if (user.getPermission().equals(PermissionType.ADMIN.toString())) {
+                comboUpdateUserPermissions.setValue(PermissionType.ADMIN);
+                comboUpdateUserPermissions.setVisible(true);
+            }
+            if (user.getPermission().equals(PermissionType.ADMIN_PLUS.toString())) {
+                comboUpdateUserPermissions.setValue(PermissionType.ADMIN_PLUS);
+            }
+            if (user.getPermission().equals(PermissionType.SUPER_ADMIN.toString())) {
+                comboUpdateUserPermissions.setValue(PermissionType.SUPER_ADMIN);
+            }
+        } else {
+            tfUpdateUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+        }
     }
 
+    /** EventHandler Method - Submit button **/
     @FXML
     void btnUpdateUserSubmitClicked(ActionEvent event) {
+        checkMandatoryFields();
 
-        // TODO: Add the permission update to the hashmap
+        // Add the permission update to the hashmap
         dataToSubmit = new HashMap<Object, Object>();
-        dataToSubmit.put("", comboUpdateUserPermissions.getValue());
+        dataToSubmit.put("UpdateUserPermission", comboUpdateUserPermissions.getValue());
 
         // Send data to the controller
-        Controller.processRequest(RequestType.MODIFY_USER, dataToSubmit);
+        Controller.processRequest(RequestType.MODIFY_USER_PERMISSION, dataToSubmit);
+
+        btnUpdateUserCancelClicked(event);
     }
 
 }

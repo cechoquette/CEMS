@@ -2,6 +2,7 @@ package CEMS.src.application;
 
 import CEMS.src.controllers.LoginPageUIController;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.util.HashMap;
 
@@ -15,10 +16,9 @@ public class LoginForm extends Form {
     // Constructor
     LoginForm(RequestType requestType, HashMap<Object, Object> hmData) throws NoSuchProviderException {
         this.hmData = hmData;
-        logUserIn();
     }
 
-    /** Method to log a user into the system - cross-references user data from the DB **/
+    /** Method to log a user into the system - cross-references user data from CURRENTUSER **/
     public boolean logUserIn() {
         //hmData is now a class data member. No need for parameters this way.
 
@@ -44,34 +44,54 @@ public class LoginForm extends Form {
         } else {
             return false;
         }
-
-//        if (isFilled()) {
-//            // TODO: Code
-//        }
     }
 
+    /** Method to reset a user's password - cross-references user data from CURRENTUSER **/
     public void passwordReset(User user) {
         // Retrieve the user's password on reset attempt
-        String password = (String)hmData.get("ResetUserPassword");
+        String password = hmData.get("ResetUserPassword").toString();
+        String salt = "";
 
-        // Retrieve the user's salt from the DB
-        String salt = CURRENTUSER.getUserSalt();
+        // If the main user already has a password setup
+        if (Main.CURRENTUSER.getUserSalt() != null) {
+            // Retrieve the user's salt from the DB
+            salt = Main.CURRENTUSER.getUserSalt();
+            String hashedPassword = null;
 
-        // Hash the newly entered password
-        String hashedPassword = null;
-        try {
-            hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, password, salt);
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
+            // Hash the new password
+            try {
+                hashedPassword = PasswordUtil.hashPassword(Main.CURRENTUSER, password, salt);
+            } catch (NoSuchProviderException e) {
+                e.printStackTrace();
+            }
+
+            // Set the CURRENTUSER's password to the newly hashed password
+            Main.CURRENTUSER.setPassword(hashedPassword);
+
+        } else {
+            // Else, if the user does not already have a password set up
+            try {
+                salt = PasswordUtil.generateSalt();
+                Main.CURRENTUSER.setUserSalt(salt);
+
+                String hashedPassword = null;
+
+                // Hash the new password
+                try {
+                    hashedPassword = PasswordUtil.hashPassword(Main.CURRENTUSER, password, salt);
+                } catch (NoSuchProviderException e) {
+                    e.printStackTrace();
+                }
+
+                // Set the CURRENTUSER's password to the newly hashed password
+                Main.CURRENTUSER.setPassword(hashedPassword);
+
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (NoSuchProviderException e) {
+                e.printStackTrace();
+            }
         }
-
-        // Set the CURRENTUSER's password to the newly hashed password
-        CURRENTUSER.setPassword(hashedPassword);
-    }
-
-    public boolean isFilled() {
-        // TODO: Ensure all fields are filled, if not - return false, else - return true
-        return isFilled;
     }
 
 }

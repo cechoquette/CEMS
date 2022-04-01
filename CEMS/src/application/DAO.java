@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
@@ -71,7 +72,7 @@ public class DAO {
             Query query = session.createQuery(hql);
             query.setParameter("name", clubName);
             query.setMaxResults(1);
-            club = (Club)query.uniqueResult();
+            club = (Club) query.uniqueResult();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -81,27 +82,25 @@ public class DAO {
         return club;
     }
 
-      @SuppressWarnings("unchecked")
-        public List<Club> getAllClubs() {
-            Transaction transaction = null;
-            List<Club> clubs = null;
-            try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                CriteriaBuilder builder = session.getCriteriaBuilder();
-                CriteriaQuery<Club> criteria = builder.createQuery(Club.class);
-                criteria.from(Club.class);
-                clubs = session.createQuery(criteria).getResultList();
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
+    @SuppressWarnings("unchecked")
+    public List<Club> getAllClubs() {
+        Transaction transaction = null;
+        List<Club> clubs = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Club> criteria = builder.createQuery(Club.class);
+            criteria.from(Club.class);
+            clubs = session.createQuery(criteria).getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
             }
-            return clubs;
         }
-
-    @SuppressWarnings("null")
+        return clubs;
+    }
 
     //// UserDAO
     public void addUser(User user) {
@@ -143,7 +142,7 @@ public class DAO {
             Query query = session.createQuery(hql);
             query.setParameter("email", userEmail);
             query.setMaxResults(1);
-            user = (User)query.uniqueResult();
+            user = (User) query.uniqueResult();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -153,25 +152,6 @@ public class DAO {
         return user;
     }
 
-    /*
-        @SuppressWarnings("unchecked")
-        public List<User> getAllUsers() {
-            Transaction transaction = null;
-            List<User> users = null;
-            try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                users = session.createQuery("from user").list();
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
-            }
-            return users;
-        }
-    */ // get all not working yet
-    @SuppressWarnings("null")
     public void deleteUser(int studentID) {
         Transaction transaction = null;
         User user = null;
@@ -206,7 +186,6 @@ public class DAO {
         }
     }
 
-
     public ClubBudget getClubBudget(int clubBudgetID) {
         Transaction transaction = null;
         ClubBudget clubBudget = null;
@@ -222,6 +201,27 @@ public class DAO {
         }
         return clubBudget;
     }
+
+    public ClubBudget getClubBudgetByClub(String clubName) {
+        Transaction transaction = null;
+        ClubBudget clubBudget = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "select cb from ClubBudget cb inner join cb.club where cb.clubName =: name ";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", clubName);
+            query.setMaxResults(1);
+            clubBudget = (ClubBudget) query.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return clubBudget;
+    }
+
 
     /*    @SuppressWarnings("unchecked")
         public List<ClubBudget> getAllClubBudgets() {
@@ -409,16 +409,19 @@ public class DAO {
         }
         return expenditure;
     }
-    /*
-        @SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
         public List<Expenditure> getAllExpenditure() {
             Transaction transaction = null;
             List<Expenditure> expenditure = null;
             try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                clubEventBudget = session.createQuery("from expenditure").list();
-                transaction.commit();
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Expenditure> criteria = builder.createQuery(Expenditure.class);
+            criteria.from(Expenditure.class);
+            expenditure = session.createQuery(criteria).getResultList();
+            transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
                     transaction.rollback();
@@ -426,206 +429,49 @@ public class DAO {
             }
             return expenditure;
         }
-    */ // get all not working yet
 
 
-    /////////ClubMemberDAO
-//    public void addClubMember(ClubMember clubMember) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            Object object = session.save(clubMember);
-//            session.get(ClubMember.class, (Serializable) object);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public void updateClubMember(ClubMember clubMember) {
-//        Transaction transaction = null;
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            transaction = session.beginTransaction();
-//            session.saveOrUpdate(clubMember);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
-
-//    public ClubMember getClubMember(int student_id) {
-//        Transaction transaction = null;
-//        ClubMember clubMember = null;
-//        try {
-//            Session session = HibernateUtil.getSessionFactory().openSession();
-//            transaction = session.beginTransaction();
-//            clubMember = session.get(ClubMember.class, student_id); //get student object by id
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//        }
-//        return clubMember;
-//    }
-
-    /*    @SuppressWarnings("unchecked")
-        public List<ClubMember> getAllClubMember() {
-            Transaction transaction = null;
-            List<ClubMember> clubMembers = null;
-            try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                clubMembers = session.createQuery("from club").list();
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
-            }
-            return clubMembers;
-        }
-    */ /*
- getall() not working yet
-    @SuppressWarnings("null")
-    public void deleteClubMember(int student_id) {
+    public Integer max() {
+        Integer result = null;
         Transaction transaction = null;
-        ClubMember clubMember = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            clubMember = session.get(ClubMember.class, student_id);
-            if (clubMember != null) {
-                session.delete(clubMember);
-            }
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(c.clubID) from Club c");
+            result = (int) query.getResultList().get(0);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
+        return result;
     }
-*/
 
-   /*
 
-    //// Add
-    public void addUser(User user) {
-        Transaction transaction = null;
-        Session session = newSession.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-            System.out.println("Save Successful");
-        } catch (RuntimeException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
+    /*
+        public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
+            DAO dao = new DAO();
+            Club club1 = new Club("cs club","we enjoy cs");
+            User user = new User("Erin", "Cameron", "867-878-6767",
+                    "erin@algoma.ca", 123456789, club1, "Admin", "Age?", "29");
+            dao.addClub(club1);
+            dao.getClubByName("cs club");
+            dao.addUser(user);
+            System.out.println(dao.getClubByName("cs club"));
+            user.setPassword("25163");
+            dao.updateUser(user);
+            System.out.println(dao.getUser("erin@algoma.ca"));
+            user.setPassword("glokmn");
+            user.setUserSalt("35789");
+            dao.updateUser(user);
+            System.out.println(dao.getUser("erin@algoma.ca"));
         }
+    */
+    //Club Test
 
-    }
-
-    public void addClub(Club club) {
-        Transaction transaction = null;
-        Session session = newSession.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            session.save(club);
-            session.getTransaction().commit();
-            System.out.println("Save Successful");
-        } catch (RuntimeException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-
-    public void addExpenditure(Expenditure expenditure) {
-        Transaction transaction = null;
-        Session session = newSession.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            session.save(expenditure);
-            session.getTransaction().commit();
-            System.out.println("Save Successful");
-        } catch (RuntimeException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-    }
-
-    //// GET
-
-
-    //// Lists
-
-    public List<Club> getClubs() {
-        List<Club> clubs = new ArrayList<Club>();
-        Transaction transaction = null;
-        Session session = newSession.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            clubs = session.createQuery("from Club" ).list();
-
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return clubs;
-    }
-
-    public List<Expenditure> getExpenditures() {
-        List<Expenditure> expenditures = new ArrayList<Expenditure>();
-        Transaction transaction = null;
-        Session session = newSession.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            expenditures
-                    = session.createQuery("from Expenditure" ).list();
-
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return expenditures;
-    }
-
-
-
-/* User Test
-    public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
+/*    public static void main(String[] args){
         DAO dao = new DAO();
-        Club club1 = new Club("cs club","we enjoy cs");
-        User user = new User("Erin", "Cameron", "867-878-6767",
-                "erin@algoma.ca", 123456789, club1, "Admin", "Age?", "29");
-        dao.addClub(club1);
-        //dao.getClub("cs club");
-        dao.addUser(user);
-        System.out.println(dao.getClubByName("cs club"));
-        //user.setPassword("25163");
-        //dao.updateUser(user);
-        System.out.println(dao.getUser("erin@algoma.ca"));
-*/
-/* Club Test
         Club club = new Club("knitting club", "we enjoy knitting");
         Club club1 = new Club("sowing club", "we enjoy sowing");
         Club club2 = new Club("running club", "we enjoy runnig");
@@ -639,7 +485,10 @@ public class DAO {
         dao.updateClub(club2);
         System.out.println(dao.getClub(1));
         System.out.println(dao.getAllClubs());
-
+        System.out.println(club1.max());
+        System.out.println(dao.getClubBudgetByClub("sowing club"));
+        System.out.println(dao.getAllClubs());
+        System.out.println(dao.getAllExpenditure());
     }
     */
 }
