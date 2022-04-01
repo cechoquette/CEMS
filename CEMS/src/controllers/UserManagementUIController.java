@@ -107,6 +107,12 @@ public class UserManagementUIController {
         } else {
             // If not found, display 0 results found and error state
             textUserMgmtResultsNum.setText("0");
+            textUserMgmtName.setText("(user name)");
+            textUserMgmtClub.setText("(club name)");
+            textUserMgmtEmail.setText("(email)");
+            textUserMgmtID.setText("(student ID)");
+            textUserMgmtPhone.setText("(phone)");
+            textUserMgmtPermissions.setText("(permissions)");
             tfUserManagementSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
 

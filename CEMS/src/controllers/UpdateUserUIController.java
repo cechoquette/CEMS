@@ -153,6 +153,19 @@ public class UpdateUserUIController {
                 comboUpdateUserPermissions.setValue(PermissionType.SUPER_ADMIN);
             }
         } else {
+            // Clear the fields
+            tfUpdateUserSearch.setText("");
+            tfUpdateUserSearch.setStyle(null);
+            tfUpdateUserFirst.setText("");
+            tfUpdateUserLast.setText("");
+            tfUpdateUserPhone.setText("");
+            tfUpdateUserEmail.setText("");
+            tfUpdateUserID.setText("");
+            comboUpdateUserClub.setValue(null);
+            comboUpdateUserPermissions.setValue(null);
+            comboUpdateUserPermissions.setStyle(null);
+
+            // Set error state
             tfUpdateUserSearch.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
         }
     }
