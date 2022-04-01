@@ -1,12 +1,20 @@
 package CEMS.src.controllers;
 
+import CEMS.src.application.Main;
+import CEMS.src.application.PermissionType;
 import CEMS.src.application.ViewBuilder;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import static CEMS.src.application.Main.defaultPane;
 
@@ -52,8 +60,20 @@ public class MenuBarUIController {
 
     @FXML
     void menuFileUserMgmtClicked(ActionEvent event) {
-        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
-        defaultPane.setCenter(mainScreen);
+        if (Main.CURRENTUSER.getPermission().equals(PermissionType.SUPER_ADMIN.toString())) {
+            Pane mainScreen = ViewBuilder.newScreen("UserManagement");
+            defaultPane.setCenter(mainScreen);
+        } else {
+            try {
+                Desktop.getDesktop().browse(new URI("mailto:sysadmin@services.net"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+//        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
+//        defaultPane.setCenter(mainScreen);
     }
 
     @FXML
