@@ -1,5 +1,6 @@
 package CEMS.src.application;
 import CEMS.src.controllers.LoginPageUIController;
+import com.mysql.cj.log.Log;
 
 import java.security.NoSuchProviderException;
 import java.time.LocalDate;
@@ -149,10 +150,10 @@ public class Controller {
 		case GET_USER: // get user based on email address for logins
 
 			DAO dao18 = new DAO();
-			dao18.getUser((String)dataToProcess.get("LoginUserEmail"));
-			dao18.updateUser(Main.CURRENTUSER);
-
-			case SEARCH_FOR_USER: //call database, return if found
+			User currentUser = dao18.getUser((String)dataToProcess.get("LoginUserEmail"));
+			PasswordUtil.setCurrentUser(currentUser);
+			break;
+		case SEARCH_FOR_USER: //call database, return if found
 				DAO dao24 = new DAO();
 			User user = dao24.getUser(((String)dataToProcess.get("DeleteSearchEmail")));//Changed this. DAO takes a String email.
 			if(user != null){

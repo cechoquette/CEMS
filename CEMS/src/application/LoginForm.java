@@ -44,10 +44,6 @@ public class LoginForm extends Form {
         } else {
             return false;
         }
-
-//        if (isFilled()) {
-//            // TODO: Code
-//        }
     }
 
     public void passwordReset(User user) {

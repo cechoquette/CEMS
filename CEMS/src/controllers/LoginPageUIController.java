@@ -82,57 +82,41 @@ public class LoginPageUIController {
         dataToSubmit.put("LoginUserEmail", tfLoginEmail.getText());
         dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
 
-//        dataToSubmit = Controller.processRequest(RequestType.GET_USER, dataToSubmit);
+        Controller.processRequest(RequestType.GET_USER, dataToSubmit);
 
-//        System.out.println((String)dataToSubmit.get("UserFirstName")); // test
-
-        // Once the GET_USER request has run, add the remaining data to the hashmap and process the login request
-//        dataToSubmit.put("UserStudentID", CURRENTUSER.getStudentID());
-//        dataToSubmit.put("UserFirstName", CURRENTUSER.getFirstName());
-//        dataToSubmit.put("UserLastName", CURRENTUSER.getLastName());
-//        dataToSubmit.put("UserEmail", CURRENTUSER.getEmail());
-//        dataToSubmit.put("UserPassword", CURRENTUSER.getPassword());
-//        dataToSubmit.put("UserPhoneNumber", CURRENTUSER.getPhone());
-//        dataToSubmit.put("UserPermissions", CURRENTUSER.getPermission());
-//        dataToSubmit.put("UserSalt", CURRENTUSER.getUserSalt());
-//        dataToSubmit.put("UserSecurityQ", CURRENTUSER.getSecurityQuestion());
-//        dataToSubmit.put("UserSecurityA", CURRENTUSER.getSecurityAnswer());
-
-//        Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
-
-//        // Retrieve the user's email on login attempt
-//        String email = tfLoginEmail.getText();
+//        if (Main.CURRENTUSER != null) {
+//            Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
 //
-//        // Retrieve the user's salt from the DB
-//        String salt = CURRENTUSER.getUserSalt();
+//            // Retrieve the user's email on login attempt
+//            String email = tfLoginEmail.getText();
 //
-//        // Hash the entered password
-//        String hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, pfLoginPassword.getText(), salt);
+//            // Retrieve the user's salt from the DB
+//            String salt = CURRENTUSER.getUserSalt();
 //
-//        // Compare the email and the hashed password to the one stored in the DB
-//        // Check the email
-//        if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
-//            System.out.println("Email is correct");
-//            // Check the password
-//            if (CURRENTUSER.getPassword().equals(hashedPassword)) {
-//                System.out.println("Password is correct");
-//                // Link to the home page
-//                Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-//                Pane mainScreen = ViewBuilder.newScreen("HomePage");
-//                defaultPane.setTop(menuScreen);
-//                defaultPane.setCenter(mainScreen);
-//            } else {
-//                // Set the password field as an error state
-//                pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+//            // Hash the entered password
+//            String hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, pfLoginPassword.getText(), salt);
+//
+//            // Compare the email and the hashed password to the one stored in the DB
+//            // Check the email
+//            if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
+//                System.out.println("Email is correct");
+//                // Check the password
+//                if (CURRENTUSER.getPassword().equals(hashedPassword)) {
+//                    System.out.println("Password is correct");
+//                    // Link to the home page
+//                    Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+//                    Pane mainScreen = ViewBuilder.newScreen("HomePage");
+//                    defaultPane.setTop(menuScreen);
+//                    defaultPane.setCenter(mainScreen);
+//                } else {
+//                    // Set the password field as an error state
+//                    pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+//                }
 //            }
 //        } else {
 //            // Set the email field as an error state
 //            tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
 //        }
-
-
-        // TODO: When logging in if true call controller - if not true cancel the submit action
-        // nothing happens until everything is correct
 
     }
 
