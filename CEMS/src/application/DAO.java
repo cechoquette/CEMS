@@ -430,7 +430,7 @@ public class DAO {
     }
 
     @SuppressWarnings("unchecked")
-        public List<Expenditure> getAllExpenditure() {
+    public List<Expenditure> getAllExpenditure() {
             Transaction transaction = null;
             List<Expenditure> expenditure = null;
             try {
