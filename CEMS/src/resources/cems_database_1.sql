@@ -7,7 +7,7 @@ USE CEMSDatabase ;
 
 -- Table Club
 CREATE TABLE IF NOT EXISTS Club (
-  club_id INT(11) NOT NULL AUTO_INCREMENT,
+  club_id INT NOT NULL ,
   club_name VARCHAR(45) NOT NULL,
   club_description MEDIUMTEXT NOT NULL,
   PRIMARY KEY (club_id));
@@ -139,7 +139,6 @@ CREATE TABLE IF NOT EXISTS ClubExpenditure (
   PRIMARY KEY (expenditure_id));
 
 
-ALTER TABLE club AUTO_INCREMENT=1001;
 
 INSERT INTO user VALUES (
 	999999999, "Master", "User", "master@email.com",
