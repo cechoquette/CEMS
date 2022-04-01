@@ -528,7 +528,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("select max(ceb.eventBudgetID from ClubEventBudget ceb");
+            Query query = session.createQuery("select max(ceb.eventBudgetID) from ClubEventBudget ceb");
             result = (int) query.getResultList().get(0);
             transaction.commit();
         } catch (Exception e) {
@@ -544,7 +544,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("select max(e.expenditureID from Expenditure e");
+            Query query = session.createQuery("select max(e.expenditureID) from Expenditure e");
             result = (int) query.getResultList().get(0);
             transaction.commit();
         } catch (Exception e) {

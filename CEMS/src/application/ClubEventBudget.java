@@ -100,7 +100,7 @@ public class ClubEventBudget extends Budget{
 	public ClubEventBudget(){}
 	
 	public ClubEventBudget(ArrayList<Double> sortedData, Club club, ClubEvent clubEvent){
-		this.eventBudgetID = COUNT_FOR_IDS++;
+		this.eventBudgetID = ++COUNT_FOR_IDS;
 		
 		this.venueEntertainment = sortedData.get(0);
 		this.venueLocationRental = sortedData.get(1);
