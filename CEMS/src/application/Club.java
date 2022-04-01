@@ -15,6 +15,7 @@ public class Club {
     public static int COUNT_FOR_IDS;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="club_id ")
     private int clubID;
     @Column(name="club_name")
