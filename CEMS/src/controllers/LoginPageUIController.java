@@ -34,6 +34,7 @@ public class LoginPageUIController {
     @FXML
     private TextField tfLoginEmail;
 
+    /** Method to check that the mandatory fields are filled **/
     public void checkMandatoryFields() {
         // All fields in the form are mandatory, so check them all
         // Email
@@ -55,6 +56,7 @@ public class LoginPageUIController {
         }
     }
 
+    /** EventHandler Method - Cancel button **/
     @FXML
     void btnLoginCancelClicked(ActionEvent event) {
         // Clear the fields
@@ -64,6 +66,7 @@ public class LoginPageUIController {
         pfLoginPassword.setStyle(null);
     }
 
+    /** EventHandler Method - Forgot Password button **/
     @FXML
     void btnLoginForgotClicked(ActionEvent event) {
         btnLoginCancelClicked(event);
@@ -74,6 +77,7 @@ public class LoginPageUIController {
         defaultPane.setCenter(mainScreen);
     }
 
+    /** EventHandler Method - Login button **/
     @FXML
     void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
         checkMandatoryFields();
@@ -86,7 +90,7 @@ public class LoginPageUIController {
 //
 //            Controller.processRequest(RequestType.GET_USER, dataToSubmit);
 //
-//            if (Main.CURRENTUSER != null) {
+//            if ((Main.CURRENTUSER != null) && (Main.CURRENTUSER.getUserSalt() != null)) {
 //                Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
 //
 //                // Retrieve the user's email on login attempt
