@@ -195,17 +195,13 @@ public class Controller {
 			break;
 		case MODIFY_USER_PERMISSION: // Updating a users permissions (SuperAdmin only)
 			DAO dao19 = new DAO();
-			FormHandler.updateUserPermissionForm(requestType, dataToProcess);
-			dao19.updateUser((User)dataToProcess.get("UpdateUserPermission")); // modify the user searched for's permission
+			FormHandler.updateUserForm(requestType, dataToProcess);
+			dao19.updateUser((User)dataToProcess.get("UpdateUserStudentID")); // modify the user searched for's permission
 			break;
 		case PASSWORD_RESET:
 			DAO dao25 = new DAO();
 			FormHandler.updatePasswordResetForm(requestType, dataToProcess);
 			dao25.updateUser(Main.CURRENTUSER);
-			break;
-		case PASSWORD_RETRIEVE: // consider using GET_USER to set CURRENTUSER, then removing this
-//			DAO dao22 = new DAO();
-//			dao22.getUser();
 			break;
 		case QUERY_DATABASE:
 			break;
