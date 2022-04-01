@@ -43,25 +43,21 @@ public class UserForm {
     }
 
     // To update a users profile information
-    public void updateUser(User CURRENTUSER){
-        if(hmData.get("UpdateUserFirstName") != CURRENTUSER.getFirstName())
-            user.setFirstName((String)hmData.get("UpdateUserFirstName"));
-        if(hmData.get("UpdateUserLastName") != CURRENTUSER.getFirstName())
-            user.setFirstName((String)hmData.get("UpdateUserLastName"));
-        if(hmData.get("UpdateUserEmail") != CURRENTUSER.getEmail())
-            user.setEmail((String)hmData.get("UpdateUserEmail"));
-        if(!hmData.get("UpdateUserStudentID").equals(CURRENTUSER.getStudentID()))
-            user.setStudentID(Integer.parseInt((String)hmData.get("CreateUserStudentID")));
-        if(hmData.get("UpdateUserSecurityQ") != CURRENTUSER.getSecurityQuestion())
-            user.setSecurityQuestion((String)hmData.get("UpdateUserSecurityQ"));
-        if(hmData.get("UpdateUserSecurityA") != CURRENTUSER.getSecurityAnswer())
-            user.setSecurityAnswer((String)hmData.get("UpdateUserSecurityA"));
-    }
-
-    // To update a users permission only
-    public void updateUserPermission(User CURRENTUSER){
-        if(hmData.get("UpdateUserPermission") != CURRENTUSER.getPermission())
-            user.setPermission((String)hmData.get("UpdateUserPermission"));
+    public void updateUser(User userEntered){
+        if(hmData.get("UpdateUserFirstName") != userEntered.getFirstName())
+            userEntered.setFirstName((String)hmData.get("UpdateUserFirstName"));
+        if(hmData.get("UpdateUserLastName") != userEntered.getFirstName())
+            userEntered.setFirstName((String)hmData.get("UpdateUserLastName"));
+        if(hmData.get("UpdateUserEmail") != userEntered.getEmail())
+            userEntered.setEmail((String)hmData.get("UpdateUserEmail"));
+        if(hmData.get("UpdateUserPassword") != userEntered.getPassword())
+            userEntered.setPassword((String)hmData.get("UpdateUserPassword"));
+        if(!hmData.get("UpdateUserStudentID").equals(userEntered.getStudentID()))
+            userEntered.setStudentID(Integer.parseInt((String)hmData.get("CreateUserStudentID")));
+        if(hmData.get("UpdateUserSecurityQ") != userEntered.getSecurityQuestion())
+            userEntered.setSecurityQuestion((String)hmData.get("UpdateUserSecurityQ"));
+        if(hmData.get("UpdateUserSecurityA") != userEntered.getSecurityAnswer())
+            userEntered.setSecurityAnswer((String)hmData.get("UpdateUserSecurityA"));
     }
 
     public User getUser() {
