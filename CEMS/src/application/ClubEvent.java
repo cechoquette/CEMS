@@ -38,7 +38,7 @@ public class ClubEvent {
 
     public ClubEvent(){}
     public ClubEvent(String name, String desc, Club club, LocalDateTime dateTime, String location, String emailGroup){
-        this.eventID = COUNT_FOR_IDS++;
+        this.eventID = ++COUNT_FOR_IDS;
         this.eventName = name;
         this.club = club;
         this.eventDescription = desc;
