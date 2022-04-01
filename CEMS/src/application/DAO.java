@@ -428,6 +428,22 @@ public class DAO {
         }
     */ // get all not working yet
 
+    public Integer max() {
+        Integer result = null;
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(c.clubID) from Club c");
+            result = (int) query.getResultList().get(0);
+            transaction.commit();
+        } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            }
+            return result;
+        }
 
 
 /*
@@ -444,7 +460,9 @@ public class DAO {
         //dao.updateUser(user);
         System.out.println(dao.getUser("erin@algoma.ca"));
 */
-/* Club Test
+     //Club Test
+ /*   public static void main(String[] args){
+        DAO dao = new DAO();
         Club club = new Club("knitting club", "we enjoy knitting");
         Club club1 = new Club("sowing club", "we enjoy sowing");
         Club club2 = new Club("running club", "we enjoy runnig");
@@ -458,7 +476,9 @@ public class DAO {
         dao.updateClub(club2);
         System.out.println(dao.getClub(1));
         System.out.println(dao.getAllClubs());
+        System.out.println(club1.max());
+
 
     }
-    */
+*/
 }
