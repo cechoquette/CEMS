@@ -494,6 +494,26 @@ public class DAO {
         return expenditure;
     }
 
+    public List<Expenditure>  getExpenditurByDate(Date start,Date end) {
+        Transaction transaction = null;
+        List<Expenditure> expenditures = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "from Expenditure e where e.date between :start and :end";
+            Query query = session.createQuery(hql);
+            query.setParameter("start ", start);
+            query.setParameter("end", end);
+            expenditures = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return expenditures;
+    }
+
 
     public Integer maxClubId() {
         Integer result = null;
