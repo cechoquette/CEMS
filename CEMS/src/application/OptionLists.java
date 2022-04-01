@@ -76,9 +76,11 @@ public class OptionLists {
 	}
 
 	public static List<Club> getAllClubsList(){
-		DAO dao1 = new DAO();
-		List<Club> clubs = dao1.getAllClubs();
-		return clubs;
+//		DAO dao1 = new DAO();
+//		List<Club> clubs = dao1.getAllClubs();
+//		return clubs;
+
+		return new ArrayList<>();
 	}
 
 	//method is for testing only. For real method, use getAllClubsList()

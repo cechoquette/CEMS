@@ -14,8 +14,10 @@ import javafx.scene.layout.Pane;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import static CEMS.src.application.Main.defaultPane;
 
@@ -98,22 +100,38 @@ public class CreateClubEventUIController {
 
         HashMap<Object, Object> dataToSubmit = new HashMap<Object, Object>();
 
-//        dataToSubmit.put("EventName", tfCreateEventName.getText());
-//        dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
-//        dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
-//        dataToSubmit.put("EventDateTime", formatDateTime());
-//        dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
-//        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
+        dataToSubmit.put("EventName", tfCreateEventName.getText());
+        dataToSubmit.put("EventDescription", taCreateEventDescription.getText());
+        dataToSubmit.put("EventClub", comboCreateEventClub.getValue());
+        dataToSubmit.put("EventDateTime", formatDateTime());
+        dataToSubmit.put("EventLocation", tfCreateEventLocation.getText());
+        dataToSubmit.put("EventEmailGroup", comboCreateEventEmail.getValue());
 
-//        Controller.processRequest(RequestType.CREATE_EVENT, dataToSubmit);
+        //Create the event, get it back
+        ClubEvent eventCreated = (ClubEvent)Controller.processRequest(RequestType.CREATE_EVENT, dataToSubmit).get("ClubEvent");
+
+        //Get the populated mailing list & put it in the HashMap
+        List<String> emailList = eventCreated.getEmailGroup();
+        dataToSubmit.put("EventEmailsPopulated", emailList);
+
+        //Send the email with the updated HashMap
+//        Controller.processRequest(RequestType.SEND_EMAIL, dataToSubmit);
+
 
         /* *** Sample Email Utility call code segment start *** */
-        String[] mailingList = {
-                "zgwekwerere@algomau.ca",
-                "lclimenhage@algomau.ca",
-                "cchoquette@algomau.ca",
-                "ercameron@algomau.ca"
-        };
+
+//        String[] mailingList = {
+//                "zgwekwerere@algomau.ca",
+//                "lclimenhage@algomau.ca",
+//                "cchoquette@algomau.ca",
+//                "ercameron@algomau.ca"
+//        };
+
+        List<String> mailingList2 = new ArrayList<>();
+        mailingList2.add("zgwekwerere@algomau.ca");
+        mailingList2.add("zgwekwerere@algomau.ca");
+        mailingList2.add("zgwekwerere@algomau.ca");
+        mailingList2.add("zgwekwerere@algomau.ca");
 
         LocalDateTime eventDateTime =  LocalDateTime.of(2022, 04, 01, 12, 00);
 
@@ -122,7 +140,9 @@ public class CreateClubEventUIController {
         hmEventData.put("EventDescription", "Our 8th annual food fight festival! Fun for the full family!");
         hmEventData.put("EventDateTime", eventDateTime);
         hmEventData.put("EventLocation", "West Cafeteria");
-        hmEventData.put("EventEmailGroup", mailingList);
+        hmEventData.put("EventEmailGroup", mailingList2);
+
+//        ClubEvent testEvent = new ClubEvent("Test Event", "This is to test the emails changes", Main.ALLCLUBS, eventDateTime, "At home", OptionLists.EMAIL_GROUPS()[0]);
 
         try {
             MailUtil.sendEmail(hmEventData);

@@ -5,6 +5,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 public class MailUtil {
@@ -36,7 +37,9 @@ public class MailUtil {
         String description = (String) eventInfo.get("EventDescription");
         LocalDateTime date = (LocalDateTime) eventInfo.get("EventDateTime");
         String location = (String) eventInfo.get("EventLocation");
-        String[] emailGroup = (String[]) eventInfo.get("EventEmailGroup");
+        List<String> emailsAsAList = (List<String>) eventInfo.get("EventEmailGroup");
+        //Turn the emails into a String[]
+        String[] emailGroup = (String[])emailsAsAList.toArray();
 
         //Pass the info to the message builder
 
