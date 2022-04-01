@@ -33,6 +33,8 @@ public class User {
 	@Column(name="security_answer")
 	private String securityAnswer;
 	//@Column(name="club")
+	//private Club club;
+	@ManyToOne (fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	private Club club;
 
 	public User() {
