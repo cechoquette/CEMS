@@ -288,6 +288,25 @@ public class DAO {
         }
         return clubEvent;
     }
+    public ClubEvent getClubEventByClub(String clubName) {
+        Transaction transaction = null;
+        ClubEvent clubEvent = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "from ClubEvent ce where ce.clubName =: clubname";
+            Query query = session.createQuery(hql);
+            query.setParameter("clubname", clubName);
+            query.setMaxResults(1);
+            clubEvent = (ClubEvent)query.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return clubEvent;
+    }
 
     /*    @SuppressWarnings("unchecked")
         public List<ClubEvent> getAllClubEvents() {
@@ -349,7 +368,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            clubEventBudget = session.get(ClubEventBudget.class, eventBudgetID); //get student object by id
+            clubEventBudget = session.get(ClubEventBudget.class, eventBudgetID);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -430,6 +449,30 @@ public class DAO {
             return expenditure;
         }
 
+    public List<Expenditure> getAllExpenditureByClub(String clubName) {
+        Transaction transaction = null;
+        List<Expenditure> expenditure = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+
+            CriteriaQuery<Expenditure> criteria = builder.createQuery(Expenditure.class);
+            Root<Expenditure> root = criteria.from(Expenditure.class);
+            root.join("club");
+
+            criteria.where(builder.equal(root.get("clubName"), clubName));
+            Query<Expenditure> query = session.createQuery(criteria);
+            expenditure = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return expenditure;
+    }
+
 
     public Integer max() {
         Integer result = null;
@@ -448,10 +491,27 @@ public class DAO {
         return result;
     }
 
+    public Integer maxID() {
+        Integer result = null;
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("select max(e.expenditureID from Expenditure e");
+            result = (int) query.getResultList().get(0);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return result;
+    }
 
-    /*
+
+/*
         public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
-            DAO dao = new DAO();
+           DAO dao = new DAO();
             Club club1 = new Club("cs club","we enjoy cs");
             User user = new User("Erin", "Cameron", "867-878-6767",
                     "erin@algoma.ca", 123456789, club1, "Admin", "Age?", "29");
@@ -466,19 +526,20 @@ public class DAO {
             user.setUserSalt("35789");
             dao.updateUser(user);
             System.out.println(dao.getUser("erin@algoma.ca"));
-        }
-    */
-    //Club Test
 
-/*    public static void main(String[] args){
+        }
+*/
+    //Club Test
+/*
+    public static void main(String[] args){
         DAO dao = new DAO();
-        Club club = new Club("knitting club", "we enjoy knitting");
-        Club club1 = new Club("sowing club", "we enjoy sowing");
-        Club club2 = new Club("running club", "we enjoy runnig");
-        Club club3 = new Club("cs club", "we enjoy cs");
-        dao.addClub(club);
-        dao.addClub(club1);
-        dao.addClub(club2);
+       Club club3 = new Club("knitting club", "we enjoy knitting");
+        Club club4 = new Club("sowing club", "we enjoy sowing");
+        Club club5 = new Club("running club", "we enjoy runnig");
+        Club club6 = new Club("cs club", "we enjoy cs");
+        dao.addClub(club4);
+        dao.addClub(club5);
+        dao.addClub(club6);
         dao.addClub(club3);
         System.out.println(dao.getClub(1));
         club2.setClubName("singing");
@@ -489,6 +550,7 @@ public class DAO {
         System.out.println(dao.getClubBudgetByClub("sowing club"));
         System.out.println(dao.getAllClubs());
         System.out.println(dao.getAllExpenditure());
-    }
-    */
+        System.out.println(dao.getAllExpenditureByClub("knitting club"));
+    }*/
+
 }
