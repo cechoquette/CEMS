@@ -2,6 +2,7 @@ package CEMS.src.controllers;
 
 
 import CEMS.src.application.*;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
@@ -81,8 +82,8 @@ public class ReportRequestUIController {
 	public void initialize(){
 		
 		choiceReportSelectType.getItems().addAll(Arrays.asList(ReportType.values()));
-		choiceReportSelectClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
-
+//		choiceReportSelectClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));
+		choiceReportSelectClub.getItems().addAll(FXCollections.observableList(OptionLists.getClubs2()));
 		choiceReportEvent.getItems().addAll(Arrays.asList(OptionLists.getEvents()));
 
 		choiceReportSelectType.setOnAction(
@@ -250,6 +251,8 @@ public class ReportRequestUIController {
 		dpReportEndDate.setVisible(true);
 	}
 	public void choiceReportTypeChanged() {
+
+
 		if (choiceReportSelectType.getValue() != null) {
 			if (choiceReportSelectType.getValue() == ReportType.CLUBEVENT_BUDGET ||
 					choiceReportSelectType.getValue() == ReportType.CLUBEVENT_ATTENDANCE ||
