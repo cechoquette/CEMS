@@ -4,6 +4,7 @@ import com.mysql.cj.log.Log;
 
 import java.security.NoSuchProviderException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,8 +64,8 @@ public class Controller {
 			DAO dao22 = new DAO();
 			Timeframe timeframe2 = (Timeframe)dataToProcess.get("Timeframe");
 //			Code for calling the Database
-			LocalDate start = (LocalDate)dataToProcess.get("StartDate");
-			LocalDate end = (LocalDate)dataToProcess.get("EndDate");
+			LocalDateTime start = (LocalDateTime)dataToProcess.get("StartDate");
+			LocalDateTime end = (LocalDateTime)dataToProcess.get("EndDate");
 			ArrayList<ClubEvent> clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDate(start, end);
 			dataToProcess.put("MonthlyEvents", clubEvents);
 

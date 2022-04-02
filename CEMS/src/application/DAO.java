@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -347,15 +348,15 @@ public class DAO {
     ////////// ClubEventDAO
     HashMap<Integer, ClubEvent> getClubEventByID = new HashMap<>();
 
-    static LocalDate startDate;
-    static LocalDate endDate;
+    static LocalDateTime startDate = LocalDateTime.now();
+    static LocalDateTime endDate = LocalDateTime.now();
 
     public void refreshEvents(){//sets events HM to new pull from database with whatever last dates you requested
         getClubEventByDate(startDate, endDate);
     }
 
     public void addClubEvent(ClubEvent clubEvent) {
-        refreshEvents();
+
 
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -370,6 +371,7 @@ public class DAO {
             }
             e.printStackTrace();
         }finally {
+            refreshEvents();
             session.close();
         }
     }
@@ -443,7 +445,7 @@ public class DAO {
         }
     }
 
-    public List<ClubEvent>  getClubEventByDate(LocalDate start,LocalDate end) {
+    public List<ClubEvent>  getClubEventByDate(LocalDateTime start, LocalDateTime end) {
         startDate = start;
         endDate = end;
         getClubEventByID.clear();
@@ -455,7 +457,7 @@ public class DAO {
             transaction = session.beginTransaction();
             String hql = "from ClubEvent ce where ce.eventDateTime between :start and :end";
             Query query = session.createQuery(hql);
-            query.setParameter("start ", start);
+            query.setParameter("start", start);
             query.setParameter("end", end);
             clubEvents = query.list();
             transaction.commit();

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,14 +49,7 @@ public class Main extends Application {
 			ALLCLUBS = dao1.getClub(1);
 			//************************************************
 
-			ClubEvent clubEvent = new ClubEvent("Meeting 123", " ", ALLCLUBS, null, "", "None");
-			ClubEvent clubEvent2 =	new ClubEvent("Sparklethon", " ", ALLCLUBS, null, " ", "None");
 
-			DAO dao2 = new DAO();
-			DAO dao3 = new DAO();
-
-			dao2.addClubEvent(clubEvent);
-			dao3.addClubEvent(clubEvent2);
 
 
 

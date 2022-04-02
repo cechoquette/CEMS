@@ -2,6 +2,7 @@ package CEMS.src.application;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,9 @@ public class OptionLists {
 	//method returns list of current user's club's events, ordered by date
 	public static List<ClubEvent> getUserEventsList(){
 		DAO dao2 = new DAO();
-		List<ClubEvent> clubEvents = dao2.getClubEventByDate(LocalDate.of(2022, 1, 12), LocalDate.now());
+		LocalDateTime start = LocalDateTime.of(2000, 1, 12, 12, 0);
+//		List<ClubEvent> clubEvents = dao2.getClubEventByDate(start, LocalDateTime.now());
+		List<ClubEvent> clubEvents = dao2.getClubEventByClub(ALLCLUBS.getClubName());
 		return clubEvents;
 
 
