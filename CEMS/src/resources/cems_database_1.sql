@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS ClubEvent (
   event_location VARCHAR(45) NULL,
   email_group VARCHAR(45) NULL,
   event_attendance INT NULL,
-  club_id INT NULL,
   PRIMARY KEY (event_id));
 
 
