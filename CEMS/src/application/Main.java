@@ -27,14 +27,16 @@ public class Main extends Application {
 			/* For setting ID COUNT_FOR_IDS - Do not delete*/
 			DAO daoID = new DAO();
 			int clubID = (daoID.maxClubId() == null) ? 0 : daoID.maxClubId();
+			if(clubID == 0) {
+				DatabaseRunner.setUPHibernate();
+			}
+			clubID = (daoID.maxClubId() == null) ? 0 : daoID.maxClubId();
 			int clubEventID = (daoID.maxClubEventId() == null) ? 0 : daoID.maxClubEventId();
 			int clubBudgetID = (daoID.maxClubBudgetId() == null) ? 0 : daoID.maxClubBudgetId();
 			int clubEventBudgetID = (daoID.maxClubEventBudget() == null) ? 0 : daoID.maxClubEventBudget();
 			int expenditureID = (daoID.maxExpenditureID() == null) ? 0 : daoID.maxExpenditureID();
 
-			if(clubID == 0) {
-				DatabaseRunner.setUPHibernate();
-			}
+
 
 			Club.COUNT_FOR_IDS = clubID;
 			ClubEvent.COUNT_FOR_IDS = clubEventID;
