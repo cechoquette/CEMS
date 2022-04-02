@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.security.NoSuchAlgorithmException;
@@ -124,9 +125,13 @@ public class LoginPageUIController {
 //        }
 
         Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+        //Pane mainScreen = ViewBuilder.newScreen("HomePage");
+        BorderPane homePage = new BorderPane();
+        homePage.setTop(menuScreen);
+        CalendarView calendar = new CalendarView();
+        homePage.setCenter(calendar.makeCalendar());
         defaultPane.setTop(menuScreen);
-        defaultPane.setCenter(mainScreen);
+        defaultPane.setCenter(homePage);
 
 
 
