@@ -20,7 +20,8 @@ public class DAO {
     ////////// ClubDAO
     public void addClub(Club club) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
             Object object = session.save(club);
             session.get(Club.class, (Serializable) object);
@@ -30,23 +31,27 @@ public class DAO {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
     public void updateClub(Club club) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(club);
+            session.merge(club);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
-
     public Club getClub(int clubID) {
         Transaction transaction = null;
         Club club = null;
@@ -106,7 +111,8 @@ public class DAO {
     //// UserDAO
     public void addUser(User user) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try  {
             transaction = session.beginTransaction();
             Object object = session.save(user);
             session.get(User.class, (Serializable) object);
@@ -116,6 +122,8 @@ public class DAO {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
@@ -196,7 +204,8 @@ public class DAO {
 
     public void addClubBudget(ClubBudget clubBudget) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
             Object object = session.save(clubBudget);
             session.get(ClubBudget.class, (Serializable) object);
@@ -206,14 +215,16 @@ public class DAO {
                 transaction.rollback();
             }
             e.printStackTrace();
+        }finally {
+            session.close();
         }
     }
 
     public ClubBudget getClubBudget(int clubBudgetID) {
         Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
         ClubBudget clubBudget = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             clubBudget = session.get(ClubBudget.class, clubBudgetID);
             transaction.commit();
@@ -223,6 +234,7 @@ public class DAO {
             }
         }
         return clubBudget;
+
     }
 
     public ClubBudget getClubBudgetByClub(String clubName) {
@@ -249,7 +261,8 @@ public class DAO {
 
     public void addClubEvent(ClubEvent clubEvent) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
             transaction = session.beginTransaction();
             Object object = session.save(clubEvent);
             session.get(ClubEvent.class, (Serializable) object);
@@ -259,20 +272,25 @@ public class DAO {
                 transaction.rollback();
             }
             e.printStackTrace();
+        }finally {
+            session.close();
         }
     }
 
     public void updateClubEvent(ClubEvent clubEvent) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try  {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(clubEvent);
+            session.merge(clubEvent);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
@@ -373,7 +391,8 @@ public class DAO {
 
     public void addClubEventBudget(ClubEventBudget clubEventBudget) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
             Object object = session.save(clubEventBudget);
             session.get(ClubEventBudget.class, (Serializable) object);
@@ -383,6 +402,8 @@ public class DAO {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
@@ -406,7 +427,8 @@ public class DAO {
 
     public void addExpenditure(Expenditure expenditure) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
             Object object = session.save(expenditure);
             session.get(Expenditure.class, (Serializable) object);
@@ -416,6 +438,8 @@ public class DAO {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
@@ -582,17 +606,23 @@ public class DAO {
     }
 
 /*
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
 
         DAO dao55 = new DAO();
+        User user2 = new User("zviko","gwek","1239840293","zviko.g@hotmail.com",
+                1234,dao55.getClub(2),null,"name","yourname");
+        dao55.addUser(user2);
         System.out.println(dao55.getClubByName("All Clubs"));
         System.out.println(dao55.getClub(1));
         System.out.println(dao55.getUsersByClub(1));
         System.out.println(dao55.getAllClubs());
         User user = dao55.getUser("master@email.com");
-        user.setPassword("10fvjoshoi0");
-        //user.setUserSalt("5510fvjoshoi0");
+        user.setPassword("1fkkr");
+        user.setUserSalt("5henks");
         dao55.updateUser(user);
+        user2.setUserSalt("9wxunwj");
+        user2.setUserSalt("8bwhbi2eu");
+
     }
 */
 }
