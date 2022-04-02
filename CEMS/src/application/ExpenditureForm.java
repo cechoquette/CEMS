@@ -61,30 +61,30 @@ public class ExpenditureForm extends Form{
 		this.expenditure = new Expenditure(description, accountHolder, paymentAccount, amount, taxAmount,
 				total, province, date, vendorName, category, paymentMethod, club, clubEvent);
 
-		//Testing
-
-		System.out.println(expenditure);
-		System.out.println("FormID: " + formID);
-		System.out.println("ExpID: " + expenditure.getExpenditureID());
-		System.out.println("Club: " + expenditure.getClub());
-		System.out.println("Event: " + expenditure.getEvent());
-
-		ArrayList<Expenditure> al = new ArrayList<>();
-		al.add(expenditure);
-
-		HashMap<Object, Object> dataToSubmit = new HashMap<>();
-		dataToSubmit.put("ReportType", ReportType.CLUB_EXPENDITURES);//ReportType
-		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
-		dataToSubmit.put("ReportTimeframe", new Timeframe());
-		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
-		dataToSubmit.put("ReportEvent", null);//can be null
-		dataToSubmit.put("Expenditures", al);
-
-		try {
-			ReportHandler.generateReport(dataToSubmit);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		//Testing
+//
+//		System.out.println(expenditure);
+//		System.out.println("FormID: " + formID);
+//		System.out.println("ExpID: " + expenditure.getExpenditureID());
+//		System.out.println("Club: " + expenditure.getClub());
+//		System.out.println("Event: " + expenditure.getEvent());
+//
+//		ArrayList<Expenditure> al = new ArrayList<>();
+//		al.add(expenditure);
+//
+//		HashMap<Object, Object> dataToSubmit = new HashMap<>();
+//		dataToSubmit.put("ReportType", ReportType.CLUB_EXPENDITURES);//ReportType
+//		dataToSubmit.put("ReportClub", Main.ALLCLUBS);//Club
+//		dataToSubmit.put("ReportTimeframe", new Timeframe());
+//		dataToSubmit.put("ReportFormat", ReportFormat.PDF);
+//		dataToSubmit.put("ReportEvent", null);//can be null
+//		dataToSubmit.put("Expenditures", al);
+//
+//		try {
+//			ReportHandler.generateReport(dataToSubmit);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 
 
