@@ -153,6 +153,25 @@ public class DAO {
         return user;
     }
 
+    public List<User> getUsersByClub(int clubID){
+        Transaction transaction = null;
+        List<User> users = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "from User u where u.club.id =: clubid";
+            Query query = session.createQuery(hql);
+            query.setParameter("clubid", clubID);
+            users = (List<User>) query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return users;
+    }
+
     public void deleteUser(int studentID) {
         Transaction transaction = null;
         User user = null;
@@ -559,5 +578,14 @@ public class DAO {
         return result;
     }
 
+/*
+    public static void main(String[] args) {
 
+        DAO dao55 = new DAO();
+        System.out.println(dao55.getClubByName("All Clubs"));
+        System.out.println(dao55.getClub(1));
+        System.out.println(dao55.getUsersByClub(1));
+        System.out.println(dao55.getAllClubs());
+    }
+*/
 }
