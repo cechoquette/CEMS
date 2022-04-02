@@ -1,6 +1,6 @@
 -- CREATE USER 'CEMSAdmin'@'localhost' IDENTIFIED BY 'CEMS321';
 -- GRANT ALL PRIVILEGES ON *.* TO 'CEMSAdmin'@'localhost';
- DROP DATABASE IF EXISTS CEMSDatabase; -- use for testing for blank database
+-- DROP DATABASE IF EXISTS CEMSDatabase; -- use for testing for blank database
 
 CREATE DATABASE IF NOT EXISTS CEMSDatabase ;
 USE CEMSDatabase ;
