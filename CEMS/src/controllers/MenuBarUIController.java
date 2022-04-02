@@ -1,5 +1,6 @@
 package CEMS.src.controllers;
 
+import CEMS.src.application.CalendarView;
 import CEMS.src.application.Main;
 import CEMS.src.application.PermissionType;
 import CEMS.src.application.ViewBuilder;
@@ -15,6 +16,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Calendar;
 
 import static CEMS.src.application.Main.defaultPane;
 
@@ -120,8 +122,8 @@ public class MenuBarUIController {
     @FXML
     void menuEventsCalendarClicked(ActionEvent event) {
         //TODO: Need to create fxml
-        Pane mainScreen = ViewBuilder.newScreen("");
-        defaultPane.setCenter(mainScreen);
+        CalendarView calendar = new CalendarView();
+        defaultPane.setCenter(calendar.makeCalendar());
     }
 
     @FXML

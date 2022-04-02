@@ -115,44 +115,44 @@ public class CreateClubEventUIController {
         dataToSubmit.put("EventEmailsPopulated", emailList);
 
         //Send the email with the updated HashMap
-//        Controller.processRequest(RequestType.SEND_EMAIL, dataToSubmit);
+        Controller.processRequest(RequestType.SEND_EMAIL, dataToSubmit);
 
 
-        /* *** Sample Email Utility call code segment start *** */
-
-//        String[] mailingList = {
-//                "zgwekwerere@algomau.ca",
-//                "lclimenhage@algomau.ca",
-//                "cchoquette@algomau.ca",
-//                "ercameron@algomau.ca"
-//        };
-
-        List<String> mailingList2 = new ArrayList<>();
-        mailingList2.add("zgwekwerere@algomau.ca");
-        mailingList2.add("zgwekwerere@algomau.ca");
-        mailingList2.add("zgwekwerere@algomau.ca");
-        mailingList2.add("zgwekwerere@algomau.ca");
-
-        LocalDateTime eventDateTime =  LocalDateTime.of(2022, 04, 01, 12, 00);
-
-        HashMap<Object, Object> hmEventData = new HashMap<>();
-        hmEventData.put("EventName", "Food fight");
-        hmEventData.put("EventDescription", "Our 8th annual food fight festival! Fun for the full family!");
-        hmEventData.put("EventDateTime", eventDateTime);
-        hmEventData.put("EventLocation", "West Cafeteria");
-        hmEventData.put("EventEmailGroup", mailingList2);
-
-//        ClubEvent testEvent = new ClubEvent("Test Event", "This is to test the emails changes", Main.ALLCLUBS, eventDateTime, "At home", OptionLists.EMAIL_GROUPS()[0]);
-
-        try {
-            MailUtil.sendEmail(hmEventData);
-            System.out.println("Message sent successfully");
-        }
-        catch (Exception e) {
-            System.out.println("Error sending email");
-            e.printStackTrace();
-        }
-        /* *** Sample Email Utility call code segment end *** */
+//        /* *** Sample Email Utility call code segment start *** */
+//
+////        String[] mailingList = {
+////                "zgwekwerere@algomau.ca",
+////                "lclimenhage@algomau.ca",
+////                "cchoquette@algomau.ca",
+////                "ercameron@algomau.ca"
+////        };
+//
+//        List<String> mailingList2 = new ArrayList<>();
+//        mailingList2.add("zgwekwerere@algomau.ca");
+//        mailingList2.add("zgwekwerere@algomau.ca");
+//        mailingList2.add("zgwekwerere@algomau.ca");
+//        mailingList2.add("zgwekwerere@algomau.ca");
+//
+//        LocalDateTime eventDateTime =  LocalDateTime.of(2022, 04, 01, 12, 00);
+//
+//        HashMap<Object, Object> hmEventData = new HashMap<>();
+//        hmEventData.put("EventName", "Food fight");
+//        hmEventData.put("EventDescription", "Our 8th annual food fight festival! Fun for the full family!");
+//        hmEventData.put("EventDateTime", eventDateTime);
+//        hmEventData.put("EventLocation", "West Cafeteria");
+//        hmEventData.put("EventEmailGroup", mailingList2);
+//
+////        ClubEvent testEvent = new ClubEvent("Test Event", "This is to test the emails changes", Main.ALLCLUBS, eventDateTime, "At home", OptionLists.EMAIL_GROUPS()[0]);
+//
+//        try {
+//            MailUtil.sendEmail(hmEventData);
+//            System.out.println("Message sent successfully");
+//        }
+//        catch (Exception e) {
+//            System.out.println("Error sending email");
+//            e.printStackTrace();
+//        }
+//        /* *** Sample Email Utility call code segment end *** */
 
     }
 
