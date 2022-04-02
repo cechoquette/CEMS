@@ -4,6 +4,7 @@ public enum RequestType {
 	CREATE_USER("Create User"),
 	GET_USER("Get User"), // Retrieve the User from DB (CURRENTUSER)
 	GET_USER_FORGOT_PASS("Get User - Forgot Password"),
+	GET_USER_UPDATE_USER("Get User - Update User"),
 	MODIFY_USER("Modify User"),
 	MODIFY_USER_PERMISSION("Modify User Permission"),
 	DELETE_USER("Delete User"),

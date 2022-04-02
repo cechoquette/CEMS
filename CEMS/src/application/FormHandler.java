@@ -96,8 +96,7 @@ public class FormHandler {
 
 	public static void updateUserPermissionForm(RequestType requestType, HashMap<Object, Object> hmData){
 		UserForm userForm = new UserForm(requestType, hmData);
-		userForm.updateUser(Main.CURRENTUSER);
-
+		userForm.updateUserPermission((User)hmData.get("User"));
 	}
 
 	public static void updatePasswordResetForm(RequestType requestType, HashMap<Object, Object> hmData){//void method. No such thing as a Login Object
