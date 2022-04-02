@@ -3,6 +3,7 @@ package CEMS.src.application;
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -308,6 +309,25 @@ public class DAO {
         return clubEvent;
     }
 
+    public List<ClubEvent>  getClubEventByDate(Date start,Date end) {
+        Transaction transaction = null;
+        List<ClubEvent> clubEvents = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "from ClubEvent ce where ce.eventDateTime between :start and :end";
+            Query query = session.createQuery(hql);
+            query.setParameter("start ", start);
+            query.setParameter("end", end);
+            clubEvents = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return clubEvents;
+    }
 
     /*    @SuppressWarnings("unchecked")
         public List<ClubEvent> getAllClubEvents() {
@@ -472,6 +492,26 @@ public class DAO {
             }
         }
         return expenditure;
+    }
+
+    public List<Expenditure>  getExpenditurByDate(Date start,Date end) {
+        Transaction transaction = null;
+        List<Expenditure> expenditures = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "from Expenditure e where e.date between :start and :end";
+            Query query = session.createQuery(hql);
+            query.setParameter("start ", start);
+            query.setParameter("end", end);
+            expenditures = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return expenditures;
     }
 
 
