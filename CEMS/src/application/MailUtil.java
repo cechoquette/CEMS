@@ -39,7 +39,8 @@ public class MailUtil {
         String location = (String) eventInfo.get("EventLocation");
         List<String> emailsAsAList = (List<String>) eventInfo.get("EventEmailGroup");
         //Turn the emails into a String[]
-        String[] emailGroup = (String[])emailsAsAList.toArray();
+        String[] emailGroup = new String[emailsAsAList.size()];
+        emailGroup = emailsAsAList.toArray(emailGroup);
 
         //Pass the info to the message builder
 
