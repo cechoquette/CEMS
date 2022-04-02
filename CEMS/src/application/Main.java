@@ -32,6 +32,11 @@ public class Main extends Application {
 			int clubEventBudgetID = (daoID.maxClubEventBudget() == null) ? 0 : daoID.maxClubEventBudget();
 			int expenditureID = (daoID.maxExpenditureID() == null) ? 0 : daoID.maxExpenditureID();
 
+			if(clubID == 0) {
+				DatabaseRunner.setUPHibernate();
+			}
+
+
 			Club.COUNT_FOR_IDS = clubID;
 			ClubEvent.COUNT_FOR_IDS = clubEventID;
 			ClubBudget.COUNT_FOR_IDS = clubBudgetID;
