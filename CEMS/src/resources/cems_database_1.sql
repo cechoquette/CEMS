@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS User (
 
 
 
-
 -- Table Event
 CREATE TABLE IF NOT EXISTS ClubEvent (
   event_id INT NOT NULL,
@@ -92,7 +91,6 @@ CREATE TABLE IF NOT EXISTS ClubEventBudget (
     -- Table ClubBudget
 CREATE TABLE IF NOT EXISTS ClubBudget (
   club_budget_id INT NOT NULL,
-  club_id INT NOT NULL,
   events_venue DECIMAL(13,2) DEFAULT 0,
   events_services DECIMAL(13,2) DEFAULT 0,
   event_refreshments DECIMAL(13,2) DEFAULT 0,
@@ -124,7 +122,6 @@ CREATE TABLE IF NOT EXISTS ClubBudget (
 -- Table ClubExpenditure
 CREATE TABLE IF NOT EXISTS ClubExpenditure (
   expenditure_id INT NOT NULL ,
-  club_id INT NOT NULL ,
   description_ MEDIUMTEXT NULL ,
   account_holder VARCHAR(45) NULL ,
   amount DECIMAL(13,2) NULL ,
