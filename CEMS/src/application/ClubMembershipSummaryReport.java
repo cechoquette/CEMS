@@ -32,7 +32,7 @@ public class ClubMembershipSummaryReport extends Report{
 
         System.out.println(club + "clubclubclub");
 
-        if (club == Main.ALLCLUBS){
+        if (club.getClubID() == Main.ALLCLUBS.getClubID()){
 //            Club[] allclubs = OptionLists.getClubs();
             List<Club> allclubs = OptionLists.getAllClubsList();
             reportArray = new Object[allclubs.size()+1][2];
@@ -41,7 +41,7 @@ public class ClubMembershipSummaryReport extends Report{
             reportArray[0][1] = "Club Members: ";
 
             for(int i=0; i < allclubs.size(); i++){
-                reportArray[i+1][0] = "test";//Main.ALLCLUBS.toString();//allclubs.get(i).toString();
+                reportArray[i+1][0] = allclubs.get(i).toString();
                 reportArray[i+1][1] = String.valueOf(allclubs.get(i).getClubUsers().size());
             }
 
