@@ -1,6 +1,6 @@
 -- CREATE USER 'CEMSAdmin'@'localhost' IDENTIFIED BY 'CEMS321';
 -- GRANT ALL PRIVILEGES ON *.* TO 'CEMSAdmin'@'localhost';
--- DROP DATABASE IF EXISTS CEMSDatabase; -- use for testing for blank database
+ DROP DATABASE IF EXISTS CEMSDatabase; -- use for testing for blank database
 
 CREATE DATABASE IF NOT EXISTS CEMSDatabase ;
 USE CEMSDatabase ;
@@ -151,12 +151,10 @@ VALUES (3,'Bike Share Club','To provide an opportunity for students to go on bik
 rides and trails. And to support the well-being of students.');
 
 INSERT INTO Club (club_id,club_name,club_description)
-VALUES (4,'Bike Share Club','To provide an opportunity for students to go on bike
-rides and trails. And to support the well-being of students.');
+VALUES (4,'Dance Club','Engage students with different stlyes of dance and cultures.');
 
 INSERT INTO Club (club_id,club_name,club_description)
-VALUES (5,'Bike Share Club','To provide an opportunity for students to go on bike
-rides and trails. And to support the well-being of students.');
+VALUES (5,'Tech Environment Club', 'We are a club dedicated to technology initiatives at Algomau');
 
 
 INSERT INTO User  (student_id,first_name,last_name,email_address,password_,phone_number,permissions,
