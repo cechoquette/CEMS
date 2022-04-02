@@ -228,8 +228,12 @@ public class Controller {
 			dao12.addClubEventBudget(FormHandler.createEventBudgetForm(requestType, dataToProcess));
 			break;
 		case SUBMIT_EXPENDITURE:
+			System.out.println("Yes Controller");
 			DAO dao13 = new DAO();
-			dao13.addExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
+			Expenditure expenditure = FormHandler.createExpenditureForm(requestType, dataToProcess);
+//			dao13.addExpenditure(FormHandler.createExpenditureForm(requestType, dataToProcess));
+			dao13.addExpenditure(expenditure);
+			System.out.println(expenditure + " Printing from Controller");
 			break;
 			
 
