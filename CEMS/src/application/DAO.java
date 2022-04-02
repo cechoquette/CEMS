@@ -404,6 +404,7 @@ public class DAO {
             clubEvent = session.get(ClubEvent.class, eventID);
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -424,11 +425,15 @@ public class DAO {
             query.setParameter("clubname", clubName);
             clubEvents = (List<ClubEvent>) query.list();
             transaction.commit();
+            System.out.println("Okay  line 427 club events = " + clubEvents.get(0));
         } catch (Exception e) {
+            e.printStackTrace();
+//            System.out.println("Not Okay  line 429 club events = " + clubEvents);
             if (transaction != null) {
                 transaction.rollback();
             }
         } finally {
+            System.out.println("Okay  line 432 club events = " + clubEvents.get(0));
             if (clubEvents != null) {
                 for (ClubEvent newEvent : clubEvents) {
                     getClubEventByID.put(newEvent.getEventID(), newEvent);
@@ -455,6 +460,7 @@ public class DAO {
             clubEvents = query.list();
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -483,6 +489,7 @@ public class DAO {
                 clubEvents = session.createQuery(criteria).getResultList();
                 transaction.commit();
             } catch (Exception e) {
+                e.printStackTrace();
                 if (transaction != null) {
                     transaction.rollback();
                 }
@@ -510,6 +517,7 @@ public class DAO {
             }
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }

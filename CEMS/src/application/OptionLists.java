@@ -1,8 +1,11 @@
 package CEMS.src.application;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static CEMS.src.application.Main.ALLCLUBS;
 
 // class to use for storing arrays for drop-down menus,
 // if you do not want to use an enumeration,
@@ -39,12 +42,11 @@ public class OptionLists {
 	//method returns list of current user's club's events, ordered by date
 	public static List<ClubEvent> getUserEventsList(){
 		DAO dao2 = new DAO();
-		List<Club> clubEvents ;
-//				= dao2.getAllClubEventsByClub();
-//		return clubEvents;
+		List<ClubEvent> clubEvents = dao2.getClubEventByDate(LocalDate.of(2022, 1, 12), LocalDate.now());
+		return clubEvents;
 
 
-		return new ArrayList<>();
+//		return new ArrayList<>();
 	}
 
 	public static ClubEvent[] getEvents(){//no timeframe, all ClubEvents
@@ -53,8 +55,8 @@ public class OptionLists {
 		//temp Events[]
 		ClubEvent[] clubEvents = {
 				new ClubEvent(),
-				new ClubEvent("Meeting 123", " ", Main.ALLCLUBS, null, "", "None"),
-				new ClubEvent("Sparklethon", " ", Main.ALLCLUBS, null, " ", "None")
+				new ClubEvent("Meeting 123", " ", ALLCLUBS, null, "", "None"),
+				new ClubEvent("Sparklethon", " ", ALLCLUBS, null, " ", "None")
 //				new ClubEvent(),
 //				new ClubEvent(),
 //				new ClubEvent(),
@@ -141,7 +143,7 @@ public class OptionLists {
 
 		Club[] clubsTemp =
 
-				{Main.ALLCLUBS, algomaUBusiness, bikeShare, danceClub, journey, biology, algomaNFT, algomaReads, francophone,
+				{ALLCLUBS, algomaUBusiness, bikeShare, danceClub, journey, biology, algomaNFT, algomaReads, francophone,
 						foreignFilm, fsae, glee, knitting, techEnviro
 
 				};

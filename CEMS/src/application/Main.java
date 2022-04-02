@@ -48,9 +48,14 @@ public class Main extends Application {
 			ALLCLUBS = dao1.getClub(1);
 			//************************************************
 
+			ClubEvent clubEvent = new ClubEvent("Meeting 123", " ", ALLCLUBS, null, "", "None");
+			ClubEvent clubEvent2 =	new ClubEvent("Sparklethon", " ", ALLCLUBS, null, " ", "None");
 
+			DAO dao2 = new DAO();
+			DAO dao3 = new DAO();
 
-
+			dao2.addClubEvent(clubEvent);
+			dao3.addClubEvent(clubEvent2);
 
 
 
