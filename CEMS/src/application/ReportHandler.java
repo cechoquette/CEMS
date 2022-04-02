@@ -117,6 +117,7 @@ public class ReportHandler {
 
 			case CLUB_MEMBERSHIP_SUMMARY:
 				ClubMembershipSummaryReport clubMembershipSummaryReport = new ClubMembershipSummaryReport(reportFormat, reportClub);
+				System.out.println(reportClub);
 				reportFormatted = clubMembershipSummaryReport.formatReport();
 				reportFileName = clubMembershipSummaryReport.getFilename();
 				reportSize = 3;
