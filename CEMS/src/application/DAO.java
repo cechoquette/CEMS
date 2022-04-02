@@ -560,48 +560,4 @@ public class DAO {
     }
 
 
-/*
-        public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
-           DAO dao = new DAO();
-            Club club1 = new Club("cs club","we enjoy cs");
-            User user = new User("Erin", "Cameron", "867-878-6767",
-                    "erin@algoma.ca", 123456789, club1, "Admin", "Age?", "29");
-            dao.addClub(club1);
-            dao.getClubByName("cs club");
-            dao.addUser(user);
-            System.out.println(dao.getClubByName("cs club"));
-            user.setPassword("25163");
-            dao.updateUser(user);
-            System.out.println(dao.getUser("erin@algoma.ca"));
-            user.setPassword("glokmn");
-            user.setUserSalt("35789");
-            dao.updateUser(user);
-            System.out.println(dao.getUser("erin@algoma.ca"));
-         System.out.println(dao.getClub(1));
-        }
-*/
-    //Club Test
-/*
-    public static void main(String[] args){
-        DAO dao = new DAO();
-       Club club3 = new Club("knitting club", "we enjoy knitting");
-        Club club4 = new Club("sowing club", "we enjoy sowing");
-        Club club5 = new Club("running club", "we enjoy runnig");
-        Club club6 = new Club("cs club", "we enjoy cs");
-        dao.addClub(club4);
-        dao.addClub(club5);
-        dao.addClub(club6);
-        dao.addClub(club3);
-        System.out.println(dao.getClub(1));
-        club2.setClubName("singing");
-        dao.updateClub(club2);
-        System.out.println(dao.getClub(1));
-        System.out.println(dao.getAllClubs());
-        System.out.println(club1.max());
-        System.out.println(dao.getClubBudgetByClub("sowing club"));
-        System.out.println(dao.getAllClubs());
-        System.out.println(dao.getAllExpenditure());
-        System.out.println(dao.getAllExpenditureByClub("knitting club"));
-    }*/
-
 }
