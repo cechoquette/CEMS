@@ -581,7 +581,7 @@ public class DAO {
         return result;
     }
 
-
+/*
     public static void main(String[] args) {
 
         DAO dao55 = new DAO();
@@ -594,5 +594,5 @@ public class DAO {
         //user.setUserSalt("5510fvjoshoi0");
         dao55.updateUser(user);
     }
-
+*/
 }
