@@ -58,8 +58,11 @@ public class UserForm {
             userEntered.setSecurityQuestion((String)hmData.get("UpdateUserSecurityQ"));
         if(hmData.get("UpdateUserSecurityA") != userEntered.getSecurityAnswer())
             userEntered.setSecurityAnswer((String)hmData.get("UpdateUserSecurityA"));
+    }
+
+    public void updateUserPermission(User userEntered) {
         if(hmData.get("UpdateUserPermission") != (String.valueOf(userEntered.getPermission())));
-            userEntered.setPermission(String.valueOf(hmData.get("UpdateUserPermission")));
+        userEntered.setPermission(String.valueOf(hmData.get("UpdateUserPermission")));
     }
 
     public User getUser() {

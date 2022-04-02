@@ -179,16 +179,19 @@ public class UpdateUserUIController {
     void btnUpdateUserSubmitClicked(ActionEvent event) {
         checkMandatoryFields();
 
-        // Add the permission update to the hashmap
-        dataToSubmit = new HashMap<Object, Object>();
-
         // If the user is not null
         if (searchedForUser != null) {
             // Add data to the hashmap
-            hm.put("UpdateUserPermission", comboUpdateUserPermissions.getValue());
+            dataToSubmit = new HashMap<Object, Object>();
+            dataToSubmit.put("UpdateUserPermission", comboUpdateUserPermissions.getValue().toString());
+            dataToSubmit.put("UpdateUserEmail", tfUpdateUserEmail.getText());
 
             // Send data to the controller
-            Controller.processRequest(RequestType.MODIFY_USER_PERMISSION, dataToSubmit);
+            hm = new HashMap<Object, Object>();
+            hm = Controller.processRequest(RequestType.GET_USER_UPDATE_USER, dataToSubmit);
+
+            // Send data to the controller
+            Controller.processRequest(RequestType.MODIFY_USER_PERMISSION, hm);
 
             // Navigate user back to previous page
             btnUpdateUserCancelClicked(event);

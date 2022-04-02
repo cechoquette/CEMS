@@ -157,6 +157,13 @@ public class Controller {
 			User forgotUser = dao28.getUser((String)dataToProcess.get("ForgotPasswordEmail"));
 			PasswordUtil.setCurrentUser(forgotUser);
 			break;
+		case GET_USER_UPDATE_USER: // get user based on email address for logins
+			DAO dao31 = new DAO();
+			User updateUser = dao31.getUser((String)dataToProcess.get("UpdateUserEmail"));
+			if(updateUser != null) {
+				dataToProcess.put("User", updateUser);
+			}//this could end up being null, do a null check on the receiving end
+			break;
 		case SEARCH_FOR_USER: //call database, return if found
 			DAO dao24 = new DAO();
 			User userSearch = dao24.getUser(((String)dataToProcess.get("DeleteSearchEmail")));//Changed this. DAO takes a String email.
@@ -195,8 +202,8 @@ public class Controller {
 			break;
 		case MODIFY_USER_PERMISSION: // Updating a users permissions (SuperAdmin only)
 			DAO dao19 = new DAO();
-			FormHandler.updateUserForm(requestType, dataToProcess);
-			dao19.updateUser((User)dataToProcess.get("UpdateUserStudentID")); // modify the user searched for's permission
+			FormHandler.updateUserPermissionForm(requestType, dataToProcess);
+			dao19.updateUser((User)dataToProcess.get("User")); // modify the user searched for's permission
 			break;
 		case PASSWORD_RESET:
 			DAO dao25 = new DAO();
