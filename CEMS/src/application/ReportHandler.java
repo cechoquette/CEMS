@@ -31,6 +31,8 @@ public class ReportHandler {
 		Timeframe timeframe = (Timeframe)hmData.get("ReportTimeframe");
 		Club reportClub = (Club)hmData.get("ReportClub");
 
+		System.out.println(reportClub.hashCode() + " in report handler");
+
 		ClubEvent noneEvent = new ClubEvent("NoneEvent", "Use this Event to avoid Null pointers", Main.ALLCLUBS, LocalDateTime.now(), "Here", "None");
 
 		ClubEvent reportEvent = noneEvent;

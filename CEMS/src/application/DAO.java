@@ -4,9 +4,14 @@ import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
@@ -16,9 +21,15 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 public class DAO {
+    static HashMap<Integer, Club> getClubByIDHashMap = new HashMap<>();
+    static HashMap<String, User> getUserByEmail = new HashMap<>();
 
     ////////// ClubDAO
+
     public void addClub(Club club) {
+        if (getClubByIDHashMap.isEmpty() || !getClubByIDHashMap.containsValue(club)){
+            getClubByIDHashMap.put(club.getClubID(), club);
+        }
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -37,6 +48,10 @@ public class DAO {
     }
 
     public void updateClub(Club club) {
+        if (!getClubByIDHashMap.isEmpty() && getClubByIDHashMap.containsValue(club)){
+            getClubByIDHashMap.remove(club.getClubID());
+            getClubByIDHashMap.put(club.getClubID(), club);
+        }
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -52,23 +67,39 @@ public class DAO {
             session.close();
         }
     }
+
     public Club getClub(int clubID) {
-        Transaction transaction = null;
-        Club club = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
-            club = session.get(Club.class, clubID);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
+        if (!getClubByIDHashMap.isEmpty() && getClubByIDHashMap.get(clubID) != null){
+            return getClubByIDHashMap.get(clubID);
+        }
+        else{
+            Transaction transaction = null;
+            Club club = null;
+            try {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                transaction = session.beginTransaction();
+                club = session.get(Club.class, clubID);
+                transaction.commit();
+            } catch (Exception e) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } finally {
+
+                getClubByIDHashMap.put(clubID, club);
+                return getClubByIDHashMap.get(clubID);
             }
         }
-        return club;
     }
 
     public Club getClubByName(String clubName) {
+        if (!getClubByIDHashMap.isEmpty()) {
+            for (Club clubinmap : getClubByIDHashMap.values()) {
+                if (clubinmap.getClubName().matches(clubName)) {
+                    return clubinmap;
+                }
+            }
+        }
         Transaction transaction = null;
         Club club = null;
         try {
@@ -84,8 +115,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return club;
         }
-        return club;
     }
 
     @SuppressWarnings("unchecked")
@@ -104,12 +136,32 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            if (clubs != null) {
+                if (!getClubByIDHashMap.isEmpty()) {
+
+                    for (Club freshclub : clubs) {
+                        if (!getClubByIDHashMap.containsKey(freshclub.getClubID())) {
+                            getClubByIDHashMap.put(freshclub.getClubID(), freshclub);
+                        }
+                    }
+                    clubs = new ArrayList<Club>(getClubByIDHashMap.values());
+                }
+                else {
+                    for (Club newClub : clubs) {
+                        getClubByIDHashMap.put(newClub.getClubID(), newClub);
+                    }
+                }
+            }
+            return clubs;
         }
-        return clubs;
     }
 
     //// UserDAO
     public void addUser(User user) {
+        if (getUserByEmail.isEmpty() || !getUserByEmail.containsValue(user)){
+            getUserByEmail.put(user.getEmail(), user);
+        }
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try  {
@@ -128,6 +180,12 @@ public class DAO {
     }
 
     public void updateUser(User user) {
+        if (!getUserByEmail.isEmpty() && getUserByEmail.containsValue(user)){
+            //the reason this is not redundant is in the instance where a user changes their email
+            //this puts that user back in memory under the new key
+            getUserByEmail.remove(user.getEmail());
+            getUserByEmail.put(user.getEmail(), user);
+        }
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -145,6 +203,9 @@ public class DAO {
     }
 
     public User getUser(String userEmail) {
+        if (!getUserByEmail.isEmpty() && getUserByEmail.get(userEmail) != null) {
+            return getUserByEmail.get(userEmail);
+        }
         Transaction transaction = null;
         User user = null;
         try {
@@ -160,11 +221,13 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return user;
         }
-        return user;
     }
 
-    public List<User> getUsersByClub(int clubID){
+    public List<User> getUsersByClub(int clubID) {
+
         Transaction transaction = null;
         List<User> users = null;
         try {
@@ -179,11 +242,33 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            if(users != null) {
+                if (!getUserByEmail.isEmpty()) {
+                    for (User freshuser : users) {
+                        if (!getUserByEmail.containsKey(freshuser.getEmail())) {
+                            getUserByEmail.put(freshuser.getEmail(), freshuser);
+                        }
+                    }
+                    users = new ArrayList<User>(getUserByEmail.values());
+                } else {
+                    for (User newUser : users) {
+                        getUserByEmail.put(newUser.getEmail(), newUser);
+                    }
+                }
+            }
+            return users;
         }
-        return users;
     }
 
     public void deleteUser(int studentID) {
+        if(!getUserByEmail.isEmpty()){//if user is in memory, remove them
+            for (User oldUser: getUserByEmail.values()){
+                if(oldUser.getStudentID() == studentID){
+                    getUserByEmail.remove(oldUser.getEmail());
+                }
+            }
+        }
         Transaction transaction = null;
         User user = null;
         try {
@@ -232,9 +317,10 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
-        }
-        return clubBudget;
+        } finally {
+            return clubBudget;
 
+        }
     }
 
     public ClubBudget getClubBudgetByClub(String clubName) {
@@ -253,13 +339,24 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return clubBudget;
         }
-        return clubBudget;
     }
 
     ////////// ClubEventDAO
+    HashMap<Integer, ClubEvent> getClubEventByID = new HashMap<>();
+
+    static LocalDate startDate;
+    static LocalDate endDate;
+
+    public void refreshEvents(){//sets events HM to new pull from database with whatever last dates you requested
+        getClubEventByDate(startDate, endDate);
+    }
 
     public void addClubEvent(ClubEvent clubEvent) {
+        refreshEvents();
+
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
@@ -291,10 +388,14 @@ public class DAO {
             e.printStackTrace();
         } finally {
             session.close();
+            refreshEvents();//Remove all events stored in memory, replace with fresh
         }
     }
 
     public ClubEvent getClubEvent(int eventID) {
+        if (!getClubEventByID.isEmpty() && getClubEventByID.get(eventID) != null) {
+            return getClubEventByID.get(eventID);
+        }
         Transaction transaction = null;
         ClubEvent clubEvent = null;
         try {
@@ -306,10 +407,13 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return clubEvent;
         }
-        return clubEvent;
     }
-    public List<ClubEvent>getClubEventByClub(String clubName) {
+
+    public List<ClubEvent> getClubEventByClub(String clubName) {
+        getClubEventByID.clear();
         Transaction transaction = null;
         List<ClubEvent> clubEvents = null;
         try {
@@ -324,11 +428,21 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            if (clubEvents != null) {
+                for (ClubEvent newEvent : clubEvents) {
+                    getClubEventByID.put(newEvent.getEventID(), newEvent);
+                }
+            }
+            return clubEvents;
         }
-        return clubEvents;
     }
 
-    public List<ClubEvent>  getClubEventByDate(Date start,Date end) {
+    public List<ClubEvent>  getClubEventByDate(LocalDate start,LocalDate end) {
+        startDate = start;
+        endDate = end;
+        getClubEventByID.clear();
+
         Transaction transaction = null;
         List<ClubEvent> clubEvents = null;
         try {
@@ -344,12 +458,20 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            if(clubEvents != null) {
+                for (ClubEvent newEvent : clubEvents) {
+                    getClubEventByID.put(newEvent.getEventID(), newEvent);
+                }
+            }
+            return clubEvents;
         }
-        return clubEvents;
     }
 
     @SuppressWarnings("unchecked")
         public List<ClubEvent> getAllClubEvents()  {
+            getClubByIDHashMap.clear();
+
             Transaction transaction = null;
             List<ClubEvent> clubEvents = null;
             try {
@@ -364,13 +486,20 @@ public class DAO {
                 if (transaction != null) {
                     transaction.rollback();
                 }
+            } finally {
+                if(clubEvents != null) {
+                    for (ClubEvent newEvent : clubEvents) {
+                        getClubEventByID.put(newEvent.getEventID(), newEvent);
+                    }
+                }
+                return clubEvents;
             }
-            return clubEvents;
     }
 
 
     @SuppressWarnings("null")
     public void deleteClubEvent(int eventID) {
+        getClubByIDHashMap.clear();
         Transaction transaction = null;
         ClubEvent clubEvent = null;
         try {
@@ -384,7 +513,10 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            refreshEvents();
         }
+
     }
 
     ////////// ClubEventBudget DAO
@@ -419,8 +551,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return clubEventBudget;
         }
-        return clubEventBudget;
     }
 
     /////////ExpenditureDAO
@@ -455,8 +588,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return expenditure;
         }
-        return expenditure;
     }
 
     @SuppressWarnings("unchecked")
@@ -475,8 +609,10 @@ public class DAO {
                 if (transaction != null) {
                     transaction.rollback();
                 }
+            } finally {
+                return expenditure;
             }
-            return expenditure;
+
         }
 
     public List<Expenditure> getAllExpenditureByClub(String clubName) {
@@ -499,8 +635,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return expenditure;
         }
-        return expenditure;
     }
 
     public List<Expenditure>  getExpenditurByDate(Date start,Date end) {
@@ -519,8 +656,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return expenditures;
         }
-        return expenditures;
     }
 
 
@@ -537,8 +675,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return result;
         }
-        return result;
     }
     public Integer maxClubEventId() {
         Integer result = null;
@@ -553,8 +692,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return result;
         }
-        return result;
     }
     public Integer maxClubBudgetId() {
         Integer result = null;
@@ -569,8 +709,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return result;
         }
-        return result;
     }
     public Integer maxClubEventBudget() {
         Integer result = null;
@@ -585,8 +726,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return result;
         }
-        return result;
     }
     public Integer maxExpenditureID() {
         Integer result = null;
@@ -601,8 +743,9 @@ public class DAO {
             if (transaction != null) {
                 transaction.rollback();
             }
+        } finally {
+            return result;
         }
-        return result;
     }
 
 /*
