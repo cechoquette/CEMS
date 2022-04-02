@@ -86,8 +86,8 @@ public class ResetPasswordUIController {
         if (fieldsValid){
             // Add data to the hashmap
             dataToSubmit = new HashMap<Object, Object>();
-            dataToSubmit.put("ResetUserPassword", pfResetPass);
-            dataToSubmit.put("ResetUserPasswordConfirm", pfResetPassConfirm);
+            dataToSubmit.put("ResetUserPassword", pfResetPass.getText());
+            dataToSubmit.put("ResetUserPasswordConfirm", pfResetPassConfirm.getText());
 
             // Send data to the controller
             Controller.processRequest(RequestType.PASSWORD_RESET, dataToSubmit);

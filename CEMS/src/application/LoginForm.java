@@ -49,13 +49,17 @@ public class LoginForm extends Form {
     /** Method to reset a user's password - cross-references user data from CURRENTUSER **/
     public void passwordReset(User user) {
         // Retrieve the user's password on reset attempt
-        String password = hmData.get("ResetUserPassword").toString();
+        String password = (String)hmData.get("ResetUserPassword");
+
+        System.out.println("This is the password in the pf field: " + password);
         String salt = "";
 
         // If the main user already has a password setup
         if (Main.CURRENTUSER.getUserSalt() != null) {
+            System.out.println("already has password");
             // Retrieve the user's salt from the DB
             salt = Main.CURRENTUSER.getUserSalt();
+            System.out.println(salt);
             String hashedPassword = null;
 
             // Hash the new password
@@ -66,11 +70,13 @@ public class LoginForm extends Form {
             }
 
             // Set the CURRENTUSER's password to the newly hashed password
+            System.out.println(hashedPassword);
             Main.CURRENTUSER.setPassword(hashedPassword);
 
         } else {
             // Else, if the user does not already have a password set up
             try {
+                System.out.println("doesn't have password yet");
                 salt = PasswordUtil.generateSalt();
                 Main.CURRENTUSER.setUserSalt(salt);
 
