@@ -66,8 +66,13 @@ public class OptionLists {
 		return clubEvents;
 
 	}
-
+	//Method to populate lists of club users in Member Management UI
 	public static String[] getAdmins(){
+//		String[] adminNames = Main.CURRENTUSER
+
+
+
+
 		return new String[0];
 	}
 

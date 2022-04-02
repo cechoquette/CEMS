@@ -39,8 +39,8 @@ public class ReportHandler {
 		}
 
 		//code NEEDS to be modified when Database up and running. Do not initialize.
-		Object dataReturnedSingle = new Object();
-		List<Object> dataReturnedList;
+//		Object dataReturnedSingle = new Object();
+//		List<Object> dataReturnedList;
 //		dataReturnedList.add(dataReturnedSingle);
 
 		Object[][] reportFormatted = new Object[0][];
@@ -55,8 +55,9 @@ public class ReportHandler {
 
 				DAO dao1 = new DAO();
 //				dataReturnedSingle = dao1.getClubBudget();//need a ClubBudgetID
+				ClubBudget cBudget = dao1.getClubBudgetByClub(reportClub.toString());
 //				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, (ClubBudget)hmData.get("ClubBudget"));//test line
-				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, dao1.getClubBudgetByClub(reportClub.toString()));//real line
+				ClubBudgetReport cbReport = new ClubBudgetReport(reportFormat, cBudget);//real line
 				reportFormatted = cbReport.formatReport();
 				reportFileName = cbReport.getFilename();
 				reportSize = 3;
@@ -65,9 +66,9 @@ public class ReportHandler {
 			case CLUBEVENT_BUDGET:
 				DAO dao2 = new DAO();
 //				dataReturnedSingle = DAO.getClubEventBudget((ClubEvent)reportClubEvent))
-
-				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)hmData.get("Budget"));//test line
-//				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, dao2.getClubEventBudget(reportClub));//real Line
+				ClubEventBudget ceBudget = dao2.getClubEventBudget(reportClub.getClubID());
+//				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, (ClubEventBudget)hmData.get("Budget"));//test line
+				ClubEventBudgetReport cebReport = new ClubEventBudgetReport(reportFormat, ceBudget);//real Line
 				reportFormatted = cebReport.formatReport();
 				reportFileName = cebReport.getFilename();
 				reportSize = 3;
@@ -75,9 +76,9 @@ public class ReportHandler {
 
 			case CLUB_EXPENDITURES:
 				DAO dao3 = new DAO();
-//				List<Expenditure> dataExpList = dao3.getExpenditures();
-				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)hmData.get("Expenditures"));//test line
-//				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, dao3.getAllExpenditures(timeframe, reportClub));//real line
+				ArrayList<Expenditure> dataExpList = (ArrayList<Expenditure>)dao3.getAllExpenditureByClub(reportClub.getClubName());
+//				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, (ArrayList<Expenditure>)hmData.get("Expenditures"));//test line
+				ClubExpendituresReport clubExpReport = new ClubExpendituresReport(timeframe, reportFormat, reportClub, dataExpList);//real line
 
 				reportFormatted = clubExpReport.formatReport();
 				reportFileName = clubExpReport.getFilename();
@@ -86,8 +87,8 @@ public class ReportHandler {
 
 			case CLUBEVENT_EXPENDITURES:
 				DAO dao5 = new DAO();
-//				List<Expenditure> dataExpList5 = dao5.getAllExpenditures(reportEvent);
-//				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, (ArrayList<Expenditure>)dataExpList5);//real line
+//				ArrayList<Expenditure> ceExpend = (ArrayList<Expenditure>)dao5.getAllExpenditures(reportEvent);
+//				ClubEventExpendituresReport clubEvtExpReport = new ClubEventExpendituresReport(reportFormat, reportEvent, ceExpend);//real line
 //				reportFormatted = clubEvtExpReport.formatReport();
 //				reportFileName = clubEvtExpReport.getFilename();
 				reportSize = 1;
@@ -136,9 +137,9 @@ public class ReportHandler {
 				break;
 
 			case CLUBEVENTS_SUMMARY:
-//				DAO dao10 = new DAO();
-//				List<ClubEvent> clubEvents = dao10.getAllClubEvents(reportClub);
-//				ClubEventsSummaryReport clubEventsSummaryReport = new ClubEventsSummaryReport(reportFormat, (ArrayList<ClubEvent>) clubEvents);//real code
+				DAO dao10 = new DAO();
+//				ArrayList<ClubEvent> clubEvents = (ArrayList<ClubEvent>)dao10.getAllClubEvents(reportClub);
+//				ClubEventsSummaryReport clubEventsSummaryReport = new ClubEventsSummaryReport(reportFormat, clubEvents);//real code
 //				reportFormatted = clubEventsSummaryReport.formatReport();
 //				reportFileName = clubEventsSummaryReport.getFilename();
 				reportSize = 2;
@@ -159,24 +160,12 @@ public class ReportHandler {
 
 		return null;
 	}
-
+	////PDF METHOD for exporting reports
+	//Method exports an Excel document and saves it to User's Downloads folder
 	public static void exportToExcel(String fileName, Object[][] strings) throws IOException{
 
 		XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Java Books");
-
-//        String a = "aye";
-//        String b = "bee";
-//        String c = "cee";
-//        String d = "dee";
-//
-//
-//        String[][] bookData = {
-//                {a, "Kathy Serria", "79.99"},
-//                {b, "Joshua Bloch", "36.90"},
-//                {c, "Robert martin", "42.04"},
-//                {d, "Bruce Eckel", "35.00"},
-//        };
 
         int rowCount = 0;
 
@@ -193,21 +182,16 @@ public class ReportHandler {
                     cell.setCellValue((Double) field);
                 }
             }
-
         }
-
 
         try {
         	String home = System.getProperty("user.home");
-//        	File file = new File( fileName + ".xlsx");
         	FileOutputStream outputStream = new FileOutputStream(home+"/Downloads/" + fileName + ".xlsx");
             workbook.write(outputStream);
         }
         finally {
         	workbook.close();
         }
-
-
 
 	}
 ////PDF METHOD for exporting reports
