@@ -134,7 +134,7 @@ public class CalendarView {
 	//With Event Handlers for the Right/Left Arrows and each calendar day
 	public VBox makeCalendar() {
 
-		int calDayWidth = 50;
+		int calDayWidth = 100;
 
 		VBox vbMainCalendar = new VBox();
 
@@ -162,7 +162,7 @@ public class CalendarView {
 		leftButton.setGraphic(leftArrow);
 
 		title.setPadding(new Insets(20, 50, 20, 50));
-		title.setMaxWidth(425);
+		title.setMaxWidth(800);
 
 
 		title.setLeft(leftButton);
@@ -184,7 +184,7 @@ public class CalendarView {
 
 		for(Label weekday: weekdays) {
 			weekday.setPrefWidth(calDayWidth);
-			weekday.setTextAlignment(TextAlignment.CENTER);
+			weekday.setAlignment(Pos.CENTER);
 		}
 		HBox hbWeekdays = new HBox(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
 		hbWeekdays.setPadding(new Insets(0, 50, 0, 50));
@@ -204,7 +204,7 @@ public class CalendarView {
 				currentDisplayMonth++;
 			}
 			else {
-				this.currentDisplayMonth = 0;
+				this.currentDisplayMonth = 1;
 				currentDisplayYear++;
 			}
 			title.setCenter(new Label(getCalendarTitle(currentDisplayMonth, currentDisplayYear)));
@@ -215,12 +215,12 @@ public class CalendarView {
 
 		leftButton.setOnMouseClicked(e ->{
 
-			if ((this.currentDisplayMonth - 1) >= 0) {
+			if ((this.currentDisplayMonth - 1) > 0) {
 
 				currentDisplayMonth--;
 			}
 			else {
-				this.currentDisplayMonth = 11;
+				this.currentDisplayMonth = 12;
 				currentDisplayYear--;
 			}
 			title.setCenter(new Label(getCalendarTitle(currentDisplayMonth, currentDisplayYear)));
@@ -234,9 +234,10 @@ public class CalendarView {
 
 	public GridPane makeDates(int currentDisplayMonth, int currentDisplayYear) {
 		int calDayHeight = 75;
-		int calDayWidth = 50;
+		int calDayWidth = 100;
 
 		GridPane gpCalendar = new GridPane();
+		gpCalendar.gridLinesVisibleProperty();
 
 		gpCalendar.setPadding(new Insets(20, 50, 20, 50));
 
@@ -299,6 +300,7 @@ public class CalendarView {
 
 		for (int i = 0; i<calendarBoxes.length; i++) {
 			calendarBoxes[i].setPrefSize(calDayWidth, calDayHeight);
+			calendarBoxes[i].setStyle("-fx-border-color: black;");
 			Label lbDay = new Label();
 			LocalDate selectedDate = LocalDate.of(currentDisplayYear, currentDisplayMonth, 2);
 
@@ -312,6 +314,7 @@ public class CalendarView {
 			if((i-firstDay+1) <= daysInMonth && i >= firstDay) {
 				calendarDay++;
 				lbDay.setText(""+calendarDay);
+				lbDay.setPadding(new Insets(5, 5, 5 , 5));
 				calendarBoxes[i].setUserData(calendarDay);
 			}
 			else {
@@ -404,7 +407,7 @@ public class CalendarView {
 		editEvent.setPadding(new Insets(10));
 		event.setPrefWidth(400);
 		event.setMinWidth(400);
-		event.setStyle("-fx-border-color: black; -fx-padding: 10");
+		event.setStyle("-fx-border-color: grey; -fx-padding: 10");
 
 		//Event Name
 		HBox nameBox = new HBox();
