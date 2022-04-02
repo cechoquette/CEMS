@@ -121,15 +121,18 @@ public class DAO {
 
     public void updateUser(User user) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(user);
+            session.merge(user);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 
@@ -578,7 +581,7 @@ public class DAO {
         return result;
     }
 
-/*
+
     public static void main(String[] args) {
 
         DAO dao55 = new DAO();
@@ -586,6 +589,10 @@ public class DAO {
         System.out.println(dao55.getClub(1));
         System.out.println(dao55.getUsersByClub(1));
         System.out.println(dao55.getAllClubs());
+        User user = dao55.getUser("master@email.com");
+        user.setPassword("10fvjoshoi0");
+        //user.setUserSalt("5510fvjoshoi0");
+        dao55.updateUser(user);
     }
-*/
+
 }
