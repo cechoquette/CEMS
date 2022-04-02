@@ -23,4 +23,21 @@ public class DatabaseRunner {
             }
         }
     }
+
+    public static void setUPHibernate() throws Exception {
+        String script = "CEMS/src/resources/initial_data.sql";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            new ScriptRunner(DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/mysql", "CEMSAdmin", "CEMS321"))
+                    .runScript(new BufferedReader(new FileReader(script)));
+        } catch (SQLException sqlException) {
+            if (sqlException.getErrorCode() == 1007) {
+                // Database already exists error
+                System.out.println(sqlException.getMessage());
+            } else {
+                sqlException.printStackTrace();
+            }
+        }
+    }
 }

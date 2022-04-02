@@ -53,7 +53,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            club = session.get(Club.class, clubID); //get student object by id
+            club = session.get(Club.class, clubID);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -223,26 +223,6 @@ public class DAO {
         return clubBudget;
     }
 
-
-    /*    @SuppressWarnings("unchecked")
-        public List<ClubBudget> getAllClubBudgets() {
-            Transaction transaction = null;
-            List<ClubBudgets> clubBudgets = null;
-            try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                clubs = session.createQuery("from ClubBudget").list();
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
-            }
-            return clubBudgets;
-        }
-    */ // getAllClubbBudgets
-
-
     ////////// ClubEventDAO
 
     public void addClubEvent(ClubEvent clubEvent) {
@@ -382,7 +362,6 @@ public class DAO {
         }
     }
 
-
     public ClubEventBudget getClubEventBudget(int eventBudgetID) {
         Transaction transaction = null;
         ClubEventBudget clubEventBudget = null;
@@ -398,24 +377,6 @@ public class DAO {
         }
         return clubEventBudget;
     }
-    /*
-        @SuppressWarnings("unchecked")
-        public List<ClubEventBudget> getClubEventBudget() {
-            Transaction transaction = null;
-            List<ClubEventBudget> users = null;
-            try {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                transaction = session.beginTransaction();
-                clubEventBudget = session.createQuery("from clubeventbudget").list();
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
-            }
-            return clubEventBudget;
-        }
-    */ // get all not working yet
 
     /////////ExpenditureDAO
 
@@ -614,7 +575,7 @@ public class DAO {
             user.setUserSalt("35789");
             dao.updateUser(user);
             System.out.println(dao.getUser("erin@algoma.ca"));
-
+         System.out.println(dao.getClub(1));
         }
 */
     //Club Test
