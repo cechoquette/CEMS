@@ -269,24 +269,23 @@ public class DAO {
         }
         return clubEvent;
     }
-    public ClubEvent getClubEventByClub(String clubName) {
+    public List<ClubEvent>getClubEventByClub(String clubName) {
         Transaction transaction = null;
-        ClubEvent clubEvent = null;
+        List<ClubEvent> clubEvents = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             String hql = "from ClubEvent ce where ce.clubName =: clubname";
             Query query = session.createQuery(hql);
             query.setParameter("clubname", clubName);
-            query.setMaxResults(1);
-            clubEvent = (ClubEvent)query.uniqueResult();
+            clubEvents = (List<ClubEvent>) query.list();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
         }
-        return clubEvent;
+        return clubEvents;
     }
 
     public List<ClubEvent>  getClubEventByDate(Date start,Date end) {
@@ -310,7 +309,7 @@ public class DAO {
     }
 
     @SuppressWarnings("unchecked")
-        public List<ClubEvent> getAllClubEvents() {
+        public List<ClubEvent> getAllClubEvents()  {
             Transaction transaction = null;
             List<ClubEvent> clubEvents = null;
             try {
