@@ -90,6 +90,7 @@ public class LoginPageUIController {
             dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
 
             Controller.processRequest(RequestType.GET_USER, dataToSubmit);
+            System.out.println(Main.CURRENTUSER.getPassword());
 
             if ((Main.CURRENTUSER != null) && (Main.CURRENTUSER.getUserSalt() != null)) {
                 Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
@@ -110,9 +111,17 @@ public class LoginPageUIController {
                     if (CURRENTUSER.getPassword().equals(hashedPassword)) {
                         // Link to the home page
                         Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-                        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+                        //Pane mainScreen = ViewBuilder.newScreen("HomePage");
+                        BorderPane homePage = new BorderPane();
+                        homePage.setTop(menuScreen);
+                        CalendarView calendar = new CalendarView();
+                        homePage.setCenter(calendar.makeCalendar());
                         defaultPane.setTop(menuScreen);
-                        defaultPane.setCenter(mainScreen);
+                        defaultPane.setCenter(homePage);
+//                        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+//                        Pane mainScreen = ViewBuilder.newScreen("HomePage");
+//                        defaultPane.setTop(menuScreen);
+//                        defaultPane.setCenter(mainScreen);
                     } else {
                         // Set the password field as an error state
                         pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
@@ -124,14 +133,14 @@ public class LoginPageUIController {
             }
         }
 
-        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-        //Pane mainScreen = ViewBuilder.newScreen("HomePage");
-        BorderPane homePage = new BorderPane();
-        homePage.setTop(menuScreen);
-        CalendarView calendar = new CalendarView();
-        homePage.setCenter(calendar.makeCalendar());
-        defaultPane.setTop(menuScreen);
-        defaultPane.setCenter(homePage);
+//        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+//        //Pane mainScreen = ViewBuilder.newScreen("HomePage");
+//        BorderPane homePage = new BorderPane();
+//        homePage.setTop(menuScreen);
+//        CalendarView calendar = new CalendarView();
+//        homePage.setCenter(calendar.makeCalendar());
+//        defaultPane.setTop(menuScreen);
+//        defaultPane.setCenter(homePage);
 
 
 
