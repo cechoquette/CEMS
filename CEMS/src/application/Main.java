@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class Main extends Application {
 	//do not delete, global User for session. Initialize in Start.
 	public static User CURRENTUSER;
-	public static Club ALLCLUBS = new Club("All Clubs", "This is the club for all SuperAdmins.");
+	public static Club ALLCLUBS;// = new Club("All Clubs", "This is the club for all SuperAdmins.");
 	public static BorderPane defaultPane = new BorderPane();
 
 
@@ -36,15 +36,15 @@ public class Main extends Application {
 				DatabaseRunner.setUPHibernate();
 			}
 
-
 			Club.COUNT_FOR_IDS = clubID;
 			ClubEvent.COUNT_FOR_IDS = clubEventID;
 			ClubBudget.COUNT_FOR_IDS = clubBudgetID;
 			ClubEventBudget.COUNT_FOR_IDS = clubEventBudgetID;
 			Expenditure.COUNT_FOR_IDS = expenditureID;
+
+			DAO dao1 = new DAO();
+			ALLCLUBS = dao1.getClub(1);
 			//************************************************
-
-
 
 
 

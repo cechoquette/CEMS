@@ -66,8 +66,13 @@ public class OptionLists {
 		return clubEvents;
 
 	}
-
+	//Method to populate lists of club users in Member Management UI
 	public static String[] getAdmins(){
+//		String[] adminNames = Main.CURRENTUSER
+
+
+
+
 		return new String[0];
 	}
 
@@ -76,11 +81,11 @@ public class OptionLists {
 	}
 
 	public static List<Club> getAllClubsList(){
-//		DAO dao1 = new DAO();
-//		List<Club> clubs = dao1.getAllClubs();
-//		return clubs;
+		DAO dao1 = new DAO();
+		List<Club> clubs = dao1.getAllClubs();
+		return clubs;
 
-		return new ArrayList<>();
+//		return new ArrayList<>();
 	}
 
 	//method is for testing only. For real method, use getAllClubsList()
