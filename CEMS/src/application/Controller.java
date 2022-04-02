@@ -6,6 +6,7 @@ import java.security.NoSuchProviderException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Controller {
 	
@@ -61,9 +62,11 @@ public class Controller {
 		case GET_EVENTS:
 			DAO dao22 = new DAO();
 			Timeframe timeframe2 = (Timeframe)dataToProcess.get("Timeframe");
-			//Code for calling the Database
-//			ArrayList<ClubEvent> clubEvents = dao22.getAllClubEvents(timeframe2);
-//			dataToProcess.put("ClubEvents", clubEvents);
+//			Code for calling the Database
+			LocalDate start = (LocalDate)dataToProcess.get("StartDate");
+			LocalDate end = (LocalDate)dataToProcess.get("EndDate");
+			ArrayList<ClubEvent> clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDate(start, end);
+			dataToProcess.put("MonthlyEvents", clubEvents);
 
 
 //			//This code is For Luke's CalendarUIController --> Not ready

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -307,9 +308,9 @@ public class CalendarView {
 			/* ****TODO: Test Code Segment to be replaced on putting it into the application**** */
 //            EventsBoolean eventsBoolean = new EventsBoolean(selectedDate);
 //            boolean[] trueFalseList = eventsBoolean.getEventsArray();
-			/* ****TODO: Replace the above with this for the controller call**** *
-			 * Boolean checkForEvent = (Boolean)Controller.processRequest(RequestType.CHECK_FOR_EVENTS, dataToSend).get("CheckForEvent");
-			 * ***************************************************************** */
+//			 ****TODO: Replace the above with this for the controller call**** *
+
+
 
 			if((i-firstDay+1) <= daysInMonth && i >= firstDay) {
 				calendarDay++;
@@ -323,7 +324,7 @@ public class CalendarView {
 				lbDay.setText("   ");
 			}
 
-			boolean eventsExist = false;
+//			boolean eventsExist = false;
 //            if (calendarBoxes[i].getUserData() != null) {
 //                eventsExist = trueFalseList[calendarDay - 1];
 //            }
@@ -342,7 +343,7 @@ public class CalendarView {
 
 			flEventDots.setPrefSize(calDayWidth, calDayHeight/2);
 
-			//TODO
+			//TODO////////////////////////////
 			//make a method for this
 //            if (eventsExist) {
 //                flEventDots.getChildren().add(new Circle(2));
@@ -376,20 +377,35 @@ public class CalendarView {
 
 		eventsOfTheDay.setTitle("Events for " + getCurrentMonth(month) + " " + day + ", " + year);
 		//TODO
-		/* *** Get the events, add in the below code to send request to the controller
-		 *
-		 * ArrayList<ClubEvent> dailyEvents = (ArrayList<ClubEvent>)Controller.processRequest(RequestType.GET_EVENTS, hashmap).get("DailyEvents");
-		 *
-		 *  *** */
+//		*** Get the events, add in the below code to send request to the controller
+
+
+		//*** Start : All necessary for call to Controller --> Don't change any of the code here
+		LocalDate startOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, 1);
+		LocalDate endOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, startOfMonth.lengthOfMonth());
+
+		HashMap<Object, Object> dataToSend= new HashMap<Object, Object>();
+		dataToSend.put("StartDate", startOfMonth);
+		dataToSend.put("EndDate", endOfMonth);
+
+		//Calling the controller, getting ArrayList with randomized ClubEvents for the month
+		ArrayList<ClubEvent> monthlyEvents = (ArrayList<ClubEvent>)Controller.processRequest(RequestType.GET_EVENTS, dataToSend).get("MonthlyEvents");
+
+		//*** End of call to Controller
+
+
+		ArrayList<ClubEvent> dailyEvents = new ArrayList<>();
+
 		//Test Code Section - to be removed when porting over
 		//ArrayList<ClubEvent> dailyEvents = CreateEvents.makeNewEvents(selectedDate);
 
 		//End of test code section
 
 		VBox eventHolder = new VBox();
-//        for (int i = 0; i < dailyEvents.size(); i++) {
-//            eventHolder.getChildren().add(createEventPane(dailyEvents.get(i).getEventName(), dailyEvents.get(i).getEventLocation(), dailyEvents.get(i).getEventDateTime(), dailyEvents.get(i).getEventID()));
-//        }
+        for (int i = 0; i < dailyEvents.size(); i++) {
+            eventHolder.getChildren().add(createEventPane(dailyEvents.get(i).getEventName(),
+					dailyEvents.get(i).getEventLocation(), dailyEvents.get(i).getEventDateTime(), dailyEvents.get(i).getEventID()));
+        }
 
 		eventsOfTheDay.getDialogPane().setExpandableContent(eventHolder);
 		//eventsOfTheDay.getDialogPane().getScene().getWindow().sizeToScene();
