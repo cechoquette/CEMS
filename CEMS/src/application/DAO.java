@@ -309,14 +309,17 @@ public class DAO {
         return clubEvents;
     }
 
-    /*    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
         public List<ClubEvent> getAllClubEvents() {
             Transaction transaction = null;
-            List<ClubEvents> clubEvents = null;
+            List<ClubEvent> clubEvents = null;
             try {
                 Session session = HibernateUtil.getSessionFactory().openSession();
                 transaction = session.beginTransaction();
-                clubEvents = session.createQuery("from ClubEvent").list();
+                CriteriaBuilder builder = session.getCriteriaBuilder();
+                CriteriaQuery<ClubEvent> criteria = builder.createQuery(ClubEvent.class);
+                criteria.from(ClubEvent.class);
+                clubEvents = session.createQuery(criteria).getResultList();
                 transaction.commit();
             } catch (Exception e) {
                 if (transaction != null) {
@@ -324,8 +327,8 @@ public class DAO {
                 }
             }
             return clubEvents;
-        }
-    */ // getAllClubEvent
+    }
+
 
     @SuppressWarnings("null")
     public void deleteClubEvent(int eventID) {
