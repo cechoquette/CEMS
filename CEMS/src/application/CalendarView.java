@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,20 +30,8 @@ public class CalendarView {
 	private int currentDisplayYear = today.getYear();
 	public CalendarView() {}
 
-	//****************************************************************************
-	//****************************************************************************
-
 	//TODO change method to count Events from getDailyEvents() method
 	//method call should retrieve the number of daily events from database
-	public int getNumberOfDailyEvents(int day) {
-		int[] days = {
-				1,2,4,0,1,3,2,0,1,3,0,1,12,0,1,0,4,0,1,0,1,0,1,0,1,2,0,2,0,45,0,2,0,1,
-				1,2,0,0,1,3,2,5,1,0,3,4,1,2,4,1,3,1,2,4,1,1,3,2,5,1,3,4,1,2,4,1,3
-
-		};
-
-		return days[day];
-	}
 
 	//TODO method call should retrieve the daily Events from database
 //		public Event[] getDailyEvents(Date) {
@@ -52,6 +39,101 @@ public class CalendarView {
 //
 //			return dailyEvents;
 //		}
+
+	//Method return a VBox which contains a full calendar widget: Title, Weekdays, Calendar Days
+	//With Event Handlers for the Right/Left Arrows and each calendar day
+	public VBox makeCalendar() {
+
+		int calDayWidth = 100;
+
+		VBox vbMainCalendar = new VBox();
+
+		//Create the top part: arrow, "Month, Year", arrow
+		Label calendarTitle = new Label();
+		calendarTitle.setText(getCurrentMonth(currentDisplayMonth) + ", " + currentDisplayYear);
+
+		Polygon rightArrow = new Polygon();
+		rightArrow.getPoints().addAll(0.0, 0.0,
+				0.0, 10.0,
+				8.0, 5.0);
+		Polygon leftArrow = new Polygon();
+		leftArrow.getPoints().addAll(0.0, 0.0,
+				0.0, 10.0,
+				-8.0, 5.0);
+
+		//Add arrows to buttons for easier clicking
+		Button rightButton = new Button();
+		rightButton.setGraphic(rightArrow);
+		Button leftButton = new Button();
+		leftButton.setGraphic(leftArrow);
+
+		BorderPane title = new BorderPane();
+		title.setPadding(new Insets(20, 50, 20, 50));
+		title.setMaxWidth(800);
+		title.setLeft(leftButton);
+		title.setRight(rightButton);
+		title.setCenter(calendarTitle);
+
+		//Create the weekdays part
+		Label monday = new Label("Mon");
+		Label tuesday = new Label("Tues");
+		Label wednesday = new Label("Wed");
+		Label thursday = new Label("Thurs");
+		Label friday = new Label("Fri");
+		Label saturday = new Label("Sat");
+		Label sunday = new Label("Sun");
+
+		Label[] weekdays = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
+
+		for(Label weekday: weekdays) {
+			weekday.setPrefWidth(calDayWidth);
+			weekday.setAlignment(Pos.CENTER);
+		}
+		HBox hbWeekdays = new HBox(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+		hbWeekdays.setPadding(new Insets(0, 50, 0, 50));
+
+
+		//Call method makeDAtes to get the days portion
+		GridPane calendarDays = makeDates(currentDisplayMonth, currentDisplayYear);
+
+		//Add all 3 parts to the calendar
+		vbMainCalendar.getChildren().addAll(title, hbWeekdays, calendarDays);
+
+		//Left and Right Arrow Event Handlers
+		rightButton.setOnMouseClicked(e ->{
+
+			if ((this.currentDisplayMonth + 1) < 12) {
+
+				currentDisplayMonth++;
+			}
+			else {
+				this.currentDisplayMonth = 1;
+				currentDisplayYear++;
+			}
+			title.setCenter(new Label(getCalendarTitle(currentDisplayMonth, currentDisplayYear)));
+
+			vbMainCalendar.getChildren().clear();
+			vbMainCalendar.getChildren().addAll(title, hbWeekdays, makeDates(currentDisplayMonth, currentDisplayYear));
+		});
+
+		leftButton.setOnMouseClicked(e ->{
+
+			if ((this.currentDisplayMonth - 1) > 0) {
+
+				currentDisplayMonth--;
+			}
+			else {
+				this.currentDisplayMonth = 12;
+				currentDisplayYear--;
+			}
+			title.setCenter(new Label(getCalendarTitle(currentDisplayMonth, currentDisplayYear)));
+
+			vbMainCalendar.getChildren().clear();
+			vbMainCalendar.getChildren().addAll(title, hbWeekdays, makeDates(currentDisplayMonth, currentDisplayYear));
+		});
+
+		return vbMainCalendar;
+	}
 
 	//method returns an int value for the number of days in any given month
 	public int getCurrentMonthLength(int month) {
@@ -107,6 +189,7 @@ public class CalendarView {
 		String[] months = {"","January","February","March","April","May","June","July","August","September","October","November","December"};
 		return months[month];
 	}
+
 	//method returns an int value of the first weekday of any given month
 	public int getFirstWeekday(int month, int year) {
 		//assume you're given 1-12 for months
@@ -128,109 +211,6 @@ public class CalendarView {
 		String calendarTitle = getCurrentMonth(month) + ", " + year;
 
 		return calendarTitle;
-	}
-
-
-	//Method return a VBox which contains a full calendar widget: Title, Weekdays, Calendar Days
-	//With Event Handlers for the Right/Left Arrows and each calendar day
-	public VBox makeCalendar() {
-
-		int calDayWidth = 100;
-
-		VBox vbMainCalendar = new VBox();
-
-		//Create the top part: arrow, "Month, Year", arrow
-		Label calendarTitle = new Label();
-		calendarTitle.setText(getCurrentMonth(currentDisplayMonth) + ", " + currentDisplayYear);
-		BorderPane title = new BorderPane();
-
-		Polygon rightArrow = new Polygon();
-		rightArrow.getPoints().addAll( new Double[] {
-				0.0, 0.0,
-				0.0, 10.0,
-				8.0, 5.0
-		});
-		Polygon leftArrow = new Polygon();
-		leftArrow.getPoints().addAll( new Double[] {
-				0.0, 0.0,
-				0.0, 10.0,
-				-8.0, 5.0
-		});
-
-		Button rightButton = new Button();
-		rightButton.setGraphic(rightArrow);
-		Button leftButton = new Button();
-		leftButton.setGraphic(leftArrow);
-
-		title.setPadding(new Insets(20, 50, 20, 50));
-		title.setMaxWidth(800);
-
-
-		title.setLeft(leftButton);
-		title.setRight(rightButton);
-		title.setCenter(calendarTitle);
-
-
-		//Create the weekdays part
-		Label monday = new Label("Mon");
-		Label tuesday = new Label("Tues");
-		Label wednesday = new Label("Wed");
-		Label thursday = new Label("Thurs");
-		Label friday = new Label("Fri");
-		Label saturday = new Label("Sat");
-		Label sunday = new Label("Sun");
-
-		Label[] weekdays = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
-
-
-		for(Label weekday: weekdays) {
-			weekday.setPrefWidth(calDayWidth);
-			weekday.setAlignment(Pos.CENTER);
-		}
-		HBox hbWeekdays = new HBox(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
-		hbWeekdays.setPadding(new Insets(0, 50, 0, 50));
-
-
-		//Call method makeDAtes to get the days portion
-		GridPane calendarDays = makeDates(currentDisplayMonth, currentDisplayYear);
-		//Add all 3 parts to the calendar
-		vbMainCalendar.getChildren().addAll(title, hbWeekdays, calendarDays);
-
-
-		//Left and Right Arrow Event Handlers
-		rightButton.setOnMouseClicked(e ->{
-
-			if ((this.currentDisplayMonth + 1) < 12) {
-
-				currentDisplayMonth++;
-			}
-			else {
-				this.currentDisplayMonth = 1;
-				currentDisplayYear++;
-			}
-			title.setCenter(new Label(getCalendarTitle(currentDisplayMonth, currentDisplayYear)));
-
-			vbMainCalendar.getChildren().clear();
-			vbMainCalendar.getChildren().addAll(title, hbWeekdays, makeDates(currentDisplayMonth, currentDisplayYear));
-		});
-
-		leftButton.setOnMouseClicked(e ->{
-
-			if ((this.currentDisplayMonth - 1) > 0) {
-
-				currentDisplayMonth--;
-			}
-			else {
-				this.currentDisplayMonth = 12;
-				currentDisplayYear--;
-			}
-			title.setCenter(new Label(getCalendarTitle(currentDisplayMonth, currentDisplayYear)));
-
-			vbMainCalendar.getChildren().clear();
-			vbMainCalendar.getChildren().addAll(title, hbWeekdays, makeDates(currentDisplayMonth, currentDisplayYear));
-		});
-
-		return vbMainCalendar;
 	}
 
 	public GridPane makeDates(int currentDisplayMonth, int currentDisplayYear) {
@@ -299,18 +279,21 @@ public class CalendarView {
 		int calendarDay = 0;
 		int daysInMonth = getCurrentMonthLength(currentDisplayMonth);
 
-		for (int i = 0; i<calendarBoxes.length; i++) {
+		for (int i = 0; i < calendarBoxes.length; i++) {
 			calendarBoxes[i].setPrefSize(calDayWidth, calDayHeight);
 			calendarBoxes[i].setStyle("-fx-border-color: black;");
 			Label lbDay = new Label();
-			LocalDate selectedDate = LocalDate.of(currentDisplayYear, currentDisplayMonth, 2);
 
-			/* ****TODO: Test Code Segment to be replaced on putting it into the application**** */
-//            EventsBoolean eventsBoolean = new EventsBoolean(selectedDate);
-//            boolean[] trueFalseList = eventsBoolean.getEventsArray();
-//			 ****TODO: Replace the above with this for the controller call**** *
+			//*** Start : All necessary for call to Controller --> Don't change any of the code here
+			LocalDate startOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, 1);
+			LocalDate endOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, startOfMonth.lengthOfMonth());
 
+			HashMap<Object, Object> dataToSend= new HashMap<Object, Object>();
+			dataToSend.put("StartDate", startOfMonth);
+			dataToSend.put("EndDate", endOfMonth);
+			dataToSend.put("CalendarClubAffiliation", Main.CURRENTUSER.getUserClub());
 
+			ArrayList<ClubEvent> monthlyEvents = getEvents(dataToSend);
 
 			if((i-firstDay+1) <= daysInMonth && i >= firstDay) {
 				calendarDay++;
@@ -323,11 +306,6 @@ public class CalendarView {
 				calendarDay = 0;
 				lbDay.setText("   ");
 			}
-
-//			boolean eventsExist = false;
-//            if (calendarBoxes[i].getUserData() != null) {
-//                eventsExist = trueFalseList[calendarDay - 1];
-//            }
 
 			FlowPane flEventDots = new FlowPane();
 
@@ -343,75 +321,71 @@ public class CalendarView {
 
 			flEventDots.setPrefSize(calDayWidth, calDayHeight/2);
 
-			//TODO////////////////////////////
-			//make a method for this
-//            if (eventsExist) {
-//                flEventDots.getChildren().add(new Circle(2));
-//            }
+			//If there are any events that fall of the date, add a dot, and make it clickable
+			boolean isClickable = addDots(monthlyEvents, calendarBoxes[i].getUserData(), flEventDots);
 
 			calendarBoxes[i].getChildren().addAll(lbDay, flEventDots);
 			gpCalendar.add(calendarBoxes[i], xcount, ycount);
 			xcount++;
-		}
 
-		for (int i = 0; i < calendarBoxes.length; i++) {
-			int dayOfMonth;
-			if (calendarBoxes[i].getUserData() != null) {
-				dayOfMonth = (int) calendarBoxes[i].getUserData();
+			//If the date is clickable(has at least one event), make an event handler
+			if (isClickable) {
+				ArrayList<ClubEvent> finalMonthlyEvents = monthlyEvents;
+				int finalI = i;
+				calendarBoxes[i].setOnMouseClicked(e -> {
+					showEvents(finalMonthlyEvents, (int) calendarBoxes[finalI].getUserData());
+				});
 			}
-			else
-				dayOfMonth = 1000;
-			calendarBoxes[i].setOnMouseClicked(e -> {
-				showEvents(dayOfMonth, currentDisplayMonth, currentDisplayYear);
-			});
 		}
 
 		return gpCalendar;
 	}
 
-	private void showEvents (int day, int month, int year) {
+	private void showEvents (ArrayList <ClubEvent> monthlyEvents, int dayOfMonth) {
 
-		LocalDate selectedDate = LocalDate.of(year, month, day);
 		Dialog<ScrollPane> eventsOfTheDay = new Dialog<>();
-		eventsOfTheDay.setResizable(false);
 
-		eventsOfTheDay.setTitle("Events for " + getCurrentMonth(month) + " " + day + ", " + year);
+		eventsOfTheDay.setTitle("Events for " + getCurrentMonth(currentDisplayMonth) + " " + dayOfMonth + ", " + currentDisplayYear);
 		//TODO
 //		*** Get the events, add in the below code to send request to the controller
 
-
-		//*** Start : All necessary for call to Controller --> Don't change any of the code here
-		LocalDate startOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, 1);
-		LocalDate endOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, startOfMonth.lengthOfMonth());
-
-		HashMap<Object, Object> dataToSend= new HashMap<Object, Object>();
-		dataToSend.put("StartDate", startOfMonth);
-		dataToSend.put("EndDate", endOfMonth);
-
-		//Calling the controller, getting ArrayList with randomized ClubEvents for the month
-		ArrayList<ClubEvent> monthlyEvents = (ArrayList<ClubEvent>)Controller.processRequest(RequestType.GET_EVENTS, dataToSend).get("MonthlyEvents");
-
-		//*** End of call to Controller
-
-
-		ArrayList<ClubEvent> dailyEvents = new ArrayList<>();
-
-		//Test Code Section - to be removed when porting over
-		//ArrayList<ClubEvent> dailyEvents = CreateEvents.makeNewEvents(selectedDate);
-
-		//End of test code section
-
 		VBox eventHolder = new VBox();
-        for (int i = 0; i < dailyEvents.size(); i++) {
-            eventHolder.getChildren().add(createEventPane(dailyEvents.get(i).getEventName(),
-					dailyEvents.get(i).getEventLocation(), dailyEvents.get(i).getEventDateTime(), dailyEvents.get(i).getEventID()));
-        }
+		for (int i = 0; i < monthlyEvents.size(); i++) {
+
+			if (monthlyEvents.get(i).getEventDateTime().getDayOfMonth() == dayOfMonth) {
+				eventHolder.getChildren().add(createEventPane(monthlyEvents.get(i).getEventName(),
+						monthlyEvents.get(i).getEventLocation(), monthlyEvents.get(i).getEventDateTime(), monthlyEvents.get(i).getEventID()));
+			}
+		}
 
 		eventsOfTheDay.getDialogPane().setExpandableContent(eventHolder);
-		//eventsOfTheDay.getDialogPane().getScene().getWindow().sizeToScene();
 		Window window = eventsOfTheDay.getDialogPane().getScene().getWindow();
 		window.setOnCloseRequest(event -> window.hide());
 		eventsOfTheDay.showAndWait();
+	}
+
+	private ArrayList<ClubEvent> getEvents(HashMap <Object, Object> dataToSend) {
+
+		ArrayList<ClubEvent> monthlyEvents = (ArrayList<ClubEvent>)Controller.processRequest(RequestType.GET_EVENTS, dataToSend).get("MonthlyEvents");
+
+		return monthlyEvents;
+	}
+
+	//Gets the day of the month, checks the monthlyEvents to see if there exists event(s) on the day
+	private boolean addDots (ArrayList <ClubEvent> monthlyEvents, Object calendarBox, FlowPane flEventDots) {
+		if (calendarBox != null) {
+			int calendarDay = (Integer) calendarBox;
+
+			for (int i = 0; i < monthlyEvents.size(); i++) {
+				if (monthlyEvents.get(i).getEventDateTime().getDayOfMonth() == calendarDay) {
+					flEventDots.getChildren().add(new Circle(2));
+					flEventDots.setPadding(new Insets(5, 5, 5, 5));
+					return true; //Only want to add 1 dot, regardless of events on the day
+				}
+			}
+		}
+		//The return value determines if the Vbox is clickable. If there are no events, we don't want it clickable
+		return false;
 	}
 
 	private GridPane createEventPane (String name, String location, LocalDateTime time, int eventIdNum) {
@@ -465,14 +439,14 @@ public class CalendarView {
 				Scene scene = new Scene(fxmlFile);
 				stage.setScene(scene);
 				stage.show();
-			} catch (IOException ex) {
-				System.out.println("Can't find it");
-				//ex.printStackTrace();
 			}
-
+			catch (IOException ex) {
+				System.out.println("Can't find it");
+				ex.printStackTrace();
+			}
 		});
 
-		//TODO: Add event handler
+		//Add the edit event button to the right side of the event box
 		editEvent.getChildren().add(editButton);
 		editButton.setLayoutX(editEvent.getWidth()-editButton.getWidth());
 		editEvent.setAlignment(Pos.CENTER);
