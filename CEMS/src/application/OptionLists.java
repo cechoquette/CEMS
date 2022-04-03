@@ -35,9 +35,12 @@ public class OptionLists {
 
 		List<Club> clubs = new ArrayList<>();
 
-		if(Main.CURRENTUSER.getUserClub() == ALLCLUBS) {
+		if(Main.CURRENTUSER == null){
 			clubs = dao1.getAllClubs();
-			System.out.println("Yes ------------------------ line 40 OptionLists");
+		}
+		else if(Main.CURRENTUSER.getUserClub() == ALLCLUBS) {
+			clubs = dao1.getAllClubs();
+//			System.out.println("Yes ------------------------ line 40 OptionLists");
 		}
 		else{
 			clubs.add(Main.CURRENTUSER.getUserClub());

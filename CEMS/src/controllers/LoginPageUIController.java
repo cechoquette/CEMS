@@ -111,13 +111,16 @@ public class LoginPageUIController {
                     if (CURRENTUSER.getPassword().equals(hashedPassword)) {
                         // Link to the home page
                         Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-                        //Pane mainScreen = ViewBuilder.newScreen("HomePage");
+                        Pane home = ViewBuilder.newScreen("HomePage");
                         BorderPane homePage = new BorderPane();
-                        homePage.setTop(menuScreen);
                         CalendarView calendar = new CalendarView();
+
+                        homePage.setTop(home);
                         homePage.setCenter(calendar.makeCalendar());
+
                         defaultPane.setTop(menuScreen);
                         defaultPane.setCenter(homePage);
+
 //                        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
 //                        Pane mainScreen = ViewBuilder.newScreen("HomePage");
 //                        defaultPane.setTop(menuScreen);
