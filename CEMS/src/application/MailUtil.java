@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class MailUtil {
 
-    public static void sendEmail(HashMap<Object, Object> eventInfo) throws Exception {
+    public static void sendNewEvent (HashMap<Object, Object> eventInfo) throws Exception {
 
         System.out.println("Preparing to send email");
 
@@ -48,6 +48,11 @@ public class MailUtil {
 
         Transport.send(message);
     }
+
+    public static void sendEventUpdate (HashMap<Object, Object> eventInfo) throws Exception { }
+
+    public static void sendRequestAccess (HashMap<Object, Object> eventInfo) throws Exception { }
+
     private static Message messageBuilder (Session session, String fromEmail, String name, String description, LocalDateTime date, String location, String[] emailGroup) throws Exception {
 
         Message message = new MimeMessage(session);

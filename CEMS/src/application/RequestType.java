@@ -17,7 +17,6 @@ public enum RequestType {
 	CREATE_EVENT("Create Event"),
 	MODIFY_EVENT("Modify Event"),
 	DELETE_EVENT("Delete Event"),
-	SEND_EMAIL("Send Email"),
 	CREATE_CLUB("Create Club"),
 	MODIFY_CLUB("Modify Club"),
 	DELETE_CLUB("Delete Club"),
@@ -40,9 +39,10 @@ public enum RequestType {
 //	GET_CLUB_MEMBER("Get Club Member from Database"),
 	CHECK_FOR_EVENTS("Is There an Event on This Day?"),
 	GET_EVENTS("Get Events"),
-	GET_EVENT_BY_ID("Get Single Event by Event ID");
-	
-	
+	GET_EVENT_BY_ID("Get Single Event by Event ID"),
+	SEND_EVENT_EMAIL("Send New Event Email"),
+	SEND_UPDATE_EMAIL("Send an Email to Update an Event"),
+	SEND_REQUEST_ACCESS("Send an Email to Request Access to CEMS");
 	
 	
 	
