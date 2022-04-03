@@ -488,8 +488,8 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            String hql ="select ce from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name and" +
-                    "ce.eventDateTime between :start and :end and ";
+            String hql ="select ce from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name and " +
+                    "ce.eventDateTime between :start and :end";
             Query query = session.createQuery(hql);
             query.setParameter("name", clubName);
             query.setParameter("start", start);
