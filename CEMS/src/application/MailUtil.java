@@ -110,18 +110,16 @@ public class MailUtil {
         });
 
         //Extract the info from the HashMap
-        String name = (String) eventInfo.get("EventName");
-        String description = (String) eventInfo.get("EventDescription");
-        LocalDateTime date = (LocalDateTime) eventInfo.get("EventDateTime");
-        String location = (String) eventInfo.get("EventLocation");
-        List<String> emailsAsAList = (List<String>) eventInfo.get("EventEmailsPopulated");
-        //Turn the emails into a String[]
-        String[] emailGroup = new String[emailsAsAList.size()];
-        emailGroup = emailsAsAList.toArray(emailGroup);
+        String firstName = (String) eventInfo.get("RequestAccessFirstName");
+        String lastName = (String) eventInfo.get("RequestAccessLastName");
+        int studentID = (int) eventInfo.get("RequestAccessStudentID");
+        String club = (String) eventInfo.get("RequestAccessClub");
+        String reason = (String) eventInfo.get("RequestAccessReason");
+        String email = (String) eventInfo.get("RequestAccessEmail");
 
         //Pass the info to the message builder
 
-        Message message = requestAccessBuilder(session, appEmailUser, name, description, date, location, emailGroup);
+        Message message = requestAccessBuilder(session, firstName, lastName, studentID, club, reason, email);
 
         Transport.send(message);
     }
@@ -186,31 +184,26 @@ public class MailUtil {
 
         return message;
     }
-    private static Message requestAccessBuilder (Session session, String fromEmail, String name, String description, LocalDateTime date, String location, String[] emailGroup) throws Exception {
+    private static Message requestAccessBuilder (Session session, String firstName, String lastName, int studentID, String club, String reason, String email) throws Exception {
 
         Message message = new MimeMessage(session);
 
         //Set email message parameters
-        message.setFrom(new InternetAddress(fromEmail));
+        message.setFrom(new InternetAddress("3506project@gmail.com"));
         message.setRecipient(Message.RecipientType.TO, (new InternetAddress("3506project@gmail.com")));
-        message.setSubject("New Request for System Access: " + name);
+        message.setSubject("New Request for System Access from : " + firstName + " " + lastName);
 
-        String htmlContent = "<h1>Upcoming Event</h1>";
-        htmlContent += "<p>Hey there!<br></p>" +
-                "<p>This email was sent from Algoma University's Club & Event Management System<br></p>" +
-                "<h2>Event<br></h2>";
-        htmlContent += "<p>" + name + "<br></p>";
-        htmlContent += "<h2>What it's all about<br></h2>" +
-                "<p>" + description + "<br></p>";
-        htmlContent += "<h2>Where its being held<br></h2>";
-        htmlContent += "<p>" + location + "<br></p>";
-        htmlContent += "<h2>Who's on the invitation list<br></h2><ul>";
-
-        for (int i = 0; i < emailGroup.length; i++) {
-            htmlContent += "<li>" + emailGroup[i] + "<br></li>";
-        }
-
-        htmlContent += "</ul>";
+        String htmlContent = "<h1>Attention: There is a new request for access</h1>";
+        htmlContent += "<p>Sent from "  + firstName + " " + lastName + " <br></p>" +
+                "<p>This email was sent from the Request Access form in the CEMS appliation<br></p>" +
+                "<h2>New User Information:<br></h2>";
+        htmlContent += "<p>First Name: " + firstName + "<br></p>";
+        htmlContent += "<p>Last Name: " + lastName + "<br></p>";
+        htmlContent += "<p>Email Address: " + email + "<br></p>";
+        htmlContent += "<p>Student ID (please verify with school records): " + studentID + "<br></p>";
+        htmlContent += "<p>Club Association requested: " + club + "<br></p>";
+        htmlContent += "<h3>Justification Given for Granting Access:<br></h3>";
+        htmlContent += "<p>" + reason + "<br></p>";
 
         message.setContent(htmlContent, "text/html");
 
