@@ -39,6 +39,7 @@ public class Expenditure {
     @Column(name = "payment_method")
     private PaymentMethod paymentMethod;
     @ManyToOne
+    @JoinColumn(name="club_id")
     private Club club;  // many to one relationship, expenditure to clubs
     @ManyToOne
     private ClubEvent clubEvent;
@@ -198,21 +199,5 @@ public class Expenditure {
                         "\nPayment Account: " + paymentAccount;
     }
 
-    public Integer maxIExpendutureID() {
-        Integer result = null;
-        Transaction transaction = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
-            Query query = session.createQuery("select max(e.expenditureID) from Expenditure e");
-            result = (int) query.getResultList().get(0);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-        return result;
-    }
 
 }
