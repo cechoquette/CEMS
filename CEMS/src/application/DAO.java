@@ -422,7 +422,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            String hql ="from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name";
+            String hql ="select ce from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name";
             //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
             Query query = session.createQuery(hql);
             query.setParameter("name", clubName);
@@ -458,6 +458,40 @@ public class DAO {
             transaction = session.beginTransaction();
             String hql = "from ClubEvent ce where ce.eventDateTime between :start and :end";
             Query query = session.createQuery(hql);
+            query.setParameter("start", start);
+            query.setParameter("end", end);
+            clubEvents = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if(clubEvents != null) {
+                for (ClubEvent newEvent : clubEvents) {
+                    getClubEventByID.put(newEvent.getEventID(), newEvent);
+                }
+            }
+            return clubEvents;
+        }
+    }
+
+
+    public List<ClubEvent>  getClubEventByDateAndClub(LocalDateTime start, LocalDateTime end,String clubName ) {
+        startDate = start;
+        endDate = end;
+        getClubEventByID.clear();
+
+        Transaction transaction = null;
+        List<ClubEvent> clubEvents = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql ="select ce from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name and" +
+                    "ce.eventDateTime between :start and :end and ";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", clubName);
             query.setParameter("start", start);
             query.setParameter("end", end);
             clubEvents = query.list();
@@ -632,15 +666,11 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-
-            CriteriaQuery<Expenditure> criteria = builder.createQuery(Expenditure.class);
-            Root<Expenditure> root = criteria.from(Expenditure.class);
-            root.join("club");
-
-            criteria.where(builder.equal(root.get("clubName"), clubName));
-            Query<Expenditure> query = session.createQuery(criteria);
-            expenditure = query.getResultList();
+            String hql ="select e from Expenditure as e INNER JOIN e.club as c WHERE c.clubName= :name";
+            //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", clubName);
+            expenditure  = (List<Expenditure>) query.list();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
