@@ -90,7 +90,6 @@ public class LoginPageUIController {
             dataToSubmit.put("LoginUserPassword", pfLoginPassword.getText());
 
             Controller.processRequest(RequestType.GET_USER, dataToSubmit);
-//            System.out.println(Main.CURRENTUSER.getPassword());
 
             if ((Main.CURRENTUSER != null) && (Main.CURRENTUSER.getUserSalt() != null)) {
                 Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);

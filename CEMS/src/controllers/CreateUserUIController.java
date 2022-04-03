@@ -66,7 +66,6 @@ public class CreateUserUIController {
         comboCreateUserPermissions.getItems().addAll(Arrays.asList(PermissionType.values()));
 
         // Add the values to the Clubs dropdown
-//        comboCreateUserClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
         comboCreateUserClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
 
         // Set placeholder text

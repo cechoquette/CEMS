@@ -5,7 +5,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
-import java.util.Scanner;
 
 public class PasswordUtil {
 
@@ -31,11 +30,8 @@ public class PasswordUtil {
             for (byte strbyte : hashedPassword) {
                 sb.append(String.format("%02x", strbyte));
             }
-//
-//            // Store the hashed string & salt in the DB
-//            storePassAndSalt(user, sb.toString(), salt);
 
-            // Catch block
+        // Catch block
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -47,7 +43,6 @@ public class PasswordUtil {
 
     /** Method to retrieve a randomized salt to strengthen the password
      * @return the salt string to the calling method **/
-    // TODO: TEST
     public static String generateSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
         SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG", "SUN"); // pseudo-random number generation algorithm used
         byte[] salt = new byte[16];
@@ -60,75 +55,6 @@ public class PasswordUtil {
         if(Main.CURRENTUSER.getUserClub().getClubID() == 1){//don't remove this. Ensures Object permanence of the ALLCLUBS.
             Main.CURRENTUSER.setUserClub(Main.ALLCLUBS);
         }
-    }
-
-
-
-//    /** Method to store the password in the DB **/
-//    public static void storePassAndSalt(User user, String newPass, String newSalt) {
-//        // TODO: code to store password & salt in the DB
-//    }
-//
-//
-//    /** Method to validate password in the DB **/
-//    // TODO: TEST
-//    public static boolean validatePassword(User user, String enteredEmail, String enteredPassword) throws NoSuchProviderException {
-//        // To authenticate user, hash the password using the salt retrieved from the DB - then compare this hashed PW to the one in the DB
-//        // Initialize variables
-//        String salt = user.getUserSalt(); // TODO: Retrieve the users salt from the DB and store in variable
-//
-//        // Hash the password entered with the user's salt
-//        String hashedPass = PasswordUtil.hashPassword(user, enteredPassword, salt);
-//
-//        // Return a boolean to determine if the passwords and emails match
-//        return user.getPassword() == hashedPass
-//                && user.getEmail() == enteredEmail;
-//    }
-//
-//
-//    /** Method to reset password in the DB **/
-//    // TODO: TEST
-//    public static void resetPass(User user, String enteredEmail, String enteredSecurityAnswer, String newPass)
-//            throws NoSuchProviderException, NoSuchAlgorithmException {
-//
-//        // If the users email and security question are verified
-//        if (verifyPassReset(user, enteredEmail, enteredSecurityAnswer)) {
-//
-//            // Use the users new password to overwrite the password & salt in the DB
-//            String newSalt = PasswordUtil.generateSalt(); // Obtain a new salt
-//            String newHashedPass = PasswordUtil.hashPassword(user, newPass, newSalt); // Hash the new password with a new salt
-//            PasswordUtil.storePassAndSalt(user, newHashedPass, newSalt); // Store new password & salt in DB
-//        }
-//    }
-//
-//    /** Method to verify email and security question in the DB **/
-//    // TODO: TEST
-//    public static boolean verifyPassReset(User user, String enteredEmail, String enteredSecurityAnswer) {
-//        return user.getEmail() == enteredEmail
-//                && user.getSecurityAnswer() == enteredSecurityAnswer;
-//    }
-
-
-    /** Main Method - temporary **/
-    public static void main(String[] args) throws NoSuchProviderException, NoSuchAlgorithmException {
-        // Create a Scanner
-        Scanner input = new Scanner(System.in);
-
-        // Prompt the user for username and password
-        System.out.println("Email: ");
-        String email = input.next();
-        System.out.println("Password: ");
-        String pw = input.next();
-
-        // Hash the password
-        String testSalt = PasswordUtil.generateSalt();
-//        String hashed = PasswordUtil.hashPassword(user, pw, testSalt);
-
-        // Display the hashed password
-//        System.out.println("Hashed password with salt: " + hashed);
-
-        // Validate the password
-//        System.out.println(HashPass.validatePassword(hashed, email, pw));
     }
 
 }

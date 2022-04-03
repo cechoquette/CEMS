@@ -50,10 +50,6 @@ public class UserForm {
             userEntered.setFirstName((String)hmData.get("UpdateUserLastName"));
         if(hmData.get("UpdateUserEmail") != userEntered.getEmail())
             userEntered.setEmail((String)hmData.get("UpdateUserEmail"));
-//        if(hmData.get("UpdateUserPassword") != userEntered.getPassword()) // This is handled in the passwordReset function of LoginForm
-//            userEntered.setPassword((String)hmData.get("UpdateUserPassword"));
-//        if(hmData.get("UpdateUserStudentID") != (String.valueOf(userEntered.getStudentID())))
-//            userEntered.setStudentID(Integer.parseInt((String)hmData.get("CreateUserStudentID")));
         if(hmData.get("UpdateUserSecurityQ") != userEntered.getSecurityQuestion())
             userEntered.setSecurityQuestion((String)hmData.get("UpdateUserSecurityQ"));
         if(hmData.get("UpdateUserSecurityA") != userEntered.getSecurityAnswer())
