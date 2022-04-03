@@ -477,6 +477,40 @@ public class DAO {
         }
     }
 
+
+    public List<ClubEvent>  getClubEventByDateAndClub(LocalDateTime start, LocalDateTime end,String clubName ) {
+        startDate = start;
+        endDate = end;
+        getClubEventByID.clear();
+
+        Transaction transaction = null;
+        List<ClubEvent> clubEvents = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql ="select ce from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name and" +
+                    "ce.eventDateTime between :start and :end and ";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", clubName);
+            query.setParameter("start", start);
+            query.setParameter("end", end);
+            clubEvents = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if(clubEvents != null) {
+                for (ClubEvent newEvent : clubEvents) {
+                    getClubEventByID.put(newEvent.getEventID(), newEvent);
+                }
+            }
+            return clubEvents;
+        }
+    }
+
     @SuppressWarnings("unchecked")
         public List<ClubEvent> getAllClubEvents()  {
             getClubByIDHashMap.clear();
