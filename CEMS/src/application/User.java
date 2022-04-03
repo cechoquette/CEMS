@@ -150,30 +150,5 @@ public class User {
 
 	// Set the club
 	public void setUserClub(Club club) { this.club = club; }
-
-
-
-	// Testing - temporary
-	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException {
-//		User user = new User("Erin", "Cameron", "867-878-6767",
-//				"erin@email.com", 123456789, "Club 123", "Admin", "Age?", "29");
-
-//		user.addClub("Test1");
-//		user.addClub("Test2");
-
-//		System.out.println(user.getEmail());
-//		System.out.println(user.getUserSalt());
-//		System.out.println(user.getPassword());
-//		System.out.println(user.getFirstName());
-//		System.out.println(user.getLastName());
-//		System.out.println(user.getStudentID());
-//		System.out.println(user.getSecurityQuestion());
-//		System.out.println(user.getSecurityAnswer());
-//		System.out.println(user.getPhone());
-//		System.out.println(user.getPermission());
-//
-//		user.updatePermission(user, "SuperAdmin");
-//		System.out.println("After update Permission to SuperAdmin permission is: " + user.getPermission());
-	}
 	
 }

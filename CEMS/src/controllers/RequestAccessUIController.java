@@ -133,7 +133,7 @@ public class RequestAccessUIController {
     @FXML
     void btnRequestAccessSubmitClicked(ActionEvent event) {
         // Validation of fields and error checking
-        checkMandatoryFields();
+//        checkMandatoryFields();
 
         // Submit the info to wherever it needs to go
         HashMap<Object, Object> dataToSend = new HashMap<Object, Object>();
