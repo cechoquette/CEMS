@@ -63,7 +63,7 @@ public class UpdateClubEventUIController {
         comboUpdateEventEmail.getItems().addAll(Arrays.asList(OptionLists.EMAIL_GROUPS()));
 //        comboCreateEventClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
         comboUpdateEventClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
-
+        int eventID = (int) EventID.getInstance().getID();
     }
 
 
