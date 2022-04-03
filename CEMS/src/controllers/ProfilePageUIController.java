@@ -45,6 +45,8 @@ public class ProfilePageUIController {
 
     @FXML
     void btnProfileSubmitClicked(ActionEvent event) {
-
+        //TODO:Need to submit changes to the DB
+        Pane mainScreen = ViewBuilder.newScreen("ForgotPassword");
+        defaultPane.setCenter(mainScreen);
     }
 }
