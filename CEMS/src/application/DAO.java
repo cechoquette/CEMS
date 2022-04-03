@@ -601,6 +601,27 @@ public class DAO {
         }
     }
 
+    public ClubEventBudget getClubEventBudgetByEvent(int eventID) {
+        Transaction transaction = null;
+        ClubEventBudget clubEventBudget = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql = "select ceb from ClubEventBudget ceb inner join ceb.clubevent where ceb.event_id =: eventid ";
+            Query query = session.createQuery(hql);
+            query.setParameter("eventid", eventID);
+            query.setMaxResults(1);
+            clubEventBudget = (ClubEventBudget) query.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            return clubEventBudget;
+        }
+    }
+
     /////////ExpenditureDAO
 
     public void addExpenditure(Expenditure expenditure) {
@@ -670,6 +691,27 @@ public class DAO {
             //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
             Query query = session.createQuery(hql);
             query.setParameter("name", clubName);
+            expenditure  = (List<Expenditure>) query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            return expenditure;
+        }
+    }
+
+    public List<Expenditure> getAllExpenditureByEvent(int eventID) {
+        Transaction transaction = null;
+        List<Expenditure> expenditure = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            String hql ="select e from Expenditure as e INNER JOIN e.clubevent as c WHERE c.event_id= :eventid";
+            //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
+            Query query = session.createQuery(hql);
+            query.setParameter("eventid", eventID);
             expenditure  = (List<Expenditure>) query.list();
             transaction.commit();
         } catch (Exception e) {

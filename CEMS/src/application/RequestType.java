@@ -39,7 +39,8 @@ public enum RequestType {
 //	DELETE_CLUB_MEMBER("Delete Club Member"),
 //	GET_CLUB_MEMBER("Get Club Member from Database"),
 	CHECK_FOR_EVENTS("Is There an Event on This Day?"),
-	GET_EVENTS("Get Events");
+	GET_EVENTS("Get Events"),
+	GET_EVENT_BY_ID("Get Single Event by Event ID");
 	
 	
 	

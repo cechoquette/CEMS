@@ -113,7 +113,7 @@ public class ClubEvent {
         for (int i=0; i<clubUsers.size(); i++){
             emails.add(clubUsers.get(i).getEmail());
         }
-        if(emails.isEmpty() || emailType.matches("None")) emails.add("test@email.com");
+        if(emails.isEmpty() || emailType.matches("None")) emails.add("none@email.com");
 
         this.emailGroup = emails;
         return emails;

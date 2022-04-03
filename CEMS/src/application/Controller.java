@@ -60,6 +60,11 @@ public class Controller {
 //			Boolean checkForEvent = (Boolean)Controller.processRequest(RequestType.CHECK_FOR_EVENTS, dataToSend).get("CheckForEvent");
 
 				break;
+			case GET_EVENT_BY_ID:
+				DAO lostcount = new DAO();
+				ClubEvent clubEvent = lostcount.getClubEvent((Integer)dataToProcess.get("EventID"));
+				dataToProcess.put("ClubEvent", clubEvent);
+				break;
 		case GET_EVENTS:
 			DAO dao22 = new DAO();
 			Timeframe timeframe2 = (Timeframe)dataToProcess.get("Timeframe");

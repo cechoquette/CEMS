@@ -63,7 +63,29 @@ public class UpdateClubEventUIController {
         comboUpdateEventEmail.getItems().addAll(Arrays.asList(OptionLists.EMAIL_GROUPS()));
 //        comboCreateEventClub.getItems().addAll(Arrays.asList(OptionLists.getClubs()));//use for testing only
         comboUpdateEventClub.getItems().addAll(FXCollections.observableList(OptionLists.getAllClubsList()));
-        int eventID = (int) EventID.getInstance().getID();
+
+        try {
+            int eventID = (int) EventID.getInstance().getID();
+
+            HashMap<Object, Object> dataToProcess = new HashMap<>();
+            dataToProcess.put("EventID", eventID);
+
+            ClubEvent currentEvent = (ClubEvent) Controller.processRequest(RequestType.GET_EVENT_BY_ID, dataToProcess).get("ClubEvent");
+
+            tfUpdateEventLocation.setText(currentEvent.getEventLocation());
+            tfUpdateEventName.setText(currentEvent.getEventName());
+            tfUpdateEventTime.setText(currentEvent.getEventDateTime().toLocalTime().toString());
+            dpUpdateEventDate.setValue(currentEvent.getEventDateTime().toLocalDate());
+            comboUpdateEventClub.setValue(currentEvent.getClub());
+
+            if (currentEvent.getEmailGroup().get(0).matches("none@email.com"))
+                comboUpdateEventEmail.setValue(OptionLists.EMAIL_GROUPS()[1]);
+            else
+                comboUpdateEventEmail.setValue(OptionLists.EMAIL_GROUPS()[0]);
+        }catch(NullPointerException n){
+
+        }
+
     }
 
 
