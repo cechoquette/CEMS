@@ -1,16 +1,11 @@
 package CEMS.src.application;
 
-import java.io.IOException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -19,6 +14,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
+import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static CEMS.src.application.Main.defaultPane;
 
@@ -434,14 +437,8 @@ public class CalendarView {
 			Stage stage = (Stage) editButton.getScene().getWindow();
 			stage.close();
 
-			try {
-				Pane mainScreen = ViewBuilder.newScreen("UpdateClubEventForm");
-				defaultScreen.setCenter(mainScreen);
-			}
-			catch (IOException ex) {
-				System.out.println("Can't find it");
-				ex.printStackTrace();
-			}
+			Pane mainScreen = ViewBuilder.newScreen("UpdateClubEventForm");
+			defaultPane.setCenter(mainScreen);
 		});
 
 		//Add the edit event button to the right side of the event box
