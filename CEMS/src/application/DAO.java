@@ -422,7 +422,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            String hql ="from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name";
+            String hql ="select ce from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name";
             //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
             Query query = session.createQuery(hql);
             query.setParameter("name", clubName);
@@ -632,7 +632,7 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            String hql ="from Expenditure as e INNER JOIN e.club as c WHERE c.clubName= :name";
+            String hql ="select e from Expenditure as e INNER JOIN e.club as c WHERE c.clubName= :name";
             //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
             Query query = session.createQuery(hql);
             query.setParameter("name", clubName);
