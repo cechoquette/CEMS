@@ -7,7 +7,6 @@
 
 A full-stack JavaFX application built for Algoma University's COSC3506 Software Engineering. The Club Event Management System (CEMS) allows the governing body to perform and track all the tasks and functions of undergraduate clubs.
 
----
 
 ## CONTRIBUTORS
 
@@ -16,7 +15,6 @@ A full-stack JavaFX application built for Algoma University's COSC3506 Software 
 * [lukeclimen](https://github.com/lukeclimen)
 * [erincameron11](https://github.com/erincameron11)
 
----
 
 ## TECH STACK
 
@@ -25,7 +23,6 @@ A full-stack JavaFX application built for Algoma University's COSC3506 Software 
 * Database: MySQL
 * Report Generation: Apache
 
----
 
 ## PROJECT OUTLINE
 
@@ -37,7 +34,6 @@ Scope 3) Manage financial transactions of these undergraduate clubs
 
 Scope 4) Manage system users
 
----
 
 ## LOGIN
 
