@@ -18,7 +18,9 @@ import static CEMS.src.application.Main.*;
 public class LoginPageUIController {
     HashMap<Object, Object> dataToSubmit;
 
-    private boolean fieldsValid = true;
+    private boolean emailFieldValid = true;
+    private boolean passFieldValid = true;
+
 
     @FXML
     private Button btnLoginCancel;
@@ -41,19 +43,19 @@ public class LoginPageUIController {
         // Email
         if(!InputValidation.validateEmail(tfLoginEmail)) {
             tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            emailFieldValid = false;
         } else {
             tfLoginEmail.setStyle(null);
-            fieldsValid = true;
+            emailFieldValid = true;
         }
 
         // Password
         if(!InputValidation.validatePassword(pfLoginPassword)) {
             pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            passFieldValid = false;
         } else {
             pfLoginPassword.setStyle(null);
-            fieldsValid = true;
+            passFieldValid = true;
         }
     }
 
@@ -83,7 +85,8 @@ public class LoginPageUIController {
     void btnLoginSubmitClicked(ActionEvent event) throws NoSuchAlgorithmException, NoSuchProviderException {
         checkMandatoryFields();
 
-        if (fieldsValid) {
+        if (emailFieldValid) {
+
             // Query the DB to retrieve and populate the CURRENTUSER
             dataToSubmit = new HashMap<Object, Object>();
             dataToSubmit.put("LoginUserEmail", tfLoginEmail.getText());
@@ -91,47 +94,46 @@ public class LoginPageUIController {
 
             Controller.processRequest(RequestType.GET_USER, dataToSubmit);
 
-            if ((Main.CURRENTUSER != null) && (Main.CURRENTUSER.getUserSalt() != null)) {
-                Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
+            if (passFieldValid) {
 
-                // Retrieve the user's email on login attempt
-                String email = tfLoginEmail.getText();
+                if ((Main.CURRENTUSER != null) && (Main.CURRENTUSER.getUserSalt() != null)) {
+                    Controller.processRequest(RequestType.LOGIN_USER, dataToSubmit);
 
-                // Retrieve the user's salt from the DB
-                String salt = CURRENTUSER.getUserSalt();
+                    // Retrieve the user's email on login attempt
+                    String email = tfLoginEmail.getText();
 
-                // Hash the entered password
-                String hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, pfLoginPassword.getText(), salt);
+                    // Retrieve the user's salt from the DB
+                    String salt = CURRENTUSER.getUserSalt();
 
-                // Compare the email and the hashed password to the one stored in the DB
-                // Check the email
-                if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
-                    // Check the password
-                    if (CURRENTUSER.getPassword().equals(hashedPassword)) {
-                        // Link to the home page
-                        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-                        Pane home = ViewBuilder.newScreen("HomePage");
-                        BorderPane homePage = new BorderPane();
-                        CalendarView calendar = new CalendarView();
+                    // Hash the entered password
+                    String hashedPassword = PasswordUtil.hashPassword(CURRENTUSER, pfLoginPassword.getText(), salt);
 
-                        homePage.setTop(home);
-                        homePage.setCenter(calendar.makeCalendar());
+                    // Compare the email and the hashed password to the one stored in the DB
+                    // Check the email
+                    if (CURRENTUSER.getEmail().equals(tfLoginEmail.getText())) {
+                        // Check the password
+                        if (CURRENTUSER.getPassword().equals(hashedPassword)) {
+                            // Link to the home page
+                            Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+                            Pane home = ViewBuilder.newScreen("HomePage");
+                            BorderPane homePage = new BorderPane();
+                            CalendarView calendar = new CalendarView();
 
-                        defaultPane.setTop(menuScreen);
-                        defaultPane.setCenter(homePage);
+                            homePage.setTop(home);
+                            homePage.setCenter(calendar.makeCalendar());
 
-//                        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
-//                        Pane mainScreen = ViewBuilder.newScreen("HomePage");
-//                        defaultPane.setTop(menuScreen);
-//                        defaultPane.setCenter(mainScreen);
-                    } else {
-                        // Set the password field as an error state
-                        pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+                            defaultPane.setTop(menuScreen);
+                            defaultPane.setCenter(homePage);
+
+                        } else {
+                            // Set the password field as an error state
+                            pfLoginPassword.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+                        }
                     }
+                } else {
+                    // Set the email field as an error state
+                    tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
                 }
-            } else {
-                // Set the email field as an error state
-                tfLoginEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
             }
         }
 

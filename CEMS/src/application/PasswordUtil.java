@@ -52,8 +52,10 @@ public class PasswordUtil {
 
     public static void setCurrentUser(User user) {
         Main.CURRENTUSER = user;
-        if(Main.CURRENTUSER.getUserClub().getClubID() == 1){//don't remove this. Ensures Object permanence of the ALLCLUBS.
-            Main.CURRENTUSER.setUserClub(Main.ALLCLUBS);
+        if (Main.CURRENTUSER != null) {
+            if (Main.CURRENTUSER.getUserClub().getClubID() == 1) {//don't remove this. Ensures Object permanence of the ALLCLUBS.
+                Main.CURRENTUSER.setUserClub(Main.ALLCLUBS);
+            }
         }
     }
 
