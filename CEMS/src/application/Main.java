@@ -46,18 +46,18 @@ public class Main extends Application {
 			DAO dao1 = new DAO();
 			ALLCLUBS = dao1.getClub(1);
 			//************************************************
-
-//			ClubEvent clubEvent = new ClubEvent("Meeting 123", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
-//			ClubEvent clubEvent2 =	new ClubEvent("Sparklethon", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
+//
+//			ClubEvent clubEvent = new ClubEvent("Greatest Meeting Ever", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
+//			ClubEvent clubEvent2 =	new ClubEvent("Knitathon", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
 //
 //			DAO dao2 = new DAO();
 //			DAO dao3 = new DAO();
 //
 //			dao2.addClubEvent(clubEvent);
 //			dao3.addClubEvent(clubEvent2);
-
-
-
+//
+//			System.out.println(clubEvent.getEventDateTime());
+//			System.out.println(clubEvent2.getEventDateTime());
 
 
 			//for Paths: use absolute paths (leading / ) and do note use .. , the resulting .jar executable will not function.
