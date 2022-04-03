@@ -18,7 +18,15 @@ import static CEMS.src.application.Main.defaultPane;
 public class CreateUserUIController {
     HashMap<Object, Object> dataToSubmit;
 
-    private boolean fieldsValid = true;
+    private boolean firstFieldValid = true;
+    private boolean lastFieldValid = true;
+    private boolean phoneFieldValid = true;
+    private boolean emailFieldValid = true;
+    private boolean studentIDFieldValid = true;
+    private boolean clubFieldValid = true;
+    private boolean permissionFieldValid = true;
+    private boolean secQFieldValid = true;
+    private boolean secAFieldValid = true;
 
     @FXML
     private Button btnCreateUserBack;
@@ -84,82 +92,82 @@ public class CreateUserUIController {
         // First Name
         if(!InputValidation.validateNotEmpty(tfCreateUserFirst)) {
             tfCreateUserFirst.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            firstFieldValid = false;
 		} else {
             tfCreateUserFirst.setStyle(null);
-            fieldsValid = true;
+            firstFieldValid = true;
 		}
 
         // Last Name
         if(!InputValidation.validateNotEmpty(tfCreateUserLast)) {
             tfCreateUserLast.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            lastFieldValid = false;
         } else {
             tfCreateUserLast.setStyle(null);
-            fieldsValid = true;
+            lastFieldValid = true;
         }
 
         // Phone Number
         if(!InputValidation.validatePhone(tfCreateUserPhone)) {
             tfCreateUserPhone.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            phoneFieldValid = false;
         } else {
             tfCreateUserPhone.setStyle(null);
-            fieldsValid = true;
+            phoneFieldValid = true;
         }
 
         // Email
         if(!InputValidation.validateEmail(tfCreateUserEmail)) {
             tfCreateUserEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            emailFieldValid = false;
         } else {
             tfCreateUserEmail.setStyle(null);
-            fieldsValid = true;
+            emailFieldValid = true;
         }
 
         // StudentID
         if(!InputValidation.validateStudentID(tfCreateUserID)) {
             tfCreateUserID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            studentIDFieldValid = false;
         } else {
             tfCreateUserID.setStyle(null);
-            fieldsValid = true;
+            studentIDFieldValid = true;
         }
 
         // Club
         if(!InputValidation.validateComboNotEmpty(comboCreateUserClub)) {
             comboCreateUserClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
-            fieldsValid = false;
+            clubFieldValid = false;
         } else {
             comboCreateUserClub.setStyle(null);
-            fieldsValid = true;
+            clubFieldValid = true;
         }
 
         // Permissions
         if(!InputValidation.validateComboNotEmpty(comboCreateUserPermissions)) {
             comboCreateUserPermissions.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
-            fieldsValid = false;
+            permissionFieldValid = false;
         } else {
             comboCreateUserPermissions.setStyle(null);
-            fieldsValid = true;
+            permissionFieldValid = true;
         }
 
         // Security Question
         if(!InputValidation.validateSecurity(tfCreateUserSecQ)) {
             tfCreateUserSecQ.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
-            fieldsValid = false;
+            secQFieldValid = false;
         } else {
             tfCreateUserSecQ.setStyle(null);
-            fieldsValid = true;
+            secQFieldValid = true;
         }
 
         // Security Answer
         if(!InputValidation.validateSecurity(tfCreateUserSecA)) {
             tfCreateUserSecA.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
-            fieldsValid = false;
+            secAFieldValid = false;
         } else {
             tfCreateUserSecA.setStyle(null);
-            fieldsValid = true;
+            secAFieldValid = true;
         }
 
     }
@@ -216,7 +224,16 @@ public class CreateUserUIController {
         // Check that all mandatory fields are filled in
         checkMandatoryFields();
 
-        if (fieldsValid) {
+        if (firstFieldValid
+            && lastFieldValid
+            && phoneFieldValid
+            && emailFieldValid
+            && studentIDFieldValid
+            && clubFieldValid
+            && permissionFieldValid
+            && secQFieldValid
+            && secAFieldValid) {
+
             // Add all data to the hashmap
             dataToSubmit = new HashMap<Object, Object>();
             dataToSubmit.put("CreateUserFirstName", tfCreateUserFirst.getText());
