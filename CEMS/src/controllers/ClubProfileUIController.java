@@ -28,6 +28,11 @@ public class ClubProfileUIController {
     private Text textClubProfileName;
 
     @FXML
+    public void initialize(){
+        System.out.println();
+    }
+
+    @FXML
     void btnClubProfileEditClicked(ActionEvent event) {
 
     }
