@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS ClubEvent (
 -- Table EventBudget
 CREATE TABLE IF NOT EXISTS ClubEventBudget (
   event_budget_id INT NOT NULL,
-  event_id INT NULL,
   venue_entertainment DECIMAL(13,2) DEFAULT 0,
   venue_location_rental DECIMAL(13,2) DEFAULT 0,
   venue_equipment_rental DECIMAL(13,2) DEFAULT 0,
@@ -80,12 +79,7 @@ CREATE TABLE IF NOT EXISTS ClubEventBudget (
   event_budget_subtotal DECIMAL(13,2) DEFAULT 0,
   event_budget_taxes DECIMAL(13,2) DEFAULT 0,
   event_budget_total DECIMAL(13,2) DEFAULT 0,
-  INDEX (event_id ASC) ,
-  PRIMARY KEY (event_budget_id),
-    FOREIGN KEY (event_id)
-    REFERENCES CEMSDatabase.ClubEvent  (event_id)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE );
+  PRIMARY KEY (event_budget_id));
 
     -- Table ClubBudget
 CREATE TABLE IF NOT EXISTS ClubBudget (

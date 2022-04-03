@@ -12,8 +12,10 @@ public class ClubEventBudget extends Budget{
 	@Column(name="event_budget_id")
 	private int eventBudgetID;
 	@ManyToOne
+	@JoinColumn(name="club_id")
 	private Club club;
 	@ManyToOne
+	@JoinColumn(name="event_id")
 	private ClubEvent clubEvent;
 
 //	Venue
