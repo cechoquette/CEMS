@@ -35,6 +35,7 @@ public class ClubEvent {
     @OneToMany(mappedBy = "clubEvent")
     private List<ClubEventBudget> clubEvent = new ArrayList<ClubEventBudget>();
     @ManyToOne
+    @JoinColumn(name="club_id")
     private Club club;
 
     public ClubEvent(){}

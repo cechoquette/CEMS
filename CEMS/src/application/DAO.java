@@ -422,9 +422,10 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            String hql = "from ClubEvent ce where ce.clubName =: clubname";
+            String hql ="from ClubEvent as ce INNER JOIN ce.club as c WHERE c.clubName= :name";
+            //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
             Query query = session.createQuery(hql);
-            query.setParameter("clubname", clubName);
+            query.setParameter("name", clubName);
             clubEvents = (List<ClubEvent>) query.list();
             transaction.commit();
             System.out.println("Okay  line 427 club events = " + clubEvents.get(0));
