@@ -49,6 +49,10 @@ User with Admin+ access: <br>
 `Password: cems123` <br>
 `Security Answer: COSC3506` <br>
 
+## ACCESS LEVELS
 
+* `SuperAdmin`: A SuperAdmin user has access to view all information for all clubs, event information, and can create / update / delete users.
+* `Admin+`: An Admin+ user has access to view club information for the club they are affiliated with, create / edit events, and can also view Financial information and create reports.
+* `Admin`: An Admin user has access to view club information for the club they are affiliated with, and create / edit events.
 
 
