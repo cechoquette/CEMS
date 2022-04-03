@@ -632,15 +632,11 @@ public class DAO {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-
-            CriteriaQuery<Expenditure> criteria = builder.createQuery(Expenditure.class);
-            Root<Expenditure> root = criteria.from(Expenditure.class);
-            root.join("club");
-
-            criteria.where(builder.equal(root.get("clubName"), clubName));
-            Query<Expenditure> query = session.createQuery(criteria);
-            expenditure = query.getResultList();
+            String hql ="from Expenditure as e INNER JOIN e.club as c WHERE c.clubName= :name";
+            //String hql = "select ce from ClubEvent ce join ce.club where clubName =: name ";
+            Query query = session.createQuery(hql);
+            query.setParameter("name", clubName);
+            expenditure  = (List<Expenditure>) query.list();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
