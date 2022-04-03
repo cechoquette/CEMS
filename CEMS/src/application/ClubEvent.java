@@ -10,7 +10,7 @@ import static CEMS.src.application.Main.ALLCLUBS;
 
 @Entity
 @Table(name="ClubEvent")
-public class ClubEvent {
+public class ClubEvent implements Comparable<ClubEvent>{
     public static int COUNT_FOR_IDS;
 
     @Id
@@ -179,6 +179,10 @@ public class ClubEvent {
     }
 
 
-
-
+    @Override
+    public int compareTo(ClubEvent o) {
+        if(o.getEventDateTime().isBefore(this.getEventDateTime())) return -1;
+        else if(o.getEventDateTime().isAfter(this.getEventDateTime()))return 1;
+        else return 0;
+    }
 }

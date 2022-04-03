@@ -37,8 +37,6 @@ public class Main extends Application {
 			int clubEventBudgetID = (daoID.maxClubEventBudget() == null) ? 0 : daoID.maxClubEventBudget();
 			int expenditureID = (daoID.maxExpenditureID() == null) ? 0 : daoID.maxExpenditureID();
 
-
-
 			Club.COUNT_FOR_IDS = clubID;
 			ClubEvent.COUNT_FOR_IDS = clubEventID;
 			ClubBudget.COUNT_FOR_IDS = clubBudgetID;
@@ -49,14 +47,14 @@ public class Main extends Application {
 			ALLCLUBS = dao1.getClub(1);
 			//************************************************
 
-			ClubEvent clubEvent = new ClubEvent("Meeting 123", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
-			ClubEvent clubEvent2 =	new ClubEvent("Sparklethon", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
-
-			DAO dao2 = new DAO();
-			DAO dao3 = new DAO();
-
-			dao2.addClubEvent(clubEvent);
-			dao3.addClubEvent(clubEvent2);
+//			ClubEvent clubEvent = new ClubEvent("Meeting 123", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
+//			ClubEvent clubEvent2 =	new ClubEvent("Sparklethon", " ", ALLCLUBS, LocalDateTime.now(), " ", "None");
+//
+//			DAO dao2 = new DAO();
+//			DAO dao3 = new DAO();
+//
+//			dao2.addClubEvent(clubEvent);
+//			dao3.addClubEvent(clubEvent2);
 
 
 
@@ -67,7 +65,7 @@ public class Main extends Application {
 			/* Keeping this code segment in case anyone needs to test individual fxml pages*/
 
 //			Parent root;
-//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/ExpenditureSubmissionForm.fxml"));
+//			root = FXMLLoader.load(getClass().getResource("/CEMS/src/resources/fxml/UpdateClubEventForm.fxml"));
 //			Scene scene = new Scene(root, 900, 625);
 
 			Pane defaultMenu = ViewBuilder.newScreen("LoginMenuBar");
