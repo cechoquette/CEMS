@@ -57,43 +57,58 @@ public class RequestAccessUIController {
     /** Method to check the fields have been filled **/
     public void checkMandatoryFields() {
 
-        if (fieldsValid) {
-            // First Name
-            if (!InputValidation.validateNotEmpty(tfRequestAccessFirst)) {
-                tfRequestAccessFirst.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-                fieldsValid = false;
-            } else {
-                tfRequestAccessFirst.setStyle(null);
-                fieldsValid = true;
-            }
+        // First Name
+        if (!InputValidation.validateNotEmpty(tfRequestAccessFirst)) {
+            tfRequestAccessFirst.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
+        } else {
+            tfRequestAccessFirst.setStyle(null);
+            fieldsValid = true;
+        }
 
-            // Last Name
-            if (!InputValidation.validateNotEmpty(tfRequestAccessLast)) {
-                tfRequestAccessLast.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-                fieldsValid = false;
-            } else {
-                tfRequestAccessLast.setStyle(null);
-                fieldsValid = true;
-            }
+        // Last Name
+        if (!InputValidation.validateNotEmpty(tfRequestAccessLast)) {
+            tfRequestAccessLast.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
+        } else {
+            tfRequestAccessLast.setStyle(null);
+            fieldsValid = true;
+        }
 
-            // Student ID
-            if (!InputValidation.validateStudentID(tfRequestAccessID)) {
-                tfRequestAccessID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-                fieldsValid = false;
-            } else {
-                tfRequestAccessID.setStyle(null);
-                fieldsValid = true;
-            }
+        // Student ID
+        if (!InputValidation.validateStudentID(tfRequestAccessID)) {
+            tfRequestAccessID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
+        } else {
+            tfRequestAccessID.setStyle(null);
+            fieldsValid = true;
+        }
 
-            // Reason for Request
-            if (!InputValidation.validateNotEmptyTextArea(taRequestAccessReason)) {
-                taRequestAccessReason.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-                fieldsValid = false;
-            } else {
-                taRequestAccessReason.setStyle(null);
-                fieldsValid = true;
-            }
+        // Email
+        if (!InputValidation.validateEmail(tfRequestAccessEmail)) {
+            tfRequestAccessEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
+        } else {
+            tfRequestAccessEmail.setStyle(null);
+            fieldsValid = true;
+        }
 
+        // Reason for Request
+        if (!InputValidation.validateNotEmptyTextArea(taRequestAccessReason)) {
+            taRequestAccessReason.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
+            fieldsValid = false;
+        } else {
+            taRequestAccessReason.setStyle(null);
+            fieldsValid = true;
+        }
+
+        // Reason for Request
+        if (!InputValidation.validateComboNotEmpty(comboRequestAccessClub)) {
+            comboRequestAccessClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
+            fieldsValid = false;
+        } else {
+            comboRequestAccessClub.setStyle(null);
+            fieldsValid = true;
         }
     }
 
@@ -133,23 +148,25 @@ public class RequestAccessUIController {
     @FXML
     void btnRequestAccessSubmitClicked(ActionEvent event) {
         // Validation of fields and error checking
-//        checkMandatoryFields();
+        checkMandatoryFields();
 
-        // Submit the info to wherever it needs to go
-        HashMap<Object, Object> dataToSend = new HashMap<Object, Object>();
+        if (fieldsValid) {
+            // Submit the info to wherever it needs to go
+            HashMap<Object, Object> dataToSend = new HashMap<Object, Object>();
 
-        dataToSend.put("RequestAccessClub", comboRequestAccessClub.getValue().toString());
-        dataToSend.put("RequestAccessReason", taRequestAccessReason.getText());
-        dataToSend.put("RequestAccessEmail", tfRequestAccessEmail.getText());
-        dataToSend.put("RequestAccessFirstName", tfRequestAccessFirst.getText());
-        dataToSend.put("RequestAccessStudentID", tfRequestAccessID.getText());
-        dataToSend.put("RequestAccessLastName", tfRequestAccessLast.getText());
+            dataToSend.put("RequestAccessClub", comboRequestAccessClub.getValue());
+            dataToSend.put("RequestAccessReason", taRequestAccessReason.getText());
+            dataToSend.put("RequestAccessEmail", tfRequestAccessEmail.getText());
+            dataToSend.put("RequestAccessFirstName", tfRequestAccessFirst.getText());
+            dataToSend.put("RequestAccessStudentID", tfRequestAccessID.getText());
+            dataToSend.put("RequestAccessLastName", tfRequestAccessLast.getText());
 
-        Controller.processRequest(RequestType.SEND_REQUEST_ACCESS, dataToSend);
+            Controller.processRequest(RequestType.SEND_REQUEST_ACCESS, dataToSend);
 
-        // Return the user to the login page
-        Pane mainScreen = ViewBuilder.newScreen("LoginPage");
-        defaultPane.setCenter(mainScreen);
+            // Return the user to the login page
+            Pane mainScreen = ViewBuilder.newScreen("LoginPage");
+            defaultPane.setCenter(mainScreen);
+        }
     }
 
     @FXML

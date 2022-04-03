@@ -136,15 +136,6 @@ public class InputValidation{
 
 		return false;
 	}
-//
-//	public static boolean validatePhoneNumber(TextField tf){
-//		if(validateNotEmpty(tf)){
-//		String phone = tf.getText();
-//		String regexPattern = "^(\(?\s*\d{3}\s*[\)–\.]?\s*)?[2-9]\d{2}\s*[–\.]\s*\d{4}$";
-//
-//
-//		}
-//	}
 
 	//Pass a tf. Expected format is DDD-DDD-DDDD
 	public static boolean validatePhone(TextField tf){
@@ -170,24 +161,20 @@ public class InputValidation{
 					}
 					else
 					{
-						System.out.println("not a digit -");
 						return false;
 					}
 				}
 				else
 				{
-					System.out.println("not a hyphen -");
 					return false;
 				}
 			}
 			else
 			{
-				System.out.println("length wrong -");
 				return false;
 			}
 		}
 		else {
-			System.out.println("empty string -");
 			return false;
 		}
 	}

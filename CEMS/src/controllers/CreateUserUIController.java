@@ -218,7 +218,6 @@ public class CreateUserUIController {
         checkMandatoryFields();
 
         if (fieldsValid) {
-            System.out.println("fields are okay");
             // Add all data to the hashmap
             dataToSubmit = new HashMap<Object, Object>();
             dataToSubmit.put("CreateUserFirstName", tfCreateUserFirst.getText());
