@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static CEMS.src.application.Main.ALLCLUBS;
+
 public class Controller {
 	
 	private static HashMap<Object, Object> dataToSend;
@@ -72,7 +74,13 @@ public class Controller {
 			LocalDateTime start = (LocalDateTime)dataToProcess.get("StartDate");
 			LocalDateTime end = (LocalDateTime)dataToProcess.get("EndDate");
 			Club clubtoget = (Club)dataToProcess.get("CalendarClubAffiliation");
-			ArrayList<ClubEvent> clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDateAndClub(start, end, clubtoget.getClubName());
+			ArrayList<ClubEvent> clubEvents;
+			if(clubtoget == ALLCLUBS){
+				clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDate(start, end);
+			}
+			else {
+				clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDateAndClub(start, end, clubtoget.getClubName());
+			}
 			dataToProcess.put("MonthlyEvents", clubEvents);
 
 
