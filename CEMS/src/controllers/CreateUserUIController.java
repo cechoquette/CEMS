@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.util.Arrays;
@@ -171,8 +172,16 @@ public class CreateUserUIController {
         btnCreateUserCancelClicked(event);
 
         // Return user to the dashboard
-        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
-        defaultPane.setCenter(mainScreen);
+        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+        Pane home = ViewBuilder.newScreen("HomePage");
+        BorderPane homePage = new BorderPane();
+        CalendarView calendar = new CalendarView();
+
+        homePage.setTop(home);
+        homePage.setCenter(calendar.makeCalendar());
+
+        defaultPane.setTop(menuScreen);
+        defaultPane.setCenter(homePage);
     }
 
     /** Method handles both cancel and clear button ActionEvents **/

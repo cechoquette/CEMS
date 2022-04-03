@@ -25,6 +25,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.Pane;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class ReportRequestUIController {
 	HashMap<Object, Object> dataToSubmit;
@@ -187,6 +190,16 @@ public class ReportRequestUIController {
 	@FXML
 	public void btReportBackClicked(ActionEvent event) {
 		//method should return user to dashboard
+		Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+		Pane home = ViewBuilder.newScreen("HomePage");
+		BorderPane homePage = new BorderPane();
+		CalendarView calendar = new CalendarView();
+
+		homePage.setTop(home);
+		homePage.setCenter(calendar.makeCalendar());
+
+		defaultPane.setTop(menuScreen);
+		defaultPane.setCenter(homePage);
 	}
 	// Event Listener on Button[#btReportClear].onAction
 	@FXML

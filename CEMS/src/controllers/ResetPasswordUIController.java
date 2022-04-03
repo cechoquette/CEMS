@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.security.NoSuchAlgorithmException;
@@ -70,10 +71,26 @@ public class ResetPasswordUIController {
 
         // Return the user to the dashboard if logged in, and the login page if not logged in
         // TODO: currently only returns them to login page, need something to tell us where to send them
-        Pane menuScreen = ViewBuilder.newScreen("LoginMenuBar");
-        Pane mainScreen = ViewBuilder.newScreen("LoginPage");
-        defaultPane.setTop(menuScreen);
-        defaultPane.setCenter(mainScreen);
+
+
+//        if(Main.CURRENTUSER == null){
+            Pane menuScreen = ViewBuilder.newScreen("LoginMenuBar");
+            Pane mainScreen = ViewBuilder.newScreen("LoginPage");
+            defaultPane.setTop(menuScreen);
+            defaultPane.setCenter(mainScreen);
+//        }
+//        else{
+//            Pane menuScreen2 = ViewBuilder.newScreen("MenuBar");
+//            Pane home = ViewBuilder.newScreen("HomePage");
+//            BorderPane homePage = new BorderPane();
+//            CalendarView calendar = new CalendarView();
+//
+//            homePage.setTop(home);
+//            homePage.setCenter(calendar.makeCalendar());
+//
+//            defaultPane.setTop(menuScreen2);
+//            defaultPane.setCenter(homePage);
+//        }
 
     }
 

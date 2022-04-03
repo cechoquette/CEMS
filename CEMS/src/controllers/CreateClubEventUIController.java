@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.time.LocalDateTime;
@@ -84,8 +85,16 @@ public class CreateClubEventUIController {
 
     @FXML
     void btnCreateEventBackClicked(ActionEvent event) {
-        Pane mainScreen = ViewBuilder.newScreen("HomePage");
-        defaultPane.setCenter(mainScreen);
+        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+        Pane home = ViewBuilder.newScreen("HomePage");
+        BorderPane homePage = new BorderPane();
+        CalendarView calendar = new CalendarView();
+
+        homePage.setTop(home);
+        homePage.setCenter(calendar.makeCalendar());
+
+        defaultPane.setTop(menuScreen);
+        defaultPane.setCenter(homePage);
     }
 
     @FXML

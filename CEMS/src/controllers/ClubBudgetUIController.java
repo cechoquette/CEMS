@@ -107,8 +107,16 @@ public class ClubBudgetUIController {
 	@FXML
 	public void btClubBudgetBackClicked(ActionEvent event) {
 		//method should return user to dashboard
-		Pane mainScreen = ViewBuilder.newScreen("HomePage");
-		defaultPane.setCenter(mainScreen);
+		Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+		Pane home = ViewBuilder.newScreen("HomePage");
+		BorderPane homePage = new BorderPane();
+		CalendarView calendar = new CalendarView();
+
+		homePage.setTop(home);
+		homePage.setCenter(calendar.makeCalendar());
+
+		defaultPane.setTop(menuScreen);
+		defaultPane.setCenter(homePage);
 	}
 	// Event Listener on Button[#btClubBudgetClear].onAction
 	@FXML

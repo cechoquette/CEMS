@@ -134,8 +134,16 @@ public class ClubEventBudgetUIController {
 		// Clear the user inputs
 		btEventBudgetClearClicked(event);
 
-		Pane mainScreen = ViewBuilder.newScreen("HomePage");
-		defaultPane.setCenter(mainScreen);
+		Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+		Pane home = ViewBuilder.newScreen("HomePage");
+		BorderPane homePage = new BorderPane();
+		CalendarView calendar = new CalendarView();
+
+		homePage.setTop(home);
+		homePage.setCenter(calendar.makeCalendar());
+
+		defaultPane.setTop(menuScreen);
+		defaultPane.setCenter(homePage);
 		
 	}
 	// Event Listener on Button[#btEventBudgetClear].onAction

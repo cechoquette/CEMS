@@ -208,6 +208,7 @@ public class ExpenditureFormUIController{
 		//calls clear then send back to dashboard?
 		btClearExpenditureClicked(event);
 		btBackExpenditureClicked(event);
+
 	}
 	
 	@FXML
@@ -230,8 +231,16 @@ public class ExpenditureFormUIController{
 	@FXML
 	public void btBackExpenditureClicked(ActionEvent event) {
 		//sends back to dashboard
-		Pane mainScreen = ViewBuilder.newScreen("HomePage");
-		defaultPane.setCenter(mainScreen);
+		Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+		Pane home = ViewBuilder.newScreen("HomePage");
+		BorderPane homePage = new BorderPane();
+		CalendarView calendar = new CalendarView();
+
+		homePage.setTop(home);
+		homePage.setCenter(calendar.makeCalendar());
+
+		defaultPane.setTop(menuScreen);
+		defaultPane.setCenter(homePage);
 	}
 	
 	@FXML

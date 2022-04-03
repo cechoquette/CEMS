@@ -99,8 +99,16 @@ public class DeleteUserUIController {
         btnDeleteUserCancelClicked(event);
 
         // Return the user to the User Management page
-        Pane mainScreen = ViewBuilder.newScreen("UserManagement");
-        defaultPane.setCenter(mainScreen);
+        Pane menuScreen = ViewBuilder.newScreen("MenuBar");
+        Pane home = ViewBuilder.newScreen("HomePage");
+        BorderPane homePage = new BorderPane();
+        CalendarView calendar = new CalendarView();
+
+        homePage.setTop(home);
+        homePage.setCenter(calendar.makeCalendar());
+
+        defaultPane.setTop(menuScreen);
+        defaultPane.setCenter(homePage);
     }
 
     /** EventHandler Method - Cancel button **/
