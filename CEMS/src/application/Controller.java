@@ -72,7 +72,7 @@ public class Controller {
 			LocalDateTime start = (LocalDateTime)dataToProcess.get("StartDate");
 			LocalDateTime end = (LocalDateTime)dataToProcess.get("EndDate");
 			Club clubtoget = (Club)dataToProcess.get("CalendarClubAffiliation");
-			ArrayList<ClubEvent> clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDate(start, end);
+			ArrayList<ClubEvent> clubEvents = (ArrayList<ClubEvent>) dao22.getClubEventByDateAndClub(start, end, clubtoget.getClubName());
 			dataToProcess.put("MonthlyEvents", clubEvents);
 
 

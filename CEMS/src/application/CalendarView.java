@@ -285,8 +285,9 @@ public class CalendarView {
 			Label lbDay = new Label();
 
 			//*** Start : All necessary for call to Controller --> Don't change any of the code here
-			LocalDate startOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, 1);
-			LocalDate endOfMonth = LocalDate.of(currentDisplayYear, currentDisplayMonth, startOfMonth.lengthOfMonth());
+			LocalDate start = LocalDate.of(currentDisplayYear, currentDisplayMonth, 1);
+			LocalDateTime startOfMonth = LocalDateTime.of(currentDisplayYear, currentDisplayMonth, 1, 0, 0);
+			LocalDateTime endOfMonth = LocalDateTime.of(currentDisplayYear, currentDisplayMonth, start.lengthOfMonth(), 0, 0);
 
 			HashMap<Object, Object> dataToSend= new HashMap<Object, Object>();
 			dataToSend.put("StartDate", startOfMonth);
@@ -435,7 +436,7 @@ public class CalendarView {
 			stage.close();
 
 			try {
-				Parent  fxmlFile = FXMLLoader.load(CalendarView.class.getResource("hello-view.fxml"));
+				Parent  fxmlFile = FXMLLoader.load(CalendarView.class.getResource("UpdateClubEventForm"));
 				Scene scene = new Scene(fxmlFile);
 				stage.setScene(scene);
 				stage.show();
