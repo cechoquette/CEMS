@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS ClubEvent (
   event_id INT NOT NULL,
   event_name VARCHAR(45) NULL,
   event_description VARCHAR(45) NULL,
-  event_date DATE NULL,
+  event_date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   event_location VARCHAR(45) NULL,
   email_group VARCHAR(45) NULL,
   event_attendance INT NULL,

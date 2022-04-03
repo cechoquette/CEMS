@@ -228,6 +228,7 @@ public class Controller {
 			DAO dao9 = new DAO();
 			FormHandler.updateClubEventForm(requestType, dataToProcess);
 			dao9.updateClubEvent((ClubEvent)dataToProcess.get("ClubEvent"));
+			System.out.println((ClubEvent)dataToProcess.get("ClubEvent") + " Controller line 231");
 			break;
 		case MODIFY_USER: // Updating users details
 			DAO dao10 = new DAO();

@@ -56,6 +56,8 @@ public class UpdateClubEventUIController {
     @FXML
     private TextField tfUpdateEventTime;
 
+    ClubEvent currentEvent;
+
     @FXML
     public void initialize(){
         //initialize club list
@@ -70,7 +72,7 @@ public class UpdateClubEventUIController {
             HashMap<Object, Object> dataToProcess = new HashMap<>();
             dataToProcess.put("EventID", eventID);
 
-            ClubEvent currentEvent = (ClubEvent) Controller.processRequest(RequestType.GET_EVENT_BY_ID, dataToProcess).get("ClubEvent");
+            currentEvent = (ClubEvent) Controller.processRequest(RequestType.GET_EVENT_BY_ID, dataToProcess).get("ClubEvent");
 
             tfUpdateEventLocation.setText(currentEvent.getEventLocation());
             tfUpdateEventName.setText(currentEvent.getEventName());
@@ -135,6 +137,7 @@ public class UpdateClubEventUIController {
         dataToSubmit.put("EventDateTime", formatDateTime());
         dataToSubmit.put("EventLocation", tfUpdateEventLocation.getText());
         dataToSubmit.put("EventEmailGroup", comboUpdateEventEmail.getValue());
+        dataToSubmit.put("ClubEvent", currentEvent);
 
         //Create the event, get it back
         ClubEvent eventCreated = (ClubEvent) Controller.processRequest(RequestType.MODIFY_EVENT, dataToSubmit).get("ClubEvent");

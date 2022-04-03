@@ -45,6 +45,7 @@ public class ClubEvent implements Comparable<ClubEvent>{
         this.club = club;
         this.eventDescription = desc;
         this.eventDateTime = dateTime;
+        System.out.println(dateTime);
         this.eventLocation = location;
         setEmails(emailGroup);//could be null
         if(club == ALLCLUBS){
