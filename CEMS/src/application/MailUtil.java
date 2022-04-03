@@ -12,7 +12,46 @@ public class MailUtil {
 
     public static void sendNewEvent (HashMap<Object, Object> eventInfo) throws Exception {
 
-        System.out.println("Preparing to send email");
+        System.out.println("Preparing to send new event email");
+
+        //Creating the email session in Gmail
+        Properties properties = new Properties();  //Key-value store
+
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        String appEmailUser = "3506project@gmail.com";
+        String appEmailPass = "Admin!2345";
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(appEmailUser, appEmailPass);
+            }
+        });
+
+        //Extract the info from the HashMap
+        String name = (String) eventInfo.get("EventName");
+        String description = (String) eventInfo.get("EventDescription");
+        LocalDateTime date = (LocalDateTime) eventInfo.get("EventDateTime");
+        String location = (String) eventInfo.get("EventLocation");
+        List<String> emailsAsAList = (List<String>) eventInfo.get("EventEmailsPopulated");
+        //Turn the emails into a String[]
+        String[] emailGroup = new String[emailsAsAList.size()];
+        emailGroup = emailsAsAList.toArray(emailGroup);
+
+        //Pass the info to the message builder
+
+        Message message = messageBuilder(session, appEmailUser, name, description, date, location, emailGroup);
+
+        Transport.send(message);
+    }
+
+    public static void sendEventUpdate (HashMap<Object, Object> eventInfo) throws Exception {
+
+        System.out.println("Preparing to send new event email");
 
         //Creating the email session in Gmail
         Properties properties = new Properties();  //Key-value store
@@ -49,9 +88,43 @@ public class MailUtil {
         Transport.send(message);
     }
 
-    public static void sendEventUpdate (HashMap<Object, Object> eventInfo) throws Exception { }
+    public static void sendRequestAccess (HashMap<Object, Object> eventInfo) throws Exception {
+        System.out.println("Preparing to send new event email");
 
-    public static void sendRequestAccess (HashMap<Object, Object> eventInfo) throws Exception { }
+        //Creating the email session in Gmail
+        Properties properties = new Properties();  //Key-value store
+
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        String appEmailUser = "3506project@gmail.com";
+        String appEmailPass = "Admin!2345";
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(appEmailUser, appEmailPass);
+            }
+        });
+
+        //Extract the info from the HashMap
+        String name = (String) eventInfo.get("EventName");
+        String description = (String) eventInfo.get("EventDescription");
+        LocalDateTime date = (LocalDateTime) eventInfo.get("EventDateTime");
+        String location = (String) eventInfo.get("EventLocation");
+        List<String> emailsAsAList = (List<String>) eventInfo.get("EventEmailGroup");
+        //Turn the emails into a String[]
+        String[] emailGroup = new String[emailsAsAList.size()];
+        emailGroup = emailsAsAList.toArray(emailGroup);
+
+        //Pass the info to the message builder
+
+        Message message = messageBuilder(session, appEmailUser, name, description, date, location, emailGroup);
+
+        Transport.send(message);
+    }
 
     private static Message messageBuilder (Session session, String fromEmail, String name, String description, LocalDateTime date, String location, String[] emailGroup) throws Exception {
 
