@@ -60,11 +60,11 @@ public class Controller {
 //			Boolean checkForEvent = (Boolean)Controller.processRequest(RequestType.CHECK_FOR_EVENTS, dataToSend).get("CheckForEvent");
 
 				break;
-			case GET_EVENT_BY_ID:
-				DAO lostcount = new DAO();
-				ClubEvent clubEvent = lostcount.getClubEvent((Integer)dataToProcess.get("EventID"));
-				dataToProcess.put("ClubEvent", clubEvent);
-				break;
+		case GET_EVENT_BY_ID:
+			DAO lostcount = new DAO();
+			ClubEvent clubEvent = lostcount.getClubEvent((Integer)dataToProcess.get("EventID"));
+			dataToProcess.put("ClubEvent", clubEvent);
+			break;
 		case GET_EVENTS:
 			DAO dao22 = new DAO();
 			Timeframe timeframe2 = (Timeframe)dataToProcess.get("Timeframe");
@@ -128,7 +128,9 @@ public class Controller {
 			break;
 		case CREATE_EVENT:
 			DAO dao3 = new DAO();
-			dao3.addClubEvent(FormHandler.createClubEventForm(requestType, dataToProcess));
+			ClubEvent clubEvent2 = FormHandler.createClubEventForm(requestType, dataToProcess);
+			dao3.addClubEvent(clubEvent2);
+			dataToProcess.put("ClubEvent", clubEvent2);
 			break;
 		case CREATE_USER:
 			DAO dao4 = new DAO();
