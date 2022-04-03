@@ -112,7 +112,7 @@ public class MailUtil {
         //Extract the info from the HashMap
         String firstName = (String) eventInfo.get("RequestAccessFirstName");
         String lastName = (String) eventInfo.get("RequestAccessLastName");
-        int studentID = (int) eventInfo.get("RequestAccessStudentID");
+        int studentID = Integer.parseInt((String) eventInfo.get("RequestAccessStudentID"));
         String club = (String) eventInfo.get("RequestAccessClub");
         String reason = (String) eventInfo.get("RequestAccessReason");
         String email = (String) eventInfo.get("RequestAccessEmail");
