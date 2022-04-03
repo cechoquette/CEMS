@@ -93,12 +93,34 @@ public class Controller {
 			dao1.addClub(FormHandler.createClubForm(requestType, dataToProcess));
 			break;
 
-		case SEND_EMAIL:
+		case SEND_EVENT_EMAIL:
 			//Not a DAO task
 
 			//call MailUtil
 			try {
-				MailUtil.sendEmail(dataToProcess);
+				MailUtil.sendNewEvent(dataToProcess);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			break;
+		case SEND_UPDATE_EMAIL:
+			//Not a DAO task
+
+			//call MailUtil
+			try {
+				MailUtil.sendEventUpdate(dataToProcess);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			break;
+		case SEND_REQUEST_ACCESS:
+			//Not a DAO task
+
+			//call MailUtil
+			try {
+				MailUtil.sendRequestAccess(dataToProcess);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

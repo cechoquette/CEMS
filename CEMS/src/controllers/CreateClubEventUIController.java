@@ -115,7 +115,7 @@ public class CreateClubEventUIController {
         dataToSubmit.put("EventEmailsPopulated", emailList);
 
         //Send the email with the updated HashMap
-        Controller.processRequest(RequestType.SEND_EMAIL, dataToSubmit);
+        Controller.processRequest(RequestType.SEND_EVENT_EMAIL, dataToSubmit);
 
 
 //        /* *** Sample Email Utility call code segment start *** */
