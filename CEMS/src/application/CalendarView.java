@@ -8,11 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
@@ -22,6 +19,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
+import static CEMS.src.application.Main.defaultPane;
 
 public class CalendarView {
 
@@ -436,10 +435,8 @@ public class CalendarView {
 			stage.close();
 
 			try {
-				Parent  fxmlFile = FXMLLoader.load(CalendarView.class.getResource("UpdateClubEventForm"));
-				Scene scene = new Scene(fxmlFile);
-				stage.setScene(scene);
-				stage.show();
+				Pane mainScreen = ViewBuilder.newScreen("UpdateClubEventForm");
+				defaultScreen.setCenter(mainScreen);
 			}
 			catch (IOException ex) {
 				System.out.println("Can't find it");
