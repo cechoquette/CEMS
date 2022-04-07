@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS ClubExpenditure (
   tax_amount DECIMAL(13,2) ,
   total DECIMAL(13,2) ,
   province VARCHAR(45) ,
-  date_ VARCHAR(45) ,
+  date_ TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
   vendor_name VARCHAR(45) ,
   category VARCHAR(45) ,
   payment_method VARCHAR(45) ,

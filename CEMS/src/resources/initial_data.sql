@@ -76,6 +76,13 @@ VALUES  (34,35.00,35.00,98.00,98.00,42.00,42.00,12.00,12.00,187.00,24.00,211.00,
         (36,20.00,20.00,80.00,80.00,50.00,50.00,40.00,40.00,190.00,26.00,216.00,1,24),
         (37,40.00,40.00,50.00,50.00,80.00,80.00,20.00,20.00,190.00,26.00,216.00,1,27);
 
-
-
+INSERT INTO ClubExpenditure(expenditure_id,description_,account_holder,amount,
+payment_account,tax_amount,total,province,date_,vendor_name,
+category,payment_method,club_id,clubEvent_event_id)
+VALUES  (50,"Pay for pizza and drinks","Joe",50.00,"CEMS Account",7.50,57.50,"Ontario",'2022-04-03 15:00:00',"Amazon","refreshments_other",
+"Visa",1,27),
+(65,"Pay for student centre rental","Joe",60,"CEMS Account",6.75,66.75,"Ontario",'2022-04-06 15:00:00',"Amazon","venue_subtotal",
+"Visa",1,27),
+(66,"Pay for student centre rental","Joe",100,"CEMS Account",13.00,113.00,"Ontario",'2022-04-02 15:00:00',"Amazon","venue_subtotal",
+"Visa",1,27);
 
