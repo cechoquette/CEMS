@@ -1,4 +1,3 @@
-
 use CEMSDatabase ;
 INSERT INTO Club (club_id,club_name,club_description)
 VALUES (1, 'All Clubs', ' This is a club with all clubs'),
