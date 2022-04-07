@@ -113,7 +113,7 @@ public class MailUtil {
         String firstName = (String) eventInfo.get("RequestAccessFirstName");
         String lastName = (String) eventInfo.get("RequestAccessLastName");
         int studentID = Integer.parseInt((String) eventInfo.get("RequestAccessStudentID"));
-        String club = (String) eventInfo.get("RequestAccessClub");
+        String club = (String) eventInfo.get("RequestAccessClub").toString();
         String reason = (String) eventInfo.get("RequestAccessReason");
         String email = (String) eventInfo.get("RequestAccessEmail");
 
