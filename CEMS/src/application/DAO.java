@@ -428,15 +428,12 @@ public class DAO {
             query.setParameter("name", clubName);
             clubEvents = (List<ClubEvent>) query.list();
             transaction.commit();
-            System.out.println("Okay  line 427 club events = " + clubEvents.get(0));
         } catch (Exception e) {
             e.printStackTrace();
-//            System.out.println("Not Okay  line 429 club events = " + clubEvents);
             if (transaction != null) {
                 transaction.rollback();
             }
         } finally {
-            System.out.println("Okay  line 432 club events = " + clubEvents.get(0));
             if (clubEvents != null) {
                 for (ClubEvent newEvent : clubEvents) {
                     getClubEventByID.put(newEvent.getEventID(), newEvent);
