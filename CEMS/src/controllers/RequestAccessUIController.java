@@ -16,7 +16,12 @@ import java.util.HashMap;
 import static CEMS.src.application.Main.defaultPane;
 
 public class RequestAccessUIController {
-    private boolean fieldsValid = true;
+    private boolean firstNameFieldsValid = true;
+    private boolean lastNameFieldsValid = true;
+    private boolean emailFieldsValid = true;
+    private boolean studentIDFieldsValid = true;
+    private boolean clubFieldsValid = true;
+    private boolean reasonFieldsValid = true;
 
     @FXML
     private Button btnRequestAccessBack;
@@ -60,55 +65,55 @@ public class RequestAccessUIController {
         // First Name
         if (!InputValidation.validateNotEmpty(tfRequestAccessFirst)) {
             tfRequestAccessFirst.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            firstNameFieldsValid = false;
         } else {
             tfRequestAccessFirst.setStyle(null);
-            fieldsValid = true;
+            firstNameFieldsValid = true;
         }
 
         // Last Name
         if (!InputValidation.validateNotEmpty(tfRequestAccessLast)) {
             tfRequestAccessLast.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            lastNameFieldsValid = false;
         } else {
             tfRequestAccessLast.setStyle(null);
-            fieldsValid = true;
+            lastNameFieldsValid = true;
         }
 
         // Student ID
         if (!InputValidation.validateStudentID(tfRequestAccessID)) {
             tfRequestAccessID.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            studentIDFieldsValid = false;
         } else {
             tfRequestAccessID.setStyle(null);
-            fieldsValid = true;
+            studentIDFieldsValid = true;
         }
 
         // Email
         if (!InputValidation.validateEmail(tfRequestAccessEmail)) {
             tfRequestAccessEmail.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            emailFieldsValid = false;
         } else {
             tfRequestAccessEmail.setStyle(null);
-            fieldsValid = true;
+            emailFieldsValid = true;
         }
 
         // Reason for Request
         if (!InputValidation.validateNotEmptyTextArea(taRequestAccessReason)) {
             taRequestAccessReason.setStyle("-fx-text-box-border: red ;-fx-focus-color: red ;-fx-control-inner-background: #fabdb9");
-            fieldsValid = false;
+            reasonFieldsValid = false;
         } else {
             taRequestAccessReason.setStyle(null);
-            fieldsValid = true;
+            reasonFieldsValid = true;
         }
 
-        // Reason for Request
+        // Club
         if (!InputValidation.validateComboNotEmpty(comboRequestAccessClub)) {
             comboRequestAccessClub.setStyle("-fx-background-color: #fabdb9 ;-fx-focus-color: red; -fx-border-color: red");
-            fieldsValid = false;
+            clubFieldsValid = false;
         } else {
             comboRequestAccessClub.setStyle(null);
-            fieldsValid = true;
+            clubFieldsValid = true;
         }
     }
 
@@ -150,7 +155,10 @@ public class RequestAccessUIController {
         // Validation of fields and error checking
         checkMandatoryFields();
 
-        if (fieldsValid) {
+        if (firstNameFieldsValid && lastNameFieldsValid
+            && emailFieldsValid && studentIDFieldsValid
+            && clubFieldsValid && reasonFieldsValid) {
+            
             // Submit the info to wherever it needs to go
             HashMap<Object, Object> dataToSend = new HashMap<Object, Object>();
 
